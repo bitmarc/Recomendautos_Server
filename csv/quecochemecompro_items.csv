@@ -1,0 +1,582 @@
+nombre,marca,puntuacion,informativo,cal_pequeño_y_manejable,cal_deportivo,cal_bueno_y_barato,cal_practico,cal_ecologico,cal_atractivo,lo_mejor,lo_malo
+Kia Ceed MHEV,Kia,,,1,1,7,1,6,2,,
+Volkswagen Sharan,Volkswagen,"3,7",Máxima versatilidad para las familias que buscan espacio para siete pasajeros,1,1,5,1,2,2,"Espacio y versatilidad interior, 7 plazas reales, puertas correderas, confort de marcha, gama de motores, comportamiento sorprendente","Estética cuadrada, es más caro que un SEAT Alhambra siendo el mismo coche"
+MINI Countryman,MINI,"3,5","Un crossover elevado, pero compacto por fuera y de buena calidad. Diseño a raudales.",1,2,1,7,2,6,"Diseño, calidad de construcción, tacto de conducción, gama de motores",Precio muy elevado
+Renault Clio HEV,Renault,,,1,1,5,1,7,3,,
+SEAT León ST,SEAT,"4,0",El SEAT León ST es un familiar de avanzada tecnología por un precio muy razonable,1,2,5,1,2,2,"Equipamiento completo, opción micro-híbrida, maletero",Detalles de acabado
+Cupra Ateca,Cupra,"3,9",Deportividad y altas prestaciones en formato crossover,1,3,6,1,1,3,"Prestaciones, maletero, amplitud interior, equipo completo, comportamiento dinámico","Confort de suspensión, consumos, aspecto de algunos plásticos"
+Peugeot 108,Peugeot,"3,4","El Peugeot 108 es el urbano mínimo, según Peugeot. Altamente personalizable",1,1,5,1,5,2,"Ligereza, agilidad, bajos consumos, posibilidades de equipamiento","Materiales de calidad mediocre, maletero escaso, vibraciones y sonoridad, puertas traseras pequeñas, ausencia de control de velocidad"
+Skoda Octavia Combi,Skoda,,,1,1,5,1,2,2,,
+Nissan GT-R,Nissan,"4,1",Nadie te dará más prestaciones reales por menos dinero,1,9,3,1,1,9,"Relación prestaciones/precio, estética atractiva, nivel tecnológico, practicidad real","Interior obsoleto, puesto de conducción muy alto, modelo algo antiguo frente a la competencia"
+Porsche Panamera,Porsche,,,1,5,1,1,1,8,"Nivel prestacional, exclusividad, estética, tecnología","Peso elevado, consumos, precio"
+Porsche Taycan,Porsche,,,1,7,1,1,10,8,"Prestaciones, tecnología, solidez general",Precio inalcanzable para el común de los mortales
+BMW Serie 8 Coupé,BMW,,,1,8,1,1,1,9,,
+Audi A8 PHEV,Audi,,,1,2,1,1,8,3,,
+Audi SQ7,Audi,,,1,5,1,1,1,5,"Relación prestaciones/consumos en diésel, calidad y diseño interior, espacio, confort, tecnología","Sería la combinación perfecta si el diésel no estuviese condenado a desaparecer, consumos altos en gasolina"
+Porsche Panamera Sport Turismo,Porsche,,,1,7,1,1,1,8,,
+Porsche Panamera S E-Hybrid PHEV,Porsche,,,1,5,1,1,8,6,"Prestaciones, silencio de marcha, calidad de materiales y acabados, interior espectacular, comportamiento deportivo","Pesa demasiado para poder ser considerado un verdadero deportivo, pero en línea recta te pega al asiento como pocos"
+Range Rover PHEV,Land Rover,,,1,1,1,1,8,5,"Diseño, interior de película, silencio de marcha, acabados, confort, aptitudes todoterreno","Ni puedes pagarlo, ni puedes aparcarlo, ni puedes mantenerlo"
+Range Rover,Land Rover,,,1,1,1,1,1,5,"Diseño, interior, calidad de acabados, capacidades todoterreno en otra liga, suspensión neumática",La experiencia en carretera es la de un salón rodante con mucha inercia
+Porsche 911 Cabrio,Porsche,,,1,8,1,1,2,8,,
+Audi RS6 Avant,Audi,,,1,7,1,1,1,5,,
+BMW M5,BMW,,,1,7,1,1,1,5,"Prestaciones, comportamiento, practicidad, seguridad, sensaciones al volante",Precio desorbitado
+BMW M8 Coupé,BMW,,,1,8,1,1,1,8,,
+BMW X6 M,BMW,,,1,5,1,1,1,4,,
+Audi RS7 Sportback,Audi,,,1,7,1,1,1,6,,
+BMW i8,BMW,"4,0","""El coche más innovador que jamás hayamos creado"", BMW dixit",1,8,1,1,8,10,"El futuro del deportivo se puede comprar hoy, increíble sensación prestacional, silencio de marcha, consumos muy bajos, estética rompedora","Maletero casi inexistente, imposible pasar desapercibido en este coche"
+Porsche Cayenne Turbo,Porsche,,,1,7,1,1,1,5,"Prestaciones, tacto al volante, comportamiento, practicidad real","Precio, coste de opciones, consumos y todo lo que tenga que ver con tenerlo y mantenerlo"
+BMW M6 Gran Coupe,BMW,,,1,7,1,8,1,7,"Prestaciones, practicidad, estética exclusiva, comportamiento","Precio elevado, altura en las plazas traseras"
+Mercedes-AMG GT 4 Puertas,Mercedes-Benz,,,1,7,1,1,1,7,,
+Porsche Panamera Turbo,Porsche,,,1,7,1,4,1,8,"Pretastaciones puras, aceleración, comportamiento, exclusividad","Precio, consumo y todo lo que tenga que ver con el coste de mantener este coche funcionando"
+Audi R8,Audi,"4,4",Un verdadero deportivo capaz de conciliar el circuito y el día a día,1,8,1,1,1,9,,
+Mercedes-AMG GT,Mercedes-Benz,,,1,8,1,1,2,8,,
+Audi R8 Spyder,Audi,"4,4",Deportivo descapotable y biplaza capaz de conciliar el circuito y el día a día,1,8,1,1,1,10,,
+Bentley Bentayga,Bentley,,,1,2,1,1,1,7,"Calidad de construcción, exclusividad, materiales, prestaciones, capacidad real off-road (aunque no lo parezca)","Precio elevado, consumo desorbitado y ostentación sin límites son sus tres banderas"
+Lamborghini Huracán,Lamborghini,,,1,10,1,1,1,10,"Motor V10, sonido, diseño exterior, versión de tracción trasera","Diseño y calidad interior mejorables, suspensión demasiado firme para carretera"
+Lamborghini Urus,Lamborghini,"3,9",Llamando la atención allá donde va desde 2017,1,8,1,7,1,8,"Nivel prestacional, estética diferenciada, espectacularidad","Precio desorbitado, imposible pasar desapercibido"
+Fiat 500C,Fiat,"3,4",El utilitario más 'chic',8,1,5,1,4,7,"Diseño atractivo, precio ajustado, practicidad","Maletero justo, calidad de algunos plásticos"
+SsangYong XLV,SsangYong,"3,1",Buena relación precio-habitabilidad-equipamiento,1,1,5,8,2,1,"Maletero, amplitud plazas traseras, equipamiento, precio asequible, garantía","Calidad de algunos plásticos, motor de gasolina algo justo, sin opción 4x4, estética indigesta"
+Ford Focus Active,Ford,,,1,2,5,1,2,3,,
+Hyundai Kona HEV,Hyundai,"3,6",La opción con etiqueta ambiental ECO de la DGT,1,1,5,1,7,3,"Consumos, etiqueta ECO, equipamiento completo","Autonomía eléctrica limitada, precio sin ofertas"
+Ford Focus Sportbreak Active,Ford,,,1,1,5,1,2,3,,
+Citroën C5 Aircross,Citroën,"3,3",Original y atractivo,1,1,5,1,2,3,"Versatilidad, presentación, posibilidades de equipamiento y personalización, confort","Calidad de algunos plásticos, sin tracción total, solo con cinco plazas,"
+Honda Civic Sedán,Honda,,,1,3,2,6,2,2,,
+Volkswagen Passat Variant,Volkswagen,"4,1","Un enorme familiar de buena calidad, recién renovado",1,1,1,1,2,5,"Calidad de construcción, espacio interior, maletero, gama de motores, estética atractiva","Precio muy elevado, precio de opciones"
+Skoda Octavia Combi MHEV,Skoda,,,1,1,5,1,6,2,,
+Lexus UX,Lexus,"3,6","Híbrido, dinámico y atractivo",1,1,1,1,7,5,"Calidad de acabados, consumos ajustados, equipo completo","Precios elevados, cambio CVT ruidoso, autonomía eléctrica reducida"
+BMW Serie 2 Gran Tourer,BMW,"3,4","Más capaz que el Active Tourer, está muy bien acabado",1,1,1,1,2,2,"Calidad de acabados, exclusividad, tacto de conducción, gama de motores","Precio elevado, opciones caras, diseño exterior algo extraño en esta versión larga"
+Peugeot 3008 PHEV,Peugeot,"3,6",La opción más cara y exclusiva del 3008,1,1,1,1,8,3,"Etiqueta Cero, posibilidad de tracción integral, silencio de marcha, comportamiento en ciudad","Exceso de peso y exceso de precio, sin dejar de ser un 3008"
+Mazda 6 Wagon,Mazda,"4,0",Familiar al mismo precio que el Sedán,1,3,5,8,2,4,"Maletero, motores eficientes, comportamiento","Calidad de algunos plásticos, equipamiento cerrado"
+Subaru XV HEV,Subaru,,,1,1,1,1,7,2,,
+BMW Serie 2 Coupé,BMW,"3,5",Un capricho también disponible con carrocería descapotable,1,5,1,1,2,4,"Dinámica de conducción, prestaciones, gama de motores, tracción trasera","Interior algo clásico, precio de las opciones"
+Jaguar E-Pace,Jaguar,"3,6",Diseño y tecnología en formato compacto,1,2,1,5,2,5,"Diseño, gama de motores variada, posibilidades de equipamiento","Calidad de algunos plásticos, precio elevado, equipo de serie justo"
+Kia Optima PHEV,Kia,,,1,2,6,4,8,2,"Precio razonable (para un PHEV), comodidad, amplitud silencio, calidad de construcción","Precio elevado (para un Kia Optima), ineficiencia en carretera, exige punto de recarga en el garaje para tener sentido"
+Jeep Renegade TrailHawk,Jeep,,,1,1,1,5,1,3,,
+Volvo XC40 PHEV,Volvo,,,1,2,1,1,8,5,,
+Volvo S90,Volvo,"4,4",La alternativa exótica al trío alemán,1,2,1,6,2,5,"Diseño espectacular, calidad de construcción, estética y materiales en el interior, comportamiento sorprendente, consumos ajustados","Precio elevado, hemos observado fallos repetidos en el navegador en diferentes unidades, maletero justo"
+Land Rover Discovery Sport,Land Rover,"3,4",Un Evoque con más espacio y hasta 7 plazas. Precioso.,1,1,1,1,2,5,"Posibilidad de 7 plazas, diseño general, calidad de construcción, aptitudes todoterreno, etiqueta ECO","Precio elevado, prestaciones justas, suspensión algo seca, difícil acceso a las plazas auxiliares"
+Audi Q3 Sportback,Audi,"3,6",Una interesante opción para los que buscan un SUV de diseño más dinámico,1,2,1,1,2,4,"Estética, calidad de acabados, gama variada","Precio elevado, opciones caras, plaza central trasera justa"
+Audi A4 Avant,Audi,"4,1",Excelente calidad de acabados y unas posibilidades de equipamiento muy amplias,1,2,1,1,2,3,"Calidad de construcción, diseño interior y materiales, tecnología","Estética muy clásica, tacto de conducción por detrás de sus rivales"
+Volvo V60 Cross Country,Volvo,,,1,1,1,1,2,4,"Estética, diseño interior, calidad de construcción, comodidad, confort de los asientos para largos viajes","Navegador poco fiable, precio elevado, maletero justo"
+Audi A4 Allroad,Audi,,,1,2,1,1,2,5,"Estética, calidad de acabados, diseño interior, equipamiento completo","Precio muy elevado, opciones caras, tacto de conducción insípido"
+Land Rover Discovery Sport MHEV,Land Rover,,,1,1,1,1,6,5,,
+Volvo V60,Volvo,"4,0","Diseño, buenos acabados y equipo correcto en todas las versiones",1,1,1,1,2,3,"Diseño interior y exterior, seguridad, exclusividad, calidad","Precios, gama inicial limitada, dotación de serie algo justa"
+BMW Serie 3 Touring,BMW,"3,5",El familiar premium más dinámico y con los mejores motores del mundo,1,3,1,1,2,3,"Tacto de conducción, prestaciones, consumos","Espacio limitado para un familiar, interior clásico, precios"
+Audi A3 PHEV,Audi,,,1,3,1,5,8,3,,
+Volvo V90,Volvo,"4,4",Mucho espacio para la familia y un diseño muy atractivo,1,1,1,7,2,4,"Diseño espectacular, calidad de construcción, estética y materiales en el interior, comportamiento sorprendente, consumos ajustados","Precio elevado, hemos observado fallos repetidos en el navegador en diferentes unidades, maletero justo"
+Mercedes Clase B PHEV,Mercedes-Benz,,,1,1,1,1,8,3,,
+BMW X1 PHEV,BMW,,,1,3,1,1,8,4,,
+Volvo V90 Cross Country,Volvo,,,1,1,1,7,1,7,"Estética muy atractiva, diseño y calidad interior, confort de marcha, tecnología de seguridad","Maletero algo justo para el tamaño del coche, navegador con tendencia a fallar"
+Mercedes Clase C Estate,Mercedes-Benz,"3,8","Recién actualizado con importantes mejoras en diseño, equipamiento y motores.",1,2,1,1,2,3,"Diseño interior y exterior, exclusividad, tacto de conducción","Calidad de plásticos y ajustes mejorable, motores diésel ruidosos"
+BMW Serie 4,BMW,"3,9",Un coche de capricho para disfrutar de verdad al volante,1,4,1,2,2,5,"Tacto de conducción, gama de motores, prestaciones, estética","Precio elevado, precio de opciones aún más elevado"
+Audi A5,Audi,"3,8",Aires dinámicos para el deportivo medio de Audi,1,4,1,1,2,5,"Calidad de construcción, tecnología, diseño interior","Comportamiento aburrido, precio elevado"
+Land Rover Discovery Sport PHEV,Land Rover,,,1,1,1,1,8,5,,
+Audi A6,Audi,,,1,2,1,1,2,3,,
+BMW X4,BMW,"3,6","BMW X4, un SUV premium que ofrece imagen, exclusividad y tecnología",1,1,1,1,2,4,"Estética deportiva y exclusiva, tacto de conducción, gama de motores","Precio desorbitado, versatilidad limitada por la forma del techo"
+Mercedes Clase E,Mercedes-Benz,"3,9",Calidad elevada y tecnología a la última,1,2,1,1,2,3,"Niveles de asistencia y seguridad, diseño interior y exterior, tacto de conducción, nivel tecnológico apabullante, equipo de iluminación","Suspensión demasiado firme, parecido con Clase C"
+Audi A6 Avant,Audi,,,1,1,1,1,2,3,,
+BMW Serie 5,BMW,"3,8",Calidad y tecnología a la última para la berlina media alemana,1,3,1,1,2,3,"Empaque, tecnología de vanguardia, comportamiento, gama de motores, seguridad y asistencias a la conducción",Estética demasiado clásica
+Volkswagen Touareg,Volkswagen,,,1,1,1,1,2,3,"Tecnología, calidad de construcción, capacidades off-road razonables, agilidad del sistema 4WS","Pantalla central inabarcable de un vistazo, estética insulsa, falta de diferenciación"
+Volvo XC60 PHEV,Volvo,,,1,1,1,1,8,5,"Tecnología, equipamiento, diseño, confort, prestaciones","Es un híbrido enchufable: caro, pesado e ineficiente, aunque pueda moverse en modo eléctrico algunos kilómetros"
+Land Rover Discovery,Land Rover,,,1,1,1,6,1,3,"Capacidades todoterreno reales, confort, equipamiento, diseño atractivo",Demasiado grande y pesado para ser ágil o divertido al volante. No se puede tener todo.
+Mercedes GLE,Mercedes-Benz,,,1,1,1,1,1,6,"Diseño, calidades, posibilidad de 7 plazas, capacidad todoterreno","Precio elevado, opciones caras"
+Mercedes CLS,Mercedes-Benz,,,1,4,1,1,1,5,,
+BMW X5,BMW,,,1,1,1,1,1,3,"Tacto de conducción, tecnología, calidades, diseño","Precio elevado, opciones caras"
+Range Rover Velar PHEV,Land Rover,,,1,2,1,1,8,6,,
+BMW X6,BMW,"3,6","El BMW X6 es un X5 menos práctico, menos espacioso, más musculoso y más caro",1,4,1,1,1,4,"Tacto de conducción, gama de motores, estética súper-bestia","Versatilidad limitada por la forma del techo, practicidad, precio excesivo"
+Audi Q7,Audi,"4,2",Equipamiento y tecnología para el SUV más lujoso de Audi,1,1,1,1,1,5,"Espacio interior, calidad de construcción, tecnología, diseño interior","Proporciones exteriores algo raras, precio"
+Tesla Model S,Tesla,"4,1","Berlina prestacional, eléctrica y con autonomía superior a los 500 Km por carga",1,7,1,1,10,7,"Prestaciones de vértigo, silencio de marcha, exclusividad, estética diferenciada","Detalles de acabado, diseño interior algo forzado por la pantalla"
+Jaguar F-Pace PHEV,Jaguar,,,1,2,1,1,8,4,,
+Porsche Cayenne,Porsche,,,1,5,1,9,1,4,"Tacto deportivo, prestaciones, calidad general, tecnología, diseño, practicidad real","Precio, consumos y costes en general fuera del alcance de la gran mayoría"
+Mercedes Clase S,Mercedes-Benz,"4,4","¿El mejor automóvil del mundo? Si existiese semejante cosa, este sería un candidato",1,2,1,6,2,6,"Tecnología de vanguardia, confort de marcha supremo, niveles de seguridad y asistencia, prestaciones, espacio interior","La sensación de que vas conduciendo el coche de tu padre, tengas la edad que tengas, parecido con Clase E"
+BMW Serie 7,BMW,,,1,3,1,1,2,4,,
+Audi A8,Audi,,,1,2,1,1,2,3,,
+Porsche 911,Porsche,,,1,8,1,1,2,8,"Tradición, personalidad, tecnología, tacto de dirección, sensaciones, sonido, estética","Este es el coche por el que se miden los demás coches, no hay nada que mejorar"
+Porsche Macan Turbo,Porsche,,,1,6,1,1,1,4,,
+Kia Picanto,Kia,"3,4",Un urbano muy atractivo y de lo más interesante,1,1,7,1,5,2,"Diseño, habitabilidad, posibilidades de equipamiento","Suspensión blanda, caja automática con 4 velocidades"
+Mitsubishi Space Star,Mitsubishi,"3,1",Un urbano muy equipado a un precio justo.,6,1,5,4,5,2,"Precio de derribo, equipamiento completo","Calidad de acabados, diseño exterior extraño, sensación general de low-cost"
+Renault Twingo,Renault,"3,4","La nueva referencia de los micro-urbanos. Espacioso, práctico y diverdido.",1,1,5,1,5,4,"Cinco puertas, gama de motores con 75 y 94 CV, caja de doble embrague, equipamiento","Precio algo elevado, aspecto de algunos plásticos, calor en maletero"
+Hyundai i10,Hyundai,"3,6","Pequeño, manejable, y muy equipado",1,1,7,1,5,2,"Seguridad, practicidad, maniobrabilidad, aprovechamiento interior","Precio algo elevado, cambio robotizado, sin opción alternativa"
+Fiat Tipo,Fiat,"3,1",Mucho espacio a un precio realmente tentador,1,1,7,6,2,2,"Precio demoledor, diseño, maletero gigantesco","Acceso al maletero, calidad de algunos plásticos, detalles de acabado"
+Kia Rio,Kia,"3,4",Una opción interesante por su equilibrio general,3,1,7,5,4,2,"Relación valor-precio, equipamiento razonable, maletero","Suspensión blanda, calidad de los plásticos"
+Skoda Fabia,Skoda,"3,4",Un utilitario en el que tecnología y precio van de la mano,1,1,7,1,4,2,"Amplitud, maletero, soluciones prácticas","Plásticos duros, equipo de serie, sin motor diésel"
+Citroën C3,Citroën,"3,3","Personalizable y diferente, el C3 trata de conquistar a los más inconformistas",1,1,8,1,4,2,"Precio, espacio interior, diseño atrevido, detalles de equipamiento",Calidad de algunos plásticos
+Citroën C1,Citroën,"3,1",El coche mínimo de Citroën,9,1,7,2,5,2,"Precio, economía de mantenimiento, maniobrabilidad","Plásticos interiores, prestaciones justas con el motor 1.0 VTI"
+Toyota Aygo,Toyota,"3,1",Uno de los urbanos más asequibles.,1,1,5,1,5,2,"Precio competitivo, espacio interior razonable","Calidades interiores justas, plataforma antigua, prestaciones limitadas a ciudad"
+Opel Corsa,Opel,"3,6","Un clásico entre los utilitarios, recién renovado",3,1,5,5,4,1,"Precio competitivo, equipamiento básico completo","Calidad de algunos plásticos, diseño anodino, tacto de conducción aburrido"
+Hyundai i20,Hyundai,"3,5",Algo caro pero muy personal en diseño,1,1,7,1,4,1,"Calidad de fabricación, equipamiento, diseño personal","Diseño personal, precio elevado, sin opción diésel"
+Kia Ceed Tourer,Kia,"3,6",Un familiar con una buena relación calidad-precio,1,1,6,9,2,2,"Maletero, garantía, presentación, tecnología","Aspecto de algunos plásticos, línea algo clásica frente al Proceed"
+Citroën C-Elysée,Citroën,"1,9",Cinco plazas y un maletero de 507 litros por un precio mínimo,1,1,6,1,2,1,"Precio, maletero, amplitud general","Percepción low-cost general, diseño, plataforma muy antigua"
+Fiat 500L,Fiat,"3,1",El encanto del 500 en tamaño grande,1,1,5,7,2,3,"Relación espacio/precio, estética atractiva","Percepción de calidad, comportamiento dinámico torpe"
+Dacia Lodgy Stepway,Dacia,,,1,1,7,10,2,1,,
+Fiat Panda 4x4,Fiat,"3,6",Un utilitario con aptitudes off-road asequible,1,1,6,1,4,2,"Precio, comportamiento en campo, estética","Calidades interiores, prestaciones limitadas, gama de motores"
+Dacia Lodgy,Dacia,"2,7",El monovolumen de 7 plazas más barato del mercado,1,1,7,1,2,1,"Precio de derribo, espacio interior, practicidad","Plásticos y calidades en general, estética desafortunada"
+Peugeot 308 SW,Peugeot,"3,7",El Peugeot 308 SW Blue-HDI 120 CV es un familiar redondo y muy económico,1,2,5,1,2,2,"Tacto de conducción sobresaliente, gama de motores, calidad de construcción, maletero gigantesco","Pantalla táctil central de respuesta lenta y difícil manejo, ausencia de mandos físicos para climatización"
+Suzuki Swift MHEV,Suzuki,"3,4",Motor de gasolina solvente y buena dotación estándar,1,1,5,1,4,2,"Precio atractivo, equipamiento disponible, sistema micro-híbrido, tracción total en opción","Niveles de acabado cerrados, sólo una carrocería, pocas combinaciones de motor/acabado"
+Citroën C4 Cactus,Citroën,"2,9","Original, tecnológico y difícil de clasificar",2,1,7,5,2,3,"Estética original, concepto innovador, espacio interior, eficiencia, confort","Aspecto de algunos plásticos, ventanillas traseras batientes, calidad general"
+Opel Crossland X,Opel,"3,0","Un nuevo crossover ""made in Spain""",1,1,5,6,2,3,"Versatilidad, posibilidades de equipamiento, acabados","Motor de gasolina básico muy justo, equipo de serie"
+Ford Ecosport,Ford,"2,6","Mucho equipamiento de serie. El mismo precio para los únicos motores disponibles, diésel y gasolina.",1,1,5,1,2,3,"Precio atractivo, altura libre al suelo en versiones gasolina, gama de motores","Calidades interiores, portón trasero de apertura lateral, ausencia de tracción 4x4, maletero pequeño"
+Renault Mégane ST,Renault,"3,4",Excelente capacidad interior y un diseño muy atractivo,1,1,5,1,2,2,"Maletero, comportamiento, posibilidades de equipamiento","Detalles de acabado, motores básicos algo justos"
+Hyundai i30 CW,Hyundai,"3,6",Un coreano con calidad europea y con mucho espacio,1,1,7,9,2,2,"Calidad de construcción, equipamiento completo, tacto de conducción","Gama limitada respecto al cinco puertas, motores diésel ruidosos, precios algo elevados"
+Nissan Juke,Nissan,"3,5",El SUV más llamativo y atrevido totalmente renovado,1,2,5,7,2,3,"Diseño original, equipamiento disponible, comportamiento","Precio elevado, plazas traseras pequeñas, calidad de algunos plásticos"
+Mitsubishi ASX,Mitsubishi,"2,9","Un crossover mediano de buen precio, como alternativa al Nissan Qashqai",1,1,1,7,2,2,"Precio atractivo, tamaño compacto, disponibilidad de tracción 4x4","Espacio interior limitado, diseño obsoleto, prestaciones justas, escasas combinaciones mecánicas"
+Renault Kadjar,Renault,"3,4","Es el primer crossover compacto “de verdad” de Renault, amplio y versátil",1,1,6,1,2,2,"Más grande y menos visto que su hermano el Nissan Qashqai, confort de marcha","Tacto de conducción, detalles de calidad interior"
+Toyota Yaris HEV,Toyota,"4,1",Una interesante propuesta híbrida para ciudad,1,1,3,1,7,2,"Silencio en modo eléctrico, comodidad, posibilidades de equipamiento","Cambio CVT ruidoso en aceleraciones, interior algo justo, precio elevado"
+MINI,MINI,"3,9","El MINI es lo que parece, precioso, delicioso al volante y caro.",1,4,1,1,2,6,"Tacto de conducción, estética en general","Plazas traseras simbólicas, maletero justo, precio elevado"
+Mini 5 Puertas,MINI,"3,7","Un utilitario alargado, pero más pequeño que un Golf",1,2,1,1,4,3,"Diseño general, tacto de conducción, gama de motores, practicidad mejorada frente a modelo 3 puertas","Acceso a plazas traseras estrecho, estética no tan redonda como el modelo 3 puertas, precio elevado"
+Ford Focus Sportbreak,Ford,"3,6",Buena capacidad de carga y comportamiento excelente,1,1,5,1,2,2,"Comportamiento dinámico, tacto de conducción, precio ajustado, equipamiento completo","Diseño poco original, interior aburrido"
+Ford Focus Sportbreak MHEV,Ford,,,1,1,5,1,6,2,,
+Volkswagen T-Cross,Volkswagen,"3,1",Versátil y capaz,1,1,1,1,2,3,"Modularidad, comportamiento, equipamiento","Detalles de acabado, opciones caras, precio"
+Hyundai i40,Hyundai,"3,3","Una berlina con buena relación calidad/precio, buenos acabados y 505 l de maletero",1,1,7,6,2,2,"Amplitud, maletero, comportamiento","Motores con prestaciones justas, consumo en gasolina"
+Hyundai Ioniq,Hyundai,"3,9",Muy buena relación precio-equipamiento,1,1,5,1,7,3,"Relación precio/equipamiento, cambio automático de tacto agradable, eficiencia en ciudad","Plásticos interiores, prestaciones justas"
+Volkswagen e-up!,Volkswagen,,,1,1,1,1,10,3,,
+Mazda 3,Mazda,"4,2",Calidad y comportamiento notables,1,3,5,5,2,3,"Diseño, comportamiento, mecánicas eficientes","Plazas traseras, aspecto de algunos plásticos"
+Honda Civic,Honda,"3,4",Un estilo diferente y más versátil de lo que parece.,1,3,5,1,2,3,"Estética muy diferenciada, comportamiento dinámico, tacto de dirección y cambio, anchura interior, calidad de construcción","Interior de materiales sencillos, aprovechamiento de la longitud total"
+Mazda 3 SportSedán,Mazda,"4,1",De lo más atractivo del segmento por dinámica y tecnología,1,3,5,5,2,3,"Comportamiento, capacidad de maletero, equipamiento","Precio algo elevado, boca de carga del maletero estrecha"
+Audi A1,Audi,"4,0",Un rival para el MINI que huye de lo retro,1,2,1,1,4,3,"Calidad de acabados, tecnología, diseño interior","Precio elevado, opciones caras, sin diesel"
+Peugeot e-208,Peugeot,,,1,1,5,1,10,3,"Autonomía elevada, agilidad y silencio en ciudad",Precio elevado para un utilitario
+Toyota Corolla Sedán HEV,Toyota,"3,6","Etiqueta ECO y consumos ajustados, de serie",1,1,5,6,7,3,"Calidad de terminación, equipamiento de seguridad, solo motor 122 CV","Cambio CVT, sin opciones de personalización, sin motor HSD 180 CV"
+Opel Corsa EV,Opel,,,3,1,3,4,10,3,"Silencio de marcha, etiqueta CERO, comportamiento en ciudad",Precio muy elevado para un utilitario
+Opel Grandland X,Opel,"3,1","Bien equipado, amplio y con un generoso maletero",1,1,2,7,2,3,"Posibilidades de equipamiento, maletero, amplitud interior","Sin tracción total, gama limitada, detalles de acabado"
+Suzuki SX4 S-Cross MHEV,Suzuki,"3,4","Excelente relación valor-precio, también en versión micro-híbrida",1,1,5,1,2,2,"Precio atractivo, posibilidades de equipamiento, opción 4x4","Diseño controvertido, calidad interior justa"
+Mazda CX-30,Mazda,"3,8",Diseño y calidad a precios razonables,1,2,1,6,2,4,"Motores eficientes, tracción total disponible, equipo muy completo","Sin opciones, motor diésel algo justo"
+Toyota C-HR,Toyota,"3,6",Original y diferente para los amantes de los híbridos,1,2,2,5,7,4,"Estética demoledora, diseño interior de vanguardia, plataforma híbrida","Precio desorbitado, espacio interior muy justo"
+Subaru XV,Subaru,"3,6","El Subaru XV lleva una de las mejores tracciones 4X4 del mercado, aunque no sea un todoterreno",1,1,1,1,2,2,"Sistema de tracción integral permanente, eficacia en terreno resbaladizo, altura libre al suelo, estética diferenciada","Ausencia de rueda de repuesto, espacio interior justo, maletero pequeño, sin opción diésel, sin caja manual"
+Volvo XC40,Volvo,"4,1",Alternativa diferenciada para el segmento C-SUV Premium,1,1,1,6,2,5,"Diseño, calidad, gama de motores, posibilidades de equipamiento, seguridad","Precios muy elevados sin descuentos, equipo de serie justo, opciones caras"
+Volkswagen e-Golf,Volkswagen,,,1,2,1,1,10,3,Calidad y versatilidad de Volkswagen Golf,"Precio muy elevado, formato térmico para un coche eléctrico"
+Hyundai Ioniq PHEV,Hyundai,,,1,1,5,1,8,3,"Precio accesible, calidades razonables, confort de marcha, eficiencia en ciudad",Todo el sobrepeso y complejidad que exige llevar motor térmico y baterías grandes
+Hyundai Kona EV,Hyundai,,,1,1,4,1,10,3,"Autonomía elevada, prestaciones impresionantes","Precio elevado, como cualquier eléctrico"
+Toyota Prius Plus,Toyota,"3,6",La opción más capaz de la gama híbrida Toyota,1,1,1,6,7,2,"Consumos, silencio de marcha, comportamiento en ciudad","Comportamiento en curva, precio muy elevado, tacto de conducción aburrido, prestaciones anémicas"
+Opel Insignia Grand Sport,Opel,"3,5","Una buena opción semi-premium, amplio y dinámico",1,2,3,1,2,2,"Calidad de acabados, amplitud, posibilidades de equipamiento, comportamiento","Precios algo elevados, equipamiento de serie sin promociones, maletero más pequeño que en su antecesor"
+Kia Niro PHEV,Kia,,,1,1,5,1,8,3,"Precio competitivo dentro de los PHEV, calidad de construcción, espacio interior","Eficiencia penalizada por el peso cuando circulamos con gasolina, exige un punto de recarga en casa"
+Honda CR-V,Honda,"3,6",Actualizado con hasta siete plazas y un buen motor turbo,1,1,5,8,2,3,"Espacio interior, versatilidad, solidez general","Precio elevado, equipamiento cerrado, maletero con siete plazas"
+Renault Mégane ST PHEV,Renault,,,1,1,5,1,8,2,,
+SEAT León ST MHEV,SEAT,,,1,2,5,1,6,2,,
+Audi Q2,Audi,"3,4","Primer B-SUV de la marca, dinámico y con unos acabados impecables",1,2,1,1,2,4,"Diseño, calidad de construcción, tecnología","Espacio interior, precio elevado, calidad de materiales mejorable"
+Mazda 6,Mazda,"4,1","Elegante, exclusivo, deportivo y japonés",1,4,5,5,2,4,"habitáculo amplio, comportamiento, motores eficientes","Precio algo elevado, equipamiento cerrado"
+Opel Mokka EV,Opel,,,1,1,3,1,10,3,,
+BMW Serie 1,BMW,"3,7","El compacto de BMW, rival del Audi A3 y Mercedes Clase A",1,3,1,1,2,3,"Pureza de conducción, comportamiento","Estética dudosa, sin propulsión trasera en la nueva entrega, precios elevados"
+Ford S-Max,Ford,"3,6","El Ford S-Max es un monovolumen con capacidad para hasta siete pasajeros, práctico y versátil",1,1,5,1,2,2,"Comportamiento dinámico, tacto de conducción, equipamiento de seguridad y asistencia a la conducción, versatilidad","Dimensiones exteriores generosas, percepción de calidad de algunos plásticos"
+Hyundai Santa Fe,Hyundai,"3,8",Una buena alternativa para los que buscan un SUV diésel o gasolina con hasta 7 plazas y tracción 4x4,1,1,6,1,2,3,"Relación calidad/precio, posibilidad de 7 plazas, espacio interior, confort de marcha","Detalles de acabado, motor de gasolina algo caro, sin opciones"
+BMW Serie 2 Active Tourer,BMW,"3,3",Un BMW para competir con el Clase B de Mercedes,1,1,1,1,2,5,"Estética, exclusividad, calidad de construcción, gama de motores",Precio de las opciones elevado
+Volkswagen Touran,Volkswagen,"3,6",El Nuevo Touran es un monovolumen medio de los más espaciosos y avanzados,1,1,1,1,2,2,"Posibilidad de 7 plazas, espacio interior, volumen de maletero, calidad de construcción, versatilidad interior","Estética cuadrada, precio elevado, diseño sobrio"
+Mercedes Clase A Sedán,Mercedes-Benz,,,1,2,1,1,2,3,"Diseño interior, calidad, acabados, doble pantalla digital","Diseño exterior clásico, precio elevado, coste de las opciones"
+Mercedes Clase CLA,Mercedes-Benz,"3,4",Carácter premium y diseño dinámico,1,3,1,1,2,6,"Aerodinámica récord, estética diferenciada","Espacio interior limitado, acceso al maletero estrecho, suspensión demasiado firme, calidad de algunos plásticos"
+Ford Galaxy,Ford,"3,4","Más amplio y capaz que el S-Max, también es más serio",1,1,5,1,2,2,"Espacio interior, versatilidad, tacto de conducción muy logrado, equipamiento de seguridad y asistencia a la conducción","Estética sobria y cuadrada, diseño aburrido, dimensiones exteriores generosas, percepción de calidad de algunos plásticos"
+Volkswagen Golf Variant,Volkswagen,"3,8",Todo un clásico recién renovado,1,1,1,1,2,3,"Solidez, valor de reventa, comportamiento, gama de motores, tacto de conducción, maletero descomunal","Precio elevado frente a la competencia, diseño muy sobrio"
+Kia Soul EV,Kia,"3,3",Un eléctrico con buena relación precio-equipamiento,1,1,6,1,10,3,"Coste de uso, diseño, garantía, dos mecánicas, autonomía","Precios sin ayudas, ausencia de opciones"
+Range Rover Evoque,Land Rover,"3,9","El Range Rover Evoque es muy atractivo, muy exclusivo y muy premium. También es algo caro.",1,2,1,1,2,5,"Diseño interior y exterior, exclusividad, calidad de acabados","Espacio interior justo, precio elevado, opciones caras"
+Alfa Romeo Giulia,Alfa Romeo,"3,7","Deportividad en estado puro, con hasta 510 CV de potencia",1,5,1,5,2,4,"Estética, deportividad pura, tracción trasera y reparto de masas","Calidad de algunos plásticos, precio elevado"
+Mercedes Clase B,Mercedes-Benz,"3,5",El monovolumen familiar para entusiastas de Mercedes,1,1,1,1,2,3,"Calidad de acabados, amplitud, oferta amplia, conectividad","Opciones muy caras, anchura plazas traseras, precio, modularidad limitada"
+Opel Grandland X PHEV,Opel,,,1,1,1,7,8,4,,
+Ford Kuga HEV,Ford,,,1,1,5,1,7,3,,
+Toyota Prius PHEV,Toyota,,,1,1,1,5,8,2,,
+Toyota RAV4 HEV,Toyota,"3,9",Bajos consumos y prestaciones suficientes,1,1,1,1,7,5,"Motor híbrido, consumos en uso urbano, silencio","Cambio ruidoso, precios elevados"
+BMW X2,BMW,"3,5",Apuesta dinámica en el segmento C-SUV,1,3,1,1,2,5,"Calidad de acabados, comportamiento, posibilidades de equipamiento","Precio elevado, equipo de serie, gama inicial limitada"
+BMW X1,BMW,"3,3",Un SUV premium y compacto con buenas cualidades dinámicas en carretera,1,1,1,1,2,3,"Comportamiento, calidad de acabados, gama de motores","Diseño interior clásico, precio elevado"
+Volkswagen Tiguan Allspace,Volkswagen,,,1,1,1,1,2,3,,
+Citroën C5 Aircross PHEV,Citroën,"3,6","Amplio, cómodo y silencioso como pocos",1,1,1,1,8,3,"Confort de marcha, amplitud y versatilidad interior, plazas traseras y maletero, silencio y comportamiento en ciudad",Precio muy elevado por culpa de la doble tecnología térmica - eléctrica
+Lexus NX,Lexus,"3,6",El Lexus NX es el SUV premium más tecnológico del momento,1,1,1,1,2,3,"Eficiencia en ciudad, estética diferenciada, silencio de marcha","Tacto de conducción aburrido, sensación prestacional descafeinada, prestaciones justas"
+Audi Q3,Audi,"3,7",Una buena alternativa para quienes piensan en las dimensiones de un A3 y el espacio de un familiar,1,1,1,1,2,3,"Calidad interior, equipamiento disponible","Precio elevado, opciones caras, gama limitada"
+Renault Espace,Renault,"3,2","Precio de gran familiar, formato de nave espacial",1,1,5,1,2,5,"Amplitud, maletero con cinco asientos, diseño, presentación","Aspecto de algunos plásticos, dimensiones, motores pequeños algo justos"
+Audi A4,Audi,"4,0",Se estrena con la última tecnología en seguridad y confort.,1,2,1,1,2,3,"Calidad de construcción, diseño interior y materiales, tecnología","Estética muy clásica, tacto de conducción por detrás de sus rivales"
+Ford Kuga PHEV,Ford,,,1,1,4,1,8,3,"Silencio de marcha, comportamiento en ciudad, potencia combinada","Pagas una tecnología y una batería que son muy caras, pero el coche sigue siendo un Ford Kuga"
+Volvo XC60,Volvo,"4,2",Tecnológicamente avanzado y con opción híbrida,1,1,1,1,2,5,"Diseño soberbio, calidad de construcción, exclusividad, consumos muy bajos","Precio elevado, tacto de conducción aburrido"
+Kia Sorento,Kia,"4,0",Un SUV de lujo con precio irresistible y 7 años de garantía.,1,1,7,1,2,2,"Espacio, maletero, siete plazas, calidad de terminación, mecánica híbrida","Dimensiones, consumos algo elevados, precio"
+Audi A5 Sportback,Audi,"3,7","La versión 5 puertas del A4, más deportivo, más versátil y también mucho más caro.",1,4,1,1,2,5,"Calidad, comportamiento, gama","Equipo de serie, precio"
+Mercedes Clase A PHEV,Mercedes-Benz,,,1,3,1,1,8,6,,
+Kia Sorento HEV,Kia,,,1,1,7,1,7,2,,
+Mercedes GLA,Mercedes-Benz,"3,9","Un coche para presumir de coche, pero sin salir del asfalto",1,1,1,1,2,5,"Tacto de conducción deportivo, estética conseguida","Precio elevado, detalles de acabado"
+Mercedes Clase C,Mercedes-Benz,"3,8",Un cambio radical en la berlina de acceso a Mercedes,1,2,1,1,2,3,"Diseño interior y exterior, tacto de conducción","Calidad de plásticos y ajustes mejorable, motores diésel ruidosos"
+BMW Serie 3,BMW,"4,0","El sedán premium con más carácter, disponible en tres carrocerías",1,3,1,1,2,3,"La referencia en comportamiento, tracción trasera, gama de motores, tacto de conducción","Maletero justo, espacio interior limitado por la configuración mecánica"
+Skoda Kodiaq RS,Skoda,,,1,5,5,1,1,5,,
+BMW X3,BMW,"3,7",Excelente comportamiento y mecánicas solventes,1,1,1,1,2,3,"Gama de motores, tacto de conducción, versatilidad","Opciones caras, diseño algo insulso de serie"
+BMW X2 PHEV,BMW,,,1,3,1,1,8,5,,
+Volkswagen T-Roc R,Volkswagen,,,1,2,1,1,1,3,,
+Mercedes GLC,Mercedes-Benz,"3,6",Diseño y calidad Mercedes para el SUV mediano,1,1,1,1,2,4,"Estética, diseño y espacio interior, calidad percibida alta","Motores diésel ruidosos, precio de opciones elevado"
+Range Rover Evoque PHEV,Land Rover,,,1,2,1,1,7,5,,
+Audi Q5,Audi,"3,6",El Un SUV de carácter premium con calidad y toques dinámicos,1,1,1,1,2,3,"Tecnología, interior, calidad de ejecución, comportamiento","Precio elevado, diseño sobrio"
+Range Rover Velar MHEV,Land Rover,"4,3",Más juvenil y dinámico sin perder sus aptitudes off-road,1,2,1,1,6,6,"Diseño espectacular, calidades, exclusividad, capacidades off-road reales","Precio elevado, tamaño gigantesco, ausencia de 7 plazas"
+Jaguar F-Pace MHEV,Jaguar,"3,6",Diseño dinámico y gran amplitud para el F-Pace,1,2,1,1,6,4,"Amplitud interior, maletero, confort de marcha, diseño exterior soberbio, comportamiento dinámico",Calidad de algunos plásticos y algunos mandos
+Porsche Macan,Porsche,"4,2",Un auténtico deportivo que sólo Porsche podría construir en este formato,1,5,1,1,1,4,"Tacto de conducción sobresaliente, diversión al volante, prestaciones, practicidad real como familiar, calidad de construcción, diseño",Precio muy elevado
+Toyota RAV4 PHEV,Toyota,,,1,1,3,1,8,3,,
+Skoda Scala,Skoda,"3,6",Interesante relación valor-precio,1,1,7,1,2,2,"Equipamiento de serie, maletero, opciones asequibles","Anchura plazas traseras, gama limitada"
+Citroën C3 Aircross,Citroën,"3,2",Buena relación tamaño-habitabilidad,1,1,7,1,2,3,"Posibilidades de personalización, equipamiento disponible, banqueta posterior deslizante, maletero","Calidad de algunos plásticos, precio de las versiones Shine"
+Fiat 500X,Fiat,"3,1",Diseño atractivo y precios interesantes con promociones,1,1,5,5,2,6,"Diseño, precio ajustado, calidad razonable",Maletero justo
+Ford Fiesta Active,Ford,,,1,1,5,1,2,3,"Estética, comportamiento, equipamiento de seguridad y confort",Interior algo sobrio
+Renault Grand Scenic,Renault,"3,4",El Renault Grand Scénic es un coche ideal para familias numerosas con niños.,1,1,5,1,2,3,"Diseño interior y exterior, versatilidad, relación tamaño/equipamiento/precio","Medida de neumáticos única en el mercado, detalles de calidad interior"
+Skoda Octavia,Skoda,"4,1",Una berlina con 600 litros de maletero con un precio sensacional,1,1,7,1,2,2,"Habitabilidad, maletero, oferta mecánica","Equipo de serie en acabados básicos, calidad de rodadura"
+Citroën C4 SpaceTourer,Citroën,"3,4","Espacio interior a raudales, es un salón con ruedas",1,1,8,8,2,2,"Espacio interior, comodidad, precio ajustado","Calidad algo justa, prestaciones"
+Kia Niro HEV,Kia,"3,7",El SUV híbrido más barato del mercado español,1,1,7,1,7,3,"Consumos, garantía, equipamiento","Calidad de algunos plásticos, maletero algo justo"
+Renault Mégane PHEV,Renault,,,1,2,5,1,9,3,,
+Skoda Kodiaq,Skoda,"3,8",Hasta siete plazas y un enorme maletero son las claves del Kodiaq,1,1,5,1,2,3,"Hasta siete plazas, presentación, opción de tracción total","Gama inicial limitada, precio en acabados superiores"
+Ford Mondeo,Ford,"3,5","Buen coche a buen precio, si no eres elitista con las marcas",1,2,6,1,2,2,"Relación equipamiento/precio, espacio interior y maletero, comportamiento dinámico excelente","Dimensiones exteriores generosas, percepción de calidad de algunos plásticos"
+Mazda CX-5,Mazda,"3,9",Una alternativa muy buena al Qashqai y al Tiguan,1,2,1,1,2,3,"Equipamiento, calidad, comportamiento, motores eficientes","Precios algo elevados, opciones caras"
+Volkswagen Passat,Volkswagen,"3,8",El acabado Edition ofrece una opción asequible en el Passat ,1,1,1,1,2,4,"Calidad de construcción, espacio interior, maletero, gama de motores, estética atractiva","Precio elevado, precio de opciones"
+SEAT Tarraco,SEAT,"3,8",El SUV más capaz de la firma española,1,1,5,1,2,3,"Siete plazas, posibilidad de tracción total, equipamiento disponible, comportamiento","Aspecto de algunos plásticos, tercera fila algo justa,"
+Skoda Octavia MHEV,Skoda,,,1,1,7,1,6,2,,
+Audi A3,Audi,"4,1",El compacto premium más vendido,1,3,1,5,2,3,"Diseño y calidad interior, tecnología","Estética muy clásica, tacto de dirección poco comunicativo, precio elevado"
+Mercedes Clase A,Mercedes-Benz,"3,9",El compacto más deportivo del segmento premium por diseño interior y exterior,1,3,1,1,2,6,"Estética atractiva y juvenil, tacto de conducción deportivo","Precio elevado, maletero justo, opciones caras"
+Volkswagen Tiguan R,Volkswagen,,,1,3,1,1,1,4,,
+Volkswagen Golf GTI,Volkswagen,"4,3",Un vehículo rápido y bien equipado,1,5,1,5,2,5,"Acabados, equipamiento, comportamiento seguro, prestaciones, futuro clásico","Falta de carácter, precio elevado, opciones caras"
+Fiat Panda,Fiat,"3,2","Un clásico de los utilitarios low-cost, amplio y versátil",1,1,7,1,5,2,"Precio insuperable, espacio interior, practicidad, economía","Percepción general de calidad justa, prestaciones limitadas"
+SEAT Mii CNG,SEAT,"3,2","Renovado en su interior, con más equipamiento disponible",8,1,7,3,5,3,"Maletero capaz, carrocería de tres y cinco puertas, posibilidades de equipamiento, comportamiento dinámico","Calidad de algunos materiales, desarrollos del cambio largos, prestaciones justas, terminación mejorable"
+Renault Clio,Renault,"3,7",Amplio equipamiento por un coste muy razonable,1,1,5,1,4,2,"Equipamiento, comportamiento, motores eficientes","Gama inicial algo justa, plazas traseras estrechas, precio sin promoción"
+Fiat 500 MHEV,Fiat,,,10,1,1,1,6,8,,
+Peugeot 208,Peugeot,"3,9",El utilitario más atrevido a un precio interesante,1,1,5,1,4,2,"Diseño, presentación, comportamiento","Plazas traseras justas, equipamiento limitado respecto a los rivales"
+SEAT Ibiza,SEAT,"3,9",La gama Ibiza estrena generación con más equipamiento de seguridad y confort,1,1,7,1,4,2,"Comportamiento, amplitud interior, posibilidades de equipamiento, tecnología","Plásticos duros para todas las superficies, precio algo elevado"
+Kia Ceed,Kia,"3,6","Calidad, equipamiento y precio",1,1,7,5,2,2,"Relación valor-precio, garantía, equipamiento","Detalles de acabado, valor de reventa"
+Fiat 500,Fiat,"3,4",El utilitario más 'chic',8,1,1,1,5,8,"Diseño sobresaliente, precio ajustado","Maletero justo, calidad de algunos plásticos"
+Renault Mégane,Renault,"3,5","Muy mejorado, con un diseño personal y mucho equipamiento",1,2,5,1,2,3,"Oferta variada, comportamiento, equipamiento","Calidad de algunos plásticos, espacio para las piernas en las plazas traseras"
+Peugeot 308,Peugeot,"3,7",Un compacto muy a tener en cuenta por calidad y comportamiento,1,2,5,1,2,3,"Tacto de conducción sobresaliente, gama de motores, calidad de construcción","Pantalla táctil central de respuesta lenta y difícil manejo, ausencia de mandos físicos para climatización, espacio interior justo"
+Skoda Kamiq,Skoda,"3,4",Un producto atractivo a precios razonables,1,1,8,1,2,3,"Presentación, amplitud, modularidad, motores solventes","Precio sin descuentos, aspecto de algunos plásticos"
+Ford Fiesta MHEV,Ford,,,1,1,5,1,6,3,,
+Hyundai i30,Hyundai,"3,6","A la altura de sus rivales en todo, incluido el precio",1,2,5,6,2,2,"Calidad de acabados, tacto de conducción, precio","Diseño aburrido, gama de motores limitada"
+Opel Astra,Opel,"3,5",Buena relación precio-calidad y mucho equipamiento disponible,1,2,5,1,2,3,"Calidad de acabados, comportamiento, equipamiento disponible","Equipo de serie, plazas traseras estrechas"
+Volkswagen Polo,Volkswagen,"3,6","Es de los utilitarios más caros, pero también de los mejor acabados",1,1,1,1,4,2,"Calidad de construcción, gama de motores, habitabilidad, maletero","Precio algo elevado, diseño sobrio, gama inicial limitada, sin motor diésel"
+Citroën C4,Citroën,"2,9","El Citroën C4 es uno de los muchos rivales del Golf, bien acabado y con mucho equipamiento",1,1,7,5,2,2,"Motores frugales, equipo de serie, confort","Calidad de algunos plásticos, precio sin descuentos"
+Skoda Karoq,Skoda,"4,0",La alternativa algo más clásica al Ateca,1,1,7,1,2,3,"Amplitud, maletero, presentación, posibilidades de equipamiento, asientos Varioflex, sensación de calidad",Pierde la deportividad de un Ateca a cambio de más comodidad
+Volkswagen T-Roc,Volkswagen,"3,1",Una alternativa diferente al Golf con mayor espacio interior,1,1,1,1,2,3,"Capacidad de maletero, posibilidades de equipamiento, tracción total opcional","Detalles de acabado, uso excesivo de plásticos duros, precio algo elevado"
+Fiat 500e Hatchback,Fiat,,,1,1,1,1,10,8,,
+Ford Kuga,Ford,"3,6","El todocamino de Ford, con tecnología para conducir (casi) solo",1,1,5,1,2,2,"Espacio y versatilidad interior, variedad de motores, dinámica muy lograda","Detalles de acabado, precios sin descuentos"
+Volkswagen Tiguan,Volkswagen,"3,7",Un todocamino con un plus de calidad,1,1,1,1,2,3,"Calidad de terminación, comportamiento, motores","Equipo de serie, precio elevado"
+Fiat 500e Cabrio,Fiat,,,1,1,1,1,10,8,,
+Dacia Sandero Stepway,Dacia,"2,8","La alternativa de aspecto campero, atractiva y práctica",1,1,7,1,2,2,"Precio muy interesante, estética atractiva, espacio interior y maletero","Calidades y plásticos algo justos, posibilidades de equipamiento"
+Dacia Sandero,Dacia,"2,7","Un ""Renault"" low-cost que se ha convertido en top ventas",1,1,9,1,4,1,"Precio sin competencia, espacio y maleterio, mantenimiento asequible","Calidad percibida algo justa, posibilidades de equipamiento"
+Dacia Duster,Dacia,"3,1","Un SUV muy económico, amplio e interesante",1,1,10,7,2,2,"Relación tamaño/precio, estética, economía de mantenimiento, gama mejorada, opción GLP","Calidad de algunos plásticos, tracción 4x4 disponible solo en los más potentes"
+Ford Fiesta,Ford,"3,5",El Fiesta es una de las referencias del segmento por comportamiento,1,1,7,1,4,2,"Equipamiento de seguridad, practicidad, comportamiento dinámico, tacto de conducción","Precio algo elevado, acceso plazas traseras en 3 puertas"
+Renault Captur,Renault,"3,4",Uno de los crossover de moda estrena generación,1,1,5,1,2,3,"Diseño, posibilidades de personalización, banqueta trasera deslizante","Sin tracción total disponible, calidad de algunos plásticos"
+Hyundai Kona,Hyundai,"3,6",Diseño y equipamiento son sus señas de identidad,1,1,6,1,2,3,"Posibilidades de equipamiento, tracción total disponible, diseño arriesgado, garantía","Aspecto de algunos plásticos, diseño arriesgado, volumen de maletero algo justo"
+Kia Stonic,Kia,"3,4","Muy equipado, con buen precio y siete años de garantía",2,1,8,5,2,3,"Garantía, posibilidades de equipamiento, motor MHEV","Maletero pequeño, sin tracción total, detalles de acabado"
+SEAT Arona,SEAT,"3,6",Más espacioso que el Ibiza por poco más,1,1,7,1,2,3,"Maletero, posibilidades de equipamiento y personalización, precio razonable",Calidad de algunos plásticos
+Ford Focus,Ford,"3,8","El Ford Focus acaba de actualizarse con nuevo diseño, motores más eficientes y mucha tecnología.",1,2,7,1,2,2,"Dinámica de conducción, relación equipamiento/precio","Interior sencillo y clásico, calidad de algunos plásticos"
+SEAT León,SEAT,"4,3",Mucha dotación y estilo para la cuarta generación,1,2,5,1,2,3,"Relación valor-precio, equipamiento completo, versiones híbridas","Detalles de acabado, Ancho plazas traseras"
+Kia Sportage,Kia,"3,7",El Kia Sportage 2019 está más equipado y mejor construido que nunca. Hay que verlo.,1,1,7,7,2,3,"Diseño, presentación, calidad de acabados","Motor 1.6 GDI pobre en prestaciones, precio de los acabados medios-altos"
+Peugeot 2008,Peugeot,"3,6","El todocamino resultón, completo y dinámico",1,1,7,1,2,3,"Practicidad real, dinámica de conducción, estética atractiva","Precio elevado, cuadro de mandos poco legible"
+Nissan Qashqai,Nissan,"3,4","Qashqai en japonés significa ""un coche con todos los ingredientes para ser superventas"".",1,1,5,1,2,3,"Relación tamaño/equipamiento/precio, equilibrio general","Tacto de conducción, maletero pequeño frente a sus rivales"
+Hyundai Tucson,Hyundai,"3,6","Buena relación calidad-precio en el SUV surcoreano, destacando además por su buena habitabilidad interior y maletero",1,1,7,1,2,3,"Diseño, amplitud, maletero, posibilidad de tracción total","Aspecto de algunos plásticos, suspensión blanda, motor 1.6 GDI pobre"
+Opel Mokka,Opel,"3,6",Un todocamino de bolsillo para la ciudad,1,1,5,5,2,2,"Opción eléctrica, equipamiento disponible, dimensiones reducidas","Precio elevado, detalles de acabado"
+SEAT Ateca,SEAT,"3,9",Excelente relación habitabilidad-tamaño para el primer SUV de SEAT,1,1,7,1,2,3,"Comportamiento, habitabilidad, maletero, equipo","Cambio DSG caro, equipamiento en nivel Reference, banqueta trasera no deslizante, diseño interior algo clásico"
+SEAT León MHEV,SEAT,,,1,2,5,1,6,3,,
+Peugeot 3008,Peugeot,"3,8",Mucho equipamiento y diseño llamativo son sus principales reclamos,1,1,6,1,2,3,"Diseño vanguardista, originalidad, calidad de materiales y construcción, dinámica","Precio elevado, ausencia de mandos físicos para climatización, demasiados menús en la pantalla táctil"
+Volkswagen Golf,Volkswagen,"3,8",Todo un clásico recién renovado,1,2,1,1,2,3,"Solidez, valor de reventa, comportamiento, gama de motores, tacto de conducción","Precio elevado, maletero justo, diseño continuista"
+Renault Captur PHEV,Renault,,,1,1,5,1,8,3,,
+Nissan X-Trail,Nissan,"3,3","Un Qashqai más grande, con hasta 7 plazas",1,1,5,1,2,3,"Amplitud interior, disponibilidad de 7 plazas, confort de marcha, equipamiento muy completo","Calidad de acabados justa, diseño algo visto, ruidos en el interior, tacto de conducción aburrido"
+Citroën Grand C4 SpaceTourer,Citroën,"3,7",Espacio interior a raudales para 5 + 2 ocupantes,1,1,6,1,2,2,"Espacio interior, confort de marcha, economía","Calidad algo justa, prestaciones"
+SEAT León PHEV,SEAT,,,1,2,5,1,8,3,,
+Ford Focus ST,Ford,,,1,5,5,1,2,3,,
+Volkswagen Tiguan PHEV,Volkswagen,,,1,1,1,1,8,3,,
+SEAT Alhambra,SEAT,"3,9",Amplio y práctico para siete pasajeros,1,1,5,1,2,2,"Amplitud, calidad de acabados, puertas deslizantes","Maletero con siete plazas, precio sin descuentos"
+Audi A3 Sedán,Audi,"3,6",Estilo clásico y más sobrio para el público tradicional,1,2,1,5,2,3,"Calidad y diseño interior, tecnología","Estética muy clásica, precio"
+MINI Cooper EV,MINI,,,1,3,1,1,10,6,"Estilo, prestaciones, tacto de conducción","Autonomía muy por debajo de la competencia, plataforma de coche térmico adaptada a eléctrico"
+Audi S3,Audi,,,1,5,1,4,1,5,"Calidad de construcción, diseño del interior, prestaciones","Precio elevado, opciones caras, tacto de dirección poco comunicativo"
+Mercedes GLC Coupé,Mercedes-Benz,"3,6",Diseño y calidad para el GLC más exclusivo,1,5,1,1,2,5,"Estética acertada, diseño y espacio interior, tacto de conducción agradable y deportivo","Maletero limitado en altura, motores diésel ruidosos, precio excesivo frente a GLC convencional"
+Peugeot 508 PHEV,Peugeot,,,1,1,5,1,8,2,,
+Toyota Corolla Touring Sports,Toyota,"3,7","Etiqueta ECO y consumos ajustados, de serie",1,1,5,1,7,2,"Calidad de terminación, equipamiento de seguridad, motor 180 CV","Cambio CVT, sin opciones de personalización"
+Aston Martin Vantage,Aston Martin,,,1,8,1,1,1,8,,
+MINI Cabrio,MINI,"3,8",Cuatro plazas y un techo de lona eléctrico que se pliega en pocos segundos son sus claves,1,4,1,1,2,6,"Tacto de conducción, estética en general","Plazas traseras simbólicas, maletero justo, precio elevado"
+BMW M4 Cabrio,BMW,,,1,7,1,1,1,6,,
+McLaren 540C,McLaren,,,1,8,1,1,1,8,,
+Lamborghini Aventador,Lamborghini,"4,3",Con este Lambo puedes olvidarte de pasar desapercibido,1,10,1,1,1,10,"Estética general, motor V12 atmosférico, prestaciones de infarto, sonido","Algunos plásticos interiores, cuadro de mandos ""saturado"""
+Fiat Tipo 5P,Fiat,"2,9",Buena relación precio-equipamiento y amplio interior,1,1,7,6,2,2,"Precio demoledor, diseño, maletero gigantesco, versatilidad","Calidad de algunos plásticos, detalles de acabado"
+Fiat Tipo SW,Fiat,"2,9",Excelente relación valor-precio,1,1,6,7,2,2,"Precio demoledor, diseño, maletero gigantesco, versatilidad","Calidad de algunos plásticos, detalles de acabado"
+Kia Xceed MHEV,Kia,,,1,1,5,1,6,4,,
+Hyundai i30 Fastback,Hyundai,,,1,2,5,6,2,3,"Estética deportiva y original, relación valor/precio",Apertura y forma del maletero
+Peugeot e-2008,Peugeot,"3,8",El crossover pequeño 100% eléctrico,1,1,1,1,10,3,"Prestaciones, diseño, equipamiento","Precio sin descuentos, ancho en plazas traseras"
+Subaru Levorg,Subaru,,,1,1,3,7,2,3,,
+SEAT León ST PHEV,SEAT,,,1,1,4,1,8,3,,
+Citroën C4 EV,Citroën,"3,4",Diseño personal y mucha dotación,1,1,5,1,10,4,"Diseño, versatilidad, motores solventes",Detalles de acabado
+DS7 Crossback,DS,"3,6","Lujo e imagen impecable, principales virtudes",1,1,5,1,2,3,"Calidad de terminación, equipamiento, confort","Sólo tracción delantera, gama limitada, opciones caras"
+MINI Countryman PHEV,MINI,,,1,2,1,6,8,6,"Diseño, tacto de conducción, prestaciones, exclusividad","Precio elevado, consumo en modo térmico"
+Skoda Enyaq BEV,Skoda,,,1,2,7,1,10,5,,
+Skoda Octavia Combi RS PHEV,Skoda,,,1,5,5,1,8,3,,
+Mercedes CLA PHEV,Mercedes-Benz,,,1,3,1,1,8,5,,
+Volkswagen Arteon PHEV,Volkswagen,,,1,1,4,1,8,3,,
+Jeep Compass Trailhawk,Jeep,,,1,1,1,1,1,3,,
+Volkswagen Arteon R,Volkswagen,,,1,4,4,1,2,3,,
+Ford Mustang Mach-e EV,Ford,,,1,5,7,1,10,5,,
+BMW M2,BMW,"4,4",Lo último en diversión al volante al máximo nivel,1,8,1,1,1,7,"Comportamiento, motor, tacto de dirección, prestaciones, diversión al volante","Confort de marcha sobre firme irregular, precio elevado"
+BMW X3 PHEV,BMW,,,1,2,1,1,8,4,,
+Volvo S60 PHEV,Volvo,,,1,3,1,1,8,5,,
+Maserati Ghibli,Maserati,,,1,6,1,1,1,6,,
+Land Rover Defender 110 PHEV,Land Rover,,,1,1,1,1,8,5,,
+Audi Q8,Audi,"4,1","Lujo, tecnología y excelente dinámica en formato SUV",1,6,1,1,1,6,"Calidad, equipamiento, acabados, presencia","Precio, tamaño"
+Maserati Ghibli MHEV,Maserati,,,1,6,1,1,6,6,,
+Audi Q8 PHEV,Audi,,,1,5,1,1,8,6,,
+Tesla Model X,Tesla,,,1,5,1,1,10,7,"Prestaciones de Fórmula 1, silencio de marcha","Calidades mejorables, puertas traseras absurdas, peso elevado"
+Range Rover Sport PHEV,Land Rover,,,1,2,1,1,8,5,"Diseño, calidades, confort, silencio de marcha, aptitudes todoterreno","Precio prohibitivo, consumo en modo térmico"
+BMW X7,BMW,,,1,1,1,1,1,3,,
+Alfa Romeo Stelvio QV,Alfa Romeo,,,1,6,1,7,1,4,"Comportamiento, tacto de conducción, sonido, prestaciones, diversión al volante","Plásticos mejorables, diseño interior por detrás de la competencia, interfaz de usuario obsoleta"
+Aston Martin DB11,Aston Martin,,,1,9,1,1,1,10,,
+McLaren 570,McLaren,,,1,8,1,1,1,8,,
+Ferrari Portofino,Ferrari,,,1,9,1,1,1,9,,
+Lamborghini Huracán Spyder,Lamborghini,,,1,9,1,1,1,10,,
+McLaren 720S,McLaren,,,1,9,1,1,1,9,"Prestaciones, dinámica, exclusividad, no es un Ferrari",Precio
+Bentley Continental Flying Spur,Bentley,"4,0",Máximo lujo y pasión por el detalle sin olvidar el lado deportivo,1,4,1,1,1,8,"Exclusividad, prestaciones, confort de marcha","Precio desorbitado, consumos"
+Ferrari 488 Spider,Ferrari,,,1,9,1,1,1,10,,
+Toyota Yaris Cross,Toyota,,,1,1,5,1,7,2,,
+Nissan Micra,Nissan,"3,2","Diseño y equipamiento, principales bazas del nuevo Micra",1,1,5,1,4,3,"Diseño, posibilidades de equipamiento, regresa el motor diésel","Precio algo elevado, espacio en plazas traseras"
+Skoda Fabia Combi,Skoda,"3,3",Una alternativa interesante cuando se valora sobre todo el maletero,1,1,6,1,2,2,"Amplitud, maletero, comportamiento","Plásticos duros, equipo de serie, sin motor diésel"
+Hyundai i20 Active,Hyundai,"3,0",Un toque off-road para el modelo surcoreano,1,1,5,1,2,2,"Estética mejorada, calidad de construcción, precio competitivo","Interior demasiado sobrio, calidad de algunos plásticos"
+Suzuki Ignis MHEV,Suzuki,"3,4",Un crossover chic asequible y muy bien equipado,6,1,5,3,4,2,"Estética original, diseño interior atractivo, precio, posibilidad de 4x4, equipamiento completo","Plásticos interiores de juguete, percepción de calidad"
+Fiat 500C MHEV,Fiat,,,8,1,1,1,6,7,,
+Fiat Panda MHEV,Fiat,,,1,1,5,1,6,3,,
+Mazda 2,Mazda,"3,9",Un utilitario interesante gracias a su relación calidad/precio,4,1,5,4,4,2,"Diseño, presentación, posibilidades de equipamiento, comportamiento","Calidad de algunos plásticos, precio elevado, maletero pequeño"
+Kia Xceed,Kia,"3,9",Entre el Stonic y el Sportage y con diseño distintivo,1,1,6,6,2,4,"Estética deportiva y aventurera, relación equipamiento/precio, calidad de construcción",Maletero algo justo
+Jeep Renegade,Jeep,"3,4",Un SUV diferente con una versión off-road de verdad,1,1,5,5,2,3,"Estética original, amplia gama de motores, posibilidades off-road de la versión Trailhawk","Calidades interiores algo justas, motores diésel ruidosos"
+Opel Astra Sports Tourer,Opel,"3,5",Mayor eficiencia y mejores precios para el compacto alemán,1,1,3,1,2,2,"Calidad, comportamiento, equipo disponible","Estética gastada, precios sin descuentos, ancho trasero"
+Jeep Compass,Jeep,"3,5","Avanzado, muy equipado y eficaz fuera del asfalto",1,1,1,1,2,2,"Capacidades off-road, exclusividad, estética","Precio elevado, calidad de algunos plásticos, motores diésel ruidosos"
+SEAT Mii Electric,SEAT,"3,3",Uno de los eléctricos más baratos e interesantes,8,1,4,3,10,3,"Precio con promociones, agilidad, equipo de serie","Plazas traseras justas, homologado para cuatro"
+Citroën Berlingo Multispace,Citroën,"3,5",El monovolumen para gente sin complejos,1,1,7,6,2,2,"Espacio infinito, durabilidad, equipamiento, motores eficientes","Proporciones, acabados algo toscos, aerodinámica"
+Ford Puma,Ford,"3,9","Personal, atractivo y muy capaz",1,1,5,1,6,5,"Maletero amplio, equipo completo, diseño, comportamiento","Precio algo elevado, plaza trasera central justa"
+SsangYong Korando,SsangYong,"3,1","Sencillo y barato, potente y bien equipado",1,1,5,8,2,2,"Motor potente, opción 4x4 y cambio automático, equipamiento de serie, precio, maletero","Diseño particular, tacto de la dirección, suspensión blanda"
+Alfa Romeo Giulietta,Alfa Romeo,"2,4",Deportividad en formato compacto,1,3,1,5,2,3,"Comportamiento dinámico, sistema DNA","Calidad de algunos plásticos, equipamiento de serie"
+Mitsubishi Eclipse Cross,Mitsubishi,"3,1","Diferente, dinámico y muy equipado",1,1,2,6,2,3,"Diseño, opción de tracción total, equipamiento de confort y seguridad, versatilidad","Gama muy limitada, precios algo elevados, maletero justo"
+Mazda CX-3,Mazda,"3,9",La opción exótica para los que buscan un SUV pequeño,1,2,5,1,2,3,"Diseño, comportamiento, equipamiento disponible, opción de tracción total, motores eficientes","Plazas traseras justas, maletero pequeño, aspecto de algunos plásticos"
+Lexus CT 200h,Lexus,"3,2","Muy equipado, híbrido y con cierto toque de exclusividad",1,1,1,5,7,3,"Silencio de marcha, eficiencia en ciudad, fiabilidad contrastada","Prestaciones pobres, tacto de conducción aburrido, precio elevado"
+Skoda Superb,Skoda,"4,0",Excelente relación habitabilidad-precio para la berlina checa,1,1,5,1,2,4,"Calidad, presentación, maletero, amplitud","Dimensiones, motores pequeños algo justos"
+DS 3 Crossback,DS,,,1,1,1,1,2,3,"Posibilidades de personalización, exclusividad, confort de marcha","Precio elevado para su tamaño, o tamaño muy pequeño para su precio"
+Ford Fiesta ST,Ford,"3,9",Excelente comportamiento y notables prestaciones,1,5,7,1,2,2,"Comportamiento dinámico, tacto de conducción sin rival, equipamiento","Dureza de suspensión, sonoridad elevada, consumos sensibles"
+Skoda Superb Combi,Skoda,"4,0",Excelente relación habitabilidad-precio para la berlina checa,1,1,5,1,2,4,"Maletero, diseño, capacidad interior","Dimensiones exteriores, motores básicos algo justos"
+Peugeot 508,Peugeot,"3,8","La berlina de lujo francesa, más dinámica y atrevida que nunca",1,1,5,1,2,2,"Amplitud, calidad de terminación, comportamiento, equipamiento","Oferta inicial limitada, precios elevados, plazas traseras justas"
+Peugeot 508 SW,Peugeot,"3,7",Dinámico y bonito,1,1,5,1,2,2,"Estética, calidad, presentación, equipamiento","Valor de reventa, oferta limitada"
+Renault Talisman,Renault,"3,5",Elegancia y mucho equipamiento para la berlina francesa,1,1,5,7,2,2,"Diseño, equipamiento, motor BluedCi 150 CV, comportamiento","Precio algo elevado, detalles de acabado, longitud"
+Mitsubishi Outlander,Mitsubishi,"3,3",Excelente relación valor-precio para un japonés muy completo,1,1,5,5,2,2,"Plataforma híbrida enchufable, disponibilidad de 7 plazas, confort y silencio de marcha, amplitud y versatilidad","Manejo de equipo multimedia, acceso a plazas auxiliares complicado, gama de motores limitada"
+Mazda MX-5,Mazda,"4,4",Un excelente Roadster biplaza por la mínima inversión,4,7,7,1,2,7,"Comportamiento, sencillez de capota, motores, estética, interior, pureza del concepto","Interior justo, sonoridad elevada, maletero pequeño"
+Peugeot 5008,Peugeot,"3,5",Un interesante crossover con siete plazas y mucho espacio,1,1,5,1,2,3,"Diseño interior y exterior, calidad de construcción, espacio interior","Precio de las opciones, sólo disponible en 4x2"
+Honda HR-V,Honda,"3,5",Calidad y equipamiento son virtudes del nuevo HR-V,1,1,5,6,2,3,"Espacio interior muy generoso, maletero, practicidad y versatilidad","Diseño extraño, interior algo pobre, gama de motores muy limitada"
+Renault Talisman Sport Tourer,Renault,"3,5",Elegancia y mucho equipamiento para el familiar francés,1,1,5,7,2,3,"Maletero, diseño, posibilidades de equipamiento","Detalles de acabado, precio en las versiones medio-altas"
+Hyundai Ioniq EV,Hyundai,,,1,1,5,1,10,3,"Espacio interior, silencio de marcha, precio similar al híbrido enchufable","Calidad de algunos plásticos, tamaño excesivo para ciudad"
+SsangYong Rexton,SsangYong,"3,0",Excelente relación equipamiento-precio para el todoterreno surcoreano.,1,1,7,4,2,2,"Posibilidad de 7 plazas, estética, presentación, equipamiento, relación valor-precio","Equipamiento cerrado, consumos sensibles, oferta mecánica limitada"
+Kia Xceed PHEV,Kia,,,1,1,4,1,8,4,,
+Ford Mondeo Sportbreak,Ford,"3,6","Un enorme familiar, económico, bien construido y muy capaz",1,1,5,1,2,2,"Dinámica de conducción muy lograda, espacio interior, confort de marcha","Dimensiones exteriores generosas, percepción de calidad de algunos plásticos"
+Opel Insignia Sports Tourer,Opel,"3,4",Un familiar dinámico y pretensiones semi-premium,1,1,5,1,2,3,"Amplitud, maletero, calidad de terminación, comportamiento","Equipamiento de serie, precios sin promociones, tamaño"
+Renault ZOE EV,Renault,"4,0",El vehículo ideal para los que se mueven casi en su totalidad por ciudad,1,1,5,1,10,4,"Diseño exclusivo, precio en relación a los rivales, autonomía","Precio sin alquiler de batería no tan competitivo, aspecto de algunos plásticos"
+Cupra Formentor,Cupra,"4,0",Exclusividad y diseño en formato compacto,1,3,6,1,1,4,"Diseño, comportamiento, etiqueta CERO, versión PHEV","Precio elevado, detalles de acabado"
+Honda CR-V HEV,Honda,"3,7",Único en su especie por su sistema híbrido,1,1,5,1,7,5,"Tacto de coche eléctrico, espacio interior, versatilidad, calidad de rodadura, acabados","Precio algo elevado, imposibilidad de llevar 7 plazas"
+Nissan Leaf,Nissan,"3,4","Más tecnológico y con mayor autonomía, el Leaf 2.0 es más interesante",1,1,5,1,10,3,"Silencio de marcha, espacio interior, autonomía, equipamiento","Calidad de algunos plásticos, precio sin ayudas, tiempo de recarga"
+Volkswagen T-Roc Cabrio,Volkswagen,,,1,1,1,1,1,4,,
+Kia e-Niro,Kia,,,1,1,5,1,10,3,"Autonomía elevada, formato práctico urbano y familiar","Precio elevado, como todos los eléctricos"
+Jeep Renegade PHEV,Jeep,,,1,1,1,5,8,3,,
+BMW Serie 2 Gran Coupé,BMW,,,1,3,1,1,1,7,,
+Mitsubishi Outlander PHEV,Mitsubishi,,,1,1,1,7,8,2,"Relación prestaciones / calidad / precio, autonomía eléctrica, etiqueta CERO, amplitud","Diseño algo desfasado, prestaciones justas"
+Lexus IS,Lexus,"3,4","La alternativa japonesa e híbrida a los diésel de Mercedes, BMW y Audi",1,3,1,5,7,4,"Estética diferenciada, exclusividad, diseño interior y exterior","Suspensión muy firme, tacto de dirección poco comunicativo, sensación prestacional decepcionante"
+Hyundai i30 N Fastback,Hyundai,,,1,6,5,5,1,3,"Comportamiento, prestaciones, practicidad real, originalidad","Los modos de suspensión más firmes son poco utilizables fuera de circuito, acceso al maletero"
+Hyundai i30 N,Hyundai,"4,0","Ve a por el más potente, con diferencial activo y un plus de prestaciones",1,6,5,5,1,3,"Dinámica, opciones de configuración, prestaciones, usabilidad, espacio interior","Maletero algo justo, modo de suspensión Sport+ sólo apto para circuito, consumo elevado"
+Skoda Scout,Skoda,"3,6",El Scout es una versión elevada del Octavia Combi,1,1,5,1,2,3,"Gama de motores, comportamiento, versatilidad, espacio interior y maletero",Diseño muy gris en general
+Volvo S60,Volvo,"4,2",El primer Volvo actual sin motor diesel,1,1,1,1,2,5,"Diseño interior y exterior, seguridad, exclusividad","Sin diesel, precio elevado"
+Skoda Octavia RS,Skoda,,,1,5,3,1,1,3,"Espacio interior, maletero, practicidad real, comportamiento, prestaciones, tacto al volante",Seguimos buscando
+Jeep Compass PHEV,Jeep,,,1,1,1,6,8,3,,
+Kia Stinger,Kia,"4,1",Diseño y completo equipamiento son sus principales virtudes,1,5,4,6,1,4,"Presentación, diseño, acabados, equipamiento, portón trasero","Maletero pequeño, altura plazas traseras, sin faros LED o xenón en los acabados básicos"
+Volkswagen Arteon,Volkswagen,"3,9",Diseño y equipamiento a precios razonables,1,4,2,1,2,5,"Diseño, equipamiento, calidad de terminación, maletero","Altura en plazas traseras, gama limitada, opciones caras"
+Jeep Cherokee,Jeep,,,1,1,1,1,2,2,,
+BMW Serie 4 Gran Coupé,BMW,,,1,4,1,6,2,5,,
+BMW Serie 3 Gran Turismo,BMW,"3,1","Todo lo bueno del Serie 3 en formato 5 puertas, más práctico pero también más feo que la berlina",1,3,1,8,2,2,"Espacio interior, tacto de conducción, gama de motores","Precio elevado, estética de proporciones extrañas, interior clásico"
+BMW Serie 2 Cabrio,BMW,,,1,4,1,1,2,3,"Mecánicas, estética, calidad general","Plazas traseras para palos de golf, maletero poco accesible sin capota, precio elevado"
+Alfa Romeo Stelvio,Alfa Romeo,"3,8",Deportividad y diseño destacan en el nuevo Stelvio de Alfa Romeo,1,5,1,7,1,6,"Diseño, comportamiento dinámico, oferta mecánica variada","Equipamiento de serie justo, precio elevado, calidad de algunos plásticos"
+BMW i3,BMW,"3,5","Lo mejor de lo mejor en eléctricos, si puedes vivir con un eléctrico",1,1,1,1,10,4,"El futuro hecho presente, diseño vanguardista, calidad de acabados, exclusividad, prestaciones fulgurantes","Precio elevado, acceso a plazas traseras peculiar, maletero justo"
+Mazda MX-5 RF,Mazda,,,4,7,6,1,2,7,"Dinámica, tacto de dirección y cambio, interior soberbio, calidad de construcción, precio","Ruidos aerodinámicos con el techo cerrado, experiencia a cielo abierto ""incompleta"""
+Skoda Octavia Combi RS,Skoda,,,1,5,5,1,2,3,,
+Toyota Land Cruiser,Toyota,"3,9","Un auténtico y genuino todoterreno. En Toyota dicen que ""si cabe, pasa""",1,1,1,1,1,2,"Capacidad todoterreno, robustez general, durabilidad","Precio elevado, interior anodino, comportamiento en carretera"
+Mercedes GLB,Mercedes-Benz,"3,6",La opción ideal si buscas un siete plazas de Mercedes,1,1,1,1,2,5,"Equipamiento disponible, hasta siete asientos, comportamiento","Precio elevado, opciones caras, maletero con siete asientos en uso justo"
+Cupra León,Cupra,"4,2",La opción compacta más dinámica y llamativa,1,6,1,1,1,3,"Gama de motores, equipamiento disponible","Precios altos, detalles de acabado"
+Honda Civic Type R,Honda,,,1,7,3,1,1,5,"Tacto de conducción, sonido, experiencia deportiva envolvente, comportamiento, motor, cambio, compromiso con el confort",Estética no apta para todos los públicos
+Cupra León Sportstourer,Cupra,"4,3","Práctico, capaz y versátil sin perder la deportividad",1,6,1,1,1,4,"Maletero, versatilidad, amplitud, prestaciones","Precio elevado, detalles de acabado"
+Skoda Superb PHEV,Skoda,,,1,1,5,1,8,4,,
+Audi TT,Audi,"3,9",Probablemente el mejor TT de la historia.,1,5,1,1,2,6,"Diseño interior de vanguardia, calidad de construcción","Su comportamiento no es el de un 718, pero casi"
+Audi TT Roadster,Audi,"3,9","El mejor interior del mercado, con envoltorio moderno y atractivo",1,6,1,1,1,6,"Interior espectacular, calidad de construcción, tecnología","El comportamiento no es el de un Boxter, pero casi"
+Mercedes Clase C Coupé,Mercedes-Benz,"3,8",La segunda generación es más expresiva y atractiva que nunca,1,4,1,1,2,5,"Diseño interior y exterior, aerodinámica, exclusividad","Suspensión demasiado firme, calidad de plásticos y ajustes mejorable, motores diésel ruidosos"
+BMW Z4,BMW,,,1,6,1,1,2,6,,
+Jeep Wrangler,Jeep,"3,9",Caro pero muy llamativo y con un estilo retro inconfundible,1,1,1,1,1,5,"Aptitudes off-road, equipamiento, motores solventes","Gasto de combustible, amplitud en 3 puertas, maletero pequeño, precio"
+Volkswagen Passat AllTrack,Volkswagen,,,1,1,1,1,2,4,"Diseño, calidad de construcción, espacio interior, equipamiento completísimo, maletero","Precio muy elevado, difícil de aparcar por su longitud, tracción total no permanente"
+Jeep Grand Cherokee,Jeep,,,1,1,1,7,1,3,"Capacidades todoterreno, precio, estética americana","Calidad de acabados, peso elevado, comportamiento en carretera, tren trasero sobrevirador, diseño obsoleto"
+BMW Serie 3 Hybrid PHEV,BMW,,,1,3,1,1,8,3,,
+Audi S3 Sedán,Audi,,,1,5,1,1,1,5,,
+Land Rover Defender 90,Land Rover,,,1,1,1,1,1,6,,
+Mercedes Clase C Estate PHEV,Mercedes-Benz,,,1,2,1,1,8,4,,
+Volvo V60 PHEV,Volvo,,,1,1,1,1,8,3,"Diseño, calidades, confort de marcha, asientos","Maletero algo justo para su tamaño, peso y consumo elevados, precio muy caro"
+Tesla Model Y,Tesla,"3,6",Un caramelito para los early-adopters,1,5,1,1,10,5,"Prestaciones, autonomía","Calidad general baja, manejo de la pantalla central como único cuadro de mandos y centro de control"
+Volvo XC90,Volvo,"4,4",La actual generación del XC90 presume de motores frugales y de sus siete plazas,1,1,1,8,1,6,"Diseño interior y exterior, calidad de construcción, seguridad, espacio interior para 7 adultos, confort","Agilidad limitada por su tamaño, precio de opciones"
+BMW Serie 5 Touring,BMW,,,1,3,1,1,2,3,,
+Land Rover Defender 110,Land Rover,"4,4","Técnicamente soberbio, pero algo lejos de sus orígenes.",1,1,1,1,1,5,"Capacidades 4x4 reales, tecnología, diseño interior",No apto para puristas del Defender original
+Mercedes Clase E PHEV,Mercedes-Benz,,,1,2,1,1,8,3,,
+BMW Serie 6 GT MHEV,BMW,,,1,3,1,1,2,3,,
+BMW Serie 5 PHEV,BMW,,,1,3,1,1,8,6,"Confort, silencio de marcha, comportamiento en ciudad","Consumo en modo gasolina, peso elevado, precio muy alto"
+Porsche 718 Cayman,Porsche,,,1,6,1,1,1,7,"Comportamiento, prestaciones, diversión al volante, motor central, agilidad","Precio elevado, maletero simbólico"
+Audi A7 Sportback,Audi,,,1,4,1,1,1,5,"Diseño y calidad interior, exclusividad, confort y silencio de marcha","Tacto de dirección, comportamiento poco deportivo"
+Porsche 718 Boxster,Porsche,,,1,6,1,1,1,8,,
+Audi A6 PHEV,Audi,,,1,2,1,1,8,3,,
+Jaguar I-Pace,Jaguar,,,1,5,1,1,10,7,"Silencio de marcha, prestaciones, comportamiento, tacto al volante, amplitud y confort, pensado desde cero como coche eléctrico",El lujo tiene un precio
+Audi A6 Allroad,Audi,,,1,1,1,1,1,7,"Tecnología, seguridad, estética, calidad y diseño interior","Climatizador táctil, pantallas manchadizas, precio elevado, opciones muy caras"
+Volvo V90 PHEV,Volvo,,,1,1,1,7,8,7,"Confort, silencio, calidad, espacio interior, diseño general","El modo eléctrico tiene sentido en ciudad, pero un coche tan grande no. El coche tiene sentido en carretera, pero un PHEV no."
+Range Rover Sport,Land Rover,,,1,2,1,1,1,5,"Precio razonable, diseño, calidades, confort de marcha, capacidades todoterreno reales","Peso excesivo, dinámica mejorable, se acerca peligrosamente al modernísimo Velar"
+Volvo S90 PHEV,Volvo,,,1,2,1,6,8,5,"Comportamiento en ciudad, diseño, calidades, confort, asientos, nivel prestacional de primer orden",Lo mejorable empieza cuando se termina la energía eléctrica y se convierte en un coche de gasolina con inclinación a la bebida
+Audi RS Q3,Audi,,,1,5,1,1,1,4,,
+Volvo XC90 PHEV,Volvo,,,1,1,1,8,8,6,"Amplitud, diseño, confort de marcha, silencio en ciudad, calidad y acabados",El consumo de gasolina te quita las ganas de comprar un híbrido enchufable
+Mercedes GLE Coupé,Mercedes-Benz,,,1,2,1,1,1,4,,
+Alfa Romeo Giulia QV,Alfa Romeo,,,1,7,1,5,1,5,"Motor, comportamiento, motor, sensaciones de conducción, motor, tacto de dirección, motor...",Interior muy mejorable
+Mercedes GLS,Mercedes-Benz,,,1,1,1,1,1,3,,
+BMW Serie 8 Gran Coupe,BMW,,,1,7,1,1,1,7,,
+Lexus LS,Lexus,"3,7","La alternativa japonesa e híbrida a las grandes berlinas de Mercedes, BMW y Audi",1,2,1,5,7,3,"Confort y silencio de marcha, eficiencia en ciudad, calidad de construcción","Precio elevado, gama mecánica limitada"
+Audi RS5 Sportback,Audi,,,1,7,1,1,1,5,,
+Mercedes Clase V,Mercedes-Benz,"3,6",Mucho espacio para el monovolumen grande de Mercedes,1,1,1,10,2,2,"Espacio interior bestial, posibilidad de 8 plazas individuales, confort y silencio de marcha, calidad de acabados","Sensación y sonidos de furgoneta, precio muy elevado"
+Alpine A110,Alpine,"4,7","Diseño, prestaciones y tecnología se dan la mano en el nuevo A110",1,6,1,1,1,7,"Estética, exclusividad, carisma",Probablemente no tan bien construido como un Audi TT
+Mercedes GLC PHEV,Mercedes-Benz,,,1,1,1,7,8,6,"Silencio de marcha, comportamiento en ciudad, etiqueta CERO","Como todo híbrido enchufable, sólo tiene sentido si vas en eléctrico de lunes a viernes y el fin de semana viajas con bastante presupuesto para gasolina"
+Smart ForFour Electric Drive,smart,,,8,1,1,2,10,8,"Facilidad de conducción, agilidad entre tráfico, silencio, diseño",Autonomía muy baja para los estándares actuales
+Audi RS5,Audi,,,1,7,1,1,1,6,,
+Audi SQ8,Audi,,,1,6,1,1,1,6,,
+Peugeot Rifter,Peugeot,"3,7",Más turismo que furgoneta,1,1,8,1,2,1,"Equipamiento disponible, ventanillas traseras eléctricas, motores eficientes, presentación, luneta practicable, espacio interior, versatilidad","Portón trasero muy grande, sonoridad en los diésel"
+Toyota ProAce Van,Toyota,,,1,1,,,,,,
+Lexus UX300e,Lexus,,,1,1,1,1,10,5,,
+Citroën AMI EV,Citroën,,,10,1,7,1,10,5,,
+Toyota Highlander,Toyota,,,1,1,5,1,7,5,,
+Dacia Dokker Combi,Dacia,,,1,1,,,,,,
+Ford Tourneo Courier,Ford,,,1,1,,,,,,
+Opel Combo,Opel,,,1,6,,,,,,
+Toyota ProAce City Van,Toyota,,,1,1,,,,,,
+Renault Kangoo,Renault,,,2,6,,,,,,
+Citroën Nemo,Citroën,,,4,6,,,,,,
+DR3,DR,,,1,1,8,6,5,1,,
+DR5 EVO,DR,,,1,1,8,6,5,1,,
+DR4,DR,,,1,1,8,8,5,1,,
+Renault Trafic,Renault,,,1,1,,,,,,
+Ford Focus MHEV,Ford,,,1,2,7,1,6,2,,
+Nissan NV300,Nissan,,,1,1,,,,,,
+DR6,DR,,,1,1,8,5,5,1,,
+Toyota Corolla HEV,Toyota,"3,7","Etiqueta ECO y consumos ajustados, de serie",1,1,5,1,7,2,"Calidad de terminación, equipamiento de seguridad, motor 180 CV","Cambio CVT, sin opciones de personalización"
+Citroën Jumpy,Citroën,,,1,1,,,,,,
+DFSK Glory 580,DFSK,,,1,1,8,1,2,1,,
+Fiat Dobló,Fiat,,,1,8,,,,,,
+Citroen Berlingo Furgon,Citroën,,,1,5,,,,,,
+Kia Ceed Tourer PHEV,Kia,,,1,2,3,1,8,3,,
+Mazda MX-30,Mazda,"3,1",Exclusividad para uso urbano,1,3,1,5,2,4,"Amplitud, materiales de calidad, diseño personal","Autonomía muy justa, precio elevado"
+DFSK F5,DFSK,,,1,2,8,1,2,2,,
+Toyota ProAce City Verso,Toyota,,,1,1,5,1,1,1,,
+Toyota ProAce Verso,Toyota,,,1,1,,,,,,
+Volkswagen Caddy,Volkswagen,,,1,1,,,,,,
+Toyota Camry HEV,Toyota,,,1,1,5,1,7,1,,
+Toyota GR Yaris,Toyota,,,2,5,5,1,1,2,,
+Honda e,Honda,"3,6","Un urbanita eléctrico muy personal en diseño y soluciones, con una dotación sensacional. Lo malo es que la autonomía es demasiado limitada mientras que su precio, incluyendo promociones, es elevado.",1,1,1,1,10,5,"Calidad, diseño personal, equipamiento, prestaciones","Autonomía, precio alto, retrovisores por pantalla"
+Peugeot 308 GTI,Peugeot,,,1,6,5,1,1,3,"Peso muy bajo, agilidad, comportamiento, tacto de conducción, practicidad real","Interior sin mandos ni botones, carrocería bitono para personas con un problema de bipolaridad"
+Volkswagen ID.3,Volkswagen,,,1,2,5,1,10,6,"Prestaciones, rango de uso, equipamiento","Precio elevado, tiempo de recarga"
+Audi SQ2,Audi,,,1,4,1,1,1,4,,
+Hyundai NEXO Fuel Cell,Hyundai,,,1,1,1,6,10,5,"Tecnología de vanguardia, rapidez de repostaje equivalente a gasolina, uso idéntico a un eléctrico","No hay hidrolineras, por lo tanto no puedes repostar"
+Audi E-Tron Sportback,Audi,,,1,3,1,1,10,6,,
+Land Rover Defender 90 PHEV,Land Rover,,,1,1,1,1,8,6,,
+BMW iX3,BMW,,,1,2,1,1,10,4,,
+Toyota Mirai,Toyota,,,1,1,1,3,10,1,,
+Audi RS4 Avant,Audi,,,1,7,1,1,1,5,,
+Lexus LC Cabrio,Lexus,,,1,6,1,1,7,7,,
+Audi RS Q8,Audi,,,1,6,1,1,1,6,,
+Aston Martin DBX,Aston Martin,,,1,6,1,8,1,8,,
+Rolls Royce Cullinan,Rolls-Royce,,,1,1,1,7,1,7,Estar por encima de todo y de todos,"Lo mismo, estar por encima de todo y de todos"
+Lamborghini Aventador Roadster,Lamborghini,,,1,10,1,1,1,10,,
+Porsche 911 Speedster,Porsche,,,1,8,1,1,1,8,,
+DS 9,DS,,,1,2,1,1,2,3,,
+Opel Combo Life,Opel,,,1,1,5,9,2,1,,
+Abarth 500C,Abarth,,,1,6,1,1,2,5,"Precio accesible, sonido, diversión al volante, techo descapotable, comportamiento radical","No es cómodo, no es práctico y no tiene mucho sentido"
+Hyundai H1 Travel,Hyundai,,,1,1,7,1,2,1,"Tamaño, versatilidad, capacidad de transporte",Es más un microbús que un coche
+Isuzu D-Max,Isuzu,,,1,1,1,1,1,2,,
+Mercedes Clase G,Mercedes-Benz,,,1,1,1,1,1,4,,
+Rolls-Royce Wraith,Rolls-Royce,,,1,3,1,2,1,8,,
+McLaren Super Series,McLaren,,,1,8,1,1,1,9,,
+Rolls-Royce Phantom,Rolls-Royce,,,1,1,1,5,1,8,,
+Rolls-Royce Phantom Coupé,Rolls-Royce,,,1,2,1,1,1,8,,
+Abarth 500,Abarth,,,1,6,1,1,2,5,"Carácter, pureza del concepto, diversión al volante",Todo lo demás es un dolor de muelas
+Ford Ranger,Ford,,,1,1,1,1,1,2,"Estética atractiva, existencia de la versión Raptor, capacidad de carga","Ausencia de diferencial central, rebotes de la suspensión trasera"
+Opel Zafira Life,Opel,,,1,1,5,1,2,1,,
+Citroën SpaceTourer,Citroën,"3,1",No encontrarás más capacidad de transporte de pasajeros y equipaje,1,1,5,1,2,1,"Volumen interior de salón-comedor, durabilidad",Estética y aerodinámica de furgoneta
+DS3 Crossback BEV,DS,,,1,1,1,1,10,3,"Estilo diferenciado, detalles estéticos","Precio muy elevado, espacio interior de utilitario"
+Ford Mondeo HEV,Ford,,,1,1,5,1,7,2,,
+Peugeot Traveller,Peugeot,"3,1",Espacio y versatilidad con acabados casi de turismo,1,1,5,1,2,1,"Volumen interior bestial, capacidad de maletero, durabilidad","Es una furgoneta, con todas sus consecuencias en comportamiento, aerodinámica y ecos interiores"
+Subaru Forester HEV,Subaru,,,1,1,1,7,7,2,,
+Jaguar XE,Jaguar,,,1,3,1,1,2,5,,
+DS7 Crossback PHEV,DS,,,1,1,1,1,8,3,"Equipamiento, relación precio/producto, silencio y confort de marcha, amplitud, prestaciones sobresalientes",El lastre de llevar dos sistemas de propulsión completos
+Suzuki Across PHEV,Suzuki,,,1,1,2,1,8,2,,
+Volkswagen Arteon Shooting Brake,Volkswagen,,,1,1,1,1,2,5,,
+Mercedes-AMG GLA,Mercedes-Benz,,,1,5,4,1,2,4,,
+Ford Explorer PHEV,Ford,,,1,1,6,1,8,3,,
+Mercedes EQV,Mercedes-Benz,,,1,1,1,1,10,5,,
+BMW Serie 7 PHEV,BMW,,,1,3,1,1,8,4,"Silencio de marcha, confort general, comportamiento en tráfico lento, equipamiento, seguridad",¿Quién se lo puede permitir?
+Mercedes Clase S PHEV,Mercedes-Benz,,,1,1,1,4,8,6,"Referencia absoluta entre las berlinas de representación por confort, calidad, seguridad y tecnología","El precio, amigos, el precio es lo único mejorable"
+BMW M8 Cabrio,BMW,,,1,8,1,1,1,7,,
+Lexus LC,Lexus,,,1,8,1,1,1,8,,
+BMW Serie 8 Cabrio,BMW,,,1,8,1,1,1,8,,
+Aston Martin Vantage Volante,Aston Martin,,,1,8,1,1,1,8,,
+Bentley Continental GT,Bentley,"4,0",El Continental GT es el modelo de mayor éxito de la firma en España,1,7,1,1,1,8,"Exclusividad, estética única, confort de marcha","Penúltima tecnología, comportamiento en curva digno de un barco de mercancías, peso excesivo, precio desorbitado"
+Aston Martin DB9 Volante,Aston Martin,,,1,8,1,1,1,8,,
+Aston Martin DB11 Volante,Aston Martin,,,1,8,1,1,1,10,,
+Bentley Continental GTC,Bentley,"4,0",El Continental GTC es uno de los modelos más deseados por la mayoría de los mortales. Circular sin capota es sensacional,1,7,1,1,1,8,"Estética, exclusividad, confort general","Peso excesivo, tendencia pertinaz a seguir en línea recta en curvas, precio muy elevado"
+Ferrari GTC4 Lusso,Ferrari,,,1,9,1,1,1,9,"Practicidad real, prestaciones, sonido del motor, comportamiento, exclusividad",Precio inasumible
+Aston Martin Vanquish,Aston Martin,,,1,8,1,1,1,8,,
+Rolls-Royce Ghost,Rolls-Royce,,,1,2,1,5,1,8,,
+Bentley Mulsanne,Bentley,"4,0","La berlina más cara y representativa de Bentley. Máximo lujo en 5,6 metros",1,3,1,5,1,8,"Empaque, estética única, confort y silencio de marcha, exclusividad","Peso excesivo, precio desorbitado, consumo estratosférico"
+Rolls-Royce Phantom Drophead Coupé,Rolls-Royce,,,1,2,1,1,1,8,,
+SsangYong Tívoli,SsangYong,"3,2",El Tívoli presume de una buena relación espacio-equipamiento-precio,1,1,5,6,2,3,"Amplitud, equipamiento completo, maletero, motor diésel","Estética muy personal, aspecto de algunos plásticos"
+Nissan NP300 Navara,Nissan,,,1,1,1,1,1,2,"Precio razonable, dureza general, interior logrado","Ausencia de diferencial central, sobriedad"
+Renault Twingo EV,Renault,,,1,1,5,1,10,4,,
+Honda Jazz HEV,Honda,,,4,1,1,5,7,2,,
+Subaru Impreza,Subaru,"3,2",La alternativa compacta más exótica,1,2,4,5,2,2,"Tracción total, equipo de serie, confort, comportamiento, nivel de seguridad extraordinario","Solo gasolina, solo automático, equipamiento cerrado"
+MINI Clubman,MINI,"3,6","Seis puertas, cinco plazas y más amplitud",1,2,1,1,2,5,"Exclusividad, diseño en general, tacto de conducción, gama de motores","Precio elevado, maletero justo, puertas posteriores poco prácticas"
+Suzuki Vitara MHEV,Suzuki,"3,3",Los motores de bajo consumo y su espacioso habitáculo lo hacen muy apetecible frente a sus rivales ,1,1,5,5,2,2,"Gama amplia, con opción de tracción total, cambio automático e incluso de doble embrague. Bien equipado, amplio, con buenas aptitudes camperas","Presentación y calidad de algunos plásticos, niveles de equipamiento cerrados, precios por encima de la media"
+Smart ForTwo Electric Drive,smart,,,10,1,1,1,10,8,"Facilidad de aparcamiento, conducción urbana, economía de mantenimiento",Precio elevado para un biplaza eléctrico
+Kia ProCeed,Kia,,,1,3,5,7,2,3,,
+Mitsubishi L200,Mitsubishi,,,1,1,1,1,1,2,"Diferencial central, diseño atractivo, medidas más compactas que la media del segmento",Pérdidas de tracción al circular en 4x2 sin carga
+Kia Ceed GT,Kia,,,1,6,5,5,1,3,,
+Renault Koleos,Renault,"3,0",Muchas posibilidades de equipamiento y diseño llamativo destacan,1,1,1,1,2,2,"Espacio interior, precio ajustado, equipo completo","Detalles de calidad mejorables, se da de bruces con su hermano el Espace... y pierde"
+Kia ProCeed MHEV,Kia,,,1,3,5,1,6,4,,
+Smart EQ Fortwo Cabrio,smart,,,10,1,3,1,5,4,"Estética demoledora, practicidad real, radio de giro ridículo, consumos, posibilidades de aparcamiento, diversión al volante",Precio elevado para un biplaza
+Ford Mondeo Sportbreak HEV,Ford,,,1,1,4,1,7,2,,
+Toyota Hilux,Toyota,"3,6","Es una de las pick-up más caras, pero es el precio de ser una de las mejores opciones",1,1,1,1,1,2,"Es un Hilux, no se rompe","Comportamiento sensible a la carga, precio elevado, estética poco conseguida"
+Renault Mégane RS,Renault,"4,0",Sensacional comportamiento y excelentes prestaciones,1,6,5,1,2,3,"Motor brillante, prestaciones, cambio manual o EDC, equipo completo, comportamiento","Solo con carrocería de cinco puertas, precio sin promociones, aspecto de algunos plásticos"
+MINI JCW,MINI,,,1,6,1,1,1,7,"Comportamiento, tacto de dirección, motor, prestaciones, diseño y calidades, estilo general",Su precio lo sitúa en la categoría del Golf GTI y su tamaño en la categoría del Fiesta ST. Todo no se puede.
+Subaru Outback,Subaru,,,1,1,3,1,2,3,"Capacidad de tracción 4x4 permanente, espacio interior, maletero, calidad de construcción, niveles de seguridad","Diseño controvertido, cambio automático Lineartronic como única opción"
+Subaru BRZ,Subaru,"3,8",Está totalmente pensado para ofrecer altas dosis de diversión al volante ,1,6,3,1,2,4,"Diversión al volante, estética coupé, puesto de conducción deportivo, pureza del concepto","Calidades interiores, gama muy reducida, escasa practicidad"
+SEAT Tarraco PHEV,SEAT,,,1,1,5,1,8,3,,
+Ford Puma ST,Ford,,,1,5,5,1,2,6,,
+Toyota GT 86,Toyota,"3,8",¿Buscas diversión? El GT 86 te la dará.,1,6,3,1,2,4,"Diversión al volante, estética coupé, puesto de conducción deportivo, pureza del concepto","Calidades interiores, gama muy reducida, escasa practicidad"
+Nissan 370Z,Nissan,,,1,6,3,1,1,6,"Precio, motor V6, postura de conducción, tracción trasera, autenticidad","Interior obsoleto, plásticos muy mejorables, biplaza estricto, diseño algo desfasado"
+Volkswagen Multivan,Volkswagen,"3,6",Tu industrial de pasajeros de referencia,1,1,2,1,2,1,"Espacio para 8 personas con equipaje, equipamiento","Precio elevado, tacto en curva condicionado por su altura"
+MINI Cabrio JCW,MINI,,,1,5,1,1,2,7,"Estética, comportamiento, motor, sonido, tacto de conducción","Más caro y más pesado que el 3 puertas, tal vez es demasiado sacrificio"
+Volkswagen Amarok,Volkswagen,"3,4",El amarok no es la mejor pick-up fuera de asfalto aunque instala propulsores TDI sobradamente contrastados,1,1,1,1,1,2,"Diferencial central Torsen, sensación de solidez, estética conseguida, interior muy cuidado, prestaciones destacadas","Posibilidades off-road limitadas, precio elevado"
+Skoda Octavia RS PHEV,Skoda,,,1,5,3,1,8,3,,
+Lexus RC,Lexus,,,1,6,1,1,1,6,,
+Lotus Elise,Lotus,,,5,8,1,1,2,8,"Pureza, ligereza, agilidad, comportamiento, tacto de conducción, postura al volante, adrenalina","Es muy difícil entrar y aún más difícil salir del coche, cero sentido práctico"
+Lexus ES,Lexus,,,1,2,1,1,7,3,"Exclusividad, comportamiento y consumo en ciudad, eficiencia, silencio y confort de marcha","Sensación prestacional algo pobre, tacto de dirección poco comunicativo"
+Volkswagen ID.4,Volkswagen,,,1,1,1,1,10,3,,
+Ford Mustang,Ford,"4,1",El deportivo americano asequible más famoso y deseado,1,8,1,2,1,8,"Estética demoledora, posibilidad de motor V8, exclusividad, precio razonable","Detalles de acabado, solo dos estrellas EuroNCap (modelo pre-restyling), maletero irregular"
+BMW Serie 2 Active Tourer PHEV,BMW,,,1,1,1,1,8,5,"Calidad de construcción, silencio de marcha, espacio interior, comodidad, etiqueta medioambiental","Caro, pesado e ineficiente, como todos los PHEV, pero oficialmente ""limpio"""
+MINI Clubman JCW,MINI,,,1,6,1,1,1,5,,
+Audi A5 Cabrio,Audi,,,1,4,1,1,2,5,,
+Ford Mustang Cabrio,Ford,,,1,8,3,1,1,9,,
+MINI Countryman JCW,MINI,"3,5",Una auténtica bestia deportiva con 306 CV y cinco cómodas plazas,1,5,1,7,1,7,"Prestaciones, tacto de conducción, diseño en general, practicidad como familiar","Precio desorbitado, consumos algo altos"
+Tesla Model 3,Tesla,"3,7","Una auténtica alternativa para berlinas premium, cuya única limitación son los viajes más largos",1,6,1,1,10,6,"Aceleración desde parado, comportamiento, exclusividad","Detalles de acabado, limitación de la red de recarga, plazo de entrega difícil de asumir"
+Mercedes Clase C PHEV,Mercedes-Benz,,,1,2,1,1,8,3,"Silencio, confort de marcha, diseño exterior e interior, prestaciones, comportamiento y comodidad en ciudad","Consumo en modo gasolina, precio elevado, peso muy alto"
+Mercedes Clase C Cabrio,Mercedes-Benz,,,1,4,1,1,2,5,,
+Mercedes Clase E Estate,Mercedes-Benz,,,1,3,1,1,2,5,,
+Jaguar XF,Jaguar,"3,6","Un vehículo elegante y silencioso, con un habitáculo muy capaz",1,3,1,1,2,4,"Exclusividad, estética diferenciada, equipamiento completo, comportamiento dinámico, consumos ajustados","Diseño interior común a toda la gama, calidad de algunos plásticos y algunos mandos"
+Jaguar XF Sportbrake,Jaguar,,,1,3,1,1,2,4,,
+Mercedes Clase E Coupé,Mercedes-Benz,,,1,3,1,1,2,6,,
+Mercedes Clase E Cabrio,Mercedes-Benz,,,1,4,1,1,2,7,,
+Lexus RX,Lexus,"3,9",El todocamino híbrido más ahorrador del mercado,1,1,1,8,7,3,"Estética diferenciada, exclusividad, confort y silencio de marcha impresionantes, eficiencia en ciudad","Tacto de conducción aburrido, maletero pequeño, consumo en carretera alto"
+Audi S7 Sportback,Audi,,,1,6,1,6,1,5,,
+Toyota GR Supra,Toyota,,,1,7,1,1,1,7,,
+Mercedes Clase E Estate PHEV,Mercedes-Benz,,,1,3,1,1,8,5,,
+Jaguar F-Type Coupé,Jaguar,,,1,7,1,1,1,7,"Estética soberbia, tacto de conducción, diversión al volante","Calidades interiores algo justas, software de infoentretenimiento"
+Jaguar F-Type,Jaguar,,,1,7,1,1,1,9,,
+Audi e-tron,Audi,"3,9","Por tamaño se sitúa entre el Q5 y el Q7. Por tecnología, juega en otra liga.",1,5,1,1,10,7,"Autonomía, calidad de acabados","Precios, autonomía frente a los modelos de combustión"
+Mercedes EQC,Mercedes-Benz,,,1,5,1,1,10,7,"Prestaciones, silencio, sensación de lujo","Peso muy elevado, plataforma de coche térmico que impide sacarle todo el partido a las posibilidades de un eléctrico"
+Lexus RX-L,Lexus,,,1,1,1,6,7,3,"Estética diferenciada, sistema híbrido en ciudad, calidad de construcción","Prestaciones anestesiadas por el propio sistema híbrido, precio elevado"
+Audi SQ5,Audi,,,1,6,1,8,1,4,,
+BMW X5 PHEV,BMW,,,1,1,1,1,8,3,,
+Lotus Exige,Lotus,,,4,8,1,1,1,9,"Pureza, ligereza, agilidad, tacto de conducción, diversión al volante","Para ser tan ligero renuncia a casi todo, especialmente a todo el confort"
+Audi TT RS Roadster,Audi,,,1,7,1,1,1,7,,
+Audi TT RS,Audi,,,1,7,1,1,1,6,,
+Maserati Levante,Maserati,,,1,4,1,1,1,4,,
+Porsche Cayenne E Hybrid PHEV,Porsche,,,1,5,1,9,8,4,"Prestaciones, comportamiento, tacto de conducción, exclusividad, etiqueta CERO","Nunca una etiqueta CERO tuvo tan poco sentido, pero si te lo puedes permitir..."
+Maserati Quattroporte,Maserati,,,1,6,1,6,1,6,,
+Porsche Cayenne Coupé,Porsche,,,1,5,1,8,1,4,,
+Lotus Evora,Lotus,,,1,7,1,1,1,8,,
+Ferrari 488,Ferrari,,,1,9,1,1,1,10,,
+Ferrari F812 Superfast,Ferrari,,,1,9,1,1,1,10,"Historia, diseño, pureza, exclusividad, sonido del motor, tacto de conducción, todas las sensaciones que transmite,",No poder tener uno
+Aston Martin DBS,Aston Martin,,,1,8,1,1,1,9,,

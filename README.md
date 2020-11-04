@@ -44,7 +44,7 @@ la activacion del entorno se realiza ejecutando:
  * falsk
  * mysql-flask
  * passlib
- * 
+ * pandas
  
  
  -- edit

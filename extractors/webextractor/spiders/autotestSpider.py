@@ -1,6 +1,6 @@
 import scrapy
 from scrapy.linkextractors import LinkExtractor 
-from webstractor.items import AutotestItem
+from webextractor.items import AutotestItem
 import json
 import urllib
 
