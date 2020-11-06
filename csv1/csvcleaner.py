@@ -17,7 +17,7 @@ class Csvcleaner:
         for index, row in df_opinautos.iterrows():
             df_opinautos.iloc[index,4]=df_opinautos.iloc[index,4].replace(u"\r",u" ").replace(u"\n",u" ").strip()# Ajuste de texto en opiniones
         df_opinautos['Fecha'] = pd.to_datetime(df_opinautos['Fecha'])# Conversion de formato de fecha
-        df_opinautos.to_csv("opinautos_items_parsed.csv",index=False)
+        df_opinautos.to_csv("opinautos_items_filtered.csv",index=False)
         return df_opinautos
 
     @staticmethod
@@ -29,7 +29,7 @@ class Csvcleaner:
         names=['Nombre', 'Marca','Modelo', 'C_General','C_Vida','C_Diseño','C_Manejo','C_Performance','A_favor','En_contra'])
         df_autotest=Csvcleaner.FilterBrand(df_autotest,'Marca')# Filtrado de marcas
         df_autotest=Csvcleaner.FilterModel(df_autotest,'Modelo')# Filtrado de modelos
-        df_opinautos.to_csv("autotest_items_parsed.csv",index=False)
+        df_opinautos.to_csv("autotest_items_filtered.csv",index=False)
         return df_autotest
 
     @staticmethod
@@ -43,7 +43,7 @@ class Csvcleaner:
         df_motor.dropna(subset=['Nombre'], inplace=True)
         df_motor=Csvcleaner.FilterBrand(df_motor,'Nombre')# Filtrado de marcas
         df_motor=Csvcleaner.FilterModel(df_motor,'Nombre')# Filtrado de modelos
-        df_opinautos.to_csv("motorpasion_items_parsed.csv",index=False)
+        df_opinautos.to_csv("motorpasion_items_filtered.csv",index=False)
         return df_motor
 
     @staticmethod
@@ -56,7 +56,7 @@ class Csvcleaner:
        'C_practico', 'C_ecologico', 'C_atractivo', 'Lo_mejor', 'Lo_peor'])
         df_quecoche=Csvcleaner.FilterBrand(df_quecoche,'Marca')# Filtrado de marcas
         df_quecoche=Csvcleaner.FilterModel(df_quecoche,'Nombre')# Filtrado de modelos
-        df_opinautos.to_csv("quecoche_items_parsed.csv",index=False)
+        df_opinautos.to_csv("quecoche_items_filtered.csv",index=False)
         return df_quecoche
 
 
