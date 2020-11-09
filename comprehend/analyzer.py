@@ -1,7 +1,8 @@
+from comprehend import Comprehend
+from csv1.csvcleaner import Csvcleaner
 import json
 import csv
 import pandas
-from comprehend import Comprehend
 
 class Analyzer:
 
@@ -39,3 +40,44 @@ class Analyzer:
             df_opinautos.iloc[index,13]=sccores
         print(df_opinautos)
         df_opinautos.to_csv("quecoche_items_parsed.csv",index=False)
+
+
+    @staticmethod
+    def AnalizeAutotest():
+        df_opinautos=Csvcleaner.FilterDataAutotest() # filtro y limpieza de de datos extraidos
+
+        df_opinautos['keyPhrasesFavor']=''
+        df_opinautos['ScoresFavor']=''
+        df_opinautos['keyPhrasesContra']=''
+        df_opinautos['ScoresContra']=''
+
+        comprehend=Comprehend(service='comprehend', region='us-east-2', language='es')
+
+        for index, row in df_opinautos.iterrows():
+            keyPrasesFavorResult=comprehend.getKeyPhrases(text=df_opinautos.iloc[index,8]) #keyphraes
+            keyPrasesContraResult=comprehend.getKeyPhrases(text=df_opinautos.iloc[index,9]) #keyphraes
+            keyPhrasesFavor=''
+            ScoresFavor=''
+            keyPhrasesContra=''
+            ScoresContra=''
+
+            for keyP in keyPrasesFavorResult['KeyPhrases']:
+                keyPhrasesFavor+=str(keyP['Text'])
+                keyPhrasesFavor+=','
+                ScoresFavor+=str(keyP['Score'])
+                ScoresFavor+=','
+
+            for keyP in keyPrasesContraResult['KeyPhrases']:
+                keyPhrasesContra+=str(keyP['Text'])
+                keyPhrasesContra+=','
+                ScoresContra+=str(keyP['Score'])
+                ScoresContra+=','
+
+            df_opinautos.iloc[index,8]=keyPhrasesFavor
+            df_opinautos.iloc[index,9]=ScoresFavor
+            df_opinautos.iloc[index,10]=keyPhrasesContra
+            df_opinautos.iloc[index,11]=ScoresContra
+            
+        print(df_opinautos)
+        df_opinautos.to_csv("quecoche_items_parsed.csv",index=False)
+
