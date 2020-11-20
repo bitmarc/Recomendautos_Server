@@ -1,4 +1,4 @@
-from comprehend import Comprehend
+from comprehend.comprehend import Comprehend
 from csv1.csvcleaner import Csvcleaner
 import json
 import csv
@@ -38,24 +38,24 @@ class Analyzer:
             df_opinautos.iloc[index,11]=sentimentResult['SentimentScore']['Mixed']
             df_opinautos.iloc[index,12]=keyPhrases
             df_opinautos.iloc[index,13]=sccores
-        print(df_opinautos)
+            print(index)
         df_opinautos.to_csv("quecoche_items_parsed.csv",index=False)
-
+        print(df_opinautos)
 
     @staticmethod
     def AnalizeAutotest():
-        df_opinautos=Csvcleaner.FilterDataAutotest() # filtro y limpieza de de datos extraidos
+        df_autotest=Csvcleaner.FilterDataAutotest() # filtro y limpieza de de datos extraidos
 
-        df_opinautos['keyPhrasesFavor']=''
-        df_opinautos['ScoresFavor']=''
-        df_opinautos['keyPhrasesContra']=''
-        df_opinautos['ScoresContra']=''
+        df_autotest['keyPhrasesFavor']=''
+        df_autotest['ScoresFavor']=''
+        df_autotest['keyPhrasesContra']=''
+        df_autotest['ScoresContra']=''
 
         comprehend=Comprehend(service='comprehend', region='us-east-2', language='es')
 
-        for index, row in df_opinautos.iterrows():
-            keyPrasesFavorResult=comprehend.getKeyPhrases(text=df_opinautos.iloc[index,8]) #keyphraes
-            keyPrasesContraResult=comprehend.getKeyPhrases(text=df_opinautos.iloc[index,9]) #keyphraes
+        for index, row in df_autotest.iterrows():
+            keyPrasesFavorResult=comprehend.getKeyPhrases(text=df_autotest.iloc[index,8]) #keyphraes
+            keyPrasesContraResult=comprehend.getKeyPhrases(text=df_autotest.iloc[index,9]) #keyphraes
             keyPhrasesFavor=''
             ScoresFavor=''
             keyPhrasesContra=''
@@ -73,11 +73,11 @@ class Analyzer:
                 ScoresContra+=str(keyP['Score'])
                 ScoresContra+=','
 
-            df_opinautos.iloc[index,8]=keyPhrasesFavor
-            df_opinautos.iloc[index,9]=ScoresFavor
-            df_opinautos.iloc[index,10]=keyPhrasesContra
-            df_opinautos.iloc[index,11]=ScoresContra
+            df_autotest.iloc[index,10]=keyPhrasesFavor
+            df_autotest.iloc[index,11]=ScoresFavor
+            df_autotest.iloc[index,12]=keyPhrasesContra
+            df_autotest.iloc[index,13]=ScoresContra
             
-        print(df_opinautos)
-        df_opinautos.to_csv("quecoche_items_parsed.csv",index=False)
+        print(df_autotest)
+        df_autotest.to_csv("autotest_items_parsed.csv",index=False)
 

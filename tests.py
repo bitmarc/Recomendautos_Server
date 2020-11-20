@@ -1,10 +1,12 @@
-from csv1.csvcleaner import Csvcleaner
-from comprehend.comprehend import Comprehend
-import pandas as pd
-import json
+#from csv1.csvcleaner import Csvcleaner
+#from comprehend.comprehend import Comprehend
+from comprehend.analyzer import Analyzer
+#import pandas as pd
+#import json
 
 # solo puebas
-
+print('hola')
+Analyzer.AnalizeOpinautos()
 
 '''
 # se;alizacion

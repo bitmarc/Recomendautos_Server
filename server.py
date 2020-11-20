@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_restful import Resource, Api
 from flask_httpauth import HTTPBasicAuth
-from flask_mysqldb import MySQL
 
 from sessionManager import SessionManager as sm
 from dbManager import Querys
@@ -23,7 +22,7 @@ def verify_password(username, password):
     userQ=MyConnection.getUserByUsername(username)
     if(userQ):
         user = User("0",userQ[2],"0","0")
-        user.setPasswordHash(userQ[3])
+        user.setPasswordHash(userQ[4])
         if not user or not user.verify_password(password):
             print("usuario '{0}' no autorizado".format(username))
             return False
@@ -76,13 +75,13 @@ class verifyUser(Resource):
         GUID=request.json['id']
         user=MyConnection.getUserByUsername(fakeUser.getUserName())
         if(user):
-            fakeUser.setPasswordHash(user[3])
+            fakeUser.setPasswordHash(user[4])
             if(fakeUser.verify_password(request.json['password'])):
                 sk=sm.generateSessionkey(user[0],GUID)
-                if(MyConnection.addSk(user[0],sk)):
+                if(MyConnection.addSk(user[0],sk,"ACTIVOS")):
                     fakeUser.setId(sk)
                     fakeUser.setPersonName(user[1])
-                    fakeUser.setEmail(user[4])
+                    fakeUser.setEmail(user[3])
                     print("El usuario {} accedio satisfactoriamente".format(fakeUser.getUserName()))
                     return jsonify({"message":"El usuario accedio satisfactoriamente", "user": fakeUser.get_user()})
                 print("Error al agregar sk en db")
@@ -119,7 +118,7 @@ class dataUser(Resource):
                     fakeUser.setPersonName(user[1])
                     fakeUser.setUserName(user[2])
                     fakeUser.setPassword("password") #el password nunca se envia como una respuesta
-                    fakeUser.setEmail(user[4])
+                    fakeUser.setEmail(user[3])
                     print("El usuario {},ha sido actualizado correctamente".format(fakeUser.getUserName()))
                     return jsonify({"message":"Usuario actualizado correctamente", "user": fakeUser.get_user()}) 
                 print("El usuario {},ha sido actualizado correctamente, error al retornar nuevos datos".format(fakeUser.getUserName()))

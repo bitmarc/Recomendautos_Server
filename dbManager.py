@@ -8,13 +8,15 @@ class Querys:
         app.config['MYSQL_HOST'] = '192.168.0.102'
         app.config['MYSQL_USER'] = 'adm1'
         app.config['MYSQL_PASSWORD'] = 'marcpass'
-        app.config['MYSQL_DB'] = 'dbtestuser'
+        app.config['MYSQL_DB'] = 'recomendautosdb'
         self.__mysql = MySQL(app)
 
-    def addNewUser(self, user):
+# CONSULTAS USUARIO
+    def addNewUser(self, user):#+
         try:
             cur = self.__mysql.connection.cursor()
-            cur.execute('INSERT INTO Users (personal_Name, username, password1, email) VALUES (%s, %s, %s, %s)',(user.getPersonName(), user.getUserName(), user.getPasswordHash(), user.getEmail()))
+            cur.execute('CALL sp_insertaUsuario(%s,%s,%s,%s)',
+            (user.getPersonName(), user.getUserName(), user.getEmail(), user.getPasswordHash()))
             self.__mysql.connection.commit()
             return True
         except Exception as e:
@@ -24,114 +26,182 @@ class Querys:
     def getUserByUsername(self, username):
         try:
             cur = self.__mysql.connection.cursor()
-            cur.execute("SELECT * FROM Users WHERE username = %s",[username])
+            cur.execute('CALL sp_obtenerUsuarioPorNusuario(%s)',[username])
             data=cur.fetchone()
             return data
         except Exception as e:
             print("Error al obtener datos de usuario de la base de datos: " + str(e))
             return False
+    
+    def getUserById(self, id):
+        cur = self.__mysql.connection.cursor()
+        cur.execute('CALL sp_obtenerUsuarioPorId(%s)',[id])
+        data=cur.fetchone()
+        return data
 
-    def getUserBySessionKey(self, sk):
+    def getIdByUsername(self, username):
+        cur = self.__mysql.connection.cursor()
+        cur.execute('CALL sp_obtenerIdPorNombreU(%s)',[username])
+        data=cur.fetchone()
+        return data
+
+    def updateUser(self, user, id):#+
         try:
             cur = self.__mysql.connection.cursor()
-            cur.execute("""
-            SELECT Users.idUser, personal_Name, username, password1, email 
-            FROM Users INNER JOIN Sessions 
-            ON Users.idUser = Sessions.idUser WHERE session_key = %s""",[sk])
-            data=cur.fetchone()
-            return data
-        except Exception as e:
-            print("Error al obtener usuario medainte sk de la base de datos: " + str(e))
-            return False
-        
-    # EDIT el password no cambia por ahora
-    def updateUser(self, user, id):
-        try:
-            cur = self.__mysql.connection.cursor()
-            cur.execute("""
-            UPDATE Users 
-            SET personal_name = %s,
-            username = %s,
-            email = %s,
-            password1 = %s 
-            WHERE idUser = %s
-            """, (user.getPersonName(), user.getUserName(), user.getEmail(), user.getPasswordHash(), id))
+            cur.execute('CALL sp_actualizarUsuario(%s,%s,%s,%s,%s)', 
+            (user.getPersonName(), user.getUserName(), user.getEmail(), user.getPasswordHash(), id))
             self.__mysql.connection.commit()
             return True
         except Exception as e:
             print("Error al actualizr datos de usuario: " + str(e))
             return False
 
-    def getIdByUsername(self, username):
-        cur = self.__mysql.connection.cursor()
-        cur.execute("SELECT idUser FROM Users WHERE username = %s",[username])
-        data=cur.fetchone()
-        return data
-
-    def getIdBySessionKey(self, sk):
+# CONSULTAS sesion
+    def addSk(self,id,sk,status):
         try:
             cur = self.__mysql.connection.cursor()
-            cur.execute("""
-            SELECT Users.idUser 
-            FROM Users INNER JOIN Sessions 
-            ON Users.idUser = Sessions.idUser WHERE session_key = %s""",[sk])
-            data=cur.fetchone()
-            return data
-        except Exception as e:
-            print("Error al obtener Id: " + str(e))
-            return False
-
-    def getUserById(self, id):
-        cur = self.__mysql.connection.cursor()
-        cur.execute("SELECT * FROM Users WHERE idUser = %s",[id])
-        data=cur.fetchone()
-        return data
-
-    def addSk(self,id,sk):
-        try:
-            cur = self.__mysql.connection.cursor()
-            cur.execute("""
-            INSERT INTO Sessions 
-            (idUser, session_key, status_session) 
-            VALUES (%s, %s, %s)""",(id, sk, "active"))
+            cur.execute('CALL sp_insertarSesion(%s,%s,%s)',(id, sk, status))
             self.__mysql.connection.commit()
             return True
         except Exception as e:
             print("Error al agregar sk de la base de datos: " + str(e))
             return False
 
-    def getForm(self):
+    def getUserBySessionKey(self, sk):
         try:
             cur = self.__mysql.connection.cursor()
-            cur.execute("""
-            SELECT * FROM Questions AS q 
-            INNER JOIN  Qoptions AS o 
-            ON q.idQuestion=o.idQuestion""")
-            data=cur.fetchall()
+            cur.execute('CALL sp_obtenerUsuarioPorSk(%s)',[sk])
+            data=cur.fetchone()
             return data
         except Exception as e:
-            print("Error al obtener formulario de base de datos: " + str(e))
+            print("Error al obtener usuario medainte sk de la base de datos: " + str(e))
             return False
+
+    def getIdBySessionKey(self, sk):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerIdPorSk(%s)',[sk])
+            data=cur.fetchone()
+            return data
+        except Exception as e:
+            print("Error al obtener Id: " + str(e))
+            return False
+
+    def UpdateSessionbyId(self, id, sk, estado):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_actualizarSesionPorId(%s,%s,%s)', (id,sk,estado))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al actualizar sesion: " + str(e))
+            return False
+
+    def getIdSessionBySessionKey(self, sk):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerIdSesionPorSk',[sk])
+            data=cur.fetchone()
+            return data
+        except Exception as e:
+            print("Error al obtener Id: " + str(e))
+            return False
+
+# CONSULTAS preguntas
 
     def getFormQ(self):
         try:
             cur = self.__mysql.connection.cursor()
-            cur.execute("select * from Questions")
+            cur.execute("select * from preguntas")
             data=cur.fetchall()
             return data
         except Exception as e:
             print("Error al obtener preguntas de formulario de base de datos: " + str(e))
             return False
 
+# CONSULTAS respuestas
+
     def getFormO(self):
         try:
             cur = self.__mysql.connection.cursor()
-            cur.execute("select * from Qoptions")
+            cur.execute("select * from respuestas")
             data=cur.fetchall()
             return data
         except Exception as e:
             print("Error al obtener opciones de formulario de base de datos: " + str(e))
             return False
+
+# CONSULTAS solicitudes
+
+    def getForm(self):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL obtenerFormulario()')
+            data=cur.fetchall()
+            return data
+        except Exception as e:
+            print("Error al obtener formulario de base de datos: " + str(e))
+            return False
+
+    def addRequest(self,typeR,date,idUser):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_insertarSolicitud(%s,%s,%s)',(typeR, date, idUser))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al agregar sk de la base de datos: " + str(e))
+            return False
+
+# CONSULTAS resultados
+    def addResult(self,id_Req,id_que,id_resp):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_insertarResultado(%s,%s,%s)',(id_Req, id_que, id_resp))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al agregar resultado de la base de datos: " + str(e))
+            return False
+    
+# CONSULTAS recomendacion
+
+    def addRecom(self,id_Req,id_prof):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_insertarRecomendacion(%s,%s)',(id_Req, id_prof))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al agregar recomendacion en la base de datos: " + str(e))
+            return False
+
+# CONSULTAS automoviles
+    def getAuto(self):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute("""
+            SELECT * FROM automoviles""")
+            data=cur.fetchall()
+            return data
+        except Exception as e:
+            print("Error al obtener automoviles de base de datos: " + str(e))
+            return False
+
+# CONSULTAS perfiles
+
+    def getPerfil(self,id_prof):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute("""
+            SELECT * FROM perfiles 
+            WHERE id_perfil=%s """,[id_prof])
+            data=cur.fetchall()
+            return data
+        except Exception as e:
+            print("Error al obtener perfil de base de datos: " + str(e))
+            return False
+
 
     def getMysql(self):
         return self.__mysql
