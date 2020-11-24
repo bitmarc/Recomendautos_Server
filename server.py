@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request
 from flask_restful import Resource, Api
 from flask_httpauth import HTTPBasicAuth
+from datetime import datetime
+import json
 
 from sessionManager import SessionManager as sm
 from dbManager import Querys
@@ -9,6 +11,7 @@ from entities.user import User
 from entities.form import Form
 from entities.option import Option
 from entities.question import Question
+from recommendationManger import RecommendationManager
 
 # VARIABLES
 app = Flask(__name__)
@@ -132,6 +135,23 @@ class getForm(Resource):
         formulario=FormManager.buildForm(MyConnection)
         return jsonify(formulario.getForm())
 
+# Obtener recomendacion
+class getRecom(Resource):
+    def post(self):
+        #crear solicitud en tabla solicitudes
+        myString = json.dumps(request.json, sort_keys=True, indent=4)
+        #print(myString)
+        now = datetime.now()
+        sk=request.json['user']['id']
+        id=MyConnection.getIdBySessionKey(sk)
+        if (id):
+            idReq=MyConnection.addRequest("FormA",now,id[0])
+            if(idReq):
+                if(RecommendationManager.setResults(request.json['form'],MyConnection,idReq[0])):
+                    RecommendationManager.getRecommendation(idReq[0],MyConnection)
+        return jsonify({"idRecommendation":"100"})
+
+
 # ASOCIACION DE RECURSOS Y RUTAS
 api.add_resource(home,"/")
 api.add_resource(wellcome,"/wellcome")
@@ -141,6 +161,7 @@ api.add_resource(checkEmail,"/signUp/email/<string:user_email>")
 api.add_resource(verifyUser,"/logIn")
 api.add_resource(dataUser,"/user")
 api.add_resource(getForm,"/form")
+api.add_resource(getRecom,"/recom")
 
 # CONFIGURACION DE EJCUCION
 if __name__ == "__main__":

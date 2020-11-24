@@ -147,10 +147,10 @@ class Querys:
         try:
             cur = self.__mysql.connection.cursor()
             cur.execute('CALL sp_insertarSolicitud(%s,%s,%s)',(typeR, date, idUser))
-            self.__mysql.connection.commit()
-            return True
+            data=cur.fetchall()
+            return data
         except Exception as e:
-            print("Error al agregar sk de la base de datos: " + str(e))
+            print("Error al agregar y obtener datos de solicitud : " + str(e))
             return False
 
 # CONSULTAS resultados

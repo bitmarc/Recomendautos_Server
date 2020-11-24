@@ -4,6 +4,7 @@ class Question:
         self.__title=title
         self.__hint=hint
         self.__arrOptions=arrOptions
+        self.__answer=0
 
     def getId(self):
         return self.__id
@@ -38,5 +39,5 @@ class Question:
         data=[]
         for option in self.__arrOptions:
             data.append(option.getOption())
-        data={"id":self.__id, "title":self.__title, "hint":self.__hint, "options":data}
+        data={"id":self.__id, "title":self.__title, "hint":self.__hint, "options":data, "answer":self.__answer}
         return data
