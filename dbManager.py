@@ -163,17 +163,47 @@ class Querys:
         except Exception as e:
             print("Error al agregar resultado de la base de datos: " + str(e))
             return False
-    
+
 # CONSULTAS recomendacion
 
     def addRecom(self,id_Req,id_prof):
         try:
             cur = self.__mysql.connection.cursor()
             cur.execute('CALL sp_insertarRecomendacion(%s,%s)',(id_Req, id_prof))
+            data=cur.fetchall()
+            return data
+        except Exception as e:
+            print("Error al agregar y obtener recomendacion en la base de datos: " + str(e))
+            return False
+
+    def addResultRecom(self,idRecom,idAuto):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_insertarResultadoRecom(%s,%s)',(idRecom, idAuto))
             self.__mysql.connection.commit()
             return True
         except Exception as e:
-            print("Error al agregar recomendacion en la base de datos: " + str(e))
+            print("Error al obtener formulario de base de datos: " + str(e))
+            return False
+
+    def getRecomByIdReq(self,id_Req):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerRecomPorIdSol(%s)',[id_Req])
+            data=cur.fetchall()
+            return data
+        except Exception as e:
+            print("Error al obtener recomendacion de la base de datos: " + str(e))
+            return False
+
+    def getAutosByIdRecom(self,id_Recom):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerAutomovilesPorIdRecom(%s)',[id_Recom])
+            data=cur.fetchall()
+            return data
+        except Exception as e:
+            print("Error al obtener resultados de automoviles de la base de datos: " + str(e))
             return False
 
 # CONSULTAS automoviles

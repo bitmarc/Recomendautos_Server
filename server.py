@@ -148,8 +148,13 @@ class getRecom(Resource):
             idReq=MyConnection.addRequest("FormA",now,id[0])
             if(idReq):
                 if(RecommendationManager.setResults(request.json['form'],MyConnection,idReq[0])):
-                    RecommendationManager.getRecommendation(idReq[0],MyConnection)
-        return jsonify({"idRecommendation":"100"})
+                    result=RecommendationManager.getRecommendation(idReq[0],MyConnection)
+                    if(result):
+                        return jsonify(result)
+                    else:
+                        return jsonify({"idRecommendation":"100"})
+        else:
+            return jsonify({"idRecommendation":"100"})
 
 
 # ASOCIACION DE RECURSOS Y RUTAS

@@ -1,5 +1,3 @@
-from entities.question import Question
-
 class Form:
 
     def __init__(self,id,arrQuestions):
