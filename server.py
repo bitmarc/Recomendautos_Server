@@ -12,6 +12,9 @@ from entities.form import Form
 from entities.option import Option
 from entities.question import Question
 from recommendationManger import RecommendationManager
+from entities.requestResult import RequestResult
+from entities.history import History
+from entities.automobile import Automobile
 
 # VARIABLES
 app = Flask(__name__)
@@ -30,7 +33,7 @@ def verify_password(username, password):
             print("usuario '{0}' no autorizado".format(username))
             return False
         print("usuario '{0}' autorizado".format(username))
-        return userQ[1]
+        return userQ[1:3]
     print("usuario '{0}' no autorizado".format(username))
     return False
 
@@ -43,7 +46,7 @@ class home(Resource):
 class wellcome(Resource):
     @auth.login_required
     def get(self):
-        return jsonify({"message":"Hola {}!,\n Bienvenido".format(auth.current_user())})
+        return jsonify({"message":"Hola {}!,\n Bienvenido".format(auth.current_user()[0])})
 
 # Registro de nuevos usaurios
 class addUser(Resource):
@@ -139,7 +142,7 @@ class getForm(Resource):
 class getRecom(Resource):
     def post(self):
         #crear solicitud en tabla solicitudes
-        myString = json.dumps(request.json, sort_keys=True, indent=4)
+        #myString = json.dumps(request.json, sort_keys=True, indent=4)
         #print(myString)
         now = datetime.now()
         sk=request.json['user']['id']
@@ -156,6 +159,27 @@ class getRecom(Resource):
         else:
             return jsonify({"idRecommendation":"100"})
 
+# Obtener historial
+class getHistory(Resource):
+    @auth.login_required
+    def get(self):
+        idUser=MyConnection.getIdByUsername(auth.current_user()[1])
+        hRequests=MyConnection.getHistoryRequestByIdUser(idUser)
+        if(hRequests):
+            arrRequests=[]
+            for hRequest in hRequests:
+                data_Autos=MyConnection.getAutosByIdReq(hRequest[0])
+                arrAutos=[]
+                for data_Auto in data_Autos:
+                    arrAutos.append(Automobile(data_Auto[1],data_Auto[2],data_Auto[3],data_Auto[4],data_Auto[5]))
+                form=FormManager.buildFormResponse(MyConnection,hRequest[0])
+                arrRequests.append(RequestResult(hRequest[0],hRequest[1],hRequest[2],hRequest[3],arrAutos,form))
+            response=History(len(arrRequests),arrRequests)
+            return jsonify(response.getHistory())
+        else:
+            response=History(0,RequestResult(0,0,0,0,0,0))
+            return jsonify(response.getHistory())
+
 
 # ASOCIACION DE RECURSOS Y RUTAS
 api.add_resource(home,"/")
@@ -167,6 +191,7 @@ api.add_resource(verifyUser,"/logIn")
 api.add_resource(dataUser,"/user")
 api.add_resource(getForm,"/form")
 api.add_resource(getRecom,"/recom")
+api.add_resource(getHistory,"/history")
 
 # CONFIGURACION DE EJCUCION
 if __name__ == "__main__":

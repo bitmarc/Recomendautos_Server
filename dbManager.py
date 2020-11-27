@@ -143,6 +143,16 @@ class Querys:
             print("Error al obtener formulario de base de datos: " + str(e))
             return False
 
+    def getFormResponsesByIdReq(self, id_Req):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerResultadosPorIdSol(%s)',[id_Req])
+            data=cur.fetchall()
+            return data
+        except Exception as e:
+            print("Error al obtener resultados de base de datos: " + str(e))
+            return False
+
     def addRequest(self,typeR,date,idUser):
         try:
             cur = self.__mysql.connection.cursor()
@@ -154,6 +164,7 @@ class Querys:
             return False
 
 # CONSULTAS resultados
+
     def addResult(self,id_Req,id_que,id_resp):
         try:
             cur = self.__mysql.connection.cursor()
@@ -206,6 +217,26 @@ class Querys:
             print("Error al obtener resultados de automoviles de la base de datos: " + str(e))
             return False
 
+    def getAutosByIdReq(self,id_Req):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerAutomovilesPorIdSol(%s)',[id_Req])
+            data=cur.fetchall()
+            return data
+        except Exception as e:
+            print("Error al obtener resultados de automoviles de la base de datos: " + str(e))
+            return False
+
+    def getHistoryRequestByIdUser(self,id_user):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerHistSolPorIdUser(%s)',[id_user])
+            data=cur.fetchall()
+            return data
+        except Exception as e:
+            print("Error al obtener historial de solicitudes de la base de datos: " + str(e))
+            return False
+            
 # CONSULTAS automoviles
     def getAuto(self):
         try:
