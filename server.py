@@ -165,6 +165,8 @@ class getHistory(Resource):
     def get(self):
         idUser=MyConnection.getIdByUsername(auth.current_user()[1])
         hRequests=MyConnection.getHistoryRequestByIdUser(idUser)
+        print(hRequests)
+        print(len(hRequests))
         if(hRequests):
             arrRequests=[]
             for hRequest in hRequests:
@@ -177,8 +179,8 @@ class getHistory(Resource):
             response=History(len(arrRequests),arrRequests)
             return jsonify(response.getHistory())
         else:
-            response=History(0,RequestResult(0,0,0,0,0,0))
-            return jsonify(response.getHistory())
+            #response=History(0,RequestResult(0,0,0,0,0,0))
+            return jsonify({"requests":0})
 
 
 # ASOCIACION DE RECURSOS Y RUTAS

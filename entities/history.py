@@ -10,6 +10,10 @@ class History:
             data.append(reqRes.get_RequestResult())
         data={"requests":self.__message, "arrRequest":data}
         return data
+    
+    def getHistoryNull(self):
+        data={"requests":self.__message}
+        return data
 
     def getMessage(self):
         return self.__message
