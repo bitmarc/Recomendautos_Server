@@ -26,18 +26,20 @@ class Csvcleaner:
     def FilterDataAutotest():
         base_path = Path(__file__).parent
         file_path = (base_path / "../extractors/autotest_items.csv").resolve()
+        file_path_out = (base_path / "../extractors/autotest_items_filtered.csv").resolve()
         df_autotest = pd.read_csv(file_path,encoding='utf-8',
         header=0,
         names=['Nombre', 'Marca','Modelo', 'C_General','C_Vida','C_Diseño','C_Manejo','C_Performance','A_favor','En_contra'])
         df_autotest=Csvcleaner.FilterBrand(df_autotest,'Marca')# Filtrado de marcas
         df_autotest=Csvcleaner.FilterModel(df_autotest,'Modelo')# Filtrado de modelos
-        df_autotest.to_csv("autotest_items_filtered.csv",index=False)
+        df_autotest.to_csv(file_path_out,index=False)
         return df_autotest
 
     @staticmethod
     def FilterDataMotorpasion():
         base_path = Path(__file__).parent
         file_path = (base_path / "../extractors/motorpasion_items.csv").resolve()
+        file_path_out = (base_path / "../extractors/motorpasion_items_filtered.csv").resolve()
         df_motor = pd.read_csv(file_path,encoding='utf-8',
         header=0,
         names=['Nombre', 'Version', 'C_General','C_Acabados','C_Seguridad','C_Equipamiento','C_Infotenimiento',
@@ -45,20 +47,21 @@ class Csvcleaner:
         df_motor.dropna(subset=['Nombre'], inplace=True)
         df_motor=Csvcleaner.FilterBrand(df_motor,'Nombre')# Filtrado de marcas
         df_motor=Csvcleaner.FilterModel(df_motor,'Nombre')# Filtrado de modelos
-        df_motor.to_csv("motorpasion_items_filtered.csv",index=False)
+        df_motor.to_csv(file_path_out,index=False)
         return df_motor
 
     @staticmethod
     def FilterDataQuecoche():
         base_path = Path(__file__).parent
         file_path = (base_path / "../extractors/quecochemecompro_items.csv").resolve()
+        file_path_out = (base_path / "../extractors/quecochemecompro_items_filtered.csv").resolve()
         df_quecoche = pd.read_csv(file_path,encoding='utf-8',
         header=0,
         names=['Nombre', 'Marca', 'Puntuacion', 'Informativo', 'C_peque_manej', 'C_deportivo', 'C_bueno_barato',
        'C_practico', 'C_ecologico', 'C_atractivo', 'Lo_mejor', 'Lo_peor'])
         df_quecoche=Csvcleaner.FilterBrand(df_quecoche,'Marca')# Filtrado de marcas
         df_quecoche=Csvcleaner.FilterModel(df_quecoche,'Nombre')# Filtrado de modelos
-        df_quecoche.to_csv("quecoche_items_filtered.csv",index=False)
+        df_quecoche.to_csv(file_path_out,index=False)
         return df_quecoche
 
 

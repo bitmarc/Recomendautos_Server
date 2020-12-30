@@ -39,7 +39,7 @@ class Analyzer:
             df_opinautos.iloc[index,12]=keyPhrases
             df_opinautos.iloc[index,13]=sccores
             print(index)
-        df_opinautos.to_csv("quecoche_items_parsed.csv",index=False)
+        df_opinautos.to_csv("opinautos_items_Comprehend_parsed.csv",index=False)
         print(df_opinautos)
 
     @staticmethod
@@ -54,30 +54,31 @@ class Analyzer:
         comprehend=Comprehend(service='comprehend', region='us-east-2', language='es')
 
         for index, row in df_autotest.iterrows():
-            keyPrasesFavorResult=comprehend.getKeyPhrases(text=df_autotest.iloc[index,8]) #keyphraes
-            keyPrasesContraResult=comprehend.getKeyPhrases(text=df_autotest.iloc[index,9]) #keyphraes
-            keyPhrasesFavor=''
-            ScoresFavor=''
-            keyPhrasesContra=''
-            ScoresContra=''
+            if not pandas.isnull(df_autotest.iloc[index,8]):
+                keyPrasesFavorResult=comprehend.getKeyPhrases(text=df_autotest.iloc[index,8]) #keyphraes
+                keyPhrasesFavor=''
+                ScoresFavor=''
 
-            for keyP in keyPrasesFavorResult['KeyPhrases']:
-                keyPhrasesFavor+=str(keyP['Text'])
-                keyPhrasesFavor+=','
-                ScoresFavor+=str(keyP['Score'])
-                ScoresFavor+=','
+                for keyP in keyPrasesFavorResult['KeyPhrases']:
+                    keyPhrasesFavor+=str(keyP['Text'])
+                    keyPhrasesFavor+=','
+                    ScoresFavor+=str(keyP['Score'])
+                    ScoresFavor+=','
+                df_autotest.iloc[index,10]=keyPhrasesFavor
+                df_autotest.iloc[index,11]=ScoresFavor
 
-            for keyP in keyPrasesContraResult['KeyPhrases']:
-                keyPhrasesContra+=str(keyP['Text'])
-                keyPhrasesContra+=','
-                ScoresContra+=str(keyP['Score'])
-                ScoresContra+=','
-
-            df_autotest.iloc[index,10]=keyPhrasesFavor
-            df_autotest.iloc[index,11]=ScoresFavor
-            df_autotest.iloc[index,12]=keyPhrasesContra
-            df_autotest.iloc[index,13]=ScoresContra
+            if not pandas.isnull(df_autotest.iloc[index,9]):
+                keyPrasesContraResult=comprehend.getKeyPhrases(text=df_autotest.iloc[index,9]) #keyphraes
+                keyPhrasesContra=''
+                ScoresContra=''
+                for keyP in keyPrasesContraResult['KeyPhrases']:
+                    keyPhrasesContra+=str(keyP['Text'])
+                    keyPhrasesContra+=','
+                    ScoresContra+=str(keyP['Score'])
+                    ScoresContra+=','
+                df_autotest.iloc[index,12]=keyPhrasesContra
+                df_autotest.iloc[index,13]=ScoresContra
             
         print(df_autotest)
-        df_autotest.to_csv("autotest_items_parsed.csv",index=False)
+        df_autotest.to_csv("autotest_items_Comprehend_parsed.csv",index=False)
 

@@ -1,14 +1,25 @@
-#from csv1.csvcleaner import Csvcleaner
+from csv1.csvcleaner import Csvcleaner
 #from comprehend.comprehend import Comprehend
 from comprehend.analyzer import Analyzer
 #import pandas as pd
-import json
-from datetime import datetime
+#import json
+#from datetime import datetime
 
 # solo puebas
 print('hola')
 #Analyzer.AnalizeOpinautos()
+Analyzer.AnalizeAutotest()
 
+
+'''
+# filtrar datos extraidos
+Csvcleaner.FilterDataAutotest()
+Csvcleaner.FilterDataMotorpasion()
+Csvcleaner.FilterDataQuecoche()
+Csvcleaner.FilterDataOpinautos()
+print('ok')
+'''
+'''
 myjson={
     "id": "0",
     "questions": [
@@ -78,6 +89,7 @@ for x in myjson['questions']:
 
 now = datetime.now()
 print(now)
+'''
 '''
 # se;alizacion
 df_opinautos=Csvcleaner.FilterDataOpinautos() # filtro de datos
