@@ -1,3 +1,6 @@
+'''
+Clase que modela la entidad "Formulario"
+'''
 class Form:
 
     def __init__(self,id,arrQuestions):

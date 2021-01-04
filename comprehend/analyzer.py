@@ -1,13 +1,20 @@
+'''
+Clase que implementa el servicio de aws comprehend para anlaizar las opiniones extraidas por el web scraper
+incluye la implementacion de csvcleaner para limpiar los datos antes de enviarlos al servicio de comprehend
+'''
 from comprehend.comprehend import Comprehend
 from csv1.csvcleaner import Csvcleaner
 import json
 import csv
 import pandas
+from pathlib import Path
 
 class Analyzer:
 
     @staticmethod
     def AnalizeOpinautos():
+        base_path = Path(__file__).parent
+        file_path_out = (base_path / "../extractors/opinautos_items_Comprehend_parsed.csv").resolve()
         df_opinautos=Csvcleaner.FilterDataOpinautos() # filtro y limpieza de de datos extraidos
 
         df_opinautos['Sentimiento']=''
@@ -39,11 +46,13 @@ class Analyzer:
             df_opinautos.iloc[index,12]=keyPhrases
             df_opinautos.iloc[index,13]=sccores
             print(index)
-        df_opinautos.to_csv("opinautos_items_Comprehend_parsed.csv",index=False)
+        df_opinautos.to_csv(file_path_out,index=False)
         print(df_opinautos)
 
     @staticmethod
     def AnalizeAutotest():
+        base_path = Path(__file__).parent
+        file_path_out = (base_path / "../extractors/autotest_items_Comprehend_parsed.csv").resolve()
         df_autotest=Csvcleaner.FilterDataAutotest() # filtro y limpieza de de datos extraidos
 
         df_autotest['keyPhrasesFavor']=''
@@ -80,5 +89,5 @@ class Analyzer:
                 df_autotest.iloc[index,13]=ScoresContra
             
         print(df_autotest)
-        df_autotest.to_csv("autotest_items_Comprehend_parsed.csv",index=False)
+        df_autotest.to_csv(file_path_out,index=False)
 

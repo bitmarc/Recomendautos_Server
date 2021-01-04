@@ -1,3 +1,6 @@
+'''
+Clase que modela una entidad de recomendación, contiene la informacion de automoviles y perfil
+'''
 class Recommendation:
     def __init__(self, id, arrAutomobiles, profile):
         self.__id=id

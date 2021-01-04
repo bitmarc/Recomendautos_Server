@@ -1,3 +1,6 @@
+'''
+Clase donde se definen las peticiones del servicio de aws comprehend
+'''
 import boto3
 
 class Comprehend:

@@ -1,3 +1,6 @@
+'''
+Clase que administra y maneja la conexión a la base de datos y ejecucion de consultas
+'''
 from flask import Flask, jsonify, request
 from flask_mysqldb import MySQL
 from entities.user import User

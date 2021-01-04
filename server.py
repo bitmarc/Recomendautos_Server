@@ -1,3 +1,7 @@
+'''
+Clase principal, contiene la logica de ejecución del servidor y rutas para consumo de la API
+'''
+
 from flask import Flask, jsonify, request
 from flask_restful import Resource, Api
 from flask_httpauth import HTTPBasicAuth

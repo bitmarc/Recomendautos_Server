@@ -1,3 +1,7 @@
+'''
+Clase que contiene los métodos que manejan la sesión del sistema cliente (aplicacion móvil)
+'''
+
 import random
 import string
 from uuid import getnode as get_mac

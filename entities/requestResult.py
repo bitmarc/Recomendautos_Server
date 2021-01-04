@@ -1,4 +1,7 @@
 
+'''
+Clase que maneja el resultado de una solicitud de recomendacion del usuario
+'''
 class RequestResult:
 
     def __init__(self, id, date, profile, nResults,arrAutos,form):

@@ -1,3 +1,6 @@
+'''
+Clase que maneja datos de historial (Resultados de solicitud pasados)
+'''
 class History:
 
     def __init__(self,message,arrReqRes):

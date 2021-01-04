@@ -1,3 +1,6 @@
+'''
+Clase que modela la entidad de perfil de usuario
+'''
 class Profile:
     def __init__(self,id,name,parameter):
         self.__id=id

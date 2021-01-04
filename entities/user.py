@@ -1,3 +1,6 @@
+'''
+Clase que modela la entidad "usuario" para uso de la aplicacion movil
+'''
 from passlib.apps import custom_app_context as pwd_context
 
 class User:

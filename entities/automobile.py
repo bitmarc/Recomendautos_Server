@@ -1,3 +1,6 @@
+'''
+Clase que modela la entidad "Automovil"
+'''
 class Automobile:
     def __init__(self, id, marca, modelo, año, version):
         self.__id=id

@@ -1,3 +1,6 @@
+'''
+script de Pruebas 
+'''
 from csv1.csvcleaner import Csvcleaner
 #from comprehend.comprehend import Comprehend
 from comprehend.analyzer import Analyzer

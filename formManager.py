@@ -1,3 +1,7 @@
+'''
+Clase auxiliar para el manejo de formularios como entidad.
+utilizada para el envio de un formulario al cliente (nuevo o respondido)
+'''
 from dbManager import Querys
 from entities.form import Form
 from entities.option import Option

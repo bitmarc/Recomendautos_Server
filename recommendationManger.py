@@ -1,3 +1,6 @@
+'''
+Clase que maneja la solicitud y emisión de recomendaciones
+'''
 from entities.recommendation import Recommendation
 from entities.profile import Profile
 from entities.automobile import Automobile

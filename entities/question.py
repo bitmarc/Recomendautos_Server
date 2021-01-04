@@ -1,3 +1,6 @@
+'''
+Clase que modela una entidad pregunta de fromualrio
+'''
 class Question:
     def __init__(self, id, title, hint, arrOptions):
         self.__id=id

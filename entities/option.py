@@ -1,3 +1,6 @@
+'''
+Clase que modela una entidad "opcion" de una pregunta de formulario
+'''
 class Option:
     def __init__(self, id, title, value):
         self.__title=title

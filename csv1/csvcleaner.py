@@ -1,3 +1,7 @@
+'''
+Clase que contiene los métodos que permiten "limpiar" la información extraida por el servicio de web scrapper
+(Es implementada directamente por la calse analyzer)
+'''
 import pandas as pd
 import re
 from pathlib import Path
