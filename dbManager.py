@@ -190,10 +190,10 @@ class Querys:
             print("Error al agregar y obtener recomendacion en la base de datos: " + str(e))
             return False
 
-    def addResultRecom(self,idRecom,idAuto):
+    def addResultRecom(self,idRecom,numero,idAuto):
         try:
             cur = self.__mysql.connection.cursor()
-            cur.execute('CALL sp_insertarResultadoRecom(%s,%s)',(idRecom, idAuto))
+            cur.execute('CALL sp_insertarResultadoRecom(%s,%s,%s)',(idRecom, numero, idAuto))
             self.__mysql.connection.commit()
             return True
         except Exception as e:

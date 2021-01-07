@@ -11,7 +11,7 @@ from comprehend.analyzer import Analyzer
 # solo puebas
 print('hola')
 #Analyzer.AnalizeOpinautos()
-Analyzer.AnalizeAutotest()
+#Analyzer.AnalizeAutotest()
 
 
 '''

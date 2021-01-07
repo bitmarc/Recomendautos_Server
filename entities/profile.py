@@ -2,13 +2,13 @@
 Clase que modela la entidad de perfil de usuario
 '''
 class Profile:
-    def __init__(self,id,name,parameter):
+    def __init__(self,id,name,description):
         self.__id=id
         self.__name=name
-        self.__parameter=parameter
+        self.__description=description
 
     def get_profile(self):
-        data={"id":self.__id, "name":self.__name, "parameter":self.__parameter}
+        data={"id":self.__id, "name":self.__name, "parameter":self.__description}
         return data
 
     def getId(self):
@@ -23,8 +23,8 @@ class Profile:
     def setName(self, name):
         self.__name=name
     
-    def getParameter(self):
-        return self.__parameter
+    def getDescription(self):
+        return self.__description
 
-    def setParameter(self, parameter):
-        self.__parameter=parameter
+    def setDescription(self, description):
+        self.__description=description

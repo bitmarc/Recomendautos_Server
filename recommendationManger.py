@@ -25,8 +25,8 @@ class RecommendationManager:
         if(idRecom):
             #agregar resultados(automoviles)a la recomendacion
             #for
-            MyConnection.addResultRecom(idRecom,2) # id automovil
-            MyConnection.addResultRecom(idRecom,3)
+            MyConnection.addResultRecom(idRecom,214,2) # id automovil
+            MyConnection.addResultRecom(idRecom,215,3)
         # obtener datos nediante id de solisitud idReq
         # en estecaso solo usare las consultas de db sp para regresar resultados
         #la respuesta se devuelve en objetos recommendation
