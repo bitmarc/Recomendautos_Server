@@ -19,6 +19,7 @@ from recommendationManger import RecommendationManager
 from entities.requestResult import RequestResult
 from entities.history import History
 from entities.automobile import Automobile
+from dataExportManager import DataExportManager
 
 # VARIABLES
 app = Flask(__name__)
@@ -186,6 +187,17 @@ class getHistory(Resource):
             #response=History(0,RequestResult(0,0,0,0,0,0))
             return jsonify({"requests":0})
 
+# exportarAtributos
+class pushAttributes(Resource):
+    def get(self):
+        #msg=DataExportManager.exportAtributes(MyConnection)
+        #msg=DataExportManager.exportAutos(MyConnection)
+        #msg=DataExportManager.exportAutosAttributes(MyConnection)
+        #msg=DataExportManager.exportTags(MyConnection)
+        #msg=DataExportManager.exportTagsAttributes(MyConnection)
+        msg=DataExportManager.exportResponsesAttributes(MyConnection)
+        return jsonify('status: '+msg)
+
 
 # ASOCIACION DE RECURSOS Y RUTAS
 api.add_resource(home,"/")
@@ -198,6 +210,7 @@ api.add_resource(dataUser,"/user")
 api.add_resource(getForm,"/form")
 api.add_resource(getRecom,"/recom")
 api.add_resource(getHistory,"/history")
+api.add_resource(pushAttributes,"/pushAttributes")
 
 # CONFIGURACION DE EJCUCION
 if __name__ == "__main__":

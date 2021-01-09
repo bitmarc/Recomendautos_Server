@@ -252,6 +252,72 @@ class Querys:
             print("Error al obtener automoviles de base de datos: " + str(e))
             return False
 
+    def addAuto(self, marca, modelo, año, version):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_insertarAutomoviles(%s,%s,%s,%s)',
+            (marca, modelo, año, version))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al agregar nuevo automovil a la base de datos: " + str(e))
+            return False
+        
+    def addAtribute(self, nombre, categoria):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_insertarAtributo(%s,%s)',
+            (nombre, categoria))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al agregar nuevo atributo en la base de datos: " + str(e))
+            return False
+
+    def addDatasheet(self, idAuto, idAtributo):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_insertarFicha(%s,%s)',
+            (idAuto, idAtributo))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al agregar ficha tecnica a la base de datos: " + str(e))
+            return False
+
+    def addTag(self, nombre, descripcion):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_insertarEtiqueta(%s,%s)',
+            (nombre, descripcion))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al agregar etiqueta a la base de datos: " + str(e))
+            return False
+
+    def addLinkAttributeTag(self, idTag, idAttribute):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_asociarEtiquetas_Atributos(%s,%s)',
+            (idTag, idAttribute))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al asociar atribto-etiqueta en la base de datos: " + str(e))
+            return False
+
+    def addLinkAttributeResponse(self, idResponse, idAttribute):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_asociarRespuestas_Atributos(%s,%s)',
+            (idResponse, idAttribute))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al asociar atribto-respuesta en la base de datos: " + str(e))
+            return False
+
 # CONSULTAS perfiles
 
     def getPerfil(self,id_prof):

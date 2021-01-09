@@ -1,15 +1,19 @@
 '''
 script de Pruebas 
 '''
-from csv1.csvcleaner import Csvcleaner
+from dataExportManager import DataExportManager
+#from csv1.csvcleaner import Csvcleaner
 #from comprehend.comprehend import Comprehend
-from comprehend.analyzer import Analyzer
+#from comprehend.analyzer import Analyzer
 #import pandas as pd
 #import json
 #from datetime import datetime
 
 # solo puebas
 print('hola')
+DataExportManager.exportAtributes('mycon')
+
+
 #Analyzer.AnalizeOpinautos()
 #Analyzer.AnalizeAutotest()
 
