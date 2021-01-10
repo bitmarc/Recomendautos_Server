@@ -195,7 +195,8 @@ class pushAttributes(Resource):
         #msg=DataExportManager.exportAutosAttributes(MyConnection)
         #msg=DataExportManager.exportTags(MyConnection)
         #msg=DataExportManager.exportTagsAttributes(MyConnection)
-        msg=DataExportManager.exportResponsesAttributes(MyConnection)
+        #msg=DataExportManager.exportResponsesAttributes(MyConnection)
+        msg=DataExportManager.exportScoresheet(MyConnection)
         return jsonify('status: '+msg)
 
 

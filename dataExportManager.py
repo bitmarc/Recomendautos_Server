@@ -18,7 +18,6 @@ class DataExportManager:
                 break
         return "ok"
 
-
     @staticmethod
     def exportAutos(MyConnection):
         base_path = Path(__file__).parent
@@ -92,9 +91,26 @@ class DataExportManager:
             i=0
             for data in row:
                 if data==1:
-                    if(not MyConnection.addLinkAttributeResponse(index+1,int(dfMtx.columns[i]))):
+                    if(not MyConnection.addLinkAttributeResponse(index+1,int(dfMtx.columns[i]))):# se trata a el nombre de la columna como id
                         sms='failed'
                         break
                 i+=1
+            print('auto: ',index+1)
+        return sms
+
+    @staticmethod
+    def exportScoresheet(MyConnection):
+        sms='ok'
+        base_path = Path(__file__).parent
+        file_path1 = (base_path / "data_csv/scoreSheet.csv").resolve()
+        dfScoreS = pd.read_csv(file_path1,encoding='utf-8')
+        dfScoreS.drop(['marca','modelo', 'año', 'versión','nombre'],axis='columns', inplace=True)#elimino columnas sobrantes
+        dfScoreS=dfScoreS.dropna(subset=['general'])
+        dfScoreS=dfScoreS.fillna(0)
+        for index, row in dfScoreS.iterrows():
+            if(not MyConnection.addScoresheet(row['general'],row['confort'],row['desempeño'],row['tecnologia'],
+            row['ostentosidad'],row['deportividad'],row['economia'],row['eficiencia'],row['seguridad'],index+1)):
+                sms='failed'
+                break
             print('auto: ',index+1)
         return sms
