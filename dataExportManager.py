@@ -114,3 +114,50 @@ class DataExportManager:
                 break
             print('auto: ',index+1)
         return sms
+
+    @staticmethod
+    def exportForms(MyConnection):
+        sms='ok'
+        base_path = Path(__file__).parent
+        file_path_forms = (base_path / "data_csv/results3_2021.csv").resolve()
+        file_path_quest = (base_path / "data_csv/datosFormularioCsv.csv").resolve()
+        file_path_out_numericForms = (base_path / "data_csv/datosFormularioNumericCsv.csv").resolve()
+        header=['FECHA','EDAD','GENERO','OCUPACION','1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17']
+        dfForms = pd.read_csv(file_path_forms,encoding='utf-8', names=header, header=0)
+        dfQuest=pd.read_csv(file_path_quest,encoding='utf-8')
+        dfForms.drop(['FECHA','EDAD','GENERO','OCUPACION'],axis='columns', inplace=True)
+        dfNumericForms=DataExportManager.translateResponses(dfForms,dfQuest)
+        dfNumericForms.to_csv(file_path_out_numericForms,index=False)## ALMACENO EL FORMULARIO NUMERICO PARA SER UTILIZADO MAS ADELANTE
+        print('Archivo "datosFormularioNumericCsv.csv" exportado con exito')
+        for index, row in dfForms.iterrows():
+            icol=1
+            for data in row:
+                if(not MyConnection.addResult(index+1000,icol,data)): #Se establece el id de solicitud al indice+1000 (no son solicitudes reales)
+                        sms='failed'
+                        break
+                icol+=1
+            if sms=='failed':
+                break
+            print('formulario',index+1,'ok')
+        return sms
+
+
+    # metodos de apoyo
+
+    # METODO PARA TRADUCIR TITULO DE RESPUESTA POR ID REQUIERE ID DE PREGUNTA
+    @staticmethod
+    def getIdResp(resp,quest,dfQuest):
+        for index, row in dfQuest.iterrows():
+            if row['RESPUESTA']==resp and row['ID P']==quest:
+                return row['ID R']
+    
+    # Metodo para leer todo el dataframe e intercambiar las respuetsas por el id numerico correspondiente
+    @staticmethod
+    def translateResponses(dfForms, dfQuest):
+        dfResult=dfForms
+        for index,row in dfResult.iterrows():
+            pos=0
+            for element in row:
+                dfResult.iloc[index,pos]=DataExportManager.getIdResp(element,int(dfResult.columns[pos]),dfQuest)
+                pos+=1
+        return dfResult

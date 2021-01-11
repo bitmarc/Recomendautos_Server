@@ -1,0 +1,49 @@
+﻿ID P,PREGUNTA,ID R,RESPUESTA
+1,¿Comúnmente con cuantas personas viajaría?,1,Solo yo o con una persona más
+1,¿Comúnmente con cuantas personas viajaría?,2,Con 3 o hasta 4 personas más
+1,¿Comúnmente con cuantas personas viajaría?,3,Con 5 o más personas
+2,¿Cuáles serían sus necesidades con respecto a la cajuela o maletero?,4,Con un maletero pequeño lo veo suficiente
+2,¿Cuáles serían sus necesidades con respecto a la cajuela o maletero?,5,"Por las actividades de mi día a día, veo indispensable un maletero amplio"
+2,¿Cuáles serían sus necesidades con respecto a la cajuela o maletero?,6,Necesitaría mas espacio del que me ofrece un maletero común ya que frecuentemente transporto objetos de gran peso y volumen
+3,¿Considera importante que su automóvil sea llamativo visualmente mediante la incorporación de materiales y acabados premium?,7,"Si, no me importaría pagar un poco más por tener mejores materiales de fabricación y acabados"
+3,¿Considera importante que su automóvil sea llamativo visualmente mediante la incorporación de materiales y acabados premium?,8,"No, me interesan más otros aspectos"
+4,"¿Qué piensa del equipamiento tecnológico orientado a facilitar o hacer más cómoda la conducción? (control de crucero, asistente de ascenso en pendientes,  climatizador, etc.)",9,"Mientras más elementos tecnológicos de este tipo, mejor"
+4,"¿Qué piensa del equipamiento tecnológico orientado a facilitar o hacer más cómoda la conducción? (control de crucero, asistente de ascenso en pendientes,  climatizador, etc.)",10,Pienso que es bueno tener un equipamiento tecnológico moderado que me permita una cómoda conducción sin prodigar demasiado en este aspecto
+4,"¿Qué piensa del equipamiento tecnológico orientado a facilitar o hacer más cómoda la conducción? (control de crucero, asistente de ascenso en pendientes,  climatizador, etc.)",11,Prefiero limitarme a las características básicas que un auto ofrece en este aspecto y priorizar otros
+5,¿Qué piensa del equipamiento tecnológico orientado al info-entretenimiento dentro de su automóvil?,12,Me interesa todo tipo de equipamiento tecnológico que un auto pueda ofrecerme para tener una experiencia más confortable
+5,¿Qué piensa del equipamiento tecnológico orientado al info-entretenimiento dentro de su automóvil?,13,"Aprecio un equipamiento tecnológico moderado que me permita disfrutar la música, y mantenerme en comunicación de manera segura"
+5,¿Qué piensa del equipamiento tecnológico orientado al info-entretenimiento dentro de su automóvil?,14,"Prefiero una conducción más tranquila con opción a disfrutar solo de música, y darle mas prioridad a otro tipo de aspectos"
+6,¿Qué opina acerca de los elementos y sistemas orientados a la seguridad de un automóvil?,15,"Para mi es lo mas importante de un automóvil , y prefiero no escatimar"
+6,¿Qué opina acerca de los elementos y sistemas orientados a la seguridad de un automóvil?,16,"Lo considero importante, pero no es un aspecto determinante"
+6,¿Qué opina acerca de los elementos y sistemas orientados a la seguridad de un automóvil?,17,Me basta con los elementos básicos de seguridad que un auto pueda ofrecer
+7,¿Es probable o piensa viajar de manera frecuente con bebés o niños pequeños?,18,Sí
+7,¿Es probable o piensa viajar de manera frecuente con bebés o niños pequeños?,19,No
+8,¿Tiene contemplado el viajar frecuentemente con alguna persona con limitaciones físicas o de capacidades diferentes?,20,Sí
+8,¿Tiene contemplado el viajar frecuentemente con alguna persona con limitaciones físicas o de capacidades diferentes?,21,No
+9,¿Que opción describe mejor los trayectos que en su mayoría recorre de manera habitual?,22,Vialidades con múltiples topes / reductores de velocidad / semáforos / baches
+9,¿Que opción describe mejor los trayectos que en su mayoría recorre de manera habitual?,23,Vialidades con pocos topes /reductores de velocidad / semáforos
+9,¿Que opción describe mejor los trayectos que en su mayoría recorre de manera habitual?,24,Caminos difíciles o terrenos Off-Road
+10,¿Qué tan frecuentes son las pendientes en los trayectos que recorre de manera habitual?,25,Muy frecuentes
+10,¿Qué tan frecuentes son las pendientes en los trayectos que recorre de manera habitual?,26,Medianamente frecuentes
+10,¿Qué tan frecuentes son las pendientes en los trayectos que recorre de manera habitual?,27,Muy poco frecuentes
+11,¿Tiende a realizar con frecuencia viajes largos (de más de 100km) en donde contempla el uso de un automóvil?,28,Sí
+11,¿Tiende a realizar con frecuencia viajes largos (de más de 100km) en donde contempla el uso de un automóvil?,29,No
+12,¿Qué opción le describe mejor?,30,Pienso en un automóvil como un medio para facilitarme el día a día y disminuir gastos
+12,¿Qué opción le describe mejor?,31,Pienso en un automóvil como un medio indispensable para cumplir mis labores y me es importante su buen desempeño
+12,¿Qué opción le describe mejor?,32,Pienso en un automóvil más como un lujo o gusto personal que me permita salir sólo o con amigos
+13,¿Con frecuencia suele visitar lugares nuevos o entornos muy variados?,33,Muy frecuentemente
+13,¿Con frecuencia suele visitar lugares nuevos o entornos muy variados?,34,Un par de veces al mes
+13,¿Con frecuencia suele visitar lugares nuevos o entornos muy variados?,35,Muy poco o casi nunca
+14,¿Tiene alguna preferencia por el tipo de transmisión?,36,No
+14,¿Tiene alguna preferencia por el tipo de transmisión?,37,Transmisión Manual
+14,¿Tiene alguna preferencia por el tipo de transmisión?,38,Transmisión Automática
+15,"De acuerdo a sus actividades, y contemplando un día de uso normal. ¿Aproximadamente cuanto tiempo pasaría manejando un automóvil?",39,1 hora o menos
+15,"De acuerdo a sus actividades, y contemplando un día de uso normal. ¿Aproximadamente cuanto tiempo pasaría manejando un automóvil?",40,Entre 1 y 3 horas
+15,"De acuerdo a sus actividades, y contemplando un día de uso normal. ¿Aproximadamente cuanto tiempo pasaría manejando un automóvil?",41,3 horas o más
+16,¿Que aspecto valora mas de un automóvil?,42,Su capacidad de velocidad y control
+16,¿Que aspecto valora mas de un automóvil?,43,Su capacidad de eficiencia energética y ahorro
+16,¿Que aspecto valora mas de un automóvil?,44,Otra
+17,¿Cuánto dinero estaría dispuesto a pagar por un automóvil nuevo?,45,"De preferencia menos de 220,000 pesos"
+17,¿Cuánto dinero estaría dispuesto a pagar por un automóvil nuevo?,46,"Entre 220,000 y 350,000 pesos"
+17,¿Cuánto dinero estaría dispuesto a pagar por un automóvil nuevo?,47,"Entre 350,000 y 500,000 pesos"
+17,¿Cuánto dinero estaría dispuesto a pagar por un automóvil nuevo?,48,"Entre 500,000 y 1,500,000 pesos"
