@@ -4,22 +4,38 @@ Clase que maneja la solicitud y emisión de recomendaciones
 from entities.recommendation import Recommendation
 from entities.profile import Profile
 from entities.automobile import Automobile
+from clusteringModel.kmodesManager import KmodesManager
+import numpy as np
 
 class RecommendationManager:
 
-
     @staticmethod
-    def setResults(questions,MyConnection,idReq):
-        for x in questions['questions']:
-            idResp=x['answer']
-            idQues=x['id']
-            MyConnection.addResult(idReq,idQues,idResp)
-        print('ok')
-        return True
+    def getRecommendation(form,idReq,MyConnection):
+        # PROCEDIMIENTO:
+        # 1. Almaceno formulario en base de datos
+        # 2. Clasifico formulario para obtener perfil
+        # 3. creo una recomendacion en base de datos y asigno el perfil
+        # 4. Filtro basado en contenido
+        # 5. Filtro basado en calificaciones
+        # 6. Almaceno resultados en base de datos (genero resultados de recomendacion)
+        # 7. Debuelvo resultados
+        #
+        #1. Almaceno formulrio en base de datos.
+        RecommendationManager.setResults(form, MyConnection,idReq)
+        #2. Clasifico formulario para obtener perfil.
+        array=RecommendationManager.getNumpyForm(form)
+        cluster=KmodesManager.getProfile(array)
+        #3. creo una recomendacion en base de datos y asigno el perfil
+        idRecom=MyConnection.addRecom(idReq,cluster+3) ## actualizar ej. 0+3=3 mis perfiles inician en 3
+        if(idRecom):
+            #4. filtro basado en contenido
+            print('d')
+        else:
+            print('Error al crear nueva recomendacion')
+            return False
 
-    @staticmethod
-    def getRecommendation(idReq,MyConnection):
-        # obtener perfil
+
+
         # generar recomendacion y asignar perfil y solicitud en recomendacion
         idRecom=MyConnection.addRecom(idReq,2) # id perfil
         if(idRecom):
@@ -50,3 +66,21 @@ class RecommendationManager:
         # iniciar recomendador
         #insertar resultados a tabla
         #devolver recomendacion
+
+
+    # ----------------------- METODOS AUXILIARES ------------------
+    @staticmethod
+    def setResults(questions,MyConnection,idReq):
+        for x in questions['questions']:
+            idResp=x['answer']
+            idQues=x['id']
+            MyConnection.addResult(idReq,idQues,idResp)
+        print('formulario guardado en DB')
+        return True
+
+    @staticmethod
+    def getNumpyForm(questions):
+        formList=[]
+        for x in questions['questions']:
+            formList.append(x['answer'])
+        return np.asarray(formList).reshape(1, -1)#forma admitida

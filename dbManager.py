@@ -343,6 +343,17 @@ class Querys:
             print("Error al obtener perfil de base de datos: " + str(e))
             return False
 
+    def addProfile(self, nombre, descripcion):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_insertarPerfil(%s,%s)',
+            (nombre, descripcion))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al agregar perfil a la base de datos: " + str(e))
+            return False
+
 
     def getMysql(self):
         return self.__mysql

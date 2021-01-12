@@ -20,6 +20,7 @@ from entities.requestResult import RequestResult
 from entities.history import History
 from entities.automobile import Automobile
 from dataExportManager import DataExportManager
+from clusteringModel.kmodesManager import KmodesManager
 
 # VARIABLES
 app = Flask(__name__)
@@ -146,21 +147,18 @@ class getForm(Resource):
 # Obtener recomendacion
 class getRecom(Resource):
     def post(self):
-        #crear solicitud en tabla solicitudes
         #myString = json.dumps(request.json, sort_keys=True, indent=4)
         #print(myString)
         now = datetime.now()
-        sk=request.json['user']['id']
-        id=MyConnection.getIdBySessionKey(sk)
+        id=MyConnection.getIdBySessionKey(request.json['user']['id']) #obtengo id mediante su sessionKey #sk=request.json['user']['id']
         if (id):
-            idReq=MyConnection.addRequest("FormA",now,id[0])
+            idReq=MyConnection.addRequest("FormA",now,id[0])# genero una nueva solicitud
             if(idReq):
-                if(RecommendationManager.setResults(request.json['form'],MyConnection,idReq[0])):
-                    result=RecommendationManager.getRecommendation(idReq[0],MyConnection)
-                    if(result):
-                        return jsonify(result)
-                    else:
-                        return jsonify({"idRecommendation":"100"})
+                result=RecommendationManager.getRecommendation(request.json['form'],idReq[0],MyConnection)
+                if(result):
+                    return jsonify(result)
+                else:
+                    return jsonify({"idRecommendation":"100"})
         else:
             return jsonify({"idRecommendation":"100"})
 
@@ -200,6 +198,12 @@ class pushAttributes(Resource):
         msg=DataExportManager.exportForms(MyConnection)
         return jsonify('status: '+msg)
 
+# Entrenar modelo
+class trainModel(Resource):
+    def get(self):
+        msg=KmodesManager.generateModel(6,MyConnection)
+        return msg
+
 
 # ASOCIACION DE RECURSOS Y RUTAS
 api.add_resource(home,"/")
@@ -213,6 +217,8 @@ api.add_resource(getForm,"/form")
 api.add_resource(getRecom,"/recom")
 api.add_resource(getHistory,"/history")
 api.add_resource(pushAttributes,"/pushAttributes")
+api.add_resource(trainModel,"/trainModel")
+
 
 # CONFIGURACION DE EJCUCION
 if __name__ == "__main__":
