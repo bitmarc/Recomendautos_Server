@@ -184,7 +184,7 @@ class Querys:
         try:
             cur = self.__mysql.connection.cursor()
             cur.execute('CALL sp_insertarRecomendacion(%s,%s)',(id_Req, id_prof))
-            data=cur.fetchall()
+            data=cur.fetchone()
             return data
         except Exception as e:
             print("Error al agregar y obtener recomendacion en la base de datos: " + str(e))
@@ -337,7 +337,7 @@ class Querys:
             cur.execute("""
             SELECT * FROM perfiles 
             WHERE id_perfil=%s """,[id_prof])
-            data=cur.fetchall()
+            data=cur.fetchone()
             return data
         except Exception as e:
             print("Error al obtener perfil de base de datos: " + str(e))

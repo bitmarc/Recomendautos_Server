@@ -5,6 +5,7 @@ from entities.recommendation import Recommendation
 from entities.profile import Profile
 from entities.automobile import Automobile
 from clusteringModel.kmodesManager import KmodesManager
+from recommenderCore.contentBased import ContentBased
 import numpy as np
 
 class RecommendationManager:
@@ -28,44 +29,34 @@ class RecommendationManager:
         #3. creo una recomendacion en base de datos y asigno el perfil
         idRecom=MyConnection.addRecom(idReq,cluster+3) ## actualizar ej. 0+3=3 mis perfiles inician en 3
         if(idRecom):
-            #4. filtro basado en contenido
-            print('d')
-        else:
-            print('Error al crear nueva recomendacion')
-            return False
-
-
-
-        # generar recomendacion y asignar perfil y solicitud en recomendacion
-        idRecom=MyConnection.addRecom(idReq,2) # id perfil
-        if(idRecom):
-            #agregar resultados(automoviles)a la recomendacion
-            #for
-            MyConnection.addResultRecom(idRecom,214,2) # id automovil
-            MyConnection.addResultRecom(idRecom,215,3)
-        # obtener datos nediante id de solisitud idReq
-        # en estecaso solo usare las consultas de db sp para regresar resultados
-        #la respuesta se devuelve en objetos recommendation
-        data_recommendation=MyConnection.getRecomByIdReq(idReq)
-        if(data_recommendation):
-            data_Autos=MyConnection.getAutosByIdRecom(data_recommendation[0][0])
+            #4. filtro basado en contenido %% requiere generate OVERVIEW
+            print(array[0])
+            autos=ContentBased.getSimilarAutos(array[0])
+            j=1
+            for auto in autos:
+                if not MyConnection.addResultRecom(idRecom,j,auto):
+                    print('error')
+                    return False
+                j+=1
+                print('Exito en recomendaciones')
+            #recupero autos para crear el objeto respuesta
+            data_Autos=MyConnection.getAutosByIdRecom(idRecom[0]) #id
             if(data_Autos):
-                profileResponse=Profile(data_recommendation[0][1],data_recommendation[0][2],data_recommendation[0][3])
+                profile=MyConnection.getPerfil(cluster+3)
+                profileResponse=Profile(profile[0],profile[1],profile[2])
                 arrAutosResponse=[]
                 for data_Auto in data_Autos:
                     auxAuto=Automobile(data_Auto[1],data_Auto[2],data_Auto[3],data_Auto[4],data_Auto[5])
                     arrAutosResponse.append(auxAuto)
-                recomResponse=Recommendation(data_recommendation[0][0],arrAutosResponse,profileResponse)
+                recomResponse=Recommendation(idRecom[0],arrAutosResponse,profileResponse)
                 print(recomResponse.get_recommendation())
                 return recomResponse.get_recommendation()
             else:
                 return False
         else:
+            print('Error al crear nueva recomendacion')
             return False
-        #recom=Recommendation(1,)
-        # iniciar recomendador
-        #insertar resultados a tabla
-        #devolver recomendacion
+
 
 
     # ----------------------- METODOS AUXILIARES ------------------
