@@ -8,7 +8,7 @@ import re
 class DataExportManager:
 
     @staticmethod
-    def exportAtributes(MyConnection):
+    def exportAttributes(MyConnection):
         base_path = Path(__file__).parent
         file_path = (base_path / "data_csv/datosAtributosCsv1.csv").resolve()
         dfAttributes = pd.read_csv(file_path,encoding='utf-8')
@@ -57,7 +57,7 @@ class DataExportManager:
         file_path = (base_path / "data_csv/datosEtiquetasCsv.csv").resolve()
         dfTags = pd.read_csv(file_path,encoding='utf-8')
         for index, row in dfTags.iterrows():
-            if(not MyConnection.addTag(row[1],'descripcion')):
+            if(not MyConnection.addTag(row[1],row[2])):
                 print('Error')
                 sms='failed'
                 break
@@ -95,7 +95,7 @@ class DataExportManager:
                         sms='failed'
                         break
                 i+=1
-            print('auto: ',index+1)
+            print('respuesta: ',index+1)
         return sms
 
     @staticmethod
@@ -109,17 +109,18 @@ class DataExportManager:
         dfScoreS=dfScoreS.fillna(0)
         for index, row in dfScoreS.iterrows():
             if(not MyConnection.addScoresheet(row['general'],row['confort'],row['desempeño'],row['tecnologia'],
-            row['ostentosidad'],row['deportividad'],row['economia'],row['eficiencia'],row['seguridad'],index+1)):
+            row['ostentosidad'],row['deportividad'],row['economia'],row['eficiencia'],row['seguridad'],row['a_favor'],row['en_contra'],index+1)):
                 sms='failed'
                 break
             print('auto: ',index+1)
         return sms
 
+    #INACTIVO
     @staticmethod
     def exportForms(MyConnection):
         sms='ok'
         base_path = Path(__file__).parent
-        file_path_forms = (base_path / "data_csv/results3_2021.csv").resolve()
+        file_path_forms = (base_path / "data_csv/dataforms.csv").resolve()
         file_path_quest = (base_path / "data_csv/datosFormularioCsv.csv").resolve()
         file_path_out_numericForms = (base_path / "data_csv/datosFormularioNumericCsv.csv").resolve()
         header=['FECHA','EDAD','GENERO','OCUPACION','1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17']
@@ -129,6 +130,7 @@ class DataExportManager:
         dfNumericForms=DataExportManager.translateResponses(dfForms,dfQuest)
         dfNumericForms.to_csv(file_path_out_numericForms,index=False)## ALMACENO EL FORMULARIO NUMERICO PARA SER UTILIZADO MAS ADELANTE
         print('Archivo "datosFormularioNumericCsv.csv" exportado con exito')
+        '''
         for index, row in dfForms.iterrows():
             icol=1
             for data in row:
@@ -139,10 +141,11 @@ class DataExportManager:
             if sms=='failed':
                 break
             print('formulario',index+1,'ok')
+        '''
         return sms
 
 
-    # metodos de apoyo
+    # --------------------- metodos de apoyo --------------------------
 
     # METODO PARA TRADUCIR TITULO DE RESPUESTA POR ID REQUIERE ID DE PREGUNTA
     @staticmethod

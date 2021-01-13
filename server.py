@@ -186,16 +186,16 @@ class getHistory(Resource):
             return jsonify({"requests":0})
 
 # exportarAtributos
-class pushAttributes(Resource):
+class push(Resource):
     def get(self):
-        #msg=DataExportManager.exportAtributes(MyConnection)
+        #msg=DataExportManager.exportAttributes(MyConnection)
         #msg=DataExportManager.exportAutos(MyConnection)
         #msg=DataExportManager.exportAutosAttributes(MyConnection)
         #msg=DataExportManager.exportTags(MyConnection)
         #msg=DataExportManager.exportTagsAttributes(MyConnection)
         #msg=DataExportManager.exportResponsesAttributes(MyConnection)
         #msg=DataExportManager.exportScoresheet(MyConnection)
-        msg=DataExportManager.exportForms(MyConnection)
+        #msg=DataExportManager.exportForms(MyConnection)
         return jsonify('status: '+msg)
 
 # Entrenar modelo
@@ -216,7 +216,7 @@ api.add_resource(dataUser,"/user")
 api.add_resource(getForm,"/form")
 api.add_resource(getRecom,"/recom")
 api.add_resource(getHistory,"/history")
-api.add_resource(pushAttributes,"/pushAttributes")
+api.add_resource(push,"/push")
 api.add_resource(trainModel,"/trainModel")
 
 
