@@ -21,6 +21,7 @@ from entities.history import History
 from entities.automobile import Automobile
 from dataExportManager import DataExportManager
 from clusteringModel.kmodesManager import KmodesManager
+from recommenderCore.contentBased import ContentBased
 
 # VARIABLES
 app = Flask(__name__)
@@ -201,7 +202,11 @@ class push(Resource):
 # Entrenar modelo
 class trainModel(Resource):
     def get(self):
-        msg=KmodesManager.generateModel(6,MyConnection)
+        msg='ok'
+        k=5
+        KmodesManager.generateModel(k,MyConnection)
+        msg=KmodesManager.defineProfiles(MyConnection,k)
+        #ContentBased.generateOverview() #solo cuando hay cambios en los datos de coches
         return msg
 
 

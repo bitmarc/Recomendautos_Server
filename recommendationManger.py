@@ -12,6 +12,7 @@ class RecommendationManager:
 
     @staticmethod
     def getRecommendation(form,idReq,MyConnection):
+        print('entro get recomendation')
         # PROCEDIMIENTO:
         # 1. Almaceno formulario en base de datos
         # 2. Clasifico formulario para obtener perfil
@@ -25,25 +26,31 @@ class RecommendationManager:
         RecommendationManager.setResults(form, MyConnection,idReq)
         #2. Clasifico formulario para obtener perfil.
         array=RecommendationManager.getNumpyForm(form)
-        cluster=KmodesManager.getProfile(array)
+        cluster=KmodesManager.getCluster(array)
+        idModel=MyConnection.getLastModel()[0]#la posicion 0 indica el id
+        profile=MyConnection.getPerfil(cluster,idModel)
         #3. creo una recomendacion en base de datos y asigno el perfil
-        idRecom=MyConnection.addRecom(idReq,cluster+3) ## actualizar ej. 0+3=3 mis perfiles inician en 3
+        idRecom=MyConnection.addRecom(idReq,profile[0]) ## posicion 0 es el id del perfil
         if(idRecom):
             #4. filtro basado en contenido %% requiere generate OVERVIEW
             print(array[0])
-            autos=ContentBased.getSimilarAutos(array[0])
+            autos1=ContentBased.getSimilarAutos(array[0])
+            print('autos despues del filtro basado en contenido: ',autos1)
+            #5. filtro basado en perfil
+            autos2=ContentBased.getBestRatedAutos(autos1,cluster,idModel,MyConnection)#---------------------
+            print('autos despues del filtro basado en perfil: ',autos2)
+            #6.
             j=1
-            for auto in autos:
+            for auto in autos2:
                 if not MyConnection.addResultRecom(idRecom,j,auto):
                     print('error')
                     return False
                 j+=1
-                print('Exito en recomendaciones')
-            #recupero autos para crear el objeto respuesta
+            print('Exito en recomendaciones')
+            # 7. recupero autos para crear el objeto respuesta
             data_Autos=MyConnection.getAutosByIdRecom(idRecom[0]) #id
             if(data_Autos):
-                profile=MyConnection.getPerfil(cluster+3)
-                profileResponse=Profile(profile[0],profile[1],profile[2])
+                profileResponse=Profile(profile[0],profile[1],profile[2])#No estoy tomando en cuenta el frupo y modelo para crear el objeto
                 arrAutosResponse=[]
                 for data_Auto in data_Autos:
                     auxAuto=Automobile(data_Auto[1],data_Auto[2],data_Auto[3],data_Auto[4],data_Auto[5])

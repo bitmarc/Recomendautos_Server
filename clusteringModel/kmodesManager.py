@@ -3,24 +3,49 @@ import pandas as pd
 from kmodes.kmodes import KModes
 from pathlib import Path
 import pickle
+from datetime import datetime
 
 class KmodesManager:
     #Metodo se ejecuta 1 vez
     @staticmethod
-    def generateModel(k, MyConnection, method='huang'):
+    def generateModel(k, MyConnection, method='Huang'):
         # Se utiliza para generar el modelo de entrenamiento y definir los perfiles tras su analisis
         # ------------------------- 1. Se genera el modelo -----------------------------------------------
         # 1.1 Cargo los datos
         base_path = Path(__file__).parent
         file_path_numericForms = (base_path / "../data_csv/datosFormularioNumericCsv.csv").resolve()
-        file_out_path_model = (base_path / "../clusteringModel/model.pkl").resolve()
         dfNumericForms = pd.read_csv(file_path_numericForms, encoding='utf-8')
         npArrayForms = dfNumericForms.to_numpy()
         # 1.1 Ejecuto el algoritmo
-        model = KModes(n_clusters=k, init=method, n_init=5, verbose=1) #inicializo
+        model = KModes(n_clusters=k, init=method, n_init=7, verbose=1) #inicializo
         clusters = model.fit_predict(npArrayForms)
-        print(model.labels_)
+        print('MODELO CREADO',model.labels_)
+        #genero nombre y ruta de guardado
+        fecha=datetime.now()
+        filename=str(fecha)
+        filename=filename[:-7].replace(':', '').replace(' ', '_')
+        filename='model_'+filename
+        route="../clusteringModel/"+filename+".pkl"
+        file_out_path_model = (base_path / route).resolve()
         pickle.dump(model,open(file_out_path_model,"wb"))
+        # 2. guardo modelo en base de datos
+        MyConnection.addModel(filename,fecha)
+        
+
+
+
+    @staticmethod
+    def defineProfiles(MyConnection,k):
+        #1 cargo modelo
+        base_path = Path(__file__).parent
+        file_path_numericForms = (base_path / "../data_csv/datosFormularioNumericCsv.csv").resolve()
+        lastModel=MyConnection.getLastModel()
+        if not lastModel:
+            print('error al conseguir nombre del modelo')
+        route="../clusteringModel/"+lastModel[1]+".pkl"#posicion 1 indica el nombre
+        file_path_model = (base_path / route).resolve()
+        dfNumericForms = pd.read_csv(file_path_numericForms, encoding='utf-8')
+        model=pickle.load(open(file_path_model,"rb")) #load model
         # ------------------------- 2. Se analizan los clusters y se definen los perfiles -------------------
         # 2.1. Agrupo formularios en una matriz (cada fila es un cluster y cada columna un formulario)
         mtx=[]
@@ -69,7 +94,8 @@ class KmodesManager:
             LIST.append(KmodesManager.getTagsList(df.loc[df['ratedCount']>KmodesManager.getMin(df.nsmallest(1,'ratedCount').iloc[0,2],df.nlargest(1,'ratedCount').iloc[0,2],valuePorcent)]['IdAtrib'].tolist(),dfAttributes))
         # 2.6. Almaceno los clusters en diccionarios 
         #dictarrayTags=[]
-        profiles=[]
+        profiles=[] # TEMPORAL NOMBRE DEL PERFIL Y DESCRIPCION
+        profilesTags=[]
         for cluster in LIST:
             palabras = cluster.split(", ")
             diccionario = dict()
@@ -77,23 +103,25 @@ class KmodesManager:
                 diccionario[p] = diccionario.get(p, 0) + 1
             #dictarrayTags.append(diccionario)
             relevant=sorted(diccionario, key=diccionario.get, reverse=True)[:2]
+            profilesTags.append(relevant)
             profiles.append(relevant[0]+': '+str(diccionario[relevant[0]])+', '+relevant[1]+': '+str(diccionario[relevant[1]]))
 
         for x in range(k):
-            if(not MyConnection.addProfile(profiles[x],profiles[x])):
-                print('Error')
-                break
-        print('Exito')
-        return('perfiles agregados correctamente!')
+            idP=MyConnection.addProfile(profiles[x],profiles[x],x,lastModel[0])#la posicion 0 de lastmodel indica el id
+            if(idP):
+                for tag in profilesTags[x]:
+                    MyConnection.linkProfileTag(idP[0],tag)
+                print('Exito al agregar perfil')
+        return 'perfiles agregados correctamente!'
+
 
     @staticmethod
-    def getProfile(form):
+    def getCluster(form):
         base_path = Path(__file__).parent
         file_path_model = (base_path / "../clusteringModel/model.pkl").resolve()
         model=pickle.load(open(file_path_model,"rb")) #load model
         cluster=model.predict(form) # nsamples,nfeatures
         return cluster[0]
-
 
 
     # METODOS AUXILIARES

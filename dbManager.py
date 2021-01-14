@@ -329,31 +329,69 @@ class Querys:
             print("Error al agregar hoja de puntuaciones en la base de datos: " + str(e))
             return False
 
-# CONSULTAS perfiles
-
-    def getPerfil(self,id_prof):
+# CONSULTAS perfiles y modelos
+    def addModel(self, nombre, fecha):
         try:
             cur = self.__mysql.connection.cursor()
-            cur.execute("""
-            SELECT * FROM perfiles 
-            WHERE id_perfil=%s """,[id_prof])
+            cur.execute('CALL sp_insertarModelo(%s,%s)',
+            (nombre, fecha))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al agregar modelo a la base de datos: " + str(e))
+            return False
+
+    def getLastModel(self):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerUltimoModelo()')
             data=cur.fetchone()
             return data
         except Exception as e:
-            print("Error al obtener perfil de base de datos: " + str(e))
+            print("Error al obtener modelo a la base de datos: " + str(e))
             return False
 
-    def addProfile(self, nombre, descripcion):
+    def getPerfil(self,grupo,modelo):
         try:
             cur = self.__mysql.connection.cursor()
-            cur.execute('CALL sp_insertarPerfil(%s,%s)',
-            (nombre, descripcion))
-            self.__mysql.connection.commit()
-            return True
+            cur.execute('CALL sp_obtenerIdPerfilporClusterModelo(%s,%s)',(grupo, modelo))
+            data=cur.fetchone()
+            return data
+        except Exception as e:
+            print("Error al obtener perfil de la base de datos: " + str(e))
+            return False
+
+    def addProfile(self, nombre, descripcion, grupo, modelo):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_insertarPerfil(%s,%s,%s,%s)',
+            (nombre, descripcion, grupo, modelo))
+            data=cur.fetchone()
+            return data
         except Exception as e:
             print("Error al agregar perfil a la base de datos: " + str(e))
             return False
 
+    def linkProfileTag(self, idp, TagName):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_asociarPerfilEtiqueta(%s,%s)',(idp, TagName))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al asociar perfil y etiqueta en la base de datos: " + str(e))
+            return False
+
+# tags
+    def getTagsByCM(self,grupo,modelo):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerEtiquetasPorClusterModelo(%s,%s)',(grupo, modelo))
+            data=cur.fetchall()
+            return data
+        except Exception as e:
+            print("Error al obtener etiquetas de la base de datos: " + str(e))
+            return False
 
     def getMysql(self):
         return self.__mysql

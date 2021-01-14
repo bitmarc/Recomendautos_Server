@@ -24,7 +24,7 @@ class ContentBased:
             words.append(ContentBased.getColumnNamesA(row,dfAutos))
         dfAutos['overview']=words
         dfAutos.to_csv(file_path_autos,index=False, encoding='utf-8')
-        print("preprocesamiento terminado")
+        print("preprocesamiento terminado, OVERVIEW generada")
     
     #SE EJECUTA POR CADA RECOMENDACION [**Metdodo principal**]
     @staticmethod
@@ -69,8 +69,25 @@ class ContentBased:
         cv_cosine_sim=ContentBased.countVectorizer(dfAutos)
         #   genero las recomendaciones de fase 1
         recomendationsF1=ContentBased.get_recommendations('modelo',dfAutos,cv_cosine_sim)
-        return recomendationsF1[:7]
-        ## FASE 2. FILTRO BASADO EN CONTENIDO (EVALUACION DE PERFIL)
+        return recomendationsF1[:30]
+        ## CONTINUA FASE 2. FILTRO BASADO EN CONTENIDO (EVALUACION DE PERFIL)
+
+    @staticmethod
+    def getBestRatedAutos(idsAutos,cluster,idModel,MyConnection):
+        base_path = Path(__file__).parent
+        file_path_scores = (base_path / "../data_csv/scoreSheet.csv").resolve()
+        dfScores = pd.read_csv(file_path_scores, encoding='utf-8')
+        dfScores=dfScores.loc[idsAutos]
+        tags=MyConnection.getTagsByCM(cluster,idModel)
+        print(tags)
+        tagList=[]
+        for tag in tags:
+            tagList.append(tag[0])
+            print(tagList)
+        dfAux=dfScores.dropna(subset = tagList)
+        dfAux=dfAux.nlargest(10,tagList)
+        autos=dfAux.index.tolist()
+        return autos
 
 
 
