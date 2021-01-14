@@ -6,22 +6,13 @@ from entities.profile import Profile
 from entities.automobile import Automobile
 from clusteringModel.kmodesManager import KmodesManager
 from recommenderCore.contentBased import ContentBased
+from entities.opinionSheet import OpinionSheet
 import numpy as np
 
 class RecommendationManager:
 
     @staticmethod
     def getRecommendation(form,idReq,MyConnection):
-        print('entro get recomendation')
-        # PROCEDIMIENTO:
-        # 1. Almaceno formulario en base de datos
-        # 2. Clasifico formulario para obtener perfil
-        # 3. creo una recomendacion en base de datos y asigno el perfil
-        # 4. Filtro basado en contenido
-        # 5. Filtro basado en calificaciones
-        # 6. Almaceno resultados en base de datos (genero resultados de recomendacion)
-        # 7. Debuelvo resultados
-        #
         #1. Almaceno formulrio en base de datos.
         RecommendationManager.setResults(form, MyConnection,idReq)
         #2. Clasifico formulario para obtener perfil.
@@ -42,7 +33,7 @@ class RecommendationManager:
             #6.
             j=1
             for auto in autos2:
-                if not MyConnection.addResultRecom(idRecom,j,auto):
+                if not MyConnection.addResultRecom(idRecom,j,auto+1):
                     print('error')
                     return False
                 j+=1
@@ -52,10 +43,17 @@ class RecommendationManager:
             if(data_Autos):
                 profileResponse=Profile(profile[0],profile[1],profile[2])#No estoy tomando en cuenta el frupo y modelo para crear el objeto
                 arrAutosResponse=[]
+                arrOpinionsheet=[]
                 for data_Auto in data_Autos:
-                    auxAuto=Automobile(data_Auto[1],data_Auto[2],data_Auto[3],data_Auto[4],data_Auto[5])
+                    opinions=MyConnection.getOpinions(data_Auto[1])
+                    if(opinions):
+                        opinionsheet=OpinionSheet(data_Auto[1],opinions[0],opinions[1],'http://www.google.com.mx')
+                    else:
+                        opinionsheet=OpinionSheet(data_Auto[1],'','','http://www.google.com.mx')
+                    arrOpinionsheet.append(opinionsheet)
+                    auxAuto=Automobile(data_Auto[1],data_Auto[2],data_Auto[3],data_Auto[4],data_Auto[5],)
                     arrAutosResponse.append(auxAuto)
-                recomResponse=Recommendation(idRecom[0],arrAutosResponse,profileResponse)
+                recomResponse=Recommendation(idRecom[0],arrAutosResponse,profileResponse,arrOpinionsheet)
                 print(recomResponse.get_recommendation())
                 return recomResponse.get_recommendation()
             else:

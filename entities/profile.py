@@ -8,7 +8,7 @@ class Profile:
         self.__description=description
 
     def get_profile(self):
-        data={"id":self.__id, "name":self.__name, "parameter":self.__description}
+        data={"id":self.__id, "name":self.__name, "description":self.__description}
         return data
 
     def getId(self):

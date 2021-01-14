@@ -329,6 +329,16 @@ class Querys:
             print("Error al agregar hoja de puntuaciones en la base de datos: " + str(e))
             return False
 
+    def getOpinions(self,idA):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerOpinionesPorIdAuto(%s)',[idA])
+            data=cur.fetchone()
+            return data
+        except Exception as e:
+            print("Error al obtener opiniones de la base de datos: " + str(e))
+            return False
+
 # CONSULTAS perfiles y modelos
     def addModel(self, nombre, fecha):
         try:

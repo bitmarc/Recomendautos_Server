@@ -79,11 +79,10 @@ class ContentBased:
         dfScores = pd.read_csv(file_path_scores, encoding='utf-8')
         dfScores=dfScores.loc[idsAutos]
         tags=MyConnection.getTagsByCM(cluster,idModel)
-        print(tags)
         tagList=[]
         for tag in tags:
             tagList.append(tag[0])
-            print(tagList)
+        print(tagList)
         dfAux=dfScores.dropna(subset = tagList)
         dfAux=dfAux.nlargest(10,tagList)
         autos=dfAux.index.tolist()

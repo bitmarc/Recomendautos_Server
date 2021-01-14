@@ -15,6 +15,7 @@ from entities.user import User
 from entities.form import Form
 from entities.option import Option
 from entities.question import Question
+from entities.opinionSheet import OpinionSheet
 from recommendationManger import RecommendationManager
 from entities.requestResult import RequestResult
 from entities.history import History
@@ -176,10 +177,17 @@ class getHistory(Resource):
             for hRequest in hRequests:
                 data_Autos=MyConnection.getAutosByIdReq(hRequest[0])
                 arrAutos=[]
+                arrOpinionsheet=[]
                 for data_Auto in data_Autos:
                     arrAutos.append(Automobile(data_Auto[1],data_Auto[2],data_Auto[3],data_Auto[4],data_Auto[5]))
+                    opinions=MyConnection.getOpinions(data_Auto[1])
+                    if(opinions):
+                        opinionsheet=OpinionSheet(data_Auto[1],opinions[0],opinions[1],'http://www.google.com.mx')
+                    else:
+                        opinionsheet=OpinionSheet(data_Auto[1],'','','http://www.google.com.mx')
+                    arrOpinionsheet.append(opinionsheet)
                 form=FormManager.buildFormResponse(MyConnection,hRequest[0])
-                arrRequests.append(RequestResult(hRequest[0],hRequest[1],hRequest[2],hRequest[3],arrAutos,form))
+                arrRequests.append(RequestResult(hRequest[0],hRequest[1],hRequest[2],hRequest[3],arrAutos,form,arrOpinionsheet))
             response=History(len(arrRequests),arrRequests)
             return jsonify(response.getHistory())
         else:
