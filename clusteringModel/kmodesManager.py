@@ -1,5 +1,6 @@
 #import numpy as np
 import pandas as pd
+import numpy as np
 from kmodes.kmodes import KModes
 from pathlib import Path
 import pickle
@@ -31,8 +32,6 @@ class KmodesManager:
         # 2. guardo modelo en base de datos
         MyConnection.addModel(filename,fecha)
         
-
-
 
     @staticmethod
     def defineProfiles(MyConnection,k):
@@ -79,7 +78,7 @@ class KmodesManager:
                 diccionario[p] = diccionario.get(p, 0) + 1
             dfArray.append(pd.DataFrame(diccionario.items(), columns=['IdAtrib', 'Count']))
         # 2.4. Analizo los datos de cada data frame considerando la puntuacion de popularidad de cada atributo
-        file_path_attribtutes = (base_path / "../data_csv/datosAtributosCsv1.csv").resolve()
+        file_path_attribtutes = (base_path / "../data_csv/datosAtributosCsv.csv").resolve()
         dfAttributes = pd.read_csv(file_path_attribtutes, encoding='utf-8')
         for df in dfArray:
             ratedCount=[]
@@ -89,29 +88,53 @@ class KmodesManager:
             df['ratedCount']=df['Count']/df['ratedCount']
         # 2.5. tomo los atributos mas reprecentativos de cada perfil y los tradusco a tags
         LIST=[]
-        valuePorcent=0.70
+        valuePorcent=0.60
         for df in dfArray:
             LIST.append(KmodesManager.getTagsList(df.loc[df['ratedCount']>KmodesManager.getMin(df.nsmallest(1,'ratedCount').iloc[0,2],df.nlargest(1,'ratedCount').iloc[0,2],valuePorcent)]['IdAtrib'].tolist(),dfAttributes))
+        #NUEVO-----------------------------------------
+        allTags=''
+        for ind in dfAttributes.index:
+            if(not pd.isnull(dfAttributes['TAGS'][ind])):
+                allTags+=dfAttributes['TAGS'][ind]
+                allTags+=', '
+        allTags=allTags[:-2]
+        palabras = allTags.split(", ")
+        diccionarioG = dict()
+        for p in palabras:
+            diccionarioG[p] = diccionarioG.get(p, 0) + 1
+        print(diccionarioG)
+        #NUEVO-----------------------------------------
         # 2.6. Almaceno los clusters en diccionarios 
         #dictarrayTags=[]
-        profiles=[] # TEMPORAL NOMBRE DEL PERFIL Y DESCRIPCION
         profilesTags=[]
+        profiles=[] # TEMPORAL NOMBRE DEL PERFIL Y DESCRIPCION
         for cluster in LIST:
             palabras = cluster.split(", ")
             diccionario = dict()
             for p in palabras:
                 diccionario[p] = diccionario.get(p, 0) + 1
+            #NUEVO--------------------------------------------
+            for key in diccionario.keys():
+                diccionario[key]=diccionario[key]/diccionarioG[key]
+            #NUEVO--------------------------------------------
             #dictarrayTags.append(diccionario)
-            relevant=sorted(diccionario, key=diccionario.get, reverse=True)[:2]
-            profilesTags.append(relevant)
-            profiles.append(relevant[0]+': '+str(diccionario[relevant[0]])+', '+relevant[1]+': '+str(diccionario[relevant[1]]))
-
+            relevant=sorted(diccionario, key=diccionario.get, reverse=True)
+            print(relevant)
+            profilesTags.append(KmodesManager.getRelevantTags(relevant))
+            prfileDescription='tus intereses ordenados son: '
+            for tag in relevant:
+                prfileDescription= prfileDescription+tag+': '+str(round(diccionario[tag],3))+', '
+            prfileDescription=prfileDescription[:-2]
+            profiles.append(prfileDescription)
         for x in range(k):
-            idP=MyConnection.addProfile(profiles[x],profiles[x],x,lastModel[0])#la posicion 0 de lastmodel indica el id
+            nameP='Perfil '+str(x)
+            idP=MyConnection.addProfile(nameP,profiles[x],x,lastModel[0])#la posicion 0 de lastmodel indica el id
             if(idP):
                 for tag in profilesTags[x]:
                     MyConnection.linkProfileTag(idP[0],tag)
                 print('Exito al agregar perfil')
+            else:
+                print('Error al agregar perfil')
         return 'perfiles agregados correctamente!'
 
 
@@ -150,7 +173,7 @@ class KmodesManager:
         val=0
         for index, row in dfAttributes.iterrows():
             if dfAttributes.iloc[index,3]==idAttrib:
-                val=dfAttributes.iloc[index,5]
+                val=dfAttributes.iloc[index,6]
                 break
         return val
     @staticmethod
@@ -161,8 +184,17 @@ class KmodesManager:
         groupTags=''
         for ind in dfAttributes.index:
             for item in arrAtribs:
-                if int(item)==dfAttributes['IDE'][ind]:
-                    groupTags+=dfAttributes['TAGS'][ind]
-                    groupTags+=', '
+                if int(item)==dfAttributes['IDAE'][ind]:
+                    if(not pd.isnull(dfAttributes['TAGS'][ind])):
+                        groupTags+=dfAttributes['TAGS'][ind]
+                        groupTags+=', '
                     break
         return groupTags[:-2]
+    
+    @staticmethod   # metodo que obtiene los tags mas relevantes
+    def getRelevantTags(relevant):
+        if(len(relevant)>1):
+            return relevant[:2]
+        else:
+            return relevant[0]
+    

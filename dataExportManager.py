@@ -4,18 +4,21 @@ Esta clase permite automatizar el proceso de exportacion de datos de un CSV a ba
 import pandas as pd
 from pathlib import Path
 import re
+import numpy as np
 
 class DataExportManager:
 
     @staticmethod
     def exportAttributes(MyConnection):
         base_path = Path(__file__).parent
-        file_path = (base_path / "data_csv/datosAtributosCsv1.csv").resolve()
-        dfAttributes = pd.read_csv(file_path,encoding='utf-8')
+        file_path = (base_path / "data_csv/datosAtributosCsv.csv").resolve()
+        header=['TAGS','IDAG','ATRIBUTO GENERAL','IDAE','ATRIBUTO ESPECIFICO']
+        dfAttributes = pd.read_csv(file_path, header=0, names=header, encoding='utf-8')
         for index, row in dfAttributes.iterrows():
-            if(not MyConnection.addAtribute(row[4],row[2])):
+            if(not MyConnection.addAtribute(row[2],row[4])):
                 print('Error')
                 break
+        dfAttributes.to_csv(file_path, encoding="utf-8", index=False)
         return "ok"
 
     @staticmethod
@@ -67,10 +70,11 @@ class DataExportManager:
     def exportTagsAttributes(MyConnection):
         sms='ok'
         base_path = Path(__file__).parent
-        file_path1 = (base_path / "data_csv/datosAtributosCsv1.csv").resolve()
+        file_path1 = (base_path / "data_csv/datosAtributosCsv.csv").resolve()
         file_path2 = (base_path / "data_csv/datosEtiquetasCsv.csv").resolve()
         dfAttribs = pd.read_csv(file_path1,encoding='utf-8')
         dfTags = pd.read_csv(file_path2,encoding='utf-8')
+        dfAttribs["TAGS"].fillna("", inplace = True)
         for index, row in dfTags.iterrows():
             dfAux=dfAttribs.loc[dfAttribs['TAGS'].str.contains(row['TAG'], flags = re.IGNORECASE)]
             for index1, row1 in dfAux.iterrows():
@@ -108,14 +112,14 @@ class DataExportManager:
         dfScoreS=dfScoreS.dropna(subset=['general'])
         dfScoreS=dfScoreS.fillna(0)
         for index, row in dfScoreS.iterrows():
-            if(not MyConnection.addScoresheet(row['general'],row['confort'],row['desempeño'],row['tecnologia'],
-            row['ostentosidad'],row['deportividad'],row['economia'],row['eficiencia'],row['seguridad'],row['a_favor'],row['en_contra'],index+1)):
+            if(not MyConnection.addScoresheet(row['general'],row['confort'],row['desempeño'],row['tecnología'],
+            row['ostentosidad'],row['deportividad'],row['economía'],row['eficiencia'],row['seguridad'],row['ecología'],row['a_favor'],row['en_contra'],index+1)):
                 sms='failed'
                 break
             print('auto: ',index+1)
         return sms
 
-    #INACTIVO
+    #INACTIVO!!
     @staticmethod
     def exportForms(MyConnection):
         sms='ok'
@@ -144,6 +148,24 @@ class DataExportManager:
         '''
         return sms
 
+    @staticmethod
+    def parseAttribs(MyConnection):
+        # Este metodo rescata las puntuaciones maximas de popularidad por atributo (considerando numero de preguntas y respuestas relacionadas a ellos)
+        # Se ejecuta despeusd de tener la base de datos llenada de formulario y atributos (antes de entrenar modelo)
+        base_path = Path(__file__).parent
+        file_attributes_path = (base_path / "data_csv/datosAtributosCsv.csv").resolve()
+        header=['TAGS','IDAG','ATRIBUTO GENERAL','IDAE','ATRIBUTO ESPECIFICO']
+        dfAttributes = pd.read_csv(file_attributes_path, header=0, names=header, encoding='utf-8')
+        columns=['MAX_P', 'MAX_R']
+        dfAttributes[columns] = pd.DataFrame([[np.nan, np.nan]], index=dfAttributes.index)
+        for index,row in dfAttributes.iterrows():
+            valMQ=MyConnection.getMaxValQuestByIdAttrib(row['IDAE'])
+            dfAttributes.iloc[index,5]=valMQ[0]
+            valMR=MyConnection.getMaxValAnswByIdAttrib(row['IDAE'])
+            dfAttributes.iloc[index,6]=valMR[0]
+            print('attrib ',index,' ok')
+        dfAttributes.to_csv(file_attributes_path, encoding="utf-8", index=False)
+        return "completado!"
 
     # --------------------- metodos de apoyo --------------------------
 

@@ -1,7 +1,8 @@
 '''
 Clase principal, contiene la logica de ejecución del servidor y rutas para consumo de la API
 '''
-
+from entities.profile import Profile
+from recommenderCore.contentBased import ContentBased
 from flask import Flask, jsonify, request
 from flask_restful import Resource, Api
 from flask_httpauth import HTTPBasicAuth
@@ -12,17 +13,16 @@ from sessionManager import SessionManager as sm
 from dbManager import Querys
 from formManager import FormManager
 from entities.user import User
-from entities.form import Form
-from entities.option import Option
-from entities.question import Question
+from csv1.csvcleaner import Csvcleaner
 from entities.opinionSheet import OpinionSheet
+from entities.dataSheet import Datasheet
+from entities.attribute import Attribute
 from recommendationManger import RecommendationManager
 from entities.requestResult import RequestResult
 from entities.history import History
 from entities.automobile import Automobile
 from dataExportManager import DataExportManager
 from clusteringModel.kmodesManager import KmodesManager
-from recommenderCore.contentBased import ContentBased
 
 # VARIABLES
 app = Flask(__name__)
@@ -176,44 +176,75 @@ class getHistory(Resource):
             arrRequests=[]
             for hRequest in hRequests:
                 data_Autos=MyConnection.getAutosByIdReq(hRequest[0])
+                dataProfile=MyConnection.getProfileById(hRequest[2])
+                userprofile=Profile(dataProfile[0],dataProfile[1],dataProfile[2])
                 arrAutos=[]
-                arrOpinionsheet=[]
                 for data_Auto in data_Autos:
                     arrAutos.append(Automobile(data_Auto[1],data_Auto[2],data_Auto[3],data_Auto[4],data_Auto[5]))
-                    opinions=MyConnection.getOpinions(data_Auto[1])
-                    if(opinions):
-                        opinionsheet=OpinionSheet(data_Auto[1],opinions[0],opinions[1],'http://www.google.com.mx')
-                    else:
-                        opinionsheet=OpinionSheet(data_Auto[1],'','','http://www.google.com.mx')
-                    arrOpinionsheet.append(opinionsheet)
                 form=FormManager.buildFormResponse(MyConnection,hRequest[0])
-                arrRequests.append(RequestResult(hRequest[0],hRequest[1],hRequest[2],hRequest[3],arrAutos,form,arrOpinionsheet))
+                arrRequests.append(RequestResult(hRequest[0],hRequest[1],userprofile,hRequest[3],arrAutos,form))
             response=History(len(arrRequests),arrRequests)
             return jsonify(response.getHistory())
         else:
             #response=History(0,RequestResult(0,0,0,0,0,0))
             return jsonify({"requests":0})
 
+# Obtener detalle de vehiculos
+class getCarDetails(Resource):
+    def post(self):
+        print(request.json['id'])
+        attribs=MyConnection.getAttributesByIdAuto(request.json['id'])
+        if(attribs):
+            print(attribs)
+            arrAttribs=[]
+            for attrib in attribs:
+                arrAttribs.append(Attribute(attrib[0],attrib[1],attrib[2]))
+            opinions=MyConnection.getOpinions(request.json['id'])
+            if(opinions):
+                opinionsheet=OpinionSheet(request.json['id'],opinions[0],opinions[1],'http://www.google.com.mx')
+            else:
+                opinionsheet=OpinionSheet(request.json['id'],'','','http://www.google.com.mx')
+            datasheet=Datasheet(request.json['id'],arrAttribs,opinionsheet)
+            print(datasheet.getDataSheet())
+            return jsonify(datasheet.getDataSheet())
+        return jsonify({'message':'error'})
+
 # exportarAtributos
 class push(Resource):
     def get(self):
-        #msg=DataExportManager.exportAttributes(MyConnection)
-        #msg=DataExportManager.exportAutos(MyConnection)
-        #msg=DataExportManager.exportAutosAttributes(MyConnection)
-        #msg=DataExportManager.exportTags(MyConnection)
-        #msg=DataExportManager.exportTagsAttributes(MyConnection)
-        #msg=DataExportManager.exportResponsesAttributes(MyConnection)
-        #msg=DataExportManager.exportScoresheet(MyConnection)
-        #msg=DataExportManager.exportForms(MyConnection)
+        msg='failed'
+        msg=DataExportManager.exportAttributes(MyConnection)
+        print('exportAttributes ok')
+        msg=DataExportManager.exportAutos(MyConnection)
+        print('exportAutos ok')
+        msg=DataExportManager.exportAutosAttributes(MyConnection)
+        print('exportAutosAttributes ok')
+        msg=DataExportManager.exportTags(MyConnection)
+        print('exportTags ok')
+        msg=DataExportManager.exportTagsAttributes(MyConnection)
+        print('exportTagsAttributes ok')
+        msg=DataExportManager.exportResponsesAttributes(MyConnection)
+        print('exportResponsesAttributes ok')
+        Csvcleaner.generateScoreSheet()
+        print('generateScoreSheet ok')
+        msg=DataExportManager.exportScoresheet(MyConnection)
+        print('exportScoresheet ok')
+        msg=DataExportManager.parseAttribs(MyConnection)
+        print('parseAttribs ok')
+        msg=DataExportManager.exportForms(MyConnection)#solo pasa a numeric, no a bd--
+        print('exportForms ok')
+        msg=ContentBased.generateOverview() #genera overview
+        print('generateOverview ok')
+        
         return jsonify('status: '+msg)
 
 # Entrenar modelo
 class trainModel(Resource):
     def get(self):
         msg='ok'
-        k=5
-        KmodesManager.generateModel(k,MyConnection)
-        msg=KmodesManager.defineProfiles(MyConnection,k)
+        k=7
+        KmodesManager.generateModel(k,MyConnection,'Cao')
+        msg=KmodesManager.defineProfiles(MyConnection,k)##===aun no se ejecuta
         #ContentBased.generateOverview() #solo cuando hay cambios en los datos de coches
         return msg
 
@@ -229,6 +260,7 @@ api.add_resource(dataUser,"/user")
 api.add_resource(getForm,"/form")
 api.add_resource(getRecom,"/recom")
 api.add_resource(getHistory,"/history")
+api.add_resource(getCarDetails,"/details")
 api.add_resource(push,"/push")
 api.add_resource(trainModel,"/trainModel")
 

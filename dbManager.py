@@ -263,17 +263,6 @@ class Querys:
             print("Error al agregar nuevo automovil a la base de datos: " + str(e))
             return False
         
-    def addAtribute(self, nombre, categoria):
-        try:
-            cur = self.__mysql.connection.cursor()
-            cur.execute('CALL sp_insertarAtributo(%s,%s)',
-            (nombre, categoria))
-            self.__mysql.connection.commit()
-            return True
-        except Exception as e:
-            print("Error al agregar nuevo atributo en la base de datos: " + str(e))
-            return False
-
     def addDatasheet(self, idAuto, idAtributo):
         try:
             cur = self.__mysql.connection.cursor()
@@ -318,11 +307,11 @@ class Querys:
             print("Error al asociar atribto-respuesta en la base de datos: " + str(e))
             return False
     
-    def addScoresheet(self, general, confort, desempeño, tecnologia, ostentosidad, deportividad, economia, eficiencia, seguridad, afavor, encontra, idA):
+    def addScoresheet(self, general, confort, desempeño, tecnologia, ostentosidad, deportividad, economia, eficiencia, seguridad, ecologia, afavor, encontra, idA):
         try:
             cur = self.__mysql.connection.cursor()
-            cur.execute('CALL sp_insertarPuntuacion(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',
-            (general, confort,desempeño,tecnologia,ostentosidad,deportividad,economia,eficiencia,seguridad,afavor,encontra,idA))
+            cur.execute('CALL sp_insertarPuntuacion(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',
+            (general, confort,desempeño,tecnologia,ostentosidad,deportividad,economia,eficiencia,seguridad,ecologia,afavor,encontra,idA))
             self.__mysql.connection.commit()
             return True
         except Exception as e:
@@ -371,6 +360,16 @@ class Querys:
             print("Error al obtener perfil de la base de datos: " + str(e))
             return False
 
+    def getProfileById(self,idP):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerPerfilporId(%s)',[idP])
+            data=cur.fetchone()
+            return data
+        except Exception as e:
+            print("Error al obtener perfil por id de la base de datos: " + str(e))
+            return False
+
     def addProfile(self, nombre, descripcion, grupo, modelo):
         try:
             cur = self.__mysql.connection.cursor()
@@ -402,6 +401,50 @@ class Querys:
         except Exception as e:
             print("Error al obtener etiquetas de la base de datos: " + str(e))
             return False
+
+# Atributos
+
+    def addAtribute(self, nombreG, nombreE):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_insertarAtributo(%s,%s)',
+            (nombreG, nombreE))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al agregar nuevo atributo en la base de datos: " + str(e))
+            return False
+
+    def getAttributesByIdAuto(self, idA):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerAtributosPorIdAuto(%s)',[idA])
+            data=cur.fetchall()
+            return data
+        except Exception as e:
+            print("Error al obtener atributos de la base de datos: " + str(e))
+            return False
+
+    def getMaxValAnswByIdAttrib(self, idA):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerMaxAtribPorRespuesta(%s)',[idA])
+            data=cur.fetchone()
+            return data
+        except Exception as e:
+            print("Error al obtener valor maximo de atributo(por respuesta) la base de datos: " + str(e))
+            return False
+
+    def getMaxValQuestByIdAttrib(self, idA):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerMaxAtribPorPregunta(%s)',[idA])
+            data=cur.fetchone()
+            return data
+        except Exception as e:
+            print("Error al obtener valor maximo de atributo(por pregunta) la base de datos: " + str(e))
+            return False
+
 
     def getMysql(self):
         return self.__mysql

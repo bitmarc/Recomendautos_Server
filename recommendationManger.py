@@ -43,17 +43,10 @@ class RecommendationManager:
             if(data_Autos):
                 profileResponse=Profile(profile[0],profile[1],profile[2])#No estoy tomando en cuenta el frupo y modelo para crear el objeto
                 arrAutosResponse=[]
-                arrOpinionsheet=[]
                 for data_Auto in data_Autos:
-                    opinions=MyConnection.getOpinions(data_Auto[1])
-                    if(opinions):
-                        opinionsheet=OpinionSheet(data_Auto[1],opinions[0],opinions[1],'http://www.google.com.mx')
-                    else:
-                        opinionsheet=OpinionSheet(data_Auto[1],'','','http://www.google.com.mx')
-                    arrOpinionsheet.append(opinionsheet)
                     auxAuto=Automobile(data_Auto[1],data_Auto[2],data_Auto[3],data_Auto[4],data_Auto[5],)
                     arrAutosResponse.append(auxAuto)
-                recomResponse=Recommendation(idRecom[0],arrAutosResponse,profileResponse,arrOpinionsheet)
+                recomResponse=Recommendation(idRecom[0],arrAutosResponse,profileResponse)
                 print(recomResponse.get_recommendation())
                 return recomResponse.get_recommendation()
             else:

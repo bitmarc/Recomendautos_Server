@@ -24,7 +24,7 @@ class ContentBased:
             words.append(ContentBased.getColumnNamesA(row,dfAutos))
         dfAutos['overview']=words
         dfAutos.to_csv(file_path_autos,index=False, encoding='utf-8')
-        print("preprocesamiento terminado, OVERVIEW generada")
+        return 'ok'
     
     #SE EJECUTA POR CADA RECOMENDACION [**Metdodo principal**]
     @staticmethod
@@ -47,7 +47,7 @@ class ContentBased:
             diccionario[p] = diccionario.get(p, 0) + 1
         #   Lo paso a un dataframe y reescribo el rated count con un numero decimal entro que reprecenta la cantidad de veces que una palabra debera ser repetida
         dfaux = pd.DataFrame(diccionario.items(), columns=['IdAtrib', 'Count'])
-        file_path_attribs = (base_path / "../data_csv/datosAtributosCsv1.csv").resolve()
+        file_path_attribs = (base_path / "../data_csv/datosAtributosCsv.csv").resolve()
         dfAttributes = pd.read_csv(file_path_attribs, encoding='utf-8')
         ratedCount=[]
         for index, row in dfaux.iterrows():
@@ -86,6 +86,20 @@ class ContentBased:
         dfAux=dfScores.dropna(subset = tagList)
         dfAux=dfAux.nlargest(10,tagList)
         autos=dfAux.index.tolist()
+
+        dfAux[['cMar','cMod']] = pd.DataFrame([[0, 0]], index=dfAux.index)
+        # metodo para obtener la lista final de autos
+        #119,120
+        resultados=[]
+        for rec1 in autos:
+            if dfAux.loc[rec1]['cMar']<4: # máximo 4 autos de la misma marca
+                #procede esa marca aun es menor a 3
+                if dfAux.loc[rec1]['cMod']<1:
+                    #procede modelo nuevo
+                    resultados.append(rec1)
+                    dfAux.loc[dfAux['marca']==dfAux.loc[rec1]['marca'], 'cMar']+=1
+                    dfAux.loc[dfAux['modelo']==dfAux.loc[rec1]['modelo'], 'cMod']+=1
+        autos=resultados
         return autos
 
 
@@ -134,7 +148,7 @@ class ContentBased:
         val=0
         for index, row in dfAttributes.iterrows():
             if dfAttributes.iloc[index,3]==idAttrib:
-                val=dfAttributes.iloc[index,6]
+                val=dfAttributes.iloc[index,5]
                 break
         return val
 

@@ -4,23 +4,19 @@ Clase que maneja el resultado de una solicitud de recomendacion del usuario
 '''
 class RequestResult:
 
-    def __init__(self, id, date, profile, nResults,arrAutos,form, arrOpinionSheet):
+    def __init__(self, id, date, profile, nResults,arrAutos,form):
         self.__id=id
         self.__date=date
         self.__nResults=nResults
         self.__profile=profile
         self.__arrAutos=arrAutos
         self.__form=form
-        self.__arrOpinionSheet=arrOpinionSheet
     
     def get_RequestResult(self):
         data=[]
         for auto in self.__arrAutos:
             data.append(auto.get_automobile())
-        dataO=[]
-        for opinionS in self.__arrOpinionSheet:
-            dataO.append(opinionS.getOpinion())
-        data={"id":self.__id, "date":self.__date, "results":self.__nResults, "profile":self.__profile, "autos":data, "form":self.__form.getForm(),"scores":dataO}
+        data={"id":self.__id, "date":self.__date, "results":self.__nResults, "profile":self.__profile.get_profile(), "autos":data, "form":self.__form.getForm()}
         return data
 
     def getId(self):
@@ -58,9 +54,3 @@ class RequestResult:
 
     def setForm(self, form):
         self.__form=form
-
-    def getOpinionS(self):
-        return self.__arrOpinionSheet
-
-    def setOpinionS(self, arrOpinionSheet):
-        self.__arrOpinionSheet=arrOpinionSheet

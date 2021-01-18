@@ -127,8 +127,8 @@ class Csvcleaner:
         dfAutoTest = pd.read_csv(file_autotest_path, encoding='utf-8')
         dfMotorPasion = pd.read_csv(file_motorpasion_path, encoding='utf-8')
 
-        columns=['general', 'confort', 'desempeño','tecnologia','ostentosidad','deportividad','economia','eficiencia','seguridad','a_favor','en_contra']
-        dfAutos[columns] = pd.DataFrame([[np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]], index=dfAutos.index)
+        columns=['general', 'confort', 'desempeño','tecnología','ostentosidad','deportividad','economía','eficiencia','seguridad','ecología','a_favor','en_contra']
+        dfAutos[columns] = pd.DataFrame([[np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]], index=dfAutos.index)
         def remove_accents(a):
             return unidecode.unidecode(a)
         dfAutos['modelo'] = dfAutos['modelo'].apply(remove_accents)
@@ -146,6 +146,7 @@ class Csvcleaner:
             economia=[]
             eficiencia=[]
             seguridad=[]
+            ecologia=[]
             afavor=''
             encontra=''
             
@@ -168,6 +169,8 @@ class Csvcleaner:
                     eficiencia.append(dfAux.iloc[0]['C_peque_manej'])
                 if not dfAux['C_ecologico'].isnull().values.any():
                     eficiencia.append(dfAux.iloc[0]['C_ecologico'])
+                if not dfAux['C_ecologico'].isnull().values.any():
+                    ecologia.append(dfAux.iloc[0]['C_ecologico'])
                 if not dfAux['Lo_mejor'].isnull().values.any():
                     afavor+dfAux.iloc[0]['Lo_mejor']
                 if not dfAux['Lo_peor'].isnull().values.any():
@@ -236,6 +239,8 @@ class Csvcleaner:
                     eficiencia.append(dfAux.iloc[0]['C_Motor'])
                 if not dfAux['C_Seguridad'].isnull().values.any():
                     seguridad.append(dfAux.iloc[0]['C_Seguridad'])
+                if not dfAux['C_Consumo'].isnull().values.any():
+                    ecologia.append(dfAux.iloc[0]['C_Consumo'])
                 if not dfAux['Lo_Bueno'].isnull().values.any():
                     afavor+=', '+dfAux.iloc[0]['Lo_Bueno']
                 if not dfAux['Lo_Malo'].isnull().values.any():
@@ -259,8 +264,10 @@ class Csvcleaner:
                 dfAutos.iloc[index,11]=sum(eficiencia)/len(eficiencia)
             if len(seguridad)>0:
                 dfAutos.iloc[index,12]=sum(seguridad)/len(seguridad)
-            dfAutos.iloc[index,13]=afavor
-            dfAutos.iloc[index,14]=encontra
+            if len(ecologia)>0:
+                dfAutos.iloc[index,13]=sum(ecologia)/len(ecologia)
+            dfAutos.iloc[index,14]=afavor
+            dfAutos.iloc[index,15]=encontra
 
         dfAutos['nombre']=dfAutos['marca']+' '+dfAutos['modelo']+' '+dfAutos['versión']
         dfAutos.to_csv(file_autos_path_out, encoding="utf-8", index=False) 

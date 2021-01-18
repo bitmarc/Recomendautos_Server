@@ -2,20 +2,16 @@
 Clase que modela una entidad de recomendación, contiene la informacion de automoviles y perfil
 '''
 class Recommendation:
-    def __init__(self, id, arrAutomobiles, profile, arrOpinionSheet):
+    def __init__(self, id, arrAutomobiles, profile):
         self.__id=id
         self.__arrAutomobiles=arrAutomobiles
         self.__profile=profile
-        self.__arrOpinionSheet=arrOpinionSheet
 
     def get_recommendation(self):
         dataA=[]
         for automobile in self.__arrAutomobiles:
             dataA.append(automobile.get_automobile())
-        dataO=[]
-        for opinionS in self.__arrOpinionSheet:
-            dataO.append(opinionS.getOpinion())
-        data={"idRecommendation":self.__id, "results":dataA, "profile":self.__profile.get_profile(), "scores":dataO}
+        data={"idRecommendation":self.__id, "results":dataA, "profile":self.__profile.get_profile()}
         return data
 
     def getId(self):
@@ -35,11 +31,6 @@ class Recommendation:
 
     def setProfile(self, profile):
         self.__profile=profile
-    
-    def getOpinionS(self):
-        return self.__arrOpinionSheet
 
-    def setOpinionS(self, arrOpinionSheet):
-        self.__arrOpinionSheet=arrOpinionSheet
 
     

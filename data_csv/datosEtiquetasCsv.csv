@@ -1,9 +1,10 @@
 ﻿ID,TAG,DESCRIPCION
 1,confort,Comodidad relacionada a los 5 sentidos
 2,desempeño,Eficiente en la capacidad de hacer bien su trabajo
-3,economia,Bajo costo de compra y mantenimiento
+3,economía,Bajo costo de compra y mantenimiento
 4,seguridad,Incorpora lo mejor en seguridad activa y pasiva
 5,eficiencia,"Bajo consumo de combustible, pequeño y ecologico"
 6,ostentosidad,"Llamativo, costoso, y equipado"
 7,deportividad,"Manejable, ligero, veloz, estilo, potente"
-8,tecnologia,Incorpora lo ultimo en tecnologia
+8,tecnología,Incorpora lo ultimo en tecnología
+9,ecología,Amigable con el medio ambiente
