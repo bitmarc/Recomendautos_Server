@@ -252,11 +252,21 @@ class Querys:
             print("Error al obtener automoviles de base de datos: " + str(e))
             return False
 
-    def addAuto(self, marca, modelo, año, version):
+    def getUrlAuto(self,idA):
         try:
             cur = self.__mysql.connection.cursor()
-            cur.execute('CALL sp_insertarAutomoviles(%s,%s,%s,%s)',
-            (marca, modelo, año, version))
+            cur.execute("CALL  sp_obtenerUrlPorIdAuto(%s)",[idA])
+            data=cur.fetchone()
+            return data
+        except Exception as e:
+            print("Error al obtener url de base de datos: " + str(e))
+            return False
+
+    def addAuto(self, marca, modelo, año, version, url):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_insertarAutomoviles(%s,%s,%s,%s,%s)',
+            (marca, modelo, año, version, url))
             self.__mysql.connection.commit()
             return True
         except Exception as e:
@@ -379,6 +389,28 @@ class Querys:
             return data
         except Exception as e:
             print("Error al agregar perfil a la base de datos: " + str(e))
+            return False
+
+    def updateProfileByNcluster(self, nombreP, descripcionP, grupoP):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_actualizarPerfilPorGrupo(%s,%s,%s)',
+            (nombreP, descripcionP, grupoP))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al actualizar perfil : " + str(e))
+            return False
+
+    def updateProfileByNclusterModel(self, nombreP, descripcionP, grupoP, modeloP):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_actualizarPerfilPorGrupoModelo(%s,%s,%s,%s)',
+            (nombreP, descripcionP, grupoP, modeloP))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al actualizar perfil : " + str(e))
             return False
 
     def linkProfileTag(self, idp, TagName):

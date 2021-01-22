@@ -4,15 +4,15 @@ TAGS,IDAG,ATRIBUTO GENERAL,IDAE,ATRIBUTO ESPECIFICO,MAX_P,MAX_R
 "desempeño, deportividad",1,Desplazamiento (L),3,2.6 - 4,7.0,11.0
 desempeño,1,Desplazamiento (L),4,4 - 7,6.0,8.0
 "economía, ecología",2,Número de cilindros,5,3,5.0,5.0
-,2,Número de cilindros,6,4,6.0,14.0
+eficiencia,2,Número de cilindros,6,4,6.0,14.0
 "confort, desempeño",2,Número de cilindros,7,5  / 6,6.0,11.0
 desempeño,2,Número de cilindros,8,8 / 10,5.0,6.0
 economía,3,Disposición de cilindros,9,L,4.0,4.0
 "confort, ostentosidad",3,Disposición de cilindros,10,V,5.0,5.0
-economía,4,Tipo de combustible,11,gasolina,7.0,13.0
-"desempeño, eficiencia",4,Tipo de combustible,12,diesel,6.0,9.0
-"economía, ecología",4,Tipo de combustible,13,hibrido,7.0,11.0
-"ecología, ostentosidad",4,Tipo de combustible,14,eléctrico,5.0,7.0
+economía,4,Tipo de combustible,11,Gasolina,6.0,11.0
+"desempeño, eficiencia",4,Tipo de combustible,12,Diesel,6.0,7.0
+"economía, ecología",4,Tipo de combustible,13,Hibrido,6.0,10.0
+"ecología, ostentosidad",4,Tipo de combustible,14,Eléctrico,4.0,4.0
 economía,5,Potencia (hp),15,110 -,3.0,4.0
 eficiencia,5,Potencia (hp),16,111 - 200,4.0,8.0
 deportividad,5,Potencia (hp),17,201 - 310,4.0,7.0
@@ -28,90 +28,90 @@ deportividad,8,Rendimiento en carretera (Km/L),26,15 -,2.0,2.0
 ,8,Rendimiento en carretera (Km/L),27,15 - 20,2.0,2.0
 eficiencia,8,Rendimiento en carretera (Km/L),28,20 +,4.0,5.0
 "desempeño, deportividad",9,Rendimiento combinado (Km/L),29,13 -,3.0,4.0
-,9,Rendimiento combinado (Km/L),30,13 - 18,4.0,4.0
+"desempeño, confort, tecnología, seguridad, economía, ostentosidad",9,Rendimiento combinado (Km/L),30,13 - 18,4.0,4.0
 eficiencia,9,Rendimiento combinado (Km/L),31,18 +,5.0,6.0
-"economía, deportividad",10,Transmisión,32,manual,5.0,7.0
-"confort, eficiencia",10,Transmisión,33,automática,8.0,9.0
+"economía, deportividad",10,Transmisión,32,Manual,5.0,7.0
+"confort, eficiencia",10,Transmisión,33,Automática,8.0,9.0
 desempeño,10,Transmisión,34,CVT,4.0,4.0
 "desempeño, eficiencia",10,Transmisión,35,DSG,7.0,8.0
 economía,11,Tracción,36,Del / Tras,6.0,8.0
 "desempeño, tecnología",11,Tracción,37,4WD / AWD,4.0,5.0
 desempeño,11,Tracción,38,4X4,2.0,2.0
-desempeño,12,Suspensión trasera,39,semi independiente,7.0,7.0
+desempeño,12,Suspensión trasera,39,Semi independiente,7.0,7.0
 "confort, deportividad",12,Suspensión trasera,40,Independiente,8.0,9.0
-economía,13,Frenos traseros,41,tambor,5.0,5.0
-"seguridad, deportividad",13,Frenos traseros,42,disco,11.0,12.0
+economía,13,Frenos traseros,41,Tambor,5.0,5.0
+"seguridad, deportividad",13,Frenos traseros,42,Disco,11.0,12.0
 seguridad,14,Sistema de frenado,43,ABS,5.0,5.0
 "seguridad, seguridad",14,Sistema de frenado,44, ABS + EBD / BA,8.0,10.0
 "ostentosidad, deportividad",15,Perfil de llantas,45,55%,7.0,7.0
 "confort, economía",15,Perfil de llantas,46,80%,9.0,11.0
-economía,16,Material de rines,47,acero,3.0,4.0
-"ostentosidad, deportividad",16,Material de rines,48,aluminio,4.0,4.0
-"confort, seguridad",17,Faros de niebla,49,.,7.0,7.0
-"confort, ostentosidad",18,Luces direccionales en espejos laterales,50,.,6.0,6.0
-confort,19,Tipo de carrocería,51,sedan,5.0,9.0
-desempeño,19,Tipo de carrocería,52,pick-up,6.0,8.0
-"confort, ostentosidad",19,Tipo de carrocería,53,suv,7.0,9.0
-"confort, tecnología",19,Tipo de carrocería,54,hatchback,5.0,8.0
-"confort, desempeño",19,Tipo de carrocería,55,mini van,7.0,8.0
-"ostentosidad, deportividad",19,Tipo de carrocería,56,cupé,6.0,6.0
-ostentosidad,19,Tipo de carrocería,57,convertible,5.0,5.0
-,20,Número de plazas,58,2 / 3,4.0,4.0
-,20,Número de plazas,59,4 / 5,6.0,6.0
+economía,16,Material de rines,47,Acero,3.0,4.0
+"ostentosidad, deportividad",16,Material de rines,48,Aluminio,4.0,4.0
+"confort, seguridad",17,Faros de niebla,49,Sí,7.0,7.0
+"confort, ostentosidad",18,Luces direccionales en espejos laterales,50,Sí,6.0,6.0
+confort,19,Tipo de carrocería,51,Sedán,5.0,9.0
+desempeño,19,Tipo de carrocería,52,Pick-up,6.0,8.0
+"confort, ostentosidad",19,Tipo de carrocería,53,Suv,7.0,9.0
+"confort, tecnología",19,Tipo de carrocería,54,Hatchback,5.0,8.0
+"confort, desempeño",19,Tipo de carrocería,55,Mini van,7.0,8.0
+"ostentosidad, deportividad",19,Tipo de carrocería,56,Cupé,6.0,6.0
+ostentosidad,19,Tipo de carrocería,57,Convertible,5.0,5.0
+"economía, deportividad, eficiencia",20,Número de plazas,58,2 / 3,4.0,4.0
+"desempeño, confort, tecnología, seguridad, economía, eficiencia, ecología, ostentosidad",20,Número de plazas,59,4 / 5,6.0,6.0
 desempeño,20,Número de plazas,60,6 +,4.0,4.0
-economía,21,Material de asientos,61,forrados en tela / material sintético,4.0,4.0
-ostentosidad,21,Material de asientos,62,forrados de piel / cuero,4.0,4.0
-ostentosidad,22,Material de volante,63,forrado en piel / cuero,4.0,4.0
-ostentosidad,23,Material de palanca de velocidades,64,forrada en piel / aluminio / cuero,4.0,4.0
+economía,21,Material de asientos,61,Forrados en tela / material sintético,4.0,4.0
+ostentosidad,21,Material de asientos,62,Forrados de piel / cuero,4.0,4.0
+ostentosidad,22,Material de volante,63,Forrado en piel / cuero,4.0,4.0
+ostentosidad,23,Material de palanca de velocidades,64,Forrada en piel / Aluminio / Cuero,4.0,4.0
 "economía, deportividad",24,Capacidad cajuela (L),65,200 -,3.0,4.0
-,24,Capacidad cajuela (L),66,200 - 400,5.0,7.0
+"desempeño, confort, tecnología, seguridad, economía, eficiencia, ecología, ostentosidad",24,Capacidad cajuela (L),66,200 - 400,5.0,7.0
 confort,24,Capacidad cajuela (L),67,400 - 700,6.0,7.0
 "desempeño, confort",24,Capacidad cajuela (L),68,700 +,4.0,5.0
-"confort, ostentosidad",25,Quemacocos,69,.,3.0,3.0
+"confort, ostentosidad",25,Quemacocos,69,Sí,3.0,3.0
 confort,26,Portavasos,70,1 - 4,7.0,8.0
 "confort, ostentosidad",26,Portavasos,71,5 +,5.0,5.0
-"confort, tecnología",27,Botón de encendido (start engine),72,.,5.0,5.0
-"confort, tecnología",28,Cristales eléctricos,73,.,5.0,7.0
-"confort, tecnología, seguridad",29,Seguros eléctricos,74,.,7.0,9.0
-"confort, tecnología",30,Espejos laterales eléctricos,75,.,5.0,6.0
-confort,31,Aire acondicionado,76,.,5.0,6.0
-"confort, tecnología, ostentosidad",32,climatizador / control automático de temperatura,77,.,7.0,7.0
-confort,33,Descansa brazos,78,.,8.0,9.0
-economía,34,Ajuste de asientos,79,manual,5.0,6.0
-"confort, tecnología, ostentosidad",34,Ajuste de asientos,80,automático,8.0,8.0
-confort,35,Volante ajustable,81,.,5.0,5.0
-confort,36,Controles en volante,82,.,11.0,13.0
-tecnología,37,Sistema de navegación,83,.,9.0,11.0
-"tecnología, ostentosidad",38,Pantalla táctil,84,.,7.0,9.0
-"confort, ostentosidad",39,pantalla trasera,85,.,7.0,7.0
-economía,40,Sistema de audio,86,radio AM/FM CD 4 bocinas,5.0,6.0
-confort,40,Sistema de audio,87,radio AM/FM CD 6 bocinas,7.0,9.0
-"confort, ostentosidad",40,Sistema de audio,88,radio AM/FM CD 7+ bocinas,7.0,8.0
+"confort, tecnología",27,Botón de encendido (start engine),72,Sí,5.0,5.0
+"confort, tecnología",28,Cristales eléctricos,73,Sí,5.0,7.0
+"confort, tecnología, seguridad",29,Seguros eléctricos,74,Sí,7.0,9.0
+"confort, tecnología",30,Espejos laterales eléctricos,75,Sí,5.0,6.0
+confort,31,Aire acondicionado,76,Sí,5.0,6.0
+"confort, tecnología, ostentosidad",32,climatizador / control automático de temperatura,77,Sí,7.0,7.0
+confort,33,Descansa brazos,78,Sí,8.0,9.0
+economía,34,Ajuste de asientos,79,Manual,5.0,6.0
+"confort, tecnología, ostentosidad",34,Ajuste de asientos,80,Eléctrico,8.0,8.0
+confort,35,Volante ajustable,81,Sí,5.0,5.0
+confort,36,Controles en volante,82,Sí,11.0,13.0
+tecnología,37,Sistema de navegación,83,Sí,9.0,11.0
+"tecnología, ostentosidad",38,Pantalla táctil,84,Sí,7.0,9.0
+"confort, ostentosidad",39,pantalla trasera,85,Sí,7.0,7.0
+economía,40,Sistema de audio,86,Radio AM/FM CD 4 bocinas,5.0,6.0
+confort,40,Sistema de audio,87,Radio AM/FM CD 6 bocinas,7.0,9.0
+"confort, ostentosidad",40,Sistema de audio,88,Radio AM/FM CD 7+ bocinas,7.0,8.0
 "confort, tecnología, ostentosidad",41,Sistema de audio plus,89,"premium bose/audio plus / booffer / swb / twiter, etc.",6.0,6.0
-tecnología,42,Ipod ready / Apple CarPlay / Android auto,90,.,6.0,8.0
-tecnología,43,Conectividad Bluetooth,91,.,5.0,7.0
-"tecnología, ostentosidad",44,Conectividad wifi,92,.,2.0,2.0
-"tecnología, confort",45,Conectores USB,93,.,9.0,10.0
-"confort, tecnología",46,Computadora de viaje,94,.,9.0,10.0
-"confort, seguridad",47,Sistema de ascenso en pendientes,95,.,5.0,5.0
-"seguridad, confort, tecnología",48,Sensores de reversa,96,.,6.0,7.0
-"confort, seguridad, tecnología",49,Cámara de visión trasera / reversa,97,.,4.0,4.0
-"seguridad, tecnología",50,Alerta de punto ciego,98,.,9.0,11.0
-"seguridad, tecnología",51,Alerta de tráfico cruzado,99,.,8.0,8.0
-"tecnología, seguridad",52,Alerta de colisión frontal,100,.,7.0,7.0
-confort,53,Control crucero,101,básico,5.0,6.0
-"confort, tecnología, seguridad",53,Control crucero,102,adaptativo / inteligente,5.0,5.0
-"confort, tecnología",54,Encendido automático de luces  exteriores,103,.,4.0,4.0
-seguridad,55,Bolsas de aire frontales para conductor y pasajero,104,.,9.0,11.0
-seguridad,53,Bolsas de aire laterales / tipo cortina,105,.,5.0,5.0
-seguridad,57,Cinturones de seguridad de 3 puntos en segunda fila,106,.,6.0,7.0
-seguridad,58,Sistema de anclaje para silla de bebé,107,.,4.0,5.0
-seguridad,59,Sistema de control de tracción,108,.,7.0,8.0
-"seguridad, tecnología",60,Sistema de control de estabilidad,109,.,6.0,8.0
-"seguridad, tecnología",61,Frenado inteligente,110,.,5.0,5.0
-seguridad,62,Sistema de alarma,111,.,6.0,7.0
-seguridad,63,Sistema de inmovilizador,112,.,6.0,6.0
-economía,64,Precio,113,"$220,000 -",3.0,3.0
-,64,Precio,114,"$220,000 - $350,000",3.0,3.0
-ostentosidad,64,Precio,115,"350,000 - $500,000",3.0,3.0
-"ostentosidad, ostentosidad",64,Precio,116,"$500,000 - $1,000,000",3.0,3.0
+tecnología,42,Ipod ready / Apple CarPlay / Android auto,90,Sí,6.0,8.0
+tecnología,43,Conectividad Bluetooth,91,Sí,5.0,7.0
+"tecnología, ostentosidad",44,Conectividad wifi,92,Sí,2.0,2.0
+"tecnología, confort",45,Conectores USB,93,Sí,9.0,10.0
+"confort, tecnología",46,Computadora de viaje,94,Sí,9.0,10.0
+"confort, seguridad",47,Sistema de ascenso en pendientes,95,Sí,5.0,5.0
+"seguridad, confort, tecnología",48,Sensores de reversa,96,Sí,6.0,7.0
+"confort, seguridad, tecnología",49,Cámara de visión trasera / reversa,97,Sí,4.0,4.0
+"seguridad, tecnología",50,Alerta de punto ciego,98,Sí,9.0,11.0
+"seguridad, tecnología",51,Alerta de tráfico cruzado,99,Sí,8.0,8.0
+"tecnología, seguridad",52,Alerta de colisión frontal,100,Sí,7.0,7.0
+confort,53,Control crucero,101,Básico,5.0,6.0
+"confort, tecnología, seguridad",53,Control crucero,102,Adaptativo / Inteligente,5.0,5.0
+"confort, tecnología",54,Encendido automático de luces  exteriores,103,Sí,4.0,4.0
+seguridad,55,Bolsas de aire frontales para conductor y pasajero,104,Sí,9.0,11.0
+seguridad,53,Bolsas de aire laterales / tipo cortina,105,Sí,5.0,5.0
+seguridad,57,Cinturones de seguridad de 3 puntos en segunda fila,106,Sí,6.0,7.0
+seguridad,58,Sistema de anclaje para silla de bebé,107,Sí,4.0,5.0
+seguridad,59,Sistema de control de tracción,108,Sí,7.0,8.0
+"seguridad, tecnología",60,Sistema de control de estabilidad,109,Sí,6.0,8.0
+"seguridad, tecnología",61,Frenado inteligente,110,Sí,5.0,5.0
+seguridad,62,Sistema de alarma,111,Sí,6.0,7.0
+seguridad,63,Sistema de inmovilizador,112,Sí,6.0,6.0
+economía,64,Precio (MXN),113,"$220,000 -",3.0,3.0
+"desempeño, confort, tecnología, seguridad, eficiencia, ecología",64,Precio (MXN),114,"$220,000 - $350,000",3.0,3.0
+"desempeño, confort, tecnología, seguridad, eficiencia, ecología",64,Precio (MXN),115,"350,000 - $500,000",3.0,3.0
+"ostentosidad, deportividad",64,Precio (MXN),116,"$500,000 - $1,000,000",3.0,3.0

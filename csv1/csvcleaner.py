@@ -172,9 +172,15 @@ class Csvcleaner:
                 if not dfAux['C_ecologico'].isnull().values.any():
                     ecologia.append(dfAux.iloc[0]['C_ecologico'])
                 if not dfAux['Lo_mejor'].isnull().values.any():
-                    afavor+dfAux.iloc[0]['Lo_mejor']
+                    if len(afavor)<2:
+                        afavor+=dfAux.iloc[0]['Lo_mejor']
+                    else:
+                        afavor+=' '+dfAux.iloc[0]['Lo_mejor']
                 if not dfAux['Lo_peor'].isnull().values.any():
-                    encontra+dfAux.iloc[0]['Lo_peor']
+                    if len(encontra)<2:
+                        encontra+=dfAux.iloc[0]['Lo_peor']
+                    else:
+                        encontra+=' '+dfAux.iloc[0]['Lo_peor']
                     
             dfAux=dfAutoTest.loc[dfAutoTest['Nombre'].str.contains(row['marca']+' ', flags = re.IGNORECASE) &
                                 dfAutoTest['Nombre'].str.contains(' '+row['modelo'], flags = re.IGNORECASE)]
@@ -200,9 +206,15 @@ class Csvcleaner:
                 if not dfAux['C_Diseño'].isnull().values.any():
                     seguridad.append(dfAux.iloc[0]['C_Diseño'])
                 if not dfAux['A_favor'].isnull().values.any():
-                    afavor+=', '+dfAux.iloc[0]['A_favor']
+                    if len(afavor)<2:
+                        afavor+=dfAux.iloc[0]['A_favor']
+                    else:
+                        afavor+=' '+dfAux.iloc[0]['A_favor']
                 if not dfAux['En_contra'].isnull().values.any():
-                    encontra+=', '+dfAux.iloc[0]['En_contra']
+                    if len(encontra)<2:
+                        encontra+=dfAux.iloc[0]['En_contra']
+                    else:
+                        encontra+=' '+dfAux.iloc[0]['En_contra']
             
             dfAux=dfMotorPasion.loc[dfMotorPasion['Nombre'].str.contains(row['marca']+' ', flags = re.IGNORECASE) &
                                 dfMotorPasion['Nombre'].str.contains(' '+row['modelo'], flags = re.IGNORECASE)]
@@ -242,9 +254,15 @@ class Csvcleaner:
                 if not dfAux['C_Consumo'].isnull().values.any():
                     ecologia.append(dfAux.iloc[0]['C_Consumo'])
                 if not dfAux['Lo_Bueno'].isnull().values.any():
-                    afavor+=', '+dfAux.iloc[0]['Lo_Bueno']
+                    if len(afavor)<2:
+                        afavor+=dfAux.iloc[0]['Lo_Bueno']
+                    else:
+                        afavor+=' '+dfAux.iloc[0]['Lo_Bueno']
                 if not dfAux['Lo_Malo'].isnull().values.any():
-                    encontra+=', '+dfAux.iloc[0]['Lo_Malo']
+                    if len(encontra)<2:
+                        encontra+=dfAux.iloc[0]['Lo_Malo']
+                    else:
+                        encontra+=' '+dfAux.iloc[0]['Lo_Malo']
                     
             if len(general)>0:
                 dfAutos.iloc[index,4]=sum(general)/len(general)

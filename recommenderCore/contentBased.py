@@ -34,8 +34,8 @@ class ContentBased:
         # 2. filtro basado en contenido(evaluacion de perfil)
         base_path = Path(__file__).parent
         file_path_autos = (base_path / "../data_csv/autos_data_mod_csv.csv").resolve()
-        col_list = ["marca", "modelo", "año", "versión", "nombre", "overview"]
-        dfAutos = pd.read_csv(file_path_autos, usecols=col_list, encoding='utf-8')
+        #col_list = ["marca", "modelo", "año", "versión", "nombre", "overview"]
+        dfAutos = pd.read_csv(file_path_autos, encoding='utf-8')
         #   Transformo las respuestas de formulario a un string de atributos 
         file_path_rules = (base_path / "../data_csv/datosMtxCsv.csv").resolve()
         dfRules = pd.read_csv(file_path_rules, encoding='utf-8')
@@ -64,12 +64,15 @@ class ContentBased:
         text1=text1[:-1]
         #   Agrego el nuevo "auto modelo" al dataframe de autos para procesarlo junto a los demas
         dfAutos=dfAutos.append({'nombre' : 'modelo' , 'overview' : text1} , ignore_index=True)
+        #aplico restricciones de precio y transmision?
+        dfAutos=ContentBased.setRestrictions(numericForm,dfAutos,True,True) #precio, transmision
         #   Obtengo la matriz de similitud
         #tfidf_cosine_sim=ContentBased.tfidfVectorizer(dfAutos)
         cv_cosine_sim=ContentBased.countVectorizer(dfAutos)
         #   genero las recomendaciones de fase 1
         recomendationsF1=ContentBased.get_recommendations('modelo',dfAutos,cv_cosine_sim)
-        return recomendationsF1[:30]
+        list=(dfAutos.loc[recomendationsF1])['index'].to_list()
+        return list[:25]
         ## CONTINUA FASE 2. FILTRO BASADO EN CONTENIDO (EVALUACION DE PERFIL)
 
     @staticmethod
@@ -82,29 +85,28 @@ class ContentBased:
         tagList=[]
         for tag in tags:
             tagList.append(tag[0])
+        tagList.append('general')
         print(tagList)
-        dfAux=dfScores.dropna(subset = tagList)
-        dfAux=dfAux.nlargest(10,tagList)
-        autos=dfAux.index.tolist()
+        #dfScores=dfScores.dropna(subset = tagList)
+        dfScores=dfScores.nlargest(10,tagList)
+        autos=dfScores.index.tolist()
 
-        dfAux[['cMar','cMod']] = pd.DataFrame([[0, 0]], index=dfAux.index)
+        dfScores[['cMar','cMod']] = pd.DataFrame([[0, 0]], index=dfScores.index)
         # metodo para obtener la lista final de autos
         #119,120
         resultados=[]
         for rec1 in autos:
-            if dfAux.loc[rec1]['cMar']<4: # máximo 4 autos de la misma marca
+            if dfScores.loc[rec1]['cMar']<4: # máximo 4 autos de la misma marca
                 #procede esa marca aun es menor a 3
-                if dfAux.loc[rec1]['cMod']<1:
+                if dfScores.loc[rec1]['cMod']<1:
                     #procede modelo nuevo
                     resultados.append(rec1)
-                    dfAux.loc[dfAux['marca']==dfAux.loc[rec1]['marca'], 'cMar']+=1
-                    dfAux.loc[dfAux['modelo']==dfAux.loc[rec1]['modelo'], 'cMod']+=1
+                    dfScores.loc[dfScores['marca']==dfScores.loc[rec1]['marca'], 'cMar']+=1
+                    dfScores.loc[dfScores['modelo']==dfScores.loc[rec1]['modelo'], 'cMod']+=1
         autos=resultados
         return autos
 
 
-
-    
 
     # --------------------------------- METODOS AUXILIARES ---------------------------------------------------------
     @staticmethod
@@ -187,3 +189,71 @@ class ContentBased:
         # Regreso el top 30  de autos (indices respecto al df)
         #return dfAutosMod['nombre'].iloc[aouto_indices]
         return aouto_indices
+    
+    @staticmethod
+    def lowCost(idsPrices):
+        return idsPrices[2:4]
+    @staticmethod
+    def mediumCost(idsPrices):
+        return idsPrices[3]
+    @staticmethod
+    def highCost(idsPrices):
+        return idsPrices[0]
+    @staticmethod
+    def highestCost(idsPrices):
+        return idsPrices[0:2]
+    @staticmethod
+    def none(idsTransmisions):
+        return False
+    @staticmethod
+    def manual(idsTransmisions):
+        return idsTransmisions[1:]
+    @staticmethod
+    def automatic(idsTransmisions):
+        return idsTransmisions[0]
+    @staticmethod
+    def getPricesToExclude(idPriceR,idsAtrribsPrices):
+        switcher = {
+            45: ContentBased.lowCost,
+            46: ContentBased.mediumCost,
+            47: ContentBased.highCost,
+            48: ContentBased.highestCost
+        }
+        func = switcher.get(idPriceR, lambda: "Invalid price")
+        return func(idsAtrribsPrices)
+    @staticmethod
+    def getTransmisionsToExclude(idTransmisionR,idsTransmisions):
+        switcher = {
+            36: ContentBased.none,
+            37: ContentBased.manual,
+            38: ContentBased.automatic
+        }
+        func = switcher.get(idTransmisionR, lambda: "Invalid Transmision")
+        return func(idsTransmisions)
+    @staticmethod
+    def setRestrictions(userForm, dfAutos, price, transmision):
+        idsTRansmisions=['32','33','34','35']
+        idsPrices=['113','114','115','116']
+        dfAutosMod = dfAutos.copy()
+        if price:
+            k=ContentBased.getPricesToExclude(userForm[-1],idsPrices)# La posicion del precio es la ultima
+            if isinstance(k, list):
+                for jk in k:
+                    dfAutosMod.drop(dfAutosMod[dfAutosMod[jk] == 1].index, inplace = True)
+            else:
+                dfAutosMod.drop(dfAutosMod[dfAutosMod[k] == 1].index, inplace = True)
+                
+        if transmision:
+            k=ContentBased.getTransmisionsToExclude(userForm[13],idsTRansmisions)# El id de la pregunta de transmision es 13
+            if k:
+                print('k si tiene valor')
+                if isinstance(k, list):
+                    for jk in k:
+                        dfAutosMod.drop(dfAutosMod[dfAutosMod[jk] == 1].index, inplace = True)
+                else:
+                    dfAutosMod.drop(dfAutosMod[dfAutosMod[k] == 1].index, inplace = True)
+            else:
+                print('k no tiene valor')
+        dfAutosMod.reset_index(inplace = True)
+        
+        return dfAutosMod

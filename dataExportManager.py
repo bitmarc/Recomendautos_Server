@@ -28,9 +28,10 @@ class DataExportManager:
         dfAutos = pd.read_csv(file_path,encoding='utf-8')
         dfAutos.fillna(0)
         for index, row in dfAutos.iterrows():
-            if(not MyConnection.addAuto(row[0],row[1],row[2],row[3])):
+            if(not MyConnection.addAuto(row[0],row[1],row[2],row[3],row[-1])):
                 print('Error')
                 break
+            print('auto: ',index,' ok')
         return "ok"
     
     @staticmethod
@@ -39,10 +40,9 @@ class DataExportManager:
         base_path = Path(__file__).parent
         file_path = (base_path / "data_csv/autos_data_mod_csv.csv").resolve()
         dfAutos = pd.read_csv(file_path,encoding='utf-8')
-        dfAutos.drop(['marca','modelo','año','versión'],axis='columns', inplace=True)
+        dfAutos.drop(['marca','modelo','año','versión','url'],axis='columns', inplace=True)
         for index, row in dfAutos.iterrows():
             i=0
-            idAttrib=[]
             for data in row:
                 if data==1:
                     if(not MyConnection.addDatasheet(index+1,i+1)):

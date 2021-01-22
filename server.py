@@ -54,7 +54,7 @@ class home(Resource):
 class wellcome(Resource):
     @auth.login_required
     def get(self):
-        return jsonify({"message":"Hola {}!,\n Bienvenido".format(auth.current_user()[0])})
+        return jsonify({"message":"{}".format(auth.current_user()[0])})
 
 # Registro de nuevos usaurios
 class addUser(Resource):
@@ -201,16 +201,17 @@ class getCarDetails(Resource):
                 arrAttribs.append(Attribute(attrib[0],attrib[1],attrib[2]))
             opinions=MyConnection.getOpinions(request.json['id'])
             if(opinions):
-                opinionsheet=OpinionSheet(request.json['id'],opinions[0],opinions[1],'http://www.google.com.mx')
+                opinionsheet=OpinionSheet(request.json['id'],opinions[0],opinions[1],opinions[2])
             else:
-                opinionsheet=OpinionSheet(request.json['id'],'','','http://www.google.com.mx')
+                urlA=MyConnection.getUrlAuto(request.json['id'])
+                opinionsheet=OpinionSheet(request.json['id'],'','',urlA[0])
             datasheet=Datasheet(request.json['id'],arrAttribs,opinionsheet)
             print(datasheet.getDataSheet())
             return jsonify(datasheet.getDataSheet())
         return jsonify({'message':'error'})
 
 # exportarAtributos
-class push(Resource):
+class exportData(Resource):
     def get(self):
         msg='failed'
         msg=DataExportManager.exportAttributes(MyConnection)
@@ -235,7 +236,6 @@ class push(Resource):
         print('exportForms ok')
         msg=ContentBased.generateOverview() #genera overview
         print('generateOverview ok')
-        
         return jsonify('status: '+msg)
 
 # Entrenar modelo
@@ -243,10 +243,20 @@ class trainModel(Resource):
     def get(self):
         msg='ok'
         k=7
-        KmodesManager.generateModel(k,MyConnection,'Cao')
+        #KmodesManager.generateModel(k,MyConnection,'Cao')
         msg=KmodesManager.defineProfiles(MyConnection,k)##===aun no se ejecuta
         #ContentBased.generateOverview() #solo cuando hay cambios en los datos de coches
         return msg
+
+
+# Entrenar modelo
+class updateProfiles(Resource):
+    def post(self):
+        msg='Error'
+        if(MyConnection.updateProfileByNcluster(request.json['nombrePerfil'],request.json['descripcionPerfil'],request.json['cluster'])):
+            msg='perfiles actualizados!'
+        return msg
+
 
 
 # ASOCIACION DE RECURSOS Y RUTAS
@@ -261,8 +271,9 @@ api.add_resource(getForm,"/form")
 api.add_resource(getRecom,"/recom")
 api.add_resource(getHistory,"/history")
 api.add_resource(getCarDetails,"/details")
-api.add_resource(push,"/push")
+api.add_resource(exportData,"/exportData")
 api.add_resource(trainModel,"/trainModel")
+api.add_resource(updateProfiles,"/setProfile")
 
 
 # CONFIGURACION DE EJCUCION

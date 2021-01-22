@@ -9,7 +9,7 @@ from datetime import datetime
 class KmodesManager:
     #Metodo se ejecuta 1 vez
     @staticmethod
-    def generateModel(k, MyConnection, method='Huang'):
+    def generateModel(k, MyConnection, method='Cao'):
         # Se utiliza para generar el modelo de entrenamiento y definir los perfiles tras su analisis
         # ------------------------- 1. Se genera el modelo -----------------------------------------------
         # 1.1 Cargo los datos
@@ -18,7 +18,7 @@ class KmodesManager:
         dfNumericForms = pd.read_csv(file_path_numericForms, encoding='utf-8')
         npArrayForms = dfNumericForms.to_numpy()
         # 1.1 Ejecuto el algoritmo
-        model = KModes(n_clusters=k, init=method, n_init=7, verbose=1) #inicializo
+        model = KModes(n_clusters=k, init=method, n_init=8, verbose=1) #inicializo
         clusters = model.fit_predict(npArrayForms)
         print('MODELO CREADO',model.labels_)
         #genero nombre y ruta de guardado
@@ -42,6 +42,7 @@ class KmodesManager:
         if not lastModel:
             print('error al conseguir nombre del modelo')
         route="../clusteringModel/"+lastModel[1]+".pkl"#posicion 1 indica el nombre
+        print('leido ',route)
         file_path_model = (base_path / route).resolve()
         dfNumericForms = pd.read_csv(file_path_numericForms, encoding='utf-8')
         model=pickle.load(open(file_path_model,"rb")) #load model
@@ -60,6 +61,7 @@ class KmodesManager:
         # 2.2. Tradusco los grupos de formularios a grupos de atributos
         file_path_rules = (base_path / "../data_csv/datosMtxCsv.csv").resolve()
         dfRules = pd.read_csv(file_path_rules, encoding='utf-8')
+        dfRules.drop(['20','24', '27'], axis=1, inplace=True) # ------------------------------- restriccion 23 - 28
         dfRules = dfRules.fillna(0)
         ArrayClusterlabels=[]
         for cluster in mtx:
@@ -90,7 +92,8 @@ class KmodesManager:
         LIST=[]
         valuePorcent=0.60
         for df in dfArray:
-            LIST.append(KmodesManager.getTagsList(df.loc[df['ratedCount']>KmodesManager.getMin(df.nsmallest(1,'ratedCount').iloc[0,2],df.nlargest(1,'ratedCount').iloc[0,2],valuePorcent)]['IdAtrib'].tolist(),dfAttributes))
+            #LIST.append(KmodesManager.getTagsList(df.loc[df['ratedCount']>KmodesManager.getMin(df.nsmallest(1,'ratedCount').iloc[0,2],df.nlargest(1,'ratedCount').iloc[0,2],valuePorcent)]['IdAtrib'].tolist(),dfAttributes))
+            LIST.append(KmodesManager.getTagsList(df.loc[df['ratedCount']>(df.nlargest(1,'ratedCount').iloc[0,2]*valuePorcent)]['IdAtrib'].tolist(),dfAttributes))
         #NUEVO-----------------------------------------
         allTags=''
         for ind in dfAttributes.index:
