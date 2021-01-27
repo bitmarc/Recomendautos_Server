@@ -360,6 +360,16 @@ class Querys:
             print("Error al obtener modelo a la base de datos: " + str(e))
             return False
 
+    def getModelByName(self,modelo):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerModeloPorNombre(%s)',[modelo])
+            data=cur.fetchone()
+            return data
+        except Exception as e:
+            print("Error al obtener modelo por nombre de la base de datos: " + str(e))
+            return False
+
     def getPerfil(self,grupo,modelo):
         try:
             cur = self.__mysql.connection.cursor()
@@ -421,6 +431,16 @@ class Querys:
             return True
         except Exception as e:
             print("Error al asociar perfil y etiqueta en la base de datos: " + str(e))
+            return False
+    
+    def removeProfileTag(self, idp):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_reescribirPerfilEtiqueta(%s)',[idp])
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al reescribir perfil y etiqueta en la base de datos: " + str(e))
             return False
 
 # tags

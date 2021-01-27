@@ -34,14 +34,20 @@ class KmodesManager:
         
 
     @staticmethod
-    def defineProfiles(MyConnection,k):
+    def defineProfiles(MyConnection,k, modelName=False):
         #1 cargo modelo
         base_path = Path(__file__).parent
         file_path_numericForms = (base_path / "../data_csv/datosFormularioNumericCsv.csv").resolve()
-        lastModel=MyConnection.getLastModel()
-        if not lastModel:
-            print('error al conseguir nombre del modelo')
-        route="../clusteringModel/"+lastModel[1]+".pkl"#posicion 1 indica el nombre
+        if modelName:
+            lastModel=MyConnection.getModelByName(modelName)
+            if not lastModel:
+                print('error al obtener nombre del modelo en DB, el modelo especificado debe haber sido generado y almacenado anterioremente')
+            route="../clusteringModel/"+modelName+".pkl"#posicion 1 indica el nombre
+        else:
+            lastModel=MyConnection.getLastModel()
+            if not lastModel:
+                print('error al obtener nombre del modelo de la base de datos')
+            route="../clusteringModel/"+lastModel[1]+".pkl"#posicion 1 indica el nombre
         print('leido ',route)
         file_path_model = (base_path / route).resolve()
         dfNumericForms = pd.read_csv(file_path_numericForms, encoding='utf-8')
@@ -136,20 +142,41 @@ class KmodesManager:
         for x in range(k):
             nameP='Perfil '+str(x)
             print(nameP)
-            idP=MyConnection.addProfile(nameP,profiles[x],x,lastModel[0])#la posicion 0 de lastmodel indica el id
-            if(idP):
-                for tag in dictarrayTags[x]:
-                    MyConnection.linkProfileTag(idP[0],tag,dictarrayTags[x].get(tag))
-                print('Exito al agregar perfil')
+
+            if modelName: # si existe el modelo
+                #obterner id de perfil
+                idP=MyConnection.getPerfil(x,lastModel[0])
+                if(idP):
+                    MyConnection.removeProfileTag(idP[0])
+                    for tag in dictarrayTags[x]:
+                        MyConnection.linkProfileTag(idP[0],tag,dictarrayTags[x].get(tag))
+                    print('Exito al agregar perfil (sobre escribido)')
+                else:
+                    print('Error al agregar perfil (sobre escribido)')
+                
+                # for link tags
             else:
-                print('Error al agregar perfil')
+                idP=MyConnection.addProfile(nameP,profiles[x],x,lastModel[0])#la posicion 0 de lastmodel indica el id
+                if(idP):
+                    for tag in dictarrayTags[x]:
+                        MyConnection.linkProfileTag(idP[0],tag,dictarrayTags[x].get(tag))
+                    print('Exito al agregar perfil')
+                else:
+                    print('Error al agregar perfil')
         return 'perfiles agregados correctamente!'
 
 
     @staticmethod
-    def getCluster(form):
+    def getCluster(form, MyConnection, modelName=False):
+        if modelName:
+            route="../clusteringModel/"+modelName+".pkl"#posicion 1 indica el nombre
+        else:
+            lastModel=MyConnection.getLastModel()
+            if not lastModel:
+                print('error al obtener nombre del ultimo modelo en DB')
+            route="../clusteringModel/"+lastModel[1]+".pkl"#posicion 1 indica el nombre
         base_path = Path(__file__).parent
-        file_path_model = (base_path / "../clusteringModel/model.pkl").resolve()
+        file_path_model = (base_path / route).resolve()
         model=pickle.load(open(file_path_model,"rb")) #load model
         cluster=model.predict(form) # nsamples,nfeatures
         return cluster[0]

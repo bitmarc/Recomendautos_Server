@@ -28,7 +28,7 @@ class ContentBased:
     
     #SE EJECUTA POR CADA RECOMENDACION [**Metdodo principal**]
     @staticmethod
-    def getSimilarAutos(numericForm, autos=False):# Requiere numpy array o lista simple
+    def getSimilarAutos(numericForm, idsAutos=False):# Requiere numpy array o lista simple
         # Dos fases:
         # 1. filtro basado en contenido(similitud de atributos)
         # 2. filtro basado en contenido(evaluacion de perfil)
@@ -64,23 +64,32 @@ class ContentBased:
         text1=text1[:-1]
         #   Agrego el nuevo "auto modelo" al dataframe de autos para procesarlo junto a los demas
         dfAutos=dfAutos.append({'nombre' : 'modelo' , 'overview' : text1} , ignore_index=True)
+
+        #restriccion solo listado de autos
+        if idsAutos:
+            autos=idsAutos
+            autos.append(dfAutos.index[-1])
+            dfAutos=dfAutos.loc[autos]
+
         #aplico restricciones de precio y transmision?
         dfAutos=ContentBased.setRestrictions(numericForm,dfAutos,True,True) #precio, transmision
         #   Obtengo la matriz de similitud
         #tfidf_cosine_sim=ContentBased.tfidfVectorizer(dfAutos)
         cv_cosine_sim=ContentBased.countVectorizer(dfAutos)
-        #   genero las recomendaciones de fase 1
         recomendationsF1=ContentBased.get_recommendations('modelo',dfAutos,cv_cosine_sim)
         list=(dfAutos.loc[recomendationsF1])['index'].to_list()
         return list[:25]
-        ## CONTINUA FASE 2. FILTRO BASADO EN CONTENIDO (EVALUACION DE PERFIL)
 
     @staticmethod
     def getBestRatedAutos(idsAutos,cluster,idModel,MyConnection):
         base_path = Path(__file__).parent
         file_path_scores = (base_path / "../data_csv/scoreSheet.csv").resolve()
         dfScores = pd.read_csv(file_path_scores, encoding='utf-8')
-        dfScores=dfScores.loc[idsAutos]
+
+        # Verifico si idsAutos tiene valores, si no se toman todos los autos como entrada
+        if idsAutos:
+            dfScores=dfScores.loc[idsAutos]
+
         tags=MyConnection.getTagsByCM(cluster,idModel)
         tagList=[]
         ratingList=[]
@@ -241,7 +250,7 @@ class ContentBased:
         return idsPrices[0]
     @staticmethod
     def highestCost(idsPrices):
-        return idsPrices[0:2]
+        return idsPrices[0:3]
     @staticmethod
     def none(idsTransmisions):
         return False

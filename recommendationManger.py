@@ -17,7 +17,7 @@ class RecommendationManager:
         RecommendationManager.setResults(form, MyConnection,idReq)
         #2. Clasifico formulario para obtener perfil.
         array=RecommendationManager.getNumpyForm(form)
-        cluster=KmodesManager.getCluster(array)
+        cluster=KmodesManager.getCluster(array,MyConnection)
         idModel=MyConnection.getLastModel()[0]#la posicion 0 indica el id
         profile=MyConnection.getPerfil(cluster,idModel)
         #3. creo una recomendacion en base de datos y asigno el perfil
@@ -25,10 +25,10 @@ class RecommendationManager:
         if(idRecom):
             #4. filtro basado en contenido %% requiere generate OVERVIEW
             print(array[0])
-            autos1=ContentBased.getSimilarAutos(array[0])
+            autos1=ContentBased.getSimilarAutos(array[0]) ## En caso de tener una resticccioon sobre ciertos automoviles, agregarlo como segundo parametro
             print('autos despues del filtro basado en contenido: ',autos1)
             #5. filtro basado en perfil
-            autos2=ContentBased.getBestRatedAutos(autos1,cluster,idModel,MyConnection)#---------------------
+            autos2=ContentBased.getBestRatedAutos(autos1,cluster,idModel,MyConnection)# En caso de tener restricciones de autos, agregarlo como primer parametro, en caso contraario se introduce False
             print('autos despues del filtro basado en perfil: ',autos2)
             autos3=ContentBased.getRestrictedAutos(autos2)
             print('autos despues del filtro basado en perfil: ',autos3)
