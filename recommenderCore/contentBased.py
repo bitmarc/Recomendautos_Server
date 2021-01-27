@@ -28,7 +28,7 @@ class ContentBased:
     
     #SE EJECUTA POR CADA RECOMENDACION [**Metdodo principal**]
     @staticmethod
-    def getSimilarAutos(numericForm):# Requiere numpy array o lista simple
+    def getSimilarAutos(numericForm, autos=False):# Requiere numpy array o lista simple
         # Dos fases:
         # 1. filtro basado en contenido(similitud de atributos)
         # 2. filtro basado en contenido(evaluacion de perfil)
@@ -83,19 +83,47 @@ class ContentBased:
         dfScores=dfScores.loc[idsAutos]
         tags=MyConnection.getTagsByCM(cluster,idModel)
         tagList=[]
+        ratingList=[]
         for tag in tags:
             tagList.append(tag[0])
-        tagList.append('general')
-        print(tagList)
+            ratingList.append(tag[1])
+        #tagList.append('general')
+        print(tagList,ratingList)
         #dfScores=dfScores.dropna(subset = tagList)
-        dfScores=dfScores.nlargest(10,tagList)
+        #dfScores=dfScores.nlargest(10,tagList)
+        pg=ContentBased.getPgeneral(dfScores,tagList,ratingList)
+        dfScores['Pgeneral']=pg
+        dfScores=dfScores.nlargest(12,['Pgeneral'])
+        print(dfScores[['nombre','Pgeneral']])
         autos=dfScores.index.tolist()
-
+        '''
         dfScores[['cMar','cMod']] = pd.DataFrame([[0, 0]], index=dfScores.index)
         # metodo para obtener la lista final de autos
         #119,120
         resultados=[]
         for rec1 in autos:
+            if dfScores.loc[rec1]['cMar']<4: # máximo 4 autos de la misma marca
+                #procede esa marca aun es menor a 3
+                if dfScores.loc[rec1]['cMod']<1:
+                    #procede modelo nuevo
+                    resultados.append(rec1)
+                    dfScores.loc[dfScores['marca']==dfScores.loc[rec1]['marca'], 'cMar']+=1
+                    dfScores.loc[dfScores['modelo']==dfScores.loc[rec1]['modelo'], 'cMod']+=1
+        autos=resultados
+        '''
+        return autos
+
+    @staticmethod
+    def getRestrictedAutos(idsAutos):
+        base_path = Path(__file__).parent
+        file_path_scores = (base_path / "../data_csv/scoreSheet.csv").resolve()
+        dfScores = pd.read_csv(file_path_scores, encoding='utf-8')
+        dfScores=dfScores.loc[idsAutos]
+        dfScores[['cMar','cMod']] = pd.DataFrame([[0, 0]], index=dfScores.index)
+        # metodo para obtener la lista final de autos
+        #119,120
+        resultados=[]
+        for rec1 in idsAutos:
             if dfScores.loc[rec1]['cMar']<4: # máximo 4 autos de la misma marca
                 #procede esa marca aun es menor a 3
                 if dfScores.loc[rec1]['cMod']<1:
@@ -143,6 +171,18 @@ class ContentBased:
             atributesArr+=ContentBased.getColumnNamesS(response,dfRules)
         return atributesArr[:-1]
 
+    @staticmethod
+    def getPgeneral(dfAutos,tags,rating):
+        pgList=[]
+        for index, row in dfAutos.iterrows():
+            pg=0
+            tg=0
+            for tag in tags:
+                if not (pd.isnull(dfAutos.loc[index][tag])):
+                    pg=pg+(dfAutos.loc[index][tag])*(rating[tg])
+                tg+=1
+            pgList.append(pg)
+        return pgList
 
     #En este caso se toma como metrica el numero maximo de posibles apariiones en un formulario
     @staticmethod

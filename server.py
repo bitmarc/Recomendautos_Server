@@ -243,7 +243,7 @@ class trainModel(Resource):
     def get(self):
         msg='ok'
         k=7
-        #KmodesManager.generateModel(k,MyConnection,'Cao')
+        KmodesManager.generateModel(k,MyConnection,'Cao')
         msg=KmodesManager.defineProfiles(MyConnection,k)##===aun no se ejecuta
         #ContentBased.generateOverview() #solo cuando hay cambios en los datos de coches
         return msg
@@ -271,6 +271,7 @@ api.add_resource(getForm,"/form")
 api.add_resource(getRecom,"/recom")
 api.add_resource(getHistory,"/history")
 api.add_resource(getCarDetails,"/details")
+
 api.add_resource(exportData,"/exportData")
 api.add_resource(trainModel,"/trainModel")
 api.add_resource(updateProfiles,"/setProfile")

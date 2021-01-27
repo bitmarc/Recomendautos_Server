@@ -92,9 +92,12 @@ class KmodesManager:
         LIST=[]
         valuePorcent=0.60
         for df in dfArray:
+            ## CRITERIOS PARA DETERMINAR LOS ATRIBUTOS MAS REPRECENTATIVOS
+            LIST.append(KmodesManager.getTagsList(df.nlargest(15,'ratedCount')['IdAtrib'].tolist(),dfAttributes))
             #LIST.append(KmodesManager.getTagsList(df.loc[df['ratedCount']>KmodesManager.getMin(df.nsmallest(1,'ratedCount').iloc[0,2],df.nlargest(1,'ratedCount').iloc[0,2],valuePorcent)]['IdAtrib'].tolist(),dfAttributes))
-            LIST.append(KmodesManager.getTagsList(df.loc[df['ratedCount']>(df.nlargest(1,'ratedCount').iloc[0,2]*valuePorcent)]['IdAtrib'].tolist(),dfAttributes))
+            #LIST.append(KmodesManager.getTagsList(df.loc[df['ratedCount']>(df.nlargest(1,'ratedCount').iloc[0,2]*valuePorcent)]['IdAtrib'].tolist(),dfAttributes))
         #NUEVO-----------------------------------------
+        '''
         allTags=''
         for ind in dfAttributes.index:
             if(not pd.isnull(dfAttributes['TAGS'][ind])):
@@ -107,9 +110,10 @@ class KmodesManager:
             diccionarioG[p] = diccionarioG.get(p, 0) + 1
         print(diccionarioG)
         #NUEVO-----------------------------------------
+        '''
         # 2.6. Almaceno los clusters en diccionarios 
-        #dictarrayTags=[]
-        profilesTags=[]
+        dictarrayTags=[]
+        #profilesTags=[]
         profiles=[] # TEMPORAL NOMBRE DEL PERFIL Y DESCRIPCION
         for cluster in LIST:
             palabras = cluster.split(", ")
@@ -117,13 +121,13 @@ class KmodesManager:
             for p in palabras:
                 diccionario[p] = diccionario.get(p, 0) + 1
             #NUEVO--------------------------------------------
-            for key in diccionario.keys():
-                diccionario[key]=diccionario[key]/diccionarioG[key]
+            #for key in diccionario.keys():
+            #    diccionario[key]=diccionario[key]/diccionarioG[key]
             #NUEVO--------------------------------------------
-            #dictarrayTags.append(diccionario)
+            dictarrayTags.append(diccionario)
             relevant=sorted(diccionario, key=diccionario.get, reverse=True)
-            print(relevant)
-            profilesTags.append(KmodesManager.getRelevantTags(relevant))
+            #print(relevant)
+            #profilesTags.append(KmodesManager.getRelevantTags(relevant))
             prfileDescription='tus intereses ordenados son: '
             for tag in relevant:
                 prfileDescription= prfileDescription+tag+': '+str(round(diccionario[tag],3))+', '
@@ -131,10 +135,11 @@ class KmodesManager:
             profiles.append(prfileDescription)
         for x in range(k):
             nameP='Perfil '+str(x)
+            print(nameP)
             idP=MyConnection.addProfile(nameP,profiles[x],x,lastModel[0])#la posicion 0 de lastmodel indica el id
             if(idP):
-                for tag in profilesTags[x]:
-                    MyConnection.linkProfileTag(idP[0],tag)
+                for tag in dictarrayTags[x]:
+                    MyConnection.linkProfileTag(idP[0],tag,dictarrayTags[x].get(tag))
                 print('Exito al agregar perfil')
             else:
                 print('Error al agregar perfil')

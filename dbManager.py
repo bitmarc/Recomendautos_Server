@@ -413,10 +413,10 @@ class Querys:
             print("Error al actualizar perfil : " + str(e))
             return False
 
-    def linkProfileTag(self, idp, TagName):
+    def linkProfileTag(self, idp, TagName, score):
         try:
             cur = self.__mysql.connection.cursor()
-            cur.execute('CALL sp_asociarPerfilEtiqueta(%s,%s)',(idp, TagName))
+            cur.execute('CALL sp_asociarPerfilEtiqueta(%s,%s,%s)',(idp, TagName, score))
             self.__mysql.connection.commit()
             return True
         except Exception as e:

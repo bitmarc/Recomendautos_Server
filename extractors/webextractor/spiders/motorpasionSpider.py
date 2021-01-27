@@ -11,7 +11,7 @@ class Webstractor3Spider(scrapy.Spider):
     custom_settings = {
         'ITEM_PIPELINES': {
             'webstractor.pipelines.WebstractorMotorpasionPipeline': 400
-        }
+        }}
 
     allowed_domain = ['https://www.motorpasion.com.mx']
 

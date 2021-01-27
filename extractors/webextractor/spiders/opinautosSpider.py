@@ -13,7 +13,7 @@ class Webstractor2Spider(scrapy.Spider):
     custom_settings = {
         'ITEM_PIPELINES': {
             'webstractor.pipelines.WebstratorOpinautosPipeline': 400
-        }
+        }}
 
     def start_requests(self):
         urls = ['https://www.opinautos.com/mx/elegirmarca']

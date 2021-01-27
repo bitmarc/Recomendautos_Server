@@ -30,9 +30,11 @@ class RecommendationManager:
             #5. filtro basado en perfil
             autos2=ContentBased.getBestRatedAutos(autos1,cluster,idModel,MyConnection)#---------------------
             print('autos despues del filtro basado en perfil: ',autos2)
+            autos3=ContentBased.getRestrictedAutos(autos2)
+            print('autos despues del filtro basado en perfil: ',autos3)
             #6.
             j=1
-            for auto in autos2:
+            for auto in autos3:
                 if not MyConnection.addResultRecom(idRecom,j,auto+1):
                     print('error')
                     return False

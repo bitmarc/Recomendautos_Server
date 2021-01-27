@@ -11,7 +11,7 @@ class Webstractor4Spider(scrapy.Spider):
     custom_settings = {
         'ITEM_PIPELINES': {
             'webstractor.pipelines.WebstractorQuecochePipeline': 400
-        }
+        }}
 
     page=1
     def start_requests(self):
