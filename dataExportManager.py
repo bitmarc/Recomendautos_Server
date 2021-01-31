@@ -109,7 +109,7 @@ class DataExportManager:
         file_path1 = (base_path / "data_csv/scoreSheet.csv").resolve()
         dfScoreS = pd.read_csv(file_path1,encoding='utf-8')
         dfScoreS.drop(['marca','modelo', 'año', 'versión','nombre'],axis='columns', inplace=True)#elimino columnas sobrantes
-        dfScoreS=dfScoreS.dropna(subset=['general'])
+        #dfScoreS=dfScoreS.dropna(subset=['general'])
         dfScoreS=dfScoreS.fillna(0)
         for index, row in dfScoreS.iterrows():
             if(not MyConnection.addScoresheet(row['general'],row['confort'],row['desempeño'],row['tecnología'],

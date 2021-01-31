@@ -471,6 +471,16 @@ class Querys:
             print("Error al obtener etiquetas de la base de datos: " + str(e))
             return False
 
+    def getTagsByIdAttrib(self,idAttrib):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerEtiquetasPorIdAtributo(%s)',[idAttrib])
+            data=cur.fetchall()
+            return data
+        except Exception as e:
+            print("Error al obtener etiquetas (por idAttrib) de la base de datos: " + str(e))
+            return False
+
 # Atributos
 
     def addAtribute(self, nombreG, nombreE):

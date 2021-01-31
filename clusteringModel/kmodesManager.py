@@ -5,21 +5,40 @@ from kmodes.kmodes import KModes
 from pathlib import Path
 import pickle
 from datetime import datetime
+from sqlalchemy import create_engine
+import pymysql
 
 class KmodesManager:
-    #Metodo se ejecuta 1 vez
+    #################################       METODOS PRINCIPALES      ################################
     @staticmethod
-    def generateModel(k, MyConnection, method='Cao'):
-        # Se utiliza para generar el modelo de entrenamiento y definir los perfiles tras su analisis
-        # ------------------------- 1. Se genera el modelo -----------------------------------------------
-        # 1.1 Cargo los datos
+    def generateModel(k, MyConnection, method='Cao', includeDB=False):
+        '''
+        Los datos se obtienen directamente del CSV de formularios, en caso de especificar includeDB=True,
+        se anexarán los datos de formularios almacenados en base de datos. Al finalizar genera un archivo
+        con extención ".pkl"
+        '''
         base_path = Path(__file__).parent
         file_path_numericForms = (base_path / "../data_csv/datosFormularioNumericCsv.csv").resolve()
         dfNumericForms = pd.read_csv(file_path_numericForms, encoding='utf-8')
+
+        if includeDB:
+            params=MyConnection.getCursorParams()
+            db_connection_str = 'mysql+pymysql://'+params[1]+':'+params[2]+'@'+params[0]+'/'+params[3]
+            db_connection = create_engine(db_connection_str)
+            dfforms1 = pd.read_sql('call sp_obtenerTodosResultados()', con=db_connection)
+            r=dfforms1['solicitud'].describe()['max']
+            for i in range(int(r)):
+                lista=[]
+                for index, row in dfforms1.loc[dfforms1['solicitud']==i+1].iterrows():
+                    lista.append(row['idRespuesta'])
+                a_series = pd.Series(lista, index = dfNumericForms.columns)
+                dfNumericForms = dfNumericForms.append(a_series, ignore_index=True)
+                ##df_length = len(df)
+                ##df.loc[df_length] = to_append
+
         npArrayForms = dfNumericForms.to_numpy()
-        # 1.1 Ejecuto el algoritmo
-        model = KModes(n_clusters=k, init=method, n_init=5, verbose=1) #inicializo
-        clusters = model.fit_predict(npArrayForms)
+        model = KModes(n_clusters=k, init=method, n_init=5, verbose=1)# defino los parametros de la instancia
+        clusters = model.fit_predict(npArrayForms)#1.2 Ejecuto el algoritmo
         print('MODELO CREADO',model.labels_)
         #genero nombre y ruta de guardado
         fecha=datetime.now()
@@ -31,7 +50,8 @@ class KmodesManager:
         pickle.dump(model,open(file_out_path_model,"wb"))
         # 2. guardo modelo en base de datos
         MyConnection.addModel(filename,fecha)
-        
+        print('modelo ok')
+        return 'modelo generado correctamente!'
 
     @staticmethod
     def defineProfiles(MyConnection,k, modelName=False):
@@ -48,10 +68,10 @@ class KmodesManager:
             if not lastModel:
                 print('error al obtener nombre del modelo de la base de datos')
             route="../clusteringModel/"+lastModel[1]+".pkl"#posicion 1 indica el nombre
-        print('leido ',route)
         file_path_model = (base_path / route).resolve()
         dfNumericForms = pd.read_csv(file_path_numericForms, encoding='utf-8')
         model=pickle.load(open(file_path_model,"rb")) #load model
+        print('leido ',route)
         # ------------------------- 2. Se analizan los clusters y se definen los perfiles -------------------
         # 2.1. Agrupo formularios en una matriz (cada fila es un cluster y cada columna un formulario)
         mtx=[]
@@ -63,43 +83,35 @@ class KmodesManager:
                     group.append(index)
                 index+=1
             mtx.append(group)
-
         # 2.2. Tradusco los grupos de formularios a grupos de atributos
-        file_path_rules = (base_path / "../data_csv/datosMtxCsv.csv").resolve()
-        dfRules = pd.read_csv(file_path_rules, encoding='utf-8')
-        dfRules.drop(['20','24', '27'], axis=1, inplace=True) # ------------------------------- restriccion 23 - 28
-        dfRules = dfRules.fillna(0)
         ArrayClusterlabels=[]
         for cluster in mtx:
             labels=''
             for form in cluster:
-                labels+=KmodesManager.getAttribArray(dfNumericForms.loc[form],dfRules)
-                labels+=', '
-            labels=labels[:-2]
+                labels+=KmodesManager.getAttribArray(dfNumericForms.loc[form],MyConnection)
+                labels+=' '
+            labels=labels[:-1]
             ArrayClusterlabels.append(labels)
         # 2.3. Traslado los grupos de strings a diccionarios para contabilizar las palabras(atributos) y despues a daataframes(uno por cada cluster)
         dfArray=[]
         for cluster in ArrayClusterlabels:
-            palabras = cluster.split(", ")
+            palabras = cluster.split(" ")
             diccionario = dict()
             for p in palabras:
                 diccionario[p] = diccionario.get(p, 0) + 1
             dfArray.append(pd.DataFrame(diccionario.items(), columns=['IdAtrib', 'Count']))
         # 2.4. Analizo los datos de cada data frame considerando la puntuacion de popularidad de cada atributo
-        file_path_attribtutes = (base_path / "../data_csv/datosAtributosCsv.csv").resolve()
-        dfAttributes = pd.read_csv(file_path_attribtutes, encoding='utf-8')
         for df in dfArray:
             ratedCount=[]
             for index, row in df.iterrows():
-                ratedCount.append(KmodesManager.getFactor(int(df.iloc[index,0]),dfAttributes))
+                ratedCount.append(KmodesManager.getFactor(int(df.iloc[index,0]),MyConnection))
             df['ratedCount']=ratedCount
             df['ratedCount']=df['Count']/df['ratedCount']
         # 2.5. tomo los atributos mas reprecentativos de cada perfil y los tradusco a tags
-        LIST=[]
+        LIST=[]## CRITERIOS PARA DETERMINAR LOS ATRIBUTOS MAS REPRECENTATIVOS
         valuePorcent=0.60
         for df in dfArray:
-            ## CRITERIOS PARA DETERMINAR LOS ATRIBUTOS MAS REPRECENTATIVOS
-            LIST.append(KmodesManager.getTagsList(df.nlargest(15,'ratedCount')['IdAtrib'].tolist(),dfAttributes))
+            LIST.append(KmodesManager.getTagsList(df.nlargest(15,'ratedCount')['IdAtrib'].tolist(),MyConnection))
             #LIST.append(KmodesManager.getTagsList(df.loc[df['ratedCount']>KmodesManager.getMin(df.nsmallest(1,'ratedCount').iloc[0,2],df.nlargest(1,'ratedCount').iloc[0,2],valuePorcent)]['IdAtrib'].tolist(),dfAttributes))
             #LIST.append(KmodesManager.getTagsList(df.loc[df['ratedCount']>(df.nlargest(1,'ratedCount').iloc[0,2]*valuePorcent)]['IdAtrib'].tolist(),dfAttributes))
         #NUEVO-----------------------------------------
@@ -122,7 +134,7 @@ class KmodesManager:
         #profilesTags=[]
         profiles=[] # TEMPORAL NOMBRE DEL PERFIL Y DESCRIPCION
         for cluster in LIST:
-            palabras = cluster.split(", ")
+            palabras = cluster.split(" ")
             diccionario = dict()
             for p in palabras:
                 diccionario[p] = diccionario.get(p, 0) + 1
@@ -142,10 +154,8 @@ class KmodesManager:
         for x in range(k):
             nameP='Perfil '+str(x)
             print(nameP)
-
             if modelName: # si existe el modelo
-                #obterner id de perfil
-                idP=MyConnection.getPerfil(x,lastModel[0])
+                idP=MyConnection.getPerfil(x,lastModel[0])#obterner id de perfil
                 if(idP):
                     MyConnection.removeProfileTag(idP[0])
                     for tag in dictarrayTags[x]:
@@ -153,9 +163,7 @@ class KmodesManager:
                     print('Exito al agregar perfil (sobre escribido)')
                 else:
                     print('Error al agregar perfil (sobre escribido)')
-                
-                # for link tags
-            else:
+            else:# for link tags
                 idP=MyConnection.addProfile(nameP,profiles[x],x,lastModel[0])#la posicion 0 de lastmodel indica el id
                 if(idP):
                     for tag in dictarrayTags[x]:
@@ -164,7 +172,6 @@ class KmodesManager:
                 else:
                     print('Error al agregar perfil')
         return 'perfiles agregados correctamente!'
-
 
     @staticmethod
     def getCluster(form, MyConnection, modelName=False):
@@ -182,49 +189,45 @@ class KmodesManager:
         return cluster[0]
 
 
-    # METODOS AUXILIARES
-    @staticmethod
-    def getColumnNamesS(response,dfRules):# Metodo para obtener el nombre de los atributos relacionados a una respuesta
-        arrlist=''
-        for index, row in dfRules.iterrows():
-            if dfRules.iloc[index,0]==response:
-                index=0
-                for data in row[1:]:
-                    index+=1
-                    if data==1:
-                        arrlist+=dfRules.columns[index]
-                        arrlist+=', '
-                break
-        return arrlist #Me regresa un string de atribututos como palabras
-    @staticmethod
-    def getAttribArray(responses,dfRules):# Medoto para obtener un string con todos los atributos relacionados a un formulario
-        atributesArr=''
-        for response in responses:
-            atributesArr+=KmodesManager.getColumnNamesS(response,dfRules)
-        return atributesArr[:-2]
+    #################################       METODOS AUXILIARES      ################################
     
     @staticmethod
-    def getFactor(idAttrib,dfAttributes):
+    def getColumnNamesS(response,MyConnection):# Metodo para obtener el nombre de los atributos relacionados a una respuesta
+        attribs=MyConnection.getAttributesByIdResp(response)
+        arrlist=''
+        for attrib in attribs:
+            arrlist+=str(attrib[0])
+            arrlist+=' '
+        return arrlist #Me regresa un string de atribututos como palabras
+    
+    @staticmethod
+    def getAttribArray(responses,MyConnection):# Medoto para obtener un string con todos los atributos relacionados a un formulario
+        # ------------------------------- restriccion 23 - 28 -----------------------
+        atributesArr=''
+        for response in responses:
+            atributesArr+=KmodesManager.getColumnNamesS(response,MyConnection)
+        return atributesArr[:-1]
+    
+    @staticmethod
+    def getFactor(idAttrib,MyConnection):
         val=0
-        for index, row in dfAttributes.iterrows():
-            if dfAttributes.iloc[index,3]==idAttrib:
-                val=dfAttributes.iloc[index,6]
-                break
+        valMA=MyConnection.getMaxValAnswByIdAttrib(idAttrib)
+        if valMA:
+            val=valMA[0]
         return val
+    
     @staticmethod
     def getMin(minVal, maxVal, porcent):
         return ((maxVal-minVal)*porcent)+minVal
+    
     @staticmethod
-    def getTagsList(arrAtribs,dfAttributes): # recibe como parametro la lista de ids de atributos (tr)
+    def getTagsList(arrAttribs,MyConnection): # recibe como parametro la lista de ids de atributos (tr)
         groupTags=''
-        for ind in dfAttributes.index:
-            for item in arrAtribs:
-                if int(item)==dfAttributes['IDAE'][ind]:
-                    if(not pd.isnull(dfAttributes['TAGS'][ind])):
-                        groupTags+=dfAttributes['TAGS'][ind]
-                        groupTags+=', '
-                    break
-        return groupTags[:-2]
+        for attribute in arrAttribs:
+            tags=MyConnection.getTagsByIdAttrib(attribute)
+            for tag in tags:
+                groupTags+=tag[0]+' '
+        return groupTags[:-1]
     
     @staticmethod   # metodo que obtiene los tags mas relevantes
     def getRelevantTags(relevant):

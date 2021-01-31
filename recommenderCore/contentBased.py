@@ -1,5 +1,6 @@
 from pathlib import Path
 import pandas as pd
+import numpy as np
 from sqlalchemy import create_engine
 import pymysql
 #Import TfIdfVectorizer from scikit-learn
@@ -73,6 +74,7 @@ class ContentBased:
         db_connection = create_engine(db_connection_str)
         dfScores = pd.read_sql('call sp_obtenerPuntuaciones()', con=db_connection)
         dfScores["nombre"] = dfScores["marca"] +' '+ dfScores["modelo"] +' '+ dfScores["versión"]
+        dfScores.replace({'0':np.nan, 0:np.nan}, inplace=True)
         # Verifico si idsAutos tiene valores, si no se toman todos los autos como entrada
         if idsAutos:
             dfScores=dfScores.loc[idsAutos]
@@ -83,45 +85,27 @@ class ContentBased:
             tagList.append(tag[0])
             ratingList.append(tag[1])
         print(tagList,ratingList)
-        #dfScores=dfScores.dropna(subset = tagList)
-        #dfScores=dfScores.nlargest(10,tagList)
         pg=ContentBased.getPgeneral(dfScores,tagList,ratingList)
         dfScores['Pgeneral']=pg
         dfScores=dfScores.nlargest(Nresults,['Pgeneral'])
         print(dfScores[['nombre','Pgeneral']])
         autos=dfScores.index.tolist()
-        '''
-        dfScores[['cMar','cMod']] = pd.DataFrame([[0, 0]], index=dfScores.index)
-        # metodo para obtener la lista final de autos
-        #119,120
-        resultados=[]
-        for rec1 in autos:
-            if dfScores.loc[rec1]['cMar']<4: # máximo 4 autos de la misma marca
-                #procede esa marca aun es menor a 3
-                if dfScores.loc[rec1]['cMod']<1:
-                    #procede modelo nuevo
-                    resultados.append(rec1)
-                    dfScores.loc[dfScores['marca']==dfScores.loc[rec1]['marca'], 'cMar']+=1
-                    dfScores.loc[dfScores['modelo']==dfScores.loc[rec1]['modelo'], 'cMod']+=1
-        autos=resultados
-        '''
         return autos
 
     @staticmethod
-    def getRestrictedAutos(idsAutos,Nresults=False, MaxMarca=3,Maxmodel=1):
-        base_path = Path(__file__).parent
-        file_path_scores = (base_path / "../data_csv/scoreSheet.csv").resolve()
-        dfScores = pd.read_csv(file_path_scores, encoding='utf-8')
+    def getRestrictedAutos(MyConnection,idsAutos,Nresults=False, MaxMarca=3,Maxmodel=1):
+        params=MyConnection.getCursorParams()
+        db_connection_str = 'mysql+pymysql://'+params[1]+':'+params[2]+'@'+params[0]+'/'+params[3]
+        db_connection = create_engine(db_connection_str)
+        dfScores = pd.read_sql('call sp_obtenerPuntuaciones()', con=db_connection)
+        dfScores["nombre"] = dfScores["marca"] +' '+ dfScores["modelo"] +' '+ dfScores["versión"]
+        dfScores.replace({'0':np.nan, 0:np.nan}, inplace=True)
         dfScores=dfScores.loc[idsAutos]
         dfScores[['cMar','cMod']] = pd.DataFrame([[0, 0]], index=dfScores.index)
-        # metodo para obtener la lista final de autos
-        #119,120
-        resultados=[]
+        resultados=[]# metodo para obtener la lista final de autos
         for rec1 in idsAutos:
             if dfScores.loc[rec1]['cMar']<MaxMarca: # máximo 4 autos de la misma marca
-                #procede esa marca aun es menor a 3
                 if dfScores.loc[rec1]['cMod']<Maxmodel:
-                    #procede modelo nuevo
                     resultados.append(rec1)
                     dfScores.loc[dfScores['marca']==dfScores.loc[rec1]['marca'], 'cMar']+=1
                     dfScores.loc[dfScores['modelo']==dfScores.loc[rec1]['modelo'], 'cMod']+=1
@@ -270,37 +254,27 @@ class ContentBased:
             k=ContentBased.getPricesToExclude(userForm[-1],idsPrices)# La posicion del precio es la ultima
             if isinstance(k, list):
                 for jk in k:
-                    print(jk)
                     ids=MyConnection.getIdAutoByAttrib(jk)
                     ids = [x[0] - 1 for x in ids] # resto 1 a todo y a la vez lo cambio a lista
-                    print(ids)
                     dfAutosMod.drop(ids,errors='ignore', inplace=True)
             else:
                 ids=MyConnection.getIdAutoByAttrib(k)
-                print(k)
                 ids = [x[0] - 1 for x in ids]
-                print(ids)
                 dfAutosMod.drop(ids,errors='ignore', inplace=True)
                 
         if transmision:
             k=ContentBased.getTransmisionsToExclude(userForm[13],idsTRansmisions)# El id de la pregunta de transmision es 13
             if k:
-                print('k si tiene valor')
                 if isinstance(k, list):
                     for jk in k:
-                        print(jk)
                         ids=MyConnection.getIdAutoByAttrib(jk)
                         ids = [x[0] - 1 for x in ids] # resto 1 a todo y a la vez lo cambio a lista
-                        print(ids)
                         dfAutosMod.drop(ids,errors='ignore', inplace=True)
                 else:
                     print(k)
                     ids=MyConnection.getIdAutoByAttrib(k)
                     ids = [x[0] - 1 for x in ids]
-                    print(ids)
                     dfAutosMod.drop(ids,errors='ignore', inplace=True)
-            else:
-                print('k no tiene valor')
         dfAutosMod.reset_index(inplace = True)
         
         return dfAutosMod

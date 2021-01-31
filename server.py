@@ -7,6 +7,7 @@ from flask_restful import Resource, Api
 from flask_httpauth import HTTPBasicAuth
 from datetime import datetime
 import pandas as pd
+import numpy as np
 
 from sessionManager import SessionManager as sm
 from dbManager import Querys
@@ -52,11 +53,9 @@ def verify_password(username, password):
 # Principal
 class home(Resource):
     def get(self):
-        lis=MyConnection.getCursorParams()
-        db_connection_str = 'mysql+pymysql://'+lis[1]+':'+lis[2]+'@'+lis[0]+'/'+lis[3]
-        db_connection = create_engine(db_connection_str)
-        dfAutos = pd.read_sql('call sp_obtenerPuntuaciones()', con=db_connection)
-        print(dfAutos)
+        #lis=MyConnection.getCursorParams()
+        #db_connection_str = 'mysql+pymysql://'+lis[1]+':'+lis[2]+'@'+lis[0]+'/'+lis[3]
+        #db_connection = create_engine(db_connection_str)
         #return jsonify(dfAutos.to_dict())
         return jsonify({"message": "Bienvenido a recommendautos"})
 
@@ -224,6 +223,7 @@ class getCarDetails(Resource):
 class exportData(Resource):
     def get(self):
         msg='failed'
+        '''
         msg=DataExportManager.exportAttributes(MyConnection)
         print('exportAttributes ok')
         msg=ContentBased.generateOverview() #genera overview
@@ -246,14 +246,19 @@ class exportData(Resource):
         print('parseAttribs ok')
         msg=DataExportManager.exportForms(MyConnection)#solo pasa a numeric, no a bd--
         print('exportForms ok')
+        '''
+        #Csvcleaner.generateScoreSheet()
+        #print('generateScoreSheet ok')
+        msg=DataExportManager.exportScoresheet(MyConnection)
+        print('exportScoresheet ok')
         return jsonify('status: '+msg)
 
 # Entrenar modelo
 class trainModel(Resource):
     def get(self):
         msg='ok'
-        k=6
-        KmodesManager.generateModel(k,MyConnection,'Cao')
+        k=7
+        msg=KmodesManager.generateModel(k,MyConnection,'Cao')
         msg=KmodesManager.defineProfiles(MyConnection,k)##===aun no se ejecuta
         #ContentBased.generateOverview() #solo cuando hay cambios en los datos de coches
         return msg
