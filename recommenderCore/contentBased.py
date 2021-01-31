@@ -1,5 +1,7 @@
 from pathlib import Path
 import pandas as pd
+from sqlalchemy import create_engine
+import pymysql
 #Import TfIdfVectorizer from scikit-learn
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
@@ -11,8 +13,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 class ContentBased:
 
-    #SE EJECUTA EN FASE 0 [**Metdodo principal**]
-    @staticmethod
+    @staticmethod #SE EJECUTA EN FASE 0 [**Metdodo principal**]
     def generateOverview():
         base_path = Path(__file__).parent
         file_path_autos = (base_path / "../data_csv/autos_data_mod_csv.csv").resolve()
@@ -26,83 +27,67 @@ class ContentBased:
         dfAutos.to_csv(file_path_autos,index=False, encoding='utf-8')
         return 'ok'
     
-    #SE EJECUTA POR CADA RECOMENDACION [**Metdodo principal**]
-    @staticmethod
-    def getSimilarAutos(numericForm, idsAutos=False):# Requiere numpy array o lista simple
-        # Dos fases:
-        # 1. filtro basado en contenido(similitud de atributos)
-        # 2. filtro basado en contenido(evaluacion de perfil)
-        base_path = Path(__file__).parent
-        file_path_autos = (base_path / "../data_csv/autos_data_mod_csv.csv").resolve()
-        #col_list = ["marca", "modelo", "año", "versión", "nombre", "overview"]
-        dfAutos = pd.read_csv(file_path_autos, encoding='utf-8')
-        #   Transformo las respuestas de formulario a un string de atributos 
-        file_path_rules = (base_path / "../data_csv/datosMtxCsv.csv").resolve()
-        dfRules = pd.read_csv(file_path_rules, encoding='utf-8')
-        labels=ContentBased.getAttribArray(numericForm,dfRules)
-        #   paso string a un diccionario para contabilizar las palabras
-        palabras = labels.split(" ")
+    @staticmethod #SE EJECUTA POR CADA RECOMENDACION [**Metdodo principal**]
+    def getSimilarAutos(MyConnection,numericForm, Nresults, idsAutos=False):# Requiere numpy array o lista simple
+        params=MyConnection.getCursorParams()
+        db_connection_str = 'mysql+pymysql://'+params[1]+':'+params[2]+'@'+params[0]+'/'+params[3]
+        db_connection = create_engine(db_connection_str)
+        dfAutos = pd.read_sql('SELECT marca, modelo, año, version as "versión", resumen as "overview" FROM automoviles', con=db_connection)
+        dfAutos["nombre"] = dfAutos["marca"] +' '+ dfAutos["modelo"] +' '+ dfAutos["versión"]
+        labels=ContentBased.getAttribArray(MyConnection,numericForm)# Transformo las respuestas de formulario a un string de atributos 
+        palabras = labels.split(" ")#   paso string a un diccionario para contabilizar las palabras
         diccionario = dict()
         for p in palabras:
             diccionario[p] = diccionario.get(p, 0) + 1
-        #   Lo paso a un dataframe y reescribo el rated count con un numero decimal entro que reprecenta la cantidad de veces que una palabra debera ser repetida
-        dfaux = pd.DataFrame(diccionario.items(), columns=['IdAtrib', 'Count'])
-        file_path_attribs = (base_path / "../data_csv/datosAtributosCsv.csv").resolve()
-        dfAttributes = pd.read_csv(file_path_attribs, encoding='utf-8')
+        dfaux = pd.DataFrame(diccionario.items(), columns=['IdAtrib', 'Count'])# Lo paso a un dataframe y reescribo el rated count con un numero decimal entro que reprecenta la cantidad de veces que una palabra debera ser repetida
         ratedCount=[]
         for index, row in dfaux.iterrows():
-            ratedCount.append(ContentBased.getFactor(int(dfaux.iloc[index,0]),dfAttributes))
+            ratedCount.append(ContentBased.getFactor(int(dfaux.iloc[index,0]),MyConnection))
         dfaux['ratedCount']=ratedCount
         dfaux['ratedCount']=round((dfaux['Count']/dfaux['ratedCount'])*20)# factor 20
-        #   Defino la nueva variable "resumen de atributos" (tomando en cuenta la popularidad del atributo)
-        text1=''
+        text1=''# Defino la nueva variable "resumen de atributos" (tomando en cuenta la popularidad del atributo)
         for index, row in dfaux.iterrows():
             idA=row['IdAtrib']
             for k in range(int(row['ratedCount'])):
                 text1+=idA
                 text1+=' '
         text1=text1[:-1]
-        #   Agrego el nuevo "auto modelo" al dataframe de autos para procesarlo junto a los demas
-        dfAutos=dfAutos.append({'nombre' : 'modelo' , 'overview' : text1} , ignore_index=True)
-
-        #restriccion solo listado de autos
-        if idsAutos:
+        dfAutos=dfAutos.append({'nombre' : 'modelo' , 'overview' : text1} , ignore_index=True)# Agrego el nuevo "auto modelo" al dataframe de autos para procesarlo junto a los demas
+        if idsAutos:#restriccion solo listado de autos
             autos=idsAutos
             autos.append(dfAutos.index[-1])
             dfAutos=dfAutos.loc[autos]
 
-        #aplico restricciones de precio y transmision?
-        dfAutos=ContentBased.setRestrictions(numericForm,dfAutos,True,True) #precio, transmision
-        #   Obtengo la matriz de similitud
+        dfAutos=ContentBased.setRestrictions(numericForm,dfAutos,MyConnection,True,True) #PRECIO, TRANSMISION #aplico restricciones de precio y transmision?
+        # Obtengo la matriz de similitud
         #tfidf_cosine_sim=ContentBased.tfidfVectorizer(dfAutos)
         cv_cosine_sim=ContentBased.countVectorizer(dfAutos)
         recomendationsF1=ContentBased.get_recommendations('modelo',dfAutos,cv_cosine_sim)
         list=(dfAutos.loc[recomendationsF1])['index'].to_list()
-        return list[:25]
+        return list[:Nresults]
 
     @staticmethod
-    def getBestRatedAutos(idsAutos,cluster,idModel,MyConnection):
-        base_path = Path(__file__).parent
-        file_path_scores = (base_path / "../data_csv/scoreSheet.csv").resolve()
-        dfScores = pd.read_csv(file_path_scores, encoding='utf-8')
-
+    def getBestRatedAutos(idsAutos,cluster,idModel,MyConnection,Nresults):
+        params=MyConnection.getCursorParams()
+        db_connection_str = 'mysql+pymysql://'+params[1]+':'+params[2]+'@'+params[0]+'/'+params[3]
+        db_connection = create_engine(db_connection_str)
+        dfScores = pd.read_sql('call sp_obtenerPuntuaciones()', con=db_connection)
+        dfScores["nombre"] = dfScores["marca"] +' '+ dfScores["modelo"] +' '+ dfScores["versión"]
         # Verifico si idsAutos tiene valores, si no se toman todos los autos como entrada
         if idsAutos:
             dfScores=dfScores.loc[idsAutos]
-
         tags=MyConnection.getTagsByCM(cluster,idModel)
         tagList=[]
         ratingList=[]
         for tag in tags:
             tagList.append(tag[0])
             ratingList.append(tag[1])
-        #tagList.append('general')
         print(tagList,ratingList)
         #dfScores=dfScores.dropna(subset = tagList)
         #dfScores=dfScores.nlargest(10,tagList)
         pg=ContentBased.getPgeneral(dfScores,tagList,ratingList)
         dfScores['Pgeneral']=pg
-        dfScores=dfScores.nlargest(12,['Pgeneral'])
+        dfScores=dfScores.nlargest(Nresults,['Pgeneral'])
         print(dfScores[['nombre','Pgeneral']])
         autos=dfScores.index.tolist()
         '''
@@ -123,7 +108,7 @@ class ContentBased:
         return autos
 
     @staticmethod
-    def getRestrictedAutos(idsAutos):
+    def getRestrictedAutos(idsAutos,Nresults=False, MaxMarca=3,Maxmodel=1):
         base_path = Path(__file__).parent
         file_path_scores = (base_path / "../data_csv/scoreSheet.csv").resolve()
         dfScores = pd.read_csv(file_path_scores, encoding='utf-8')
@@ -133,14 +118,17 @@ class ContentBased:
         #119,120
         resultados=[]
         for rec1 in idsAutos:
-            if dfScores.loc[rec1]['cMar']<4: # máximo 4 autos de la misma marca
+            if dfScores.loc[rec1]['cMar']<MaxMarca: # máximo 4 autos de la misma marca
                 #procede esa marca aun es menor a 3
-                if dfScores.loc[rec1]['cMod']<1:
+                if dfScores.loc[rec1]['cMod']<Maxmodel:
                     #procede modelo nuevo
                     resultados.append(rec1)
                     dfScores.loc[dfScores['marca']==dfScores.loc[rec1]['marca'], 'cMar']+=1
                     dfScores.loc[dfScores['modelo']==dfScores.loc[rec1]['modelo'], 'cMod']+=1
-        autos=resultados
+        if Nresults:
+            autos=resultados[:Nresults]
+        else:
+            autos=resultados
         return autos
 
 
@@ -159,25 +147,20 @@ class ContentBased:
 
     # Metodo para obtener el nombre de los atributos relacionados a una respuesta
     @staticmethod
-    def getColumnNamesS(x,dfRules):
+    def getColumnNamesS(MyConnection,x):
+        attribs=MyConnection.getAttributesByIdResp(x)
         arrlist=''
-        for index, row in dfRules.iterrows():
-            if dfRules.iloc[index,0]==x:
-                index=0
-                for data in row[1:]:
-                    index+=1
-                    if data==1:
-                        arrlist+=dfRules.columns[index]
-                        arrlist+=' '
-                break
+        for attrib in attribs:
+            arrlist+=str(attrib[0])
+            arrlist+=' '
         return arrlist #Me regresa un string de atribututos como palabras
 
     # Medoto para obtener un string con todos los atributos relacionados a un formulario
     @staticmethod
-    def getAttribArray(responses,dfRules):
+    def getAttribArray(MyConnection,responses):
         atributesArr=''
         for response in responses:
-            atributesArr+=ContentBased.getColumnNamesS(response,dfRules)
+            atributesArr+=ContentBased.getColumnNamesS(MyConnection,response)
         return atributesArr[:-1]
 
     @staticmethod
@@ -195,12 +178,11 @@ class ContentBased:
 
     #En este caso se toma como metrica el numero maximo de posibles apariiones en un formulario
     @staticmethod
-    def getFactor(idAttrib, dfAttributes):
+    def getFactor(idAttrib, MyConnection):
         val=0
-        for index, row in dfAttributes.iterrows():
-            if dfAttributes.iloc[index,3]==idAttrib:
-                val=dfAttributes.iloc[index,5]
-                break
+        valMQ=MyConnection.getMaxValQuestByIdAttrib(idAttrib)
+        if valMQ:
+            val=valMQ[0]
         return val
 
 
@@ -280,17 +262,25 @@ class ContentBased:
         func = switcher.get(idTransmisionR, lambda: "Invalid Transmision")
         return func(idsTransmisions)
     @staticmethod
-    def setRestrictions(userForm, dfAutos, price, transmision):
-        idsTRansmisions=['32','33','34','35']
-        idsPrices=['113','114','115','116']
+    def setRestrictions(userForm, dfAutos,MyConnection, price, transmision):
+        idsTRansmisions=[32,33,34,35]
+        idsPrices=[113,114,115,116]
         dfAutosMod = dfAutos.copy()
         if price:
             k=ContentBased.getPricesToExclude(userForm[-1],idsPrices)# La posicion del precio es la ultima
             if isinstance(k, list):
                 for jk in k:
-                    dfAutosMod.drop(dfAutosMod[dfAutosMod[jk] == 1].index, inplace = True)
+                    print(jk)
+                    ids=MyConnection.getIdAutoByAttrib(jk)
+                    ids = [x[0] - 1 for x in ids] # resto 1 a todo y a la vez lo cambio a lista
+                    print(ids)
+                    dfAutosMod.drop(ids,errors='ignore', inplace=True)
             else:
-                dfAutosMod.drop(dfAutosMod[dfAutosMod[k] == 1].index, inplace = True)
+                ids=MyConnection.getIdAutoByAttrib(k)
+                print(k)
+                ids = [x[0] - 1 for x in ids]
+                print(ids)
+                dfAutosMod.drop(ids,errors='ignore', inplace=True)
                 
         if transmision:
             k=ContentBased.getTransmisionsToExclude(userForm[13],idsTRansmisions)# El id de la pregunta de transmision es 13
@@ -298,9 +288,17 @@ class ContentBased:
                 print('k si tiene valor')
                 if isinstance(k, list):
                     for jk in k:
-                        dfAutosMod.drop(dfAutosMod[dfAutosMod[jk] == 1].index, inplace = True)
+                        print(jk)
+                        ids=MyConnection.getIdAutoByAttrib(jk)
+                        ids = [x[0] - 1 for x in ids] # resto 1 a todo y a la vez lo cambio a lista
+                        print(ids)
+                        dfAutosMod.drop(ids,errors='ignore', inplace=True)
                 else:
-                    dfAutosMod.drop(dfAutosMod[dfAutosMod[k] == 1].index, inplace = True)
+                    print(k)
+                    ids=MyConnection.getIdAutoByAttrib(k)
+                    ids = [x[0] - 1 for x in ids]
+                    print(ids)
+                    dfAutosMod.drop(ids,errors='ignore', inplace=True)
             else:
                 print('k no tiene valor')
         dfAutosMod.reset_index(inplace = True)

@@ -28,7 +28,7 @@ class DataExportManager:
         dfAutos = pd.read_csv(file_path,encoding='utf-8')
         dfAutos.fillna(0)
         for index, row in dfAutos.iterrows():
-            if(not MyConnection.addAuto(row[0],row[1],row[2],row[3],row[-1])):
+            if(not MyConnection.addAuto(row[0],row[1],row[2],row[3],row[-2],row[-1])):
                 print('Error')
                 break
             print('auto: ',index,' ok')
@@ -166,7 +166,14 @@ class DataExportManager:
             print('attrib ',index,' ok')
         dfAttributes.to_csv(file_attributes_path, encoding="utf-8", index=False)
         return "completado!"
-
+        
+    @staticmethod
+    def updateAuto(idAuto,overview,MyConnection):
+        base_path = Path(__file__).parent
+        file_path_autos = (base_path / "data_csv/autos_data_mod_csv.csv").resolve()
+        dfAutos = pd.read_csv(file_path_autos, encoding='utf-8')
+        MyConnection.updateOverview(idAuto,overview)
+        return 'ok'
     # --------------------- metodos de apoyo --------------------------
 
     # METODO PARA TRADUCIR TITULO DE RESPUESTA POR ID REQUIERE ID DE PREGUNTA

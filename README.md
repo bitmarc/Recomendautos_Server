@@ -45,6 +45,6 @@ la activacion del entorno se realiza ejecutando:
  * mysql-flask
  * passlib
  * pandas
- 
- 
+ * SQLAlchemy 
+ * PyMySQL
  -- edit

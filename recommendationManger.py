@@ -13,37 +13,39 @@ class RecommendationManager:
 
     @staticmethod
     def getRecommendation(form,idReq,MyConnection):
-        #1. Almaceno formulrio en base de datos.
-        RecommendationManager.setResults(form, MyConnection,idReq)
-        #2. Clasifico formulario para obtener perfil.
-        array=RecommendationManager.getNumpyForm(form)
-        cluster=KmodesManager.getCluster(array,MyConnection)
-        idModel=MyConnection.getLastModel()[0]#la posicion 0 indica el id
-        profile=MyConnection.getPerfil(cluster,idModel)
-        #3. creo una recomendacion en base de datos y asigno el perfil
-        idRecom=MyConnection.addRecom(idReq,profile[0]) ## posicion 0 es el id del perfil
-        if(idRecom):
-            #4. filtro basado en contenido %% requiere generate OVERVIEW
-            print(array[0])
-            autos1=ContentBased.getSimilarAutos(array[0]) ## En caso de tener una resticccioon sobre ciertos automoviles, agregarlo como segundo parametro
-            print('autos despues del filtro basado en contenido: ',autos1)
-            #5. filtro basado en perfil
-            autos2=ContentBased.getBestRatedAutos(autos1,cluster,idModel,MyConnection)# En caso de tener restricciones de autos, agregarlo como primer parametro, en caso contraario se introduce False
-            print('autos despues del filtro basado en perfil: ',autos2)
-            autos3=ContentBased.getRestrictedAutos(autos2)
-            print('autos despues del filtro basado en perfil: ',autos3)
-            #6.
-            j=1
-            for auto in autos3:
+        RecommendationManager.setResults(form, MyConnection,idReq)#1. Almaceno formulrio en base de datos.
+        array=RecommendationManager.getNumpyForm(form)# Traslado formulario a un numerico numerico
+        cluster=KmodesManager.getCluster(array,MyConnection)#2. Clasifico formulario para obtener perfil.
+        idModel=MyConnection.getLastModel()[0]#obtengo el ultimo modelo definido (la posicion 0 indica el id)
+        profile=MyConnection.getPerfil(cluster,idModel)# obtengo los datos de puntuaci'on de perfil
+        idRecom=MyConnection.addRecom(idReq,profile[0]) #3. creo una recomendacion en base de datos y asigno el perfil(posicion 0 es el id del perfil)
+        if(idRecom):#4.genero recomendacion %% requiere generate OVERVIEW
+            print('::OK::Formulario recibido: ',array[0])
+            
+            #'''
+            autos1=ContentBased.getBestRatedAutos(False,cluster,idModel,MyConnection,40)# En caso de tener restricciones de autos, agregarlo como primer parametro, en caso contraario se introduce False
+            print('Autos después del filtrado de perfil: ',autos1)
+            autos1=ContentBased.getSimilarAutos(MyConnection,array[0],8,autos1) ## En caso de tener una resticccioon sobre ciertos automoviles, agregarlo como tercer parametro
+            print('filtro basado en contenido ok: ',autos1)
+            '''  
+            autos1=ContentBased.getSimilarAutos(MyConnection,array[0],30) ## En caso de tener una resticccioon sobre ciertos automoviles, agregarlo como segundo parametro
+            print('Autos después del filtrado de caracteristicas: ',autos1)
+            autos1=ContentBased.getBestRatedAutos(autos1,cluster,idModel,MyConnection,8)# En caso de tener restricciones de autos, agregarlo como primer parametro, en caso contraario se introduce False
+            print('Autos después del filtrado de perfil: ',autos1)
+            #'''
+
+            autos1=ContentBased.getRestrictedAutos(autos1,Nresults=5,MaxMarca=2,Maxmodel=1)# Restricciones de marca y modelo por recomendación
+            print('Autos despues de las restricciones : ',autos1)
+            j=1 # Se guardan los autos resultado de recomendación en base de datos
+            for auto in autos1:
                 if not MyConnection.addResultRecom(idRecom,j,auto+1):
                     print('error')
                     return False
                 j+=1
-            print('Exito en recomendaciones')
-            # 7. recupero autos para crear el objeto respuesta
-            data_Autos=MyConnection.getAutosByIdRecom(idRecom[0]) #id
+            print('::OK:: Datos almacenados en BD')
+            data_Autos=MyConnection.getAutosByIdRecom(idRecom[0])# 7. recupero autos para crear el objeto respuesta
             if(data_Autos):
-                profileResponse=Profile(profile[0],profile[1],profile[2])#No estoy tomando en cuenta el frupo y modelo para crear el objeto
+                profileResponse=Profile(profile[0],profile[1],profile[2])
                 arrAutosResponse=[]
                 for data_Auto in data_Autos:
                     auxAuto=Automobile(data_Auto[1],data_Auto[2],data_Auto[3],data_Auto[4],data_Auto[5],)

@@ -18,7 +18,7 @@ class KmodesManager:
         dfNumericForms = pd.read_csv(file_path_numericForms, encoding='utf-8')
         npArrayForms = dfNumericForms.to_numpy()
         # 1.1 Ejecuto el algoritmo
-        model = KModes(n_clusters=k, init=method, n_init=8, verbose=1) #inicializo
+        model = KModes(n_clusters=k, init=method, n_init=5, verbose=1) #inicializo
         clusters = model.fit_predict(npArrayForms)
         print('MODELO CREADO',model.labels_)
         #genero nombre y ruta de guardado

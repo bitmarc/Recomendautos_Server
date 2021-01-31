@@ -2,12 +2,11 @@
 Clase principal, contiene la logica de ejecución del servidor y rutas para consumo de la API
 '''
 from entities.profile import Profile
-from recommenderCore.contentBased import ContentBased
 from flask import Flask, jsonify, request
 from flask_restful import Resource, Api
 from flask_httpauth import HTTPBasicAuth
 from datetime import datetime
-import json
+import pandas as pd
 
 from sessionManager import SessionManager as sm
 from dbManager import Querys
@@ -18,11 +17,16 @@ from entities.opinionSheet import OpinionSheet
 from entities.dataSheet import Datasheet
 from entities.attribute import Attribute
 from recommendationManger import RecommendationManager
+from recommenderCore.contentBased import ContentBased
 from entities.requestResult import RequestResult
 from entities.history import History
 from entities.automobile import Automobile
 from dataExportManager import DataExportManager
 from clusteringModel.kmodesManager import KmodesManager
+
+from sqlalchemy import create_engine
+import pymysql
+
 
 # VARIABLES
 app = Flask(__name__)
@@ -48,6 +52,12 @@ def verify_password(username, password):
 # Principal
 class home(Resource):
     def get(self):
+        lis=MyConnection.getCursorParams()
+        db_connection_str = 'mysql+pymysql://'+lis[1]+':'+lis[2]+'@'+lis[0]+'/'+lis[3]
+        db_connection = create_engine(db_connection_str)
+        dfAutos = pd.read_sql('call sp_obtenerPuntuaciones()', con=db_connection)
+        print(dfAutos)
+        #return jsonify(dfAutos.to_dict())
         return jsonify({"message": "Bienvenido a recommendautos"})
 
 # Bienvenida a usuario
@@ -216,6 +226,8 @@ class exportData(Resource):
         msg='failed'
         msg=DataExportManager.exportAttributes(MyConnection)
         print('exportAttributes ok')
+        msg=ContentBased.generateOverview() #genera overview
+        print('generateOverview ok')
         msg=DataExportManager.exportAutos(MyConnection)
         print('exportAutos ok')
         msg=DataExportManager.exportAutosAttributes(MyConnection)
@@ -234,15 +246,13 @@ class exportData(Resource):
         print('parseAttribs ok')
         msg=DataExportManager.exportForms(MyConnection)#solo pasa a numeric, no a bd--
         print('exportForms ok')
-        msg=ContentBased.generateOverview() #genera overview
-        print('generateOverview ok')
         return jsonify('status: '+msg)
 
 # Entrenar modelo
 class trainModel(Resource):
     def get(self):
         msg='ok'
-        k=7
+        k=6
         KmodesManager.generateModel(k,MyConnection,'Cao')
         msg=KmodesManager.defineProfiles(MyConnection,k)##===aun no se ejecuta
         #ContentBased.generateOverview() #solo cuando hay cambios en los datos de coches
@@ -271,7 +281,6 @@ api.add_resource(getForm,"/form")
 api.add_resource(getRecom,"/recom")
 api.add_resource(getHistory,"/history")
 api.add_resource(getCarDetails,"/details")
-
 api.add_resource(exportData,"/exportData")
 api.add_resource(trainModel,"/trainModel")
 api.add_resource(updateProfiles,"/setProfile")

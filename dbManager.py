@@ -6,13 +6,20 @@ from flask_mysqldb import MySQL
 from entities.user import User
 
 class Querys:
-    
+
     def __init__(self,app):
-        app.config['MYSQL_HOST'] = '192.168.0.102'
-        app.config['MYSQL_USER'] = 'adm1'
-        app.config['MYSQL_PASSWORD'] = 'marcpass'
-        app.config['MYSQL_DB'] = 'recomendautosdb'
+        # ------------ DEFINICION DE PARAMETROS DE CONEXION BASE DE DATOS---------
+        self.__host='192.168.0.102'
+        self.__user='adm1'
+        self.__password='marcpass'
+        self.__db='recomendautosdb'
+        # -------------------------------------------------------------------------
+        app.config['MYSQL_HOST'] = self.__host
+        app.config['MYSQL_USER'] = self.__user
+        app.config['MYSQL_PASSWORD'] = self.__password
+        app.config['MYSQL_DB'] = self.__db
         self.__mysql = MySQL(app)
+
 
 # CONSULTAS USUARIO
     def addNewUser(self, user):#+
@@ -272,7 +279,17 @@ class Querys:
         except Exception as e:
             print("Error al agregar nuevo automovil a la base de datos: " + str(e))
             return False
-        
+    
+    def updateOverview(self, id, overview):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_actualizarResumen(%s,%s)',(id, overview))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al agregar overview a la base de datos: " + str(e))
+            return False        
+
     def addDatasheet(self, idAuto, idAtributo):
         try:
             cur = self.__mysql.connection.cursor()
@@ -476,6 +493,16 @@ class Querys:
         except Exception as e:
             print("Error al obtener atributos de la base de datos: " + str(e))
             return False
+    
+    def getAttributesByIdResp(self, idR):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerAtributosPorIdResp(%s)',[idR])
+            data=cur.fetchall()
+            return data
+        except Exception as e:
+            print("Error al obtener atributos(por respuesta) de la base de datos: " + str(e))
+            return False
 
     def getMaxValAnswByIdAttrib(self, idA):
         try:
@@ -497,7 +524,19 @@ class Querys:
             print("Error al obtener valor maximo de atributo(por pregunta) la base de datos: " + str(e))
             return False
 
+    def getIdAutoByAttrib(self, idAttrib):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_obtenerIdAutoPorAtributo(%s)',[idAttrib])
+            data=cur.fetchall()
+            return data
+        except Exception as e:
+            print("Error al obtener id auto por (por atributo)de la base de datos: " + str(e))
+            return False
 
     def getMysql(self):
         return self.__mysql
 
+    def getCursorParams(self):
+        params=[self.__host,self.__user,self.__password,self.__db]
+        return params
