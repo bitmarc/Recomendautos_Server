@@ -11,7 +11,7 @@ class autoSpider(scrapy.Spider):
 
     custom_settings = {
         'ITEM_PIPELINES': {
-            'webstractor.pipelines.WebstractorAutotestPipeline': 400
+            'webextractor.pipelines.WebstractorAutotestPipeline': 400
         }}
 
     allowed_domain = ['https://autotest.com.ar']

@@ -113,7 +113,7 @@ class DataExportManager:
         dfScoreS=dfScoreS.fillna(0)
         for index, row in dfScoreS.iterrows():
             if(not MyConnection.addScoresheet(row['general'],row['confort'],row['desempeño'],row['tecnología'],
-            row['ostentosidad'],row['deportividad'],row['economía'],row['eficiencia'],row['seguridad'],row['ecología'],row['a_favor'],row['en_contra'],index+1)):
+            row['ostentosidad'],row['deportividad'],row['economía'],row['eficiencia'],row['seguridad'],row['ecología'],row['a_favor'],row['en_contra'],row['cP'],row['cN'],index+1)):
                 sms='failed'
                 break
             print('auto: ',index+1)

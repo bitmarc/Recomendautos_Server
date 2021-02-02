@@ -24,6 +24,8 @@ from entities.history import History
 from entities.automobile import Automobile
 from dataExportManager import DataExportManager
 from clusteringModel.kmodesManager import KmodesManager
+from csv1.csvcleaner import Csvcleaner
+from comprehend.analyzer import Analyzer
 
 from sqlalchemy import create_engine
 import pymysql
@@ -57,6 +59,12 @@ class home(Resource):
         #db_connection_str = 'mysql+pymysql://'+lis[1]+':'+lis[2]+'@'+lis[0]+'/'+lis[3]
         #db_connection = create_engine(db_connection_str)
         #return jsonify(dfAutos.to_dict())
+
+        #Analyzer.AnalizeOpinautos()
+        #Csvcleaner.generateScoreSheet()
+        #print('generateScoreSheet ok')
+        msg=DataExportManager.exportScoresheet(MyConnection)
+        print('exportScoresheet ok')
         return jsonify({"message": "Bienvenido a recommendautos"})
 
 # Bienvenida a usuario
@@ -223,7 +231,6 @@ class getCarDetails(Resource):
 class exportData(Resource):
     def get(self):
         msg='failed'
-        '''
         msg=DataExportManager.exportAttributes(MyConnection)
         print('exportAttributes ok')
         msg=ContentBased.generateOverview() #genera overview
@@ -242,15 +249,14 @@ class exportData(Resource):
         print('generateScoreSheet ok')
         msg=DataExportManager.exportScoresheet(MyConnection)
         print('exportScoresheet ok')
-        msg=DataExportManager.parseAttribs(MyConnection)
-        print('parseAttribs ok')
         msg=DataExportManager.exportForms(MyConnection)#solo pasa a numeric, no a bd--
         print('exportForms ok')
-        '''
-        #Csvcleaner.generateScoreSheet()
-        #print('generateScoreSheet ok')
+        Csvcleaner.generateScoreSheet()
+        print('generateScoreSheet ok')
         msg=DataExportManager.exportScoresheet(MyConnection)
         print('exportScoresheet ok')
+        #msg=DataExportManager.parseAttribs(MyConnection)
+        #print('parseAttribs ok')
         return jsonify('status: '+msg)
 
 # Entrenar modelo

@@ -25,6 +25,9 @@ class Csvcleaner:
             df_opinautos.iloc[index,4]=df_opinautos.iloc[index,4].replace(u"\r",u" ").replace(u"\n",u" ").strip()# Ajuste de texto en opiniones
         df_opinautos=df_opinautos.loc[df_opinautos['Opinion'].str.len()<3000].reset_index(drop=True) # limito numero de caracteres
         df_opinautos['Fecha'] = pd.to_datetime(df_opinautos['Fecha'])# Conversion de formato de fecha
+        mask = (df_opinautos['Fecha'] > '2019-1-01') & (df_opinautos['Fecha'] <= '2021-1-1')
+        df_opinautos=df_opinautos.loc[df_opinautos['Nombre'].str.contains('2019', flags = re.IGNORECASE) | df_opinautos['Nombre'].str.contains('2020', flags = re.IGNORECASE)]
+        df_opinautos=df_opinautos.loc[mask]
         df_opinautos.to_csv(file_path_out,index=False)
         return df_opinautos
 
@@ -44,7 +47,7 @@ class Csvcleaner:
     @staticmethod
     def FilterDataMotorpasion():
         base_path = Path(__file__).parent
-        file_path = (base_path / "../extractors/motorpasion_items.csv").resolve()
+        file_path = (base_path / "../extractors/webextractor/motorpasion_items.csv").resolve()
         file_path_out = (base_path / "../extractors/motorpasion_items_filtered.csv").resolve()
         df_motor = pd.read_csv(file_path,encoding='utf-8',
         header=0,
@@ -59,13 +62,13 @@ class Csvcleaner:
     @staticmethod
     def FilterDataQuecoche():
         base_path = Path(__file__).parent
-        file_path = (base_path / "../extractors/quecochemecompro_items.csv").resolve()
+        file_path = (base_path / "../extractors/webextractor/quecochemecompro_items.csv").resolve()
         file_path_out = (base_path / "../extractors/quecochemecompro_items_filtered.csv").resolve()
         df_quecoche = pd.read_csv(file_path,encoding='utf-8',
         header=0,
         names=['Nombre', 'Marca', 'Puntuacion', 'Informativo', 'C_peque_manej', 'C_deportivo', 'C_bueno_barato',
        'C_practico', 'C_ecologico', 'C_atractivo', 'Lo_mejor', 'Lo_peor'])
-        df_quecoche=Csvcleaner.FilterBrand(df_quecoche,'Marca')# Filtrado de marcas
+        df_quecoche=Csvcleaner.FilterBrand(df_quecoche,'Nombre')# Filtrado de marcas
         df_quecoche=Csvcleaner.FilterModel(df_quecoche,'Nombre')# Filtrado de modelos
         df_quecoche.to_csv(file_path_out,index=False)
         return df_quecoche
@@ -120,21 +123,22 @@ class Csvcleaner:
         file_quecoche_path = (base_path / "../extractors/quecochemecompro_items_filtered.csv").resolve()
         file_autotest_path = (base_path / "../extractors/autotest_items_filtered.csv").resolve()
         file_motorpasion_path = (base_path / "../extractors/motorpasion_items_filtered.csv").resolve()
+        file_opinautos_path = (base_path / "../extractors/opinautos_items_Comprehend_parsed.csv").resolve()
 
         col_list = ["marca", "modelo", "año", "versión"]
         dfAutos = pd.read_csv(file_autos_path, encoding='utf-8', usecols=col_list)
         dfQuecoche = pd.read_csv(file_quecoche_path, encoding='utf-8')
         dfAutoTest = pd.read_csv(file_autotest_path, encoding='utf-8')
         dfMotorPasion = pd.read_csv(file_motorpasion_path, encoding='utf-8')
+        dfOpinautos = pd.read_csv(file_opinautos_path, encoding='utf-8')
 
-        columns=['general', 'confort', 'desempeño','tecnología','ostentosidad','deportividad','economía','eficiencia','seguridad','ecología','a_favor','en_contra']
-        dfAutos[columns] = pd.DataFrame([[np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]], index=dfAutos.index)
-        def remove_accents(a):
-            return unidecode.unidecode(a)
-        dfAutos['modelo'] = dfAutos['modelo'].apply(remove_accents)
-        dfQuecoche['Nombre'] = dfQuecoche['Nombre'].apply(remove_accents)
-        dfAutoTest['Nombre'] = dfAutoTest['Nombre'].apply(remove_accents)
-        dfMotorPasion['Nombre'] = dfMotorPasion['Nombre'].apply(remove_accents)
+        columns=['general', 'confort', 'desempeño','tecnología','ostentosidad','deportividad','economía','eficiencia','seguridad','ecología','a_favor','en_contra','cP','cN']
+        dfAutos[columns] = pd.DataFrame([[np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]], index=dfAutos.index)
+        dfAutos['modelo'] = dfAutos['modelo'].apply(Csvcleaner.remove_accents)
+        dfQuecoche['Nombre'] = dfQuecoche['Nombre'].apply(Csvcleaner.remove_accents)
+        dfAutoTest['Nombre'] = dfAutoTest['Nombre'].apply(Csvcleaner.remove_accents)
+        dfMotorPasion['Nombre'] = dfMotorPasion['Nombre'].apply(Csvcleaner.remove_accents)
+        dfOpinautos['Modelo'] = dfOpinautos['Modelo'].apply(Csvcleaner.remove_accents)
 
         for index, row in dfAutos.iterrows():
             general=[]
@@ -147,123 +151,139 @@ class Csvcleaner:
             eficiencia=[]
             seguridad=[]
             ecologia=[]
+            cp=[]
+            cn=[]
             afavor=''
             encontra=''
-            
+
             dfAux=dfQuecoche.loc[dfQuecoche['Nombre'].str.contains(row['marca']+' ', flags = re.IGNORECASE) &
                                 dfQuecoche['Nombre'].str.contains(' '+row['modelo'], flags = re.IGNORECASE)]
+            
             if not dfAux.empty:
-                if not dfAux['Puntuacion'].isnull().values.any():
-                    general.append(float(dfAux.iloc[0]['Puntuacion'].replace(",", ".")))
-                if not dfAux['C_peque_manej'].isnull().values.any():
-                    confort.append(dfAux.iloc[0]['C_peque_manej'])
-                if not dfAux['C_atractivo'].isnull().values.any():
-                    confort.append(dfAux.iloc[0]['C_atractivo'])
-                if not dfAux['C_deportivo'].isnull().values.any():
-                    deportividad.append(dfAux.iloc[0]['C_deportivo'])
-                if not dfAux['C_bueno_barato'].isnull().values.any():
-                    economia.append(dfAux.iloc[0]['C_bueno_barato'])
-                if not dfAux['C_peque_manej'].isnull().values.any():
-                    economia.append(dfAux.iloc[0]['C_peque_manej'])
-                if not dfAux['C_peque_manej'].isnull().values.any():
-                    eficiencia.append(dfAux.iloc[0]['C_peque_manej'])
-                if not dfAux['C_ecologico'].isnull().values.any():
-                    eficiencia.append(dfAux.iloc[0]['C_ecologico'])
-                if not dfAux['C_ecologico'].isnull().values.any():
-                    ecologia.append(dfAux.iloc[0]['C_ecologico'])
-                if not dfAux['Lo_mejor'].isnull().values.any():
+                idxVersion=Csvcleaner.getVersionIndex(dfAux,' '+row['versión'],'Puntuacion')
+                if not pd.isnull(dfAux.at[idxVersion, 'Puntuacion']):
+                    general.append(float(dfAux.at[idxVersion, 'Puntuacion'].replace(",", ".")))
+                if not pd.isnull(dfAux.at[idxVersion, 'C_peque_manej']):
+                    confort.append(dfAux.at[idxVersion, 'C_peque_manej'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_atractivo']):
+                    confort.append(dfAux.at[idxVersion, 'C_atractivo'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_deportivo']):
+                    deportividad.append(dfAux.at[idxVersion, 'C_deportivo'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_bueno_barato']):
+                    economia.append(dfAux.at[idxVersion, 'C_bueno_barato'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_peque_manej']):
+                    economia.append(dfAux.at[idxVersion, 'C_peque_manej'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_peque_manej']):
+                    eficiencia.append(dfAux.at[idxVersion, 'C_peque_manej'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_ecologico']):
+                    eficiencia.append(dfAux.at[idxVersion, 'C_ecologico'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_ecologico']):
+                    ecologia.append(dfAux.at[idxVersion, 'C_ecologico'])
+                if not pd.isnull(dfAux.at[idxVersion, 'Lo_mejor']):
                     if len(afavor)<2:
-                        afavor+=dfAux.iloc[0]['Lo_mejor']
+                        afavor+=dfAux.at[idxVersion, 'Lo_mejor']
                     else:
-                        afavor+=' '+dfAux.iloc[0]['Lo_mejor']
-                if not dfAux['Lo_peor'].isnull().values.any():
+                        afavor+=' '+dfAux.at[idxVersion, 'Lo_mejor']
+                if not pd.isnull(dfAux.at[idxVersion, 'Lo_peor']):
                     if len(encontra)<2:
-                        encontra+=dfAux.iloc[0]['Lo_peor']
+                        encontra+=dfAux.at[idxVersion, 'Lo_peor']
                     else:
-                        encontra+=' '+dfAux.iloc[0]['Lo_peor']
-                    
+                        encontra+=' '+dfAux.at[idxVersion, 'Lo_peor']
+
             dfAux=dfAutoTest.loc[dfAutoTest['Nombre'].str.contains(row['marca']+' ', flags = re.IGNORECASE) &
                                 dfAutoTest['Nombre'].str.contains(' '+row['modelo'], flags = re.IGNORECASE)]
             if not dfAux.empty:
-                if not dfAux['C_General'].isnull().values.any():
-                    general.append(dfAux.iloc[0]['C_General'])
-                if not dfAux['C_Vida'].isnull().values.any():
-                    confort.append(dfAux.iloc[0]['C_Vida'])
-                if not dfAux['C_Diseño'].isnull().values.any():
-                    confort.append(dfAux.iloc[0]['C_Diseño'])
-                if not dfAux['C_Manejo'].isnull().values.any():
-                    confort.append(dfAux.iloc[0]['C_Manejo'])
-                if not dfAux['C_Manejo'].isnull().values.any():
-                    desempeño.append(dfAux.iloc[0]['C_Manejo'])
-                if not dfAux['C_Performance'].isnull().values.any():
-                    desempeño.append(dfAux.iloc[0]['C_Performance'])
-                if not dfAux['C_Vida'].isnull().values.any():
-                    tecnologia.append(dfAux.iloc[0]['C_Vida'])
-                if not dfAux['C_Manejo'].isnull().values.any():
-                    deportividad.append(dfAux.iloc[0]['C_Manejo'])
-                if not dfAux['C_Performance'].isnull().values.any():
-                    eficiencia.append(dfAux.iloc[0]['C_Performance'])
-                if not dfAux['C_Diseño'].isnull().values.any():
-                    seguridad.append(dfAux.iloc[0]['C_Diseño'])
-                if not dfAux['A_favor'].isnull().values.any():
+                idxVersion=Csvcleaner.getVersionIndex(dfAux,' '+row['versión'],'C_General')
+                if not pd.isnull(dfAux.at[idxVersion, 'C_General']):
+                    general.append(dfAux.at[idxVersion, 'C_General'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Vida']):
+                    confort.append(dfAux.at[idxVersion, 'C_Vida'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Diseño']):
+                    confort.append(dfAux.at[idxVersion, 'C_Diseño'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Manejo']):
+                    confort.append(dfAux.at[idxVersion, 'C_Manejo'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Manejo']):
+                    desempeño.append(dfAux.at[idxVersion, 'C_Manejo'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Performance']):
+                    desempeño.append(dfAux.at[idxVersion, 'C_Performance'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Vida']):
+                    tecnologia.append(dfAux.at[idxVersion, 'C_Vida'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Manejo']):
+                    deportividad.append(dfAux.at[idxVersion, 'C_Manejo'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Performance']):
+                    eficiencia.append(dfAux.at[idxVersion, 'C_Performance'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Diseño']):
+                    seguridad.append(dfAux.at[idxVersion, 'C_Diseño'])
+                if not pd.isnull(dfAux.at[idxVersion, 'A_favor']):
                     if len(afavor)<2:
-                        afavor+=dfAux.iloc[0]['A_favor']
+                        afavor+=dfAux.at[idxVersion, 'A_favor']
                     else:
-                        afavor+=' '+dfAux.iloc[0]['A_favor']
-                if not dfAux['En_contra'].isnull().values.any():
+                        afavor+=' '+dfAux.at[idxVersion, 'A_favor']
+                if not pd.isnull(dfAux.at[idxVersion, 'En_contra']):
                     if len(encontra)<2:
-                        encontra+=dfAux.iloc[0]['En_contra']
+                        encontra+=dfAux.at[idxVersion, 'En_contra']
                     else:
-                        encontra+=' '+dfAux.iloc[0]['En_contra']
-            
+                        encontra+=' '+dfAux.at[idxVersion, 'En_contra']
+
+
             dfAux=dfMotorPasion.loc[dfMotorPasion['Nombre'].str.contains(row['marca']+' ', flags = re.IGNORECASE) &
                                 dfMotorPasion['Nombre'].str.contains(' '+row['modelo'], flags = re.IGNORECASE)]
             if not dfAux.empty:
-                if not dfAux['C_General'].isnull().values.any():
-                    general.append(dfAux.iloc[0]['C_General'])
-                if not dfAux['C_Equipamiento'].isnull().values.any():
-                    confort.append(dfAux.iloc[0]['C_Equipamiento'])
-                if not dfAux['C_Infotenimiento'].isnull().values.any():
-                    confort.append(dfAux.iloc[0]['C_Infotenimiento'])
-                if not dfAux['C_Espacio'].isnull().values.any():
-                    confort.append(dfAux.iloc[0]['C_Espacio'])
-                if not dfAux['C_Comportamiento'].isnull().values.any():
-                    desempeño.append(dfAux.iloc[0]['C_Comportamiento'])
-                if not dfAux['C_Transmision'].isnull().values.any():
-                    desempeño.append(dfAux.iloc[0]['C_Transmision'])
-                if not dfAux['C_Motor'].isnull().values.any():
-                    desempeño.append(dfAux.iloc[0]['C_Motor'])
-                if not dfAux['C_Infotenimiento'].isnull().values.any():
-                    tecnologia.append(dfAux.iloc[0]['C_Infotenimiento'])
-                if not dfAux['C_Acabados'].isnull().values.any():
-                    ostentosidad.append(dfAux.iloc[0]['C_Acabados'])
-                if not dfAux['C_Equipamiento'].isnull().values.any():
-                    ostentosidad.append(dfAux.iloc[0]['C_Equipamiento'])
-                if not dfAux['C_Comportamiento'].isnull().values.any():
-                    deportividad.append(dfAux.iloc[0]['C_Comportamiento'])
-                if not dfAux['C_Motor'].isnull().values.any():
-                    deportividad.append(dfAux.iloc[0]['C_Motor'])
-                if not dfAux['C_Precio'].isnull().values.any():
-                    economia.append(dfAux.iloc[0]['C_Precio'])
-                if not dfAux['C_Consumo'].isnull().values.any():
-                    eficiencia.append(dfAux.iloc[0]['C_Consumo'])
-                if not dfAux['C_Motor'].isnull().values.any():
-                    eficiencia.append(dfAux.iloc[0]['C_Motor'])
-                if not dfAux['C_Seguridad'].isnull().values.any():
-                    seguridad.append(dfAux.iloc[0]['C_Seguridad'])
-                if not dfAux['C_Consumo'].isnull().values.any():
-                    ecologia.append(dfAux.iloc[0]['C_Consumo'])
-                if not dfAux['Lo_Bueno'].isnull().values.any():
-                    if len(afavor)<2:
-                        afavor+=dfAux.iloc[0]['Lo_Bueno']
-                    else:
-                        afavor+=' '+dfAux.iloc[0]['Lo_Bueno']
-                if not dfAux['Lo_Malo'].isnull().values.any():
-                    if len(encontra)<2:
-                        encontra+=dfAux.iloc[0]['Lo_Malo']
-                    else:
-                        encontra+=' '+dfAux.iloc[0]['Lo_Malo']
+                idxVersion=Csvcleaner.getVersionIndex(dfAux,row['versión'],'C_General')
+                if not pd.isnull(dfAux.at[idxVersion, 'C_General']):
+                    general.append(dfAux.at[idxVersion, 'C_General'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Equipamiento']):
+                    confort.append(dfAux.at[idxVersion, 'C_Equipamiento'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Infotenimiento']):
+                    confort.append(dfAux.at[idxVersion, 'C_Infotenimiento'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Espacio']):
+                    confort.append(dfAux.at[idxVersion, 'C_Espacio'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Comportamiento']):
+                    desempeño.append(dfAux.at[idxVersion, 'C_Comportamiento'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Transmision']):
+                    desempeño.append(dfAux.at[idxVersion, 'C_Transmision'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Motor']):
+                    desempeño.append(dfAux.at[idxVersion, 'C_Motor'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Infotenimiento']):
+                    tecnologia.append(dfAux.at[idxVersion, 'C_Infotenimiento'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Acabados']):
+                    ostentosidad.append(dfAux.at[idxVersion, 'C_Acabados'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Equipamiento']):
+                    ostentosidad.append(dfAux.at[idxVersion, 'C_Equipamiento'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Comportamiento']):
+                    deportividad.append(dfAux.at[idxVersion, 'C_Comportamiento'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Motor']):
+                    deportividad.append(dfAux.at[idxVersion, 'C_Motor'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Precio']):
+                    economia.append(dfAux.at[idxVersion, 'C_Precio'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Consumo']):
+                    eficiencia.append(dfAux.at[idxVersion, 'C_Consumo'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Motor']):
+                    seguridad.append(dfAux.at[idxVersion, 'C_Motor'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Seguridad']):
+                    seguridad.append(dfAux.at[idxVersion, 'C_Seguridad'])
+                if not pd.isnull(dfAux.at[idxVersion, 'C_Consumo']):
+                    ecologia.append(dfAux.at[idxVersion, 'C_Consumo'])
                     
+                if not pd.isnull(dfAux.at[idxVersion, 'Lo_Bueno']):
+                    if len(afavor)<2:
+                        afavor+=dfAux.at[idxVersion, 'Lo_Bueno']
+                    else:
+                        afavor+=' '+dfAux.at[idxVersion, 'Lo_Bueno']
+                if not pd.isnull(dfAux.at[idxVersion, 'Lo_Malo']):
+                    if len(encontra)<2:
+                        encontra+=dfAux.at[idxVersion, 'Lo_Malo']
+                    else:
+                        encontra+=' '+dfAux.at[idxVersion, 'Lo_Malo']
+            dfAux=dfOpinautos.loc[dfOpinautos['Marca'].str.contains(row['marca'], flags = re.IGNORECASE) &
+                    dfOpinautos['Modelo'].str.contains(row['modelo'], flags = re.IGNORECASE)]
+            k=Csvcleaner.getCount(dfAux,'NEGATIVE')
+            if k>0:
+                cn.append(k)
+            k=Csvcleaner.getCount(dfAux,'POSITIVE')
+            if k>0:
+                cp.append(k)
+
             if len(general)>0:
                 dfAutos.iloc[index,4]=sum(general)/len(general)
             if len(confort)>0:
@@ -286,6 +306,37 @@ class Csvcleaner:
                 dfAutos.iloc[index,13]=sum(ecologia)/len(ecologia)
             dfAutos.iloc[index,14]=afavor
             dfAutos.iloc[index,15]=encontra
+            if len(cp)>0:
+                dfAutos.iloc[index,16]=sum(cp)/len(cp)
+            if len(cn)>0:
+                dfAutos.iloc[index,17]=sum(cn)/len(cn)
 
         dfAutos['nombre']=dfAutos['marca']+' '+dfAutos['modelo']+' '+dfAutos['versión']
         dfAutos.to_csv(file_autos_path_out, encoding="utf-8", index=False) 
+
+    @staticmethod
+    def getVersionIndex(dfScores,verson,puntGral):
+        dfScores=dfScores.sort_values(by='Nombre', ascending=True)
+        found=False
+        for index, row in dfScores.iterrows():
+            matchObj =  re.search(re.escape(verson), row['Nombre'], flags=re.IGNORECASE)
+            if matchObj:
+                found=index
+                print(index)
+                break
+        if not found:
+            for index, row in dfScores.iterrows():
+                if not pd.isnull(row[puntGral]):
+                    found=index
+                    break
+            if not found:
+                found=dfScores.index[0]
+        return found
+
+    @staticmethod
+    def getCount(df,sentiment):
+        return len(df.loc[df['Sentimiento']==sentiment].index)
+
+    @staticmethod
+    def remove_accents(a):
+        return unidecode.unidecode(a)

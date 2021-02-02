@@ -1,6 +1,6 @@
 import scrapy
 from urllib.parse import urljoin
-from webstractor.items import MotorpasionItem
+from webextractor.items import MotorpasionItem
 
 class Webstractor3Spider(scrapy.Spider):
     name='motorpasion'
@@ -10,7 +10,7 @@ class Webstractor3Spider(scrapy.Spider):
 
     custom_settings = {
         'ITEM_PIPELINES': {
-            'webstractor.pipelines.WebstractorMotorpasionPipeline': 400
+            'webextractor.pipelines.WebstractorMotorpasionPipeline': 400
         }}
 
     allowed_domain = ['https://www.motorpasion.com.mx']
@@ -19,7 +19,7 @@ class Webstractor3Spider(scrapy.Spider):
         urls = ['https://www.motorpasion.com.mx/categoria/pruebas-de-coches']
 
         for url in urls:
-            while self.page < 200: # control de paginacion
+            while self.page < 40: # control de paginacion
                 if self.page==0:
                     yield scrapy.Request(url=url, callback=self.parse_auto)
                     self.page += 20

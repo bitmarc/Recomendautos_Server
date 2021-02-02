@@ -75,6 +75,7 @@ class ContentBased:
         dfScores = pd.read_sql('call sp_obtenerPuntuaciones()', con=db_connection)
         dfScores["nombre"] = dfScores["marca"] +' '+ dfScores["modelo"] +' '+ dfScores["versión"]
         dfScores.replace({'0':np.nan, 0:np.nan}, inplace=True)
+
         # Verifico si idsAutos tiene valores, si no se toman todos los autos como entrada
         if idsAutos:
             dfScores=dfScores.loc[idsAutos]
@@ -157,6 +158,8 @@ class ContentBased:
                 if not (pd.isnull(dfAutos.loc[index][tag])):
                     pg=pg+(dfAutos.loc[index][tag])*(rating[tg])
                 tg+=1
+            pg=pg+((dfAutos.loc[index]['general'])+ContentBased.getComentsScore(dfAutos.loc[index]['cP'],dfAutos.loc[index]['cN']))
+            print(pg)
             pgList.append(pg)
         return pgList
 
@@ -168,6 +171,16 @@ class ContentBased:
         if valMQ:
             val=valMQ[0]
         return val
+    
+    def getComentsScore(cp,cn):
+        ct=cp+cn
+        rcp=(cp*100)/ct
+        if rcp>50:
+            return rcp/10
+        if rcp<50:
+            rcn=(cn*100)/ct
+            return rcn/-10
+        return 0
 
 
     #Operacion de similitud utilizando el  termino de frecuencia inversa (le quita importancia a las palabras mas repetidas)
@@ -204,7 +217,7 @@ class ContentBased:
         # Regreso el top 30  de autos (indices respecto al df)
         #return dfAutosMod['nombre'].iloc[aouto_indices]
         return aouto_indices
-    
+
     @staticmethod
     def lowCost(idsPrices):
         return idsPrices[2:4]

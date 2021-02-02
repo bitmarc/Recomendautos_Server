@@ -334,11 +334,11 @@ class Querys:
             print("Error al asociar atribto-respuesta en la base de datos: " + str(e))
             return False
     
-    def addScoresheet(self, general, confort, desempeño, tecnologia, ostentosidad, deportividad, economia, eficiencia, seguridad, ecologia, afavor, encontra, idA):
+    def addScoresheet(self, general, confort, desempeño, tecnologia, ostentosidad, deportividad, economia, eficiencia, seguridad, ecologia, afavor, encontra, cP,cN, idA):
         try:
             cur = self.__mysql.connection.cursor()
-            cur.execute('CALL sp_insertarPuntuacion(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',
-            (general, confort,desempeño,tecnologia,ostentosidad,deportividad,economia,eficiencia,seguridad,ecologia,afavor,encontra,idA))
+            cur.execute('CALL sp_insertarPuntuacion(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',
+            (general, confort,desempeño,tecnologia,ostentosidad,deportividad,economia,eficiencia,seguridad,ecologia,afavor,encontra,cP,cN,idA))
             self.__mysql.connection.commit()
             return True
         except Exception as e:

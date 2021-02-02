@@ -1,7 +1,7 @@
 import scrapy
 import json
 from urllib.parse import urljoin
-from webstractor.items import QuecocheItem
+from webextractor.items import QuecocheItem
 
 class Webstractor4Spider(scrapy.Spider):
     name='quecochemecompro'
@@ -10,7 +10,7 @@ class Webstractor4Spider(scrapy.Spider):
 
     custom_settings = {
         'ITEM_PIPELINES': {
-            'webstractor.pipelines.WebstractorQuecochePipeline': 400
+            'webextractor.pipelines.WebstractorQuecochePipeline': 400
         }}
 
     page=1
@@ -68,9 +68,32 @@ class Webstractor4Spider(scrapy.Spider):
 
     def parse(self,response):
         auto_item=QuecocheItem()
-        auto_item['nombre']=response.xpath('//h1[@class="card-title h1"]/text()').extract()
+        #all_div_versiones=response.xpath('//div[@class="col-md-8 col-sm-7"]/div[@class="related-models"]/div[@class="related-models-wrapper"]/div[@class="related-models-list"]/a/@href').getall()# control de mas versiones
+        #for div_version in all_div_versiones:
+        #    yield response.follow(url=div_version,callback=self.parse_auto_extra)
+        #k='//div[@class="col-md-8 col-sm-7"]/div[@class="related-models"]/div[@class="related-models-wrapper"]/div[@class="related-models-list"]/a/@href'
+        #auto_item['nombre']=response.xpath('//h1[@class="card-title h1"]/text()').extract()
+        auto_item['nombre']=response.xpath('//h1[@class="h1 strong"]/text()[2]').extract()
         auto_item['marca']=response.xpath('//*[@id="main-content"]/article/section[1]/ol/li[2]/a/span/text()').extract()
         auto_item['puntuacion']=response.xpath('//div[@class="score-count"]/text()').extract()
+        #auto_item['informativo']=response.xpath('//div[@class="advice_text"]/text()').extract()
+        auto_item['informativo']=response.xpath('//section[@class="card-review"]/div[@class="container"]/div[@class="row"]/div[@class="col-md-8"]/text()[1]').extract()
+        auto_item['cal_pequeño_y_manejable']=response.xpath('//div[@class="subjetive-chart"]/div[1]/span[@class="chart-bar-bullet"]/text()').extract()
+        auto_item['cal_deportivo']=response.xpath('//div[@class="subjetive-chart"]/div[2]/span[@class="chart-bar-bullet"]/text()').extract()
+        auto_item['cal_bueno_y_barato']=response.xpath('//div[@class="subjetive-chart"]/div[3]/span[@class="chart-bar-bullet"]/text()').extract()
+        auto_item['cal_practico']=response.xpath('//div[@class="subjetive-chart"]/div[4]/span[@class="chart-bar-bullet"]/text()').extract()
+        auto_item['cal_ecologico']=response.xpath('//div[@class="subjetive-chart"]/div[5]/span[@class="chart-bar-bullet"]/text()').extract()
+        auto_item['cal_atractivo']=response.xpath('//div[@class="subjetive-chart"]/div[6]/span[@class="chart-bar-bullet"]/text()').extract()
+        auto_item['lo_mejor']=response.xpath('//div[@class="better"]/p/text()').extract()
+        auto_item['lo_malo']=response.xpath('//div[@class="worst"]/p/text()').extract()
+        yield auto_item
+    
+    def parse_auto_extra(self,response):
+        auto_item=QuecocheItem()
+        auto_item['nombre']=response.xpath('//h1[@class="h1 strong"]/text()[2]').extract()
+        auto_item['marca']=response.xpath('//*[@id="main-content"]/article/section[1]/ol/li[2]/a/span/text()').extract()
+        auto_item['puntuacion']=response.xpath('//div[@class="score-count"]/text()').extract()
+        auto_item['informativo']=response.xpath('//section[@class="card-review"]/div[@class="container"]/div[@class="row"]/div[@class="col-md-8"]/text()[1]').extract()
         auto_item['informativo']=response.xpath('//div[@class="advice_text"]/text()').extract()
         auto_item['cal_pequeño_y_manejable']=response.xpath('//div[@class="subjetive-chart"]/div[1]/span[@class="chart-bar-bullet"]/text()').extract()
         auto_item['cal_deportivo']=response.xpath('//div[@class="subjetive-chart"]/div[2]/span[@class="chart-bar-bullet"]/text()').extract()

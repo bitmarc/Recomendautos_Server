@@ -15,8 +15,11 @@ class Analyzer:
     def AnalizeOpinautos():
         base_path = Path(__file__).parent
         file_path_out = (base_path / "../extractors/opinautos_items_Comprehend_parsed.csv").resolve()
-        df_opinautos=Csvcleaner.FilterDataOpinautos() # filtro y limpieza de de datos extraidos
+        #df_opinautos=Csvcleaner.FilterDataOpinautos() # filtro y limpieza de de datos extraidos
+        file_path = (base_path / "../extractors/opinautos_items_filtered.csv").resolve()
+        df_opinautos = pandas.read_csv(file_path,encoding='utf-8')
 
+        print(df_opinautos)
         df_opinautos['Sentimiento']=''
         df_opinautos['P_positivo']=''
         df_opinautos['P_negativo']=''

@@ -1,7 +1,7 @@
 import scrapy
 from scrapy.exceptions import CloseSpider
 from scrapy.linkextractors import LinkExtractor
-from webstrator.items import OpinautosItem
+from webextractor.items import OpinautosItem
 
 class Webstractor2Spider(scrapy.Spider):
     name='opinautos'
@@ -12,7 +12,7 @@ class Webstractor2Spider(scrapy.Spider):
 
     custom_settings = {
         'ITEM_PIPELINES': {
-            'webstractor.pipelines.WebstratorOpinautosPipeline': 400
+            'webextractor.pipelines.WebstratorOpinautosPipeline': 400
         }}
 
     def start_requests(self):

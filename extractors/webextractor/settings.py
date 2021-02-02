@@ -9,15 +9,15 @@
 
 BOT_NAME = 'webstractor'
 
-SPIDER_MODULES = ['webstractor.spiders']
-NEWSPIDER_MODULE = 'webstractor.spiders'
+SPIDER_MODULES = ['webextractor.spiders']
+NEWSPIDER_MODULE = 'webextractor.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'webstractor (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 CONCURRENT_REQUESTS = 8

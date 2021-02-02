@@ -1,0 +1,256 @@
+Nombre,Marca,Puntuacion,Informativo,C_peque_manej,C_deportivo,C_bueno_barato,C_practico,C_ecologico,C_atractivo,Lo_mejor,Lo_peor
+ Hyundai i10 ,,"3,6"," «El Hyundai i10 goza de dimensiones muy contenidas para un uso 100% urbano. Su interior permite acomodar cuatro adultos sin problemas. Sus motores gasolina ofrecen fiabilidad y bajo coste de mantenimiento, por ello las grandes exigencias y altas velocidades no son su fuerte.» ",7,1,7.0,4.0,5.0,2.0,"Seguridad, practicidad, maniobrabilidad, aprovechamiento interior","Precio algo elevado, cambio robotizado, sin opción alternativa"
+ Renault Grand Scenic ,,"3,4",,1,1,5.0,10.0,2.0,3.0,"Diseño interior y exterior, versatilidad, relación tamaño/equipamiento/precio","Medida de neumáticos única en el mercado, detalles de calidad interior"
+ Audi A4 ,,"3,9"," «Es un coche que no le disgusta nadie y desde luego a mí tampoco, no tiene nada que saque de quicio aunque tampoco tiene nada que sorprenda. Su precio desde luego no es manco pero si lo adquieres con motor diésel tienes un coche para muchos años.» ",1,2,1.0,5.0,2.0,3.0,"Calidad de construcción, diseño interior y materiales, tecnología","Estética muy clásica, tacto de conducción por detrás de sus rivales"
+ Volkswagen Touran ,,"3,6",,1,1,1.0,5.0,2.0,2.0,"Posibilidad de 7 plazas, espacio interior, volumen de maletero, calidad de construcción, versatilidad interior","Estética cuadrada, precio elevado, diseño sobrio"
+ Honda Civic Sedán ,,,,1,3,2.0,6.0,2.0,2.0,,
+ Porsche Panamera Sport Turismo ,,,,1,7,1.0,6.0,1.0,8.0,,
+ Audi A8 PHEV ,,,,1,2,1.0,6.0,8.0,3.0,,
+ Porsche Panamera S E-Hybrid PHEV ,,,,1,5,1.0,5.0,8.0,6.0,"Prestaciones, silencio de marcha, calidad de materiales y acabados, interior espectacular, comportamiento deportivo","Pesa demasiado para poder ser considerado un verdadero deportivo, pero en línea recta te pega al asiento como pocos"
+ Audi SQ7 ,,,,1,5,1.0,10.0,1.0,5.0,"Relación prestaciones/consumos en diésel, calidad y diseño interior, espacio, confort, tecnología","Sería la combinación perfecta si el diésel no estuviese condenado a desaparecer, consumos altos en gasolina"
+ Porsche 911 Cabrio ,,,,1,8,1.0,1.0,2.0,8.0,"Diseño, calidad insuperable, tecnología de primera",Plazas traseras
+ Audi RS6 Avant ,,,,1,7,1.0,8.0,1.0,5.0,"Imagen, calidad, equipamiento, prestaciones","Precio, consumo, dimensiones"
+ Porsche Cayenne Turbo ,,,,1,7,1.0,9.0,1.0,5.0,"Prestaciones, tacto al volante, comportamiento, practicidad real","Precio, coste de opciones, consumos y todo lo que tenga que ver con tenerlo y mantenerlo"
+ Porsche Panamera Turbo ,,,,1,7,1.0,4.0,1.0,8.0,"Pretastaciones puras, aceleración, comportamiento, exclusividad","Precio, consumo y todo lo que tenga que ver con el coste de mantener este coche funcionando"
+ Audi R8 Spyder ,,"4,4",,1,8,1.0,1.0,1.0,10.0,,
+ Audi R8 ,,"4,4",,1,8,1.0,1.0,1.0,9.0,,
+ Fiat 500C ,,"3,4",,1,1,5.0,1.0,4.0,7.0,"Diseño atractivo, precio ajustado, practicidad","Maletero justo, calidad de algunos plásticos"
+ Hyundai Kona HEV ,,"3,6",,1,1,5.0,5.0,7.0,3.0,"Consumos, etiqueta ECO, equipamiento completo","Autonomía eléctrica limitada, precio sin ofertas"
+ Volkswagen Passat Variant ,,"4,1",,1,1,1.0,9.0,2.0,5.0,"Calidad de construcción, espacio interior, maletero, gama de motores, estética atractiva","Precio muy elevado, precio de opciones"
+ Mazda 6 Wagon ,,"4,0"," «Un familiar para que el conductor disfrute al volante. Deportivo, dinámico, con una posición de conducción perfecta y un tacto de dirección, pedales y sobre todo caja de cambios dignos de un juguete. Un diseño exterior muy atractivo, pero interior algo soso con calidades que ni destacan ni desentonan pueden hacerlo parecer algo gris en parado. En movimiento, brilla con luz propia.» ",1,3,5.0,8.0,2.0,4.0,"Maletero, motores eficientes, comportamiento","Calidad de algunos plásticos, equipamiento cerrado"
+ Volkswagen Golf MHEV ,,,,1,2,1.0,5.0,6.0,4.0,"Cualidades innatas del Golf, etiqueta ECO","Diseño algo personal, ergonomía interior peor que la de su antecesor"
+ Jeep Renegade TrailHawk ,,,,1,1,1.0,5.0,1.0,3.0,"Diseño rudo, capacidades 4x4, tecnología al servicio del ""off-road""","Terminación del interior, dinámica en carretera, sonoridad"
+ Audi A4 Avant ,,"4,1",,1,2,1.0,7.0,2.0,3.0,"Calidad de construcción, diseño interior y materiales, tecnología","Estética muy clásica, tacto de conducción por detrás de sus rivales"
+ Audi Q3 Sportback ,,"3,6",,1,2,1.0,7.0,2.0,4.0,"Estética, calidad de acabados, gama variada","Precio elevado, opciones caras, plaza central trasera justa"
+ Audi A4 Allroad ,,,,1,2,1.0,7.0,2.0,5.0,"Estética, calidad de acabados, diseño interior, equipamiento completo","Precio muy elevado, opciones caras, tacto de conducción insípido"
+ Audi A3 PHEV ,,,,1,3,1.0,4.0,8.0,3.0,"Imagen, tecnología, suavidad, insonorización","Precio, detalles de acabado, peso"
+ Audi A5 ,,"3,8",,1,4,1.0,2.0,2.0,5.0,"Calidad de construcción, tecnología, diseño interior","Comportamiento aburrido, precio elevado"
+ Audi A6 ,,,,1,2,1.0,6.0,2.0,3.0,"Calidad de construcción, espacio a bordo, materiales del interior, equipamiento","Precio, precio de las opciones, imagen demasiado clásica y convencional"
+ Audi A6 Avant ,,,,1,1,1.0,8.0,2.0,3.0,"Imagen, tecnología, acabados, espacio","Precio, algunas opciones mecánicas poco refinadas"
+ Volkswagen Touareg ,,,,1,1,1.0,9.0,2.0,3.0,"Tecnología, calidad de construcción, capacidades off-road razonables, agilidad del sistema 4WS","Pantalla central inabarcable de un vistazo, estética insulsa, falta de diferenciación"
+ Audi Q5 PHEV ,,,,1,3,1.0,6.0,8.0,4.0,,
+ Audi Q7 ,,"4,2",,1,1,1.0,11.0,1.0,5.0,"Espacio interior, calidad de construcción, tecnología, diseño interior","Proporciones exteriores algo raras, precio"
+ Porsche Cayenne ,,,,1,5,1.0,9.0,1.0,4.0,"Tacto deportivo, prestaciones, calidad general, tecnología, diseño, practicidad real","Precio, consumos y costes en general fuera del alcance de la gran mayoría"
+ Audi A8 ,,," «Viaje Santiago Madrid, con masaje en la espalda y un motor diésel que solamente ronronea. Justo lo que se le puede pedir a un coche de representación como este. Fuera de representar, es una exageración.» ",1,2,1.0,6.0,2.0,3.0,,
+ Porsche Macan Turbo ,,,,1,6,1.0,8.0,1.0,4.0,,
+ Porsche 911 ,,,,1,8,1.0,1.0,2.0,8.0,"Tradición, personalidad, tecnología, tacto de dirección, sensaciones, sonido, estética","Este es el coche por el que se miden los demás coches, no hay nada que mejorar"
+ Kia Picanto ,,"3,4",,9,1,7.0,4.0,5.0,2.0,"Diseño, habitabilidad, posibilidades de equipamiento","Suspensión blanda, caja automática con 4 velocidades"
+ Toyota Aygo ,,"3,1",,9,1,5.0,2.0,5.0,2.0,"Precio competitivo, espacio interior razonable","Calidades interiores justas, plataforma antigua, prestaciones limitadas a ciudad"
+ Fiat Tipo ,,"3,1",,1,1,7.0,6.0,2.0,2.0,"Precio demoledor, diseño, maletero gigantesco","Acceso al maletero, calidad de algunos plásticos, detalles de acabado"
+ Kia Rio ,,"3,4",,3,1,7.0,5.0,4.0,2.0,"Relación valor-precio, equipamiento razonable, maletero","Suspensión blanda, calidad de los plásticos"
+ Hyundai i20 ,,"3,5",,2,1,7.0,5.0,4.0,1.0,"Calidad de fabricación, equipamiento, diseño personal","Diseño personal, precio elevado, sin opción diésel"
+ Toyota Yaris ,,"4,0",,4,1,5.0,4.0,4.0,2.0,"Equipamiento de seguridad, posibilidad de motor híbrido, diseño","Precios algo altos (híbrido), detalles de acabado, equipo de confort (gasolina)"
+ Fiat 500L ,,"3,1"," «¿Se parece a un Fiat 500? No, sólo en el exterior. Por lo demás es un monovolumen sencillo pero útil y diferente por fuera. Motores poco potentes pero suficientes tanto en gasolina como en diésel. » ",1,1,5.0,7.0,2.0,3.0,"Relación espacio/precio, estética atractiva","Percepción de calidad, comportamiento dinámico torpe"
+ Kia Ceed Tourer ,,"3,6",,1,1,6.0,7.0,2.0,2.0,"Maletero, garantía, presentación, tecnología","Aspecto de algunos plásticos, línea algo clásica frente al Proceed"
+ Renault Mégane ST ,,"3,5",,1,1,5.0,8.0,2.0,2.0,"Maletero, comportamiento, posibilidades de equipamiento","Detalles de acabado, motores básicos algo justos"
+ Fiat Panda 4x4 ,,"3,6",,7,1,6.0,3.0,4.0,2.0,"Precio, comportamiento en campo, estética","Calidades interiores, prestaciones limitadas, gama de motores"
+ Renault Kadjar ,,"3,4",,1,1,6.0,6.0,2.0,2.0,"Más grande y menos visto que su hermano el Nissan Qashqai, confort de marcha","Tacto de conducción, detalles de calidad interior"
+ Toyota Yaris HEV ,,"4,1",,4,1,3.0,4.0,7.0,2.0,"Silencio en modo eléctrico, comodidad, posibilidades de equipamiento","Cambio CVT ruidoso en aceleraciones, interior algo justo, precio elevado"
+ Nissan Juke ,,"3,5",,1,2,5.0,7.0,2.0,3.0,"Diseño original, equipamiento disponible, comportamiento","Precio elevado, plazas traseras pequeñas, calidad de algunos plásticos"
+ Hyundai i30 CW MHEV ,,"3,6"," «Un coche contenido para quien busque un compacto a precio asequible. Lo mejor, una gama de motores diésel y gasolina amplia y fiable. Lo peor: un interior al que haría falta una renovación.» ",1,1,7.0,9.0,2.0,2.0,"Calidad de construcción, equipamiento completo, tacto de conducción","Gama limitada respecto al cinco puertas, motores diésel ruidosos, precios algo elevados"
+ SEAT León ST ,,"4,0"," «El coche para ir a IKEA. 587 litros de maletero sin abatir asientos, y opciones para llevar objetos muy largos. Para quien necesite mucho espacio en el día a día sin renunciar al comportamiento envidiable de un León en carretera. Lee mi prueba del ",1,2,5.0,9.0,2.0,2.0,"Equipamiento completo, opción micro-híbrida, maletero",Detalles de acabado
+ Volkswagen T-Cross ,,"3,1",,2,1,1.0,6.0,2.0,3.0,"Modularidad, comportamiento, equipamiento","Detalles de acabado, opciones caras, precio"
+ Hyundai Ioniq ,,"3,9",,1,1,5.0,7.0,7.0,3.0,"Relación precio/equipamiento, cambio automático de tacto agradable, eficiencia en ciudad","Plásticos interiores, prestaciones justas"
+ Mazda 3 ,,"4,2"," «Calidad y confort para un compacto que siempre debería ser una alternativa. El Mazda 3 destaca por unas mecánicas de última generación, donde los amantes de los motores gasolina encontrarán gran suavidad y ajustados consumos.» ",1,3,5.0,5.0,2.0,3.0,"Diseño, comportamiento, mecánicas eficientes","Plazas traseras, aspecto de algunos plásticos"
+ Volkswagen e-up! eléctrico ,,,,8,1,1.0,3.0,10.0,3.0,,
+ Audi A1 ,,"4,0"," «Un coche pequeño y premium, que viene para rivalizar con el MINI, aunque su espíritu es distinto: más sobrio y elegante frente al toque retro-cool del MINI. » ",3,2,1.0,5.0,4.0,3.0,"Calidad de acabados, tecnología, diseño interior","Precio elevado, opciones caras, sin diesel"
+ Mazda 3 SportSedán ,,"4,1",,1,3,5.0,5.0,2.0,3.0,"Comportamiento, capacidad de maletero, equipamiento","Precio algo elevado, boca de carga del maletero estrecha"
+ Toyota Corolla Sedán HEV ,,"3,6",,1,1,5.0,6.0,7.0,3.0,"Calidad de terminación, equipamiento de seguridad, solo motor 122 CV","Cambio CVT, sin opciones de personalización, sin motor HSD 180 CV"
+ Mazda CX-30 ,,"3,8",,1,2,1.0,6.0,2.0,4.0,"Motores eficientes, tracción total disponible, equipo muy completo","Sin opciones, motor diésel algo justo"
+ Honda Civic ,,"3,4",,1,3,5.0,6.0,2.0,3.0,"Estética muy diferenciada, comportamiento dinámico, tacto de dirección y cambio, anchura interior, calidad de construcción","Interior de materiales sencillos, aprovechamiento de la longitud total"
+ Hyundai Ioniq PHEV ,,,,1,1,5.0,6.0,8.0,3.0,"Precio accesible, calidades razonables, confort de marcha, eficiencia en ciudad",Todo el sobrepeso y complejidad que exige llevar motor térmico y baterías grandes
+ Toyota C-HR ,,"3,6",,1,2,2.0,5.0,7.0,4.0,"Estética demoledora, diseño interior de vanguardia, plataforma híbrida","Precio algo alto, espacio interior muy justo"
+ Toyota Prius Plus ,,"3,6", «El coche de los ,1,1,1.0,1.0,7.0,2.0,"Consumos, silencio de marcha, comportamiento en ciudad","Comportamiento en curva, precio muy elevado, tacto de conducción aburrido, prestaciones anémicas"
+ Volkswagen e-Golf eléctrico ,,,,1,2,1.0,5.0,10.0,3.0,Calidad y versatilidad de Volkswagen Golf,"Precio muy elevado, formato térmico para un coche eléctrico"
+ Renault Mégane ST PHEV ,,,,1,1,5.0,6.0,8.0,2.0,"Suavidad de marcha, eficiencia, etiqueta CERO","Imagen algo anticuada, falta de tecnologías aplicadas a la conducción"
+ Kia Niro PHEV ,,,,1,1,5.0,5.0,8.0,3.0,"Precio competitivo dentro de los PHEV, calidad de construcción, espacio interior","Eficiencia penalizada por el peso cuando circulamos con gasolina, exige un punto de recarga en casa"
+ Mazda 6 ,,"4,1", «Uno de los coches que más he disfrutado conduciendo en carretera. Su motor diésel 2.2 SKYACTIV-D de 150 CV tiene un consumo realmente bajo a velocidades contenidas en autopista. » ,1,4,5.0,5.0,2.0,4.0,"habitáculo amplio, comportamiento, motores eficientes","Precio algo elevado, equipamiento cerrado"
+ SEAT León ST MHEV ,,,,1,2,5.0,8.0,6.0,2.0,"Diseño, calidad de construcción, espacio","Detalles de acabado, ergonomía de algunos mandos"
+ Hyundai Kona eléctrico ,,,,1,1,4.0,5.0,10.0,3.0,"Autonomía elevada, prestaciones impresionantes","Precio elevado, como cualquier eléctrico"
+ Audi Q2 ,,"3,4",,1,2,1.0,6.0,2.0,4.0,"Diseño, calidad de construcción, tecnología","Espacio interior, precio elevado, calidad de materiales mejorable"
+ Kia e-Soul eléctrico ,,"3,3",,1,1,6.0,5.0,10.0,3.0,"Coste de uso, diseño, garantía, dos mecánicas, autonomía","Precios sin ayudas, ausencia de opciones"
+ Volkswagen Golf Variant ,,"3,8",,1,1,1.0,9.0,2.0,3.0,"Solidez, valor de reventa, comportamiento, gama de motores, tacto de conducción, maletero descomunal","Precio elevado frente a la competencia, diseño muy sobrio"
+ Hyundai Santa Fe ,,"3,8"," «Un SUV de 7 plazas por menos de 30.000 euros, sin tener en cuenta los descuentos. Conducción comoda y espacio interior son las bazas del Santa Fe, además de un exterior llamativo. De entrada el 2.0 diésel de 150 CV es más que aceptable. » ",1,1,6.0,10.0,2.0,3.0,"Relación calidad/precio, posibilidad de 7 plazas, espacio interior, confort de marcha","Motor de gasolina algo caro, sin opciones"
+ Audi A3 Sedán ,,"3,7"," «Para quien busque un coche de representación elegante. Sus plazas traseras no llegan al tamaño del A4 (especialmente en altura) y la boca de carga de su maletero no hace que su maletero sea equiparable, pero aún así sigue siendo un sedán bien proporcionado y precioso por fuera. Lee mi ",1,2,1.0,5.0,2.0,3.0,"Calidad y diseño interior, tecnología","Estética muy clásica, precio"
+ Volkswagen Tiguan PHEV ,,,,1,1,1.0,8.0,8.0,3.0,"Imagen (casi) premium, posibilidades de equipamiento, confort de marcha","Peso elevado, precio, equipamiento de serie escaso"
+ SEAT León PHEV ,,,,1,2,5.0,4.0,8.0,3.0,"Diseño, mejora en calidades, dinámica de conducción","Precio, peso añadido respecto a las versiones normales"
+ SEAT Alhambra ,,"3,9",,1,1,5.0,11.0,2.0,2.0,"Amplitud, calidad de acabados, puertas deslizantes","Maletero con siete plazas, precio sin descuentos"
+ Alfa Romeo Giulia ,,"3,7",,1,5,1.0,5.0,2.0,4.0,"Estética, deportividad pura, tracción trasera y reparto de masas","Calidad de algunos plásticos, precio elevado"
+ Toyota Prius PHEV ,,, «El coche de los ,1,1,1.0,5.0,8.0,2.0,,
+ Toyota RAV4 HEV ,,"3,9",,1,1,1.0,7.0,7.0,5.0,"Motor híbrido, consumos en uso urbano, silencio","Cambio ruidoso, precios elevados"
+ Volkswagen Tiguan Allspace ,,,,1,1,1.0,10.0,2.0,3.0,"Calidad de rodadura, gama de motores","Diseño muy convencional, detalles de acabado"
+ Volkswagen Sharan ,,"3,7",,1,1,5.0,8.0,2.0,2.0,"Espacio y versatilidad interior, 7 plazas reales, puertas correderas, confort de marcha, gama de motores, comportamiento sorprendente","Estética cuadrada, es más caro que un SEAT Alhambra siendo el mismo coche"
+ Audi Q3 ,,"3,6"," «Un SUV basado en el Audi A3, con un interior no tan elegante como el del A3 pero el mismo espacio y un exterior atractivo. La gama de motores diésel y gasolina de Audi nunca defrauda. » ",1,1,1.0,8.0,2.0,3.0,"Calidad interior, equipamiento disponible","Precio elevado, opciones caras, gama limitada"
+ Renault Espace ,,"3,2",,1,1,5.0,11.0,2.0,5.0,"Amplitud, maletero con cinco asientos, diseño, presentación","Aspecto de algunos plásticos, dimensiones, motores pequeños algo justos"
+ Kia Sorento HEV ,,,,1,1,7.0,5.0,7.0,2.0,"Calidad de construcción, equipamiento, mecánicas avanzadas, relación calidad-precio","Muchos rivales, precio algo elevado para la mayoría de clientes que buscan un KIA"
+ Audi A5 Sportback ,,"3,7",,1,4,1.0,7.0,2.0,5.0,"Calidad, comportamiento, gama","Equipo de serie, precio"
+ Kia Sorento ,,"3,9"," «Un SUV de 7 plazas por menos de 30.000 euros, sin tener en cuenta los descuentos. Conducción comoda y espacio interior son las bazas del Sorento, además de un exterior llamativo. De entrada el 2.0 diésel de 150 CV es más que aceptable. » ",1,1,7.0,5.0,2.0,2.0,"Espacio, maletero, siete plazas, calidad de terminación, mecánica híbrida","Dimensiones, consumos algo elevados, precio"
+ Volkswagen T-Roc R ,,,,1,2,1.0,5.0,1.0,3.0,,
+ Volkswagen Golf R ,,,,1,6,1.0,5.0,2.0,5.0,"Prestaciones, facilidad de conducción, practicidad real","Le falta un punto de rabia, es demasiado fácil de conducir"
+ Porsche Macan ,,"4,2",,1,5,1.0,7.0,1.0,4.0,"Tacto de conducción sobresaliente, diversión al volante, prestaciones, practicidad real como familiar, calidad de construcción, diseño",Precio muy elevado
+ Kia Sorento PHEV ,,,,1,1,7.0,5.0,8.0,2.0,,
+ Audi Q5 ,,"3,6",,1,1,1.0,8.0,2.0,3.0,"Tecnología, interior, calidad de ejecución, comportamiento","Precio elevado, diseño sobrio"
+ Toyota RAV4 PHEV ,,,,1,1,3.0,1.0,8.0,3.0,,
+ Fiat 500X ,,"3,1",,1,1,5.0,5.0,2.0,6.0,"Diseño, precio ajustado, calidad razonable","Maletero justo, detalles de acabado"
+ Renault Clio HEV ,,,,2,1,5.0,5.0,7.0,3.0,"Eficiencia, tecnología, capacidad de conducción en modo eléctrico, etiqueta ECO","Imagen poco diferenciada, consumo en ciudad algo elevado para lo que se espera"
+ Kia Niro HEV ,,"3,7",,1,1,7.0,6.0,7.0,3.0,"Consumos, garantía, equipamiento","Calidad de algunos plásticos, maletero algo justo"
+ Renault Scenic ,,"3,5",,1,1,5.0,1.0,2.0,3.0,"Amplitud, diseño, posibilidades de equipamiento","Banqueta posterior en lugar de asientos independientes, aspecto de algunos plásticos, precio"
+ Renault Mégane PHEV ,,,,1,2,5.0,1.0,8.0,3.0,,
+ Mazda CX-5 ,,"3,9"," «Espíritu Mazda en un SUV compacto. Muy buen comportamiento en carretera y una experiencia de conducción muy agradable, con una palanca de cambios corta y precisa. Un interior agradable y motores gasolina y diésel preparados para devorar kilómetros con un consumo contenido y buena respuesta.» ",1,2,1.0,8.0,2.0,3.0,"Equipamiento, calidad, comportamiento, motores eficientes","Precios algo elevados, opciones caras"
+ SEAT Tarraco ,,"3,8",,1,1,5.0,10.0,2.0,3.0,"Siete plazas, posibilidad de tracción total, equipamiento disponible, comportamiento","Aspecto de algunos plásticos, tercera fila algo justa,"
+ Volkswagen Passat ,,"3,8",,1,1,1.0,6.0,2.0,4.0,"Calidad de construcción, espacio interior, maletero, gama de motores, estética atractiva","Precio elevado, precio de opciones"
+ Audi A3 ,,"4,1"," «Una opción conservadora para quien busque un compacto premium: su diseño no hace girar la vista, pero dentro de diez años sabemos que seguirá luciendo igual de agradable que ahora. Por lo demás, precisión Audi.» ",1,3,1.0,5.0,2.0,3.0,"Diseño y calidad interior, tecnología","Estética muy clásica, tacto de dirección poco comunicativo, precio elevado"
+ Volkswagen Golf GTI ,,"4,3",,1,5,1.0,5.0,2.0,5.0,"Acabados, equipamiento, comportamiento seguro, prestaciones, futuro clásico","Falta de carácter, precio elevado, opciones caras"
+ Volkswagen Tiguan R ,,,,1,3,1.0,8.0,1.0,4.0,,
+ Fiat 500 MHEV ,,"3,3",,10,1,1.0,1.0,6.0,8.0,"Diseño, conducción, consumo, personalización","Equipamiento justo, sistemas de seguridad, poca tecnología"
+ SEAT Mii CNG ,,"3,2",,8,1,7.0,3.0,5.0,3.0,"Maletero capaz, carrocería de tres y cinco puertas, posibilidades de equipamiento, comportamiento dinámico","Calidad de algunos materiales, desarrollos del cambio largos, prestaciones justas, terminación mejorable"
+ Renault Clio ,,"3,7",,2,1,5.0,5.0,4.0,2.0,"Equipamiento, comportamiento, motores eficientes","Gama inicial algo justa, plazas traseras estrechas, precio sin promoción"
+ SEAT Ibiza ,,"3,7"," «Un clásico del mercado, apuesta segura para quien busque un utilitario para muchos años. No es de los más baratos pero su valor de reventa también es mayor. » ",2,1,7.0,5.0,4.0,2.0,"Comportamiento, amplitud interior, posibilidades de equipamiento, tecnología","Plásticos duros para todas las superficies, precio algo elevado"
+ Fiat 500 ,,"3,4"," «El Fiat 500 goza de diseño, agilidad y buenos acabados desde su acabado más básico. La oferta de motores diésel es la más interesante, aunque los motores TwinAir y GLP consiguen bajos consumos y suavidad para el uso en ciudad. A nivel de personalización, las opciones son casi infinitas.» ",1,1,1.0,1.0,5.0,8.0,"Diseño sobresaliente, precio ajustado","Maletero justo, calidad de algunos plásticos"
+ Kia Ceed ,,"3,6",,1,1,7.0,5.0,2.0,2.0,"Relación valor-precio, garantía, equipamiento","Detalles de acabado, valor de reventa"
+ Volkswagen Polo ,,"3,6",,3,1,1.0,5.0,4.0,2.0,"Calidad de construcción, gama de motores, habitabilidad, maletero","Precio algo elevado, diseño sobrio, gama inicial limitada, sin motor diésel"
+ Renault Mégane ,,"3,6"," «Todo un super ventas que va muy bien, especialmente con los imperecederos motores diésel dCI. Aunque que se le echa en falta es una mayor calidad interior no podemos olvidar que es un coche muy popular. Lee mi ",1,2,5.0,5.0,2.0,3.0,"Oferta variada, comportamiento, equipamiento","Calidad de algunos plásticos, espacio para las piernas en las plazas traseras"
+ Hyundai i30 MHEV ,,"3,6"," «Un coche contenido para quien busque un compacto a precio asequible. Lo mejor, una gama de motores diésel y gasolina amplia y fiable. Lo peor: un interior al que haría falta una renovación.» ",1,2,5.0,6.0,2.0,2.0,"Calidad de acabados, tacto de conducción, precio","Diseño aburrido, gama de motores limitada"
+ Kia Ceed MHEV ,,,,1,1,7.0,5.0,6.0,2.0,"Diseño, equipamiento, etiqueta ECO","Detalles de acabado, ausencia de ciertos elementos de equipamiento"
+ Fiat 500e Hatch eléctrico ,,,,1,1,1.0,1.0,10.0,8.0,,
+ Volkswagen T-Roc ,,"3,1",,1,1,1.0,5.0,2.0,3.0,"Capacidad de maletero, posibilidades de equipamiento, tracción total opcional","Detalles de acabado, uso excesivo de plásticos duros, precio algo elevado"
+ Volkswagen Tiguan ,,"3,7"," «Lo que más me gusta del Volkswagen Tiguan es la calidad percibida. Buenos materiales, buenos ajustes y mucho espacio para sus dimensiones tan reducidas. Me gustan detalles tan interesantes como el hecho de contar con una banqueta trasera corredera, que puede deslizarse unos centímetros para aumentar el espacio de carga o reducirlo y ganar unos centímetros para las piernas, para el confort de los pasajeros de las plazas traseras. Como ya dije en mi ",1,1,1.0,9.0,2.0,3.0,"Calidad de terminación, comportamiento, motores","Equipo de serie, precio elevado"
+ Fiat 500e Cabrio eléctrico ,,,,1,1,1.0,1.0,10.0,8.0,,
+ Hyundai Tucson HEV ,,"3,9",,1,1,7.0,7.0,7.0,5.0,"Diseño muy personal, suavidad de conducción, etiqueta ECO","Frontal demasiado llamativo, modo eléctrico algo escaso"
+ Kia Stonic MHEV ,,"3,4",,2,1,8.0,5.0,2.0,3.0,"Garantía, posibilidades de equipamiento, motor MHEV","Maletero pequeño, sin tracción total, detalles de acabado"
+ Renault Captur ,,"3,4"," «El Renault Captur es un pequeño todocamino que ofrece soluciones especialmente interesantes para familias con niños pequeños. Su diseño es desenfadado, cuenta con tapizados desenfundables para su limpieza en la lavadora y por sus dimensiones es manejable en espacios reducidos, cómodo para la ciudad. El diésel no es demasiado suave y refinado, y salvo que quieras recorrer muchos kilómetros te recomendaría el TCe 90, bastante equilibrado y suficiente para moverte con seguridad en un Captur. Si buscas prestaciones, el TCe 120 es potente y rápido. El Captur también puede adquirirse con un cambio automático de doble embrague, que no es el más rápido de su categoría, pero sí cómodo.» ",1,1,5.0,7.0,2.0,3.0,"Diseño, posibilidades de personalización, banqueta trasera deslizante","Sin tracción total disponible, calidad de algunos plásticos"
+ SEAT Arona ,,"3,6",,1,1,7.0,6.0,2.0,3.0,"Maletero, posibilidades de equipamiento y personalización, precio razonable",Calidad de algunos plásticos
+ SEAT León ,,"4,4"," «Estética moderna y juvenil en un coche que se aprovecha de lo mejor de la tecnología alemana del Volkswagen Golf, dimensiones contenidas y más posibilidades que nunca gracias a sus nuevas carrocerías de tipo familiar y tres puertas. Te recomiendo mi ",1,2,5.0,5.0,2.0,3.0,"Relación valor-precio, equipamiento completo, versiones híbridas","Detalles de acabado, Ancho plazas traseras"
+ Renault Captur MHEV ,,,,1,1,5.0,1.0,6.0,3.0,,
+ Hyundai Kona ,,"3,6",,1,1,6.0,5.0,2.0,3.0,"Posibilidades de equipamiento, tracción total disponible, diseño arriesgado, garantía","Aspecto de algunos plásticos, diseño arriesgado, volumen de maletero algo justo"
+ Nissan Qashqai ,,"3,4"," «El Nissan Qahsqai es el pionero de una saga de todocaminos de carretera y ciudad, pero su competencia ha crecido imparable en todos estos años. Por eso mismo ha tenido que evolucionar hacia un producto de calidad, con buenos acabados, mucha tecnología y un diseño moderno que lo sitúan entre los mejores de su categoría.» ",1,1,5.0,7.0,2.0,3.0,"Relación tamaño/equipamiento/precio, equilibrio general","Tacto de conducción, maletero pequeño frente a sus rivales"
+ SEAT Ateca ,,"4,0",,1,1,7.0,7.0,2.0,3.0,"Comportamiento, habitabilidad, maletero, equipo","Cambio DSG caro, equipamiento en nivel Reference, banqueta trasera no deslizante, diseño interior algo clásico"
+ Kia Sportage ,,"3,7"," «Es uno de los SUV compactos más vendidos. Muy atractivo por fuera y buenos acabados por dentro, que mejoran en su reciente actualización. Recomendable el 2.0 CRDi de 136 CV. Lee mi prueba del ",1,1,7.0,7.0,2.0,3.0,"Diseño, presentación, calidad de acabados","Motor 1.6 GDI pobre en prestaciones, precio de los acabados medios-altos"
+ SEAT León MHEV ,,,,1,2,5.0,5.0,6.0,3.0,"Diseño, tecnología, dinámica de conducción, etiqueta ECO","Detalles de acabado, eliminación de demasiados botones en el salpicadero"
+ Kia Sportage MHEV ,,,,1,1,7.0,7.0,6.0,3.0,"Etiqueta ECO, relación calidad-precio","Imagen algo desgastada por el tiempo, tecnología algo desfasada"
+ Hyundai Tucson MHEV ,,"4,0",,1,1,7.0,7.0,2.0,3.0,"Diseño, amplitud, maletero, posibilidad de tracción total","Equipamiento casi cerrado, precios respecto a la anterior generación"
+ Nissan X-Trail ,,"3,3",,1,1,5.0,10.0,2.0,3.0,"Amplitud interior, disponibilidad de 7 plazas, confort de marcha, equipamiento muy completo","Calidad de acabados justa, diseño algo visto, ruidos en el interior, tacto de conducción aburrido"
+ Volkswagen Golf ,,"3,8"," «El mismo de siempre, mejor que nunca. El paso de los años sienta bien al Volkswagen Golf que, mantiene su imagen sencilla y familiar y gana enteros en lo tecnológico, manteniéndose entre los mejores en cuanto a calidad percibida.» ",1,2,1.0,5.0,2.0,3.0,"Solidez, valor de reventa, comportamiento, gama de motores, tacto de conducción","Precio elevado, maletero justo, diseño continuista"
+ Renault Captur PHEV ,,,,1,1,5.0,4.0,8.0,3.0,"Eficiencia, etiqueta CERO, consumos, equipamiento","Reducción de maletero, necesidad de buscar puntos de carga para aprovechar su potencial"
+ Audi RS7 Sportback ,,,,1,7,1.0,6.0,1.0,6.0,"Imagen, calidad de construcción, prestaciones","Precio, consumo"
+ Audi A6 Allroad ,,,,1,1,1.0,1.0,1.0,7.0,"Tecnología, seguridad, estética, calidad y diseño interior","Climatizador táctil, pantallas manchadizas, precio elevado, opciones muy caras"
+ Kia Stinger ,,"4,1",,1,5,4.0,6.0,1.0,4.0,"Presentación, diseño, acabados, equipamiento, portón trasero","Maletero pequeño, altura plazas traseras, solo un motor"
+ Honda CR-V HEV ,,"3,7",,1,1,5.0,6.0,7.0,5.0,"Tacto de coche eléctrico, espacio interior, versatilidad, calidad de rodadura, acabados","Precio algo elevado, imposibilidad de llevar 7 plazas"
+ Toyota Yaris Cross ,,,,1,1,5.0,1.0,7.0,2.0,,
+ Fiat Panda MHEV ,,"3,3",,7,1,5.0,3.0,6.0,3.0,"Precio insuperable, espacio interior, practicidad, economía","Percepción general de calidad justa, prestaciones limitadas"
+ Mazda 2 ,,"3,9"," «El Mazda 2, el de la generación del 2011, es un coche pequeño y bueno pero muy caro para lo que es, no está a la altura del resto de modelos de la marca en cuando a diseño o comodidad. Lee mi ",4,1,5.0,4.0,4.0,2.0,"Diseño, presentación, posibilidades de equipamiento, comportamiento","Calidad de algunos plásticos, precio elevado, maletero pequeño"
+ Nissan Micra ,,"3,2",,1,1,5.0,5.0,4.0,3.0,"Diseño, posibilidades de equipamiento, regresa el motor diésel","Precio algo elevado, espacio en plazas traseras"
+ Fiat 500C MHEV ,,,,8,1,1.0,1.0,6.0,7.0,"Precio, diseño, personalidad, etiqueta ECO","Equipamiento de seguridad, prestaciones pobres"
+ Jeep Renegade ,,"3,4",,1,1,5.0,5.0,2.0,3.0,"Estética original, amplia gama de motores, posibilidades off-road de la versión Trailhawk","Calidades interiores algo justas, motores diésel ruidosos"
+ Hyundai i20 N ,,,,2,7,5.0,5.0,2.0,5.0,,
+ Jeep Compass ,,"3,5",,1,1,1.0,7.0,2.0,2.0,"Capacidades off-road, exclusividad, estética","Precio elevado, calidad de algunos plásticos, motores diésel ruidosos"
+ Kia Xceed ,,"3,9",,1,1,6.0,6.0,2.0,4.0,"Estética deportiva y aventurera, relación equipamiento/precio, calidad de construcción",Maletero algo justo
+ SEAT Mii eléctrico ,,"3,3",,8,1,4.0,3.0,10.0,3.0,"Precio con promociones, agilidad, equipo de serie","Plazas traseras justas, homologado para cuatro"
+ Mazda CX-3 ,,"3,9",,1,2,5.0,5.0,2.0,3.0,"Diseño, comportamiento, equipamiento disponible, opción de tracción total, motores eficientes","Plazas traseras justas, maletero pequeño, aspecto de algunos plásticos"
+ Alfa Romeo Giulietta ,,"2,4"," «Un veterano entre los compactos, aún así el Alfa Romeo Guilietta goza de un diseño atractivo e interesantes ofertas que lo convierten en buena opción de compra. Motores diésel sobradamente contrastados y una destacable opción a GLP le confieren buenos argumentos.» ",1,3,1.0,5.0,2.0,3.0,"Comportamiento dinámico, sistema DNA","Calidad de algunos plásticos, equipamiento de serie, tecnología"
+ Toyota Corolla Touring Sports ,,"3,7",,1,1,5.0,7.0,7.0,2.0,"Calidad de terminación, equipamiento de seguridad, motor 180 CV","Cambio CVT, sin opciones de personalización"
+ Nissan Leaf eléctrico ,,"3,4",,1,1,5.0,6.0,10.0,3.0,"Silencio de marcha, espacio interior, autonomía, equipamiento","Calidad de algunos plásticos, precio sin ayudas, tiempo de recarga"
+ Mazda MX-5 ,,"4,4",,4,7,7.0,1.0,2.0,7.0,"Comportamiento, sencillez de capota, motores, estética, interior, pureza del concepto","Interior justo, sonoridad elevada, maletero pequeño"
+ Renault Talisman ,,"3,5",,1,1,5.0,7.0,2.0,2.0,"Diseño, equipamiento, motor BluedCi 150 CV, comportamiento","Precio algo elevado, detalles de acabado, longitud"
+ Renault Talisman Sport Tourer ,,"3,5",,1,1,5.0,7.0,2.0,3.0,"Maletero, diseño, posibilidades de equipamiento","Detalles de acabado, precio en las versiones medio-altas"
+ Hyundai Ioniq eléctrico ,,,,1,1,5.0,6.0,10.0,3.0,"Espacio interior, silencio de marcha, precio similar al híbrido enchufable","Calidad de algunos plásticos, tamaño excesivo para ciudad"
+ Honda HR-V ,,"3,5",,1,1,5.0,6.0,2.0,3.0,"Espacio interior muy generoso, maletero, practicidad y versatilidad","Diseño extraño, interior algo pobre, gama de motores muy limitada"
+ Kia Xceed PHEV ,,,,1,1,4.0,4.0,8.0,4.0,"Imagen diferenciada, equipamiento, etiqueta CERO de la DGT","Peso elevado, maletero reducido respecto a la variante con motor térmico"
+ Mazda MX-5 RF ,,,,4,7,6.0,1.0,2.0,7.0,"Dinámica, tacto de dirección y cambio, interior soberbio, calidad de construcción, precio","Ruidos aerodinámicos con el techo cerrado, experiencia a cielo abierto ""incompleta"""
+ Renault ZOE eléctrico ,,"4,0",,2,1,5.0,5.0,10.0,4.0,"Diseño exclusivo, precio en relación a los rivales, autonomía","Precio sin alquiler de batería no tan competitivo, aspecto de algunos plásticos"
+ Kia e-Niro eléctrico ,,,,1,1,5.0,6.0,10.0,3.0,"Autonomía elevada, formato práctico urbano y familiar","Precio elevado, como todos los eléctricos"
+ Jeep Renegade PHEV ,,,,1,1,1.0,5.0,8.0,3.0,"Imagen personal, capacidades off-road, etiqueta CERO de la DGT","Autonomía eléctrica muy sensible al uso, calidad de algunos materiales, posibilidades de equipamiento reducidas"
+ Volkswagen T-Roc Cabrio ,,,,1,1,1.0,1.0,1.0,4.0,"Diseño muy bien resuelto, imagen muy personal","Peso, prestaciones, acabados algo pobres"
+ Hyundai i30 N Fastback ,,,,1,6,5.0,5.0,1.0,3.0,"Comportamiento, prestaciones, practicidad real, originalidad","Los modos de suspensión más firmes son poco utilizables fuera de circuito, acceso al maletero"
+ Hyundai i30 N ,,"4,0",,1,6,5.0,5.0,1.0,3.0,"Dinámica, opciones de configuración, prestaciones, usabilidad, espacio interior","Maletero algo justo, modo de suspensión Sport+ sólo apto para circuito, consumo elevado"
+ Jeep Compass PHEV ,,,,1,1,1.0,6.0,8.0,3.0,,
+ Toyota Land Cruiser ,,"3,9",,1,1,1.0,8.0,1.0,2.0,"Capacidad todoterreno, robustez general, durabilidad","Precio elevado, interior anodino, comportamiento en carretera"
+ Alfa Romeo Stelvio ,,"3,8",,1,5,1.0,7.0,1.0,6.0,"Diseño, comportamiento dinámico, oferta mecánica variada","Equipamiento de serie justo, precio elevado, calidad de algunos plásticos"
+ Volkswagen Golf PHEV ,,,,1,4,1.0,5.0,8.0,5.0,"Imagen de marca, tecnología de seguridad, etiqueta CERO","Peso, maletero más pequeño, precio"
+ Audi TT ,,"3,9",,1,5,1.0,2.0,2.0,6.0,"Diseño interior de vanguardia, calidad de construcción","Su comportamiento no es el de un 718, pero casi"
+ Honda Civic Type R ,,,,1,7,3.0,5.0,1.0,5.0,"Tacto de conducción, sonido, experiencia deportiva envolvente, comportamiento, motor, cambio, compromiso con el confort",Estética no apta para todos los públicos
+ Volkswagen Arteon ,,"3,9",,1,4,2.0,7.0,2.0,5.0,"Diseño, equipamiento, calidad de terminación, maletero","Altura en plazas traseras, gama limitada, opciones caras"
+ Audi TT Roadster ,,"3,9",,1,6,1.0,1.0,1.0,6.0,"Interior espectacular, calidad de construcción, tecnología","El comportamiento no es el de un Boxter, pero casi"
+ Volkswagen Passat AllTrack ,,,,1,1,1.0,9.0,2.0,4.0,"Diseño, calidad de construcción, espacio interior, equipamiento completísimo, maletero","Precio muy elevado, difícil de aparcar por su longitud, tracción total no permanente"
+ Jeep Wrangler ,,"3,9",,1,1,1.0,1.0,1.0,5.0,"Aptitudes off-road, equipamiento, motores solventes","Gasto de combustible, amplitud en 3 puertas, maletero pequeño, precio"
+ Audi S3 ,,," «El indomable. Los 300 CV más divertidos que he probado en tiempo. De no ser porque lleva la chapa de Quattro en la guantera, pensaría que es tracción trasera. Lee mi ",1,5,1.0,4.0,1.0,5.0,"Calidad de construcción, diseño del interior, prestaciones","Precio elevado, opciones caras, tacto de dirección poco comunicativo"
+ Audi S3 Sedán ,,,,1,5,1.0,1.0,1.0,5.0,,
+ Audi Q5 Sportback ,,,,1,3,1.0,7.0,2.0,5.0,,
+ Porsche 718 Cayman ,,,,1,6,1.0,1.0,1.0,7.0,"Comportamiento, prestaciones, diversión al volante, motor central, agilidad","Precio elevado, maletero simbólico"
+ Porsche 718 Boxster ,,,,1,6,1.0,1.0,1.0,8.0,"Diseño, calidad de construcción, dinámica de conducción impecable","Sonido de los motores de cuatro cilindros, espacio interior"
+ Audi A7 Sportback ,,,,1,4,1.0,7.0,1.0,5.0,"Diseño y calidad interior, exclusividad, confort y silencio de marcha","Tacto de dirección, comportamiento poco deportivo"
+ Audi A6 PHEV ,,,,1,2,1.0,4.0,8.0,3.0,,
+ Volkswagen Touareg PHEV ,,,,1,1,1.0,9.0,8.0,3.0,"Imagen, equipamiento, calidad, agrado de conducción","Precio, peso, capacidades off-road"
+ Audi RS Q3 ,,,,1,5,1.0,7.0,1.0,4.0,,
+ Porsche Taycan eléctrico ,,,,1,7,1.0,4.0,10.0,8.0,"Prestaciones, tecnología, solidez general",Precio inalcanzable para el común de los mortales
+ Alfa Romeo Giulia QV ,,,,1,7,1.0,5.0,1.0,5.0,"Motor, comportamiento, motor, sensaciones de conducción, motor, tacto de dirección, motor...",Interior muy mejorable
+ Porsche Panamera ,,,,1,5,1.0,5.0,1.0,8.0,"Nivel prestacional, exclusividad, estética, tecnología","Peso elevado, consumos, precio"
+ Audi RS5 Sportback ,,,,1,7,1.0,6.0,1.0,5.0,,
+ Nissan GT-R ,,"4,1",,1,9,3.0,1.0,1.0,9.0,"Relación prestaciones/precio, estética atractiva, nivel tecnológico, practicidad real","Interior obsoleto, puesto de conducción muy alto, modelo algo antiguo frente a la competencia"
+ SEAT León ST PHEV ,,,,1,1,4.0,8.0,8.0,3.0,"Imagen, tecnología, sistema híbrido enchufable muy completo","Peso, tamaño del maletero"
+ Toyota ProAce City Verso ,,,,1,1,5.0,8.0,1.0,1.0,Sencillez y practicidad también para familias,Calidad de los revestimientos
+ Toyota Camry HEV ,,,,1,1,5.0,6.0,7.0,1.0,"Fiabilidad más que contrastada, espacio a bordo, equipamiento de serie","Imagen insulsa, transmisión con un comportamiento ""especial"""
+ Toyota GR Yaris ,,,,2,5,5.0,1.0,1.0,2.0,"Imagen, exclusividad, prestaciones, deportividad","Practicidad, consumo"
+ Honda e ,,"3,7",,4,1,1.0,2.0,10.0,5.0,"Calidad, diseño personal, equipamiento, prestaciones","Autonomía, precio alto, retrovisores por pantalla"
+ Volkswagen ID.3 eléctrico ,,,,1,2,5.0,5.0,10.0,6.0,"Prestaciones, rango de uso, equipamiento","Precio elevado, tiempo de recarga, acabados pobres"
+ Toyota Highlander HEV ,,,,1,1,5.0,1.0,7.0,5.0,"Imagen, equipamiento, espacio interior, mecánica muy fiable y resolutiva","Caja de cambios, consumos a altas velocidades"
+ Audi SQ2 ,,,,1,4,1.0,1.0,1.0,4.0,"Potencia, prestaciones, consumo","Acabados, dinámica peor que la de su equivalente compacto"
+ Hyundai NEXO Fuel Cell ,,,,1,1,1.0,6.0,10.0,5.0,"Tecnología de vanguardia, rapidez de repostaje equivalente a gasolina, uso idéntico a un eléctrico","No hay hidrolineras, por lo tanto no puedes repostar"
+ Audi E-Tron Sportback eléctrico ,,,,1,3,1.0,8.0,10.0,6.0,,
+ Toyota Mirai ,,,,1,1,1.0,3.0,10.0,1.0,,
+ Audi RS4 Avant ,,,,1,7,1.0,7.0,1.0,5.0,,
+ Audi RS5 ,,,,1,7,1.0,2.0,1.0,6.0,,
+ Audi SQ8 ,,,,1,6,1.0,8.0,1.0,6.0,,
+ Audi RS Q8 ,,,,1,6,1.0,8.0,1.0,6.0,,
+ Porsche 911 Speedster ,,,,1,8,1.0,1.0,1.0,8.0,"Diseño, exclusividad",Unidades limitadas
+ Hyundai H1 Travel ,,,,1,1,7.0,1.0,2.0,1.0,"Tamaño, versatilidad, capacidad de transporte",Es más un microbús que un coche
+ Volkswagen Arteon Shooting Brake ,,,,1,1,1.0,7.0,2.0,5.0,,
+ Nissan NP300 Navara ,,,,1,1,1.0,1.0,1.0,2.0,"Precio razonable, dureza general, interior logrado","Ausencia de diferencial central, sobriedad"
+ Fiat Tipo Cross ,,,,1,1,7.0,6.0,2.0,3.0,"Diseño agradable, mejora en calidades, motores solventes, precio","Sin ningún tipo de electrificación, tecnología de confort y seguridad algo desfasada"
+ Renault Twingo eléctrico ,,,,8,1,5.0,3.0,10.0,4.0,,
+ Honda Jazz HEV ,,,,3,1,1.0,4.0,7.0,2.0,,
+ Kia ProCeed ,,,,1,3,5.0,7.0,2.0,3.0,,
+ Renault Koleos ,,"3,0",,1,1,1.0,8.0,2.0,2.0,"Espacio interior, precio ajustado, equipo completo","Detalles de calidad mejorables, se da de bruces con su hermano el Espace... y pierde"
+ Kia ProCeed MHEV ,,,,1,3,5.0,6.0,6.0,4.0,"Diseño muy atractivo, dinámica de conducción agradable","Materiales en las plazas traseras, visibilidad, maletero algo escaso"
+ Renault Mégane RS ,,"4,0",,1,6,5.0,5.0,2.0,3.0,"Motor brillante, prestaciones, cambio manual o EDC, equipo completo, comportamiento","Solo con carrocería de cinco puertas, precio sin promociones, aspecto de algunos plásticos"
+ Kia Ceed GT ,,,,1,6,5.0,5.0,1.0,3.0,"Estética discreta, equipamiento de serie muy amplio, motor muy refinado","Chasis algo blando, falta de sensaciones al volante para tratarse de la versión más deportiva"
+ Toyota Hilux ,,"3,6",,1,1,1.0,1.0,1.0,2.0,"Es un Hilux, no se rompe","Comportamiento sensible a la carga, precio elevado, estética poco conseguida"
+ SEAT Tarraco PHEV ,,,,1,1,5.0,10.0,8.0,3.0,"Imagen, espacio a bordo, potencia, equipamiento","Calidad de algunos materiales, peso elevado, dinamismo comprometido respecto a las versiones térmicas"
+ Nissan 370Z ,,,,1,6,3.0,1.0,1.0,6.0,"Precio, motor V6, postura de conducción, tracción trasera, autenticidad","Interior obsoleto, plásticos muy mejorables, biplaza estricto, diseño algo desfasado"
+ Volkswagen Amarok ,,"3,4",,1,1,1.0,1.0,1.0,2.0,"Diferencial central Torsen, sensación de solidez, estética conseguida, interior muy cuidado, prestaciones destacadas","Posibilidades off-road limitadas, precio elevado"
+ Volkswagen Multivan ,,"3,6",,1,1,2.0,1.0,2.0,1.0,"Espacio para 8 personas con equipaje, equipamiento","Precio elevado, tacto en curva condicionado por su altura"
+ Volkswagen ID.4 eléctrico ,,,,1,1,1.0,7.0,10.0,3.0,,
+ Audi A5 Cabrio ,,,,1,4,1.0,1.0,2.0,5.0,"Diseño refinado, calidad de construcción, aislamiento","Peso adicional, espacio en las plazas traseras"
+ Audi Q3 PHEV ,,,,1,3,1.0,7.0,8.0,4.0,"Diseño, tecnología, etiqueta CERO","Precio, peso, consumo con la batería descargada"
+ Audi Q3 Sportback PHEV ,,,,1,3,1.0,7.0,8.0,3.0,"Diseño, tecnología híbrida enchufable, etiqueta CERO","Precio, peso"
+ Audi S7 Sportback ,,,,1,6,1.0,6.0,1.0,5.0,,
+ Toyota GR Supra ,,,,1,7,1.0,1.0,1.0,7.0,,
+ Audi e-tron eléctrico ,,"3,9",,1,5,1.0,8.0,10.0,7.0,"Autonomía, calidad de acabados","Precios, autonomía frente a los modelos de combustión"
+ Audi SQ5 ,,,,1,6,1.0,8.0,1.0,4.0,,
+ Audi SQ5 Sportback ,,,,1,4,1.0,1.0,6.0,4.0,,
+ Audi TT RS Roadster ,,,,1,7,1.0,1.0,1.0,7.0,"Sonido de su motor de cinco cilindros, prestaciones, calidad","Espacio interior, peso, consumo"
+ Audi TT RS ,,,,1,7,1.0,2.0,1.0,6.0,,
+ Porsche Cayenne E Hybrid PHEV ,,,,1,5,1.0,9.0,8.0,4.0,"Prestaciones, comportamiento, tacto de conducción, exclusividad, etiqueta CERO","Nunca una etiqueta CERO tuvo tan poco sentido, pero si te lo puedes permitir..."
+ Porsche Cayenne Coupé ,,,,1,5,1.0,7.0,1.0,4.0,,
+ Porsche Cayenne Coupé E-Hybrid PHEV ,,,,1,5,1.0,7.0,8.0,4.0,"Imagen, calidad de construcción, capacidad de personalización, etiqueta CERO","Peso, precio"
+ Fiat Tipo 5P ,,"2,9",,1,1,7.0,6.0,2.0,2.0,"Precio demoledor, diseño, maletero gigantesco, versatilidad","Calidad de algunos plásticos, detalles de acabado"
+ Fiat Tipo SW ,,"2,9",,1,1,6.0,7.0,2.0,2.0,"Precio demoledor, diseño, maletero gigantesco, versatilidad","Calidad de algunos plásticos, detalles de acabado"
+ Hyundai i30 Fastback MHEV ,,,,1,2,5.0,6.0,2.0,3.0,"Estética deportiva y original, relación valor/precio",Apertura y forma del maletero
+ Kia Xceed MHEV ,,,,1,1,5.0,5.0,6.0,4.0,,
+ Volkswagen Arteon PHEV ,,,,1,1,4.0,7.0,8.0,3.0,,
+ Volkswagen Arteon R ,,,,1,4,4.0,7.0,2.0,3.0,,
+ Jeep Compass Trailhawk ,,,,1,1,1.0,5.0,1.0,3.0,,
+ Volkswagen California ,,,,1,1,5.0,1.0,2.0,5.0,"Diseño, posibilidades de equipamiento, polivalencia","Dinámica de conducción, precio, consumo"
+ Audi Q8 ,,"4,1",,1,6,1.0,8.0,1.0,6.0,"Calidad, equipamiento, acabados, presencia","Precio, tamaño"
+ Audi Q8 PHEV ,,,,1,5,1.0,7.0,8.0,6.0,"Diseño, prestaciones, etiqueta CERO de la DGT","Precio, peso"
+ Alfa Romeo Stelvio QV ,,,,1,6,1.0,7.0,1.0,4.0,"Comportamiento, tacto de conducción, sonido, prestaciones, diversión al volante","Plásticos mejorables, diseño interior por detrás de la competencia, interfaz de usuario obsoleta"
+ Toyota ProAce Van ,,,,1,1,,,,,,
+ Renault Kangoo ,,,,2,6,,,,,,
+ Toyota ProAce City Van ,,,,1,1,,,,,,
+ Renault Trafic ,,,,1,1,,,,,,
+ Nissan NV300 ,,,,1,5,,,,,,
+ Toyota Corolla HEV ,,"3,7",,1,1,5.0,5.0,7.0,2.0,"Calidad de terminación, equipamiento de seguridad, motor 180 CV","Cambio CVT, sin opciones de personalización"
+ Kia Ceed Tourer PHEV ,,,,1,2,3.0,6.0,8.0,3.0,"Polivalencia, precio, equipamiento","Peso adicional, dinámica modificada a consecuencia de los componentes mecánicos extra"
+ Fiat Dobló ,,,,1,8,,,,,,
+ Mazda MX-30 eléctrico ,,"3,3",,1,3,1.0,5.0,2.0,4.0,"Amplitud, materiales de calidad, diseño personal","Autonomía muy justa, precio elevado"
+ Toyota ProAce Verso ,,,,1,1,,,,,,
