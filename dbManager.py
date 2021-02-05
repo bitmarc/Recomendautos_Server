@@ -269,11 +269,11 @@ class Querys:
             print("Error al obtener url de base de datos: " + str(e))
             return False
 
-    def addAuto(self, marca, modelo, año, version, url):
+    def addAuto(self, marca, modelo, año, version, url, resumen):
         try:
             cur = self.__mysql.connection.cursor()
-            cur.execute('CALL sp_insertarAutomoviles(%s,%s,%s,%s,%s)',
-            (marca, modelo, año, version, url))
+            cur.execute('CALL sp_insertarAutomoviles(%s,%s,%s,%s,%s,%s)',
+            (marca, modelo, año, version, url,resumen))
             self.__mysql.connection.commit()
             return True
         except Exception as e:

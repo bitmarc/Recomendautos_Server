@@ -18,7 +18,9 @@ class DataExportManager:
             if(not MyConnection.addAtribute(row[2],row[4])):
                 print('Error')
                 break
+            print('atributo: ',index,' ok')
         dfAttributes.to_csv(file_path, encoding="utf-8", index=False)
+        print('::ok::Atributos exportados...')
         return "ok"
 
     @staticmethod
@@ -32,6 +34,7 @@ class DataExportManager:
                 print('Error')
                 break
             print('auto: ',index,' ok')
+        print('::ok::Autos exportados...')
         return "ok"
     
     @staticmethod
@@ -51,6 +54,7 @@ class DataExportManager:
                         break
                 i+=1
             print('auto: ',index+1)
+        print('::ok::Autos-Atributos exportados...')
         return sms
 
     @staticmethod
@@ -64,6 +68,8 @@ class DataExportManager:
                 print('Error')
                 sms='failed'
                 break
+            print('Tag  ',index,' ok')
+        print('::ok::Tags exportados...')
         return sms
 
     @staticmethod
@@ -82,6 +88,8 @@ class DataExportManager:
                     print('Error')
                     sms='failed'
                     break
+            print('Tag ligado ',index,' ok')
+        print('::ok::Tags-Atributos exportados...')
         return sms
 
     @staticmethod
@@ -100,6 +108,7 @@ class DataExportManager:
                         break
                 i+=1
             print('respuesta: ',index+1)
+        print('::ok::MatrizAtributos exportada...')
         return sms
 
     @staticmethod
@@ -116,7 +125,8 @@ class DataExportManager:
             row['ostentosidad'],row['deportividad'],row['economía'],row['eficiencia'],row['seguridad'],row['ecología'],row['a_favor'],row['en_contra'],row['cP'],row['cN'],index+1)):
                 sms='failed'
                 break
-            print('auto: ',index+1)
+            print('hoja: ',index+1)
+        print('::ok::Hojas puntuaciones exportados...')
         return sms
 
     #INACTIVO!!
@@ -133,21 +143,12 @@ class DataExportManager:
         dfForms.drop(['FECHA','EDAD','GENERO','OCUPACION'],axis='columns', inplace=True)
         dfNumericForms=DataExportManager.translateResponses(dfForms,dfQuest)
         dfNumericForms.to_csv(file_path_out_numericForms,index=False)## ALMACENO EL FORMULARIO NUMERICO PARA SER UTILIZADO MAS ADELANTE
-        print('Archivo "datosFormularioNumericCsv.csv" exportado con exito')
-        '''
-        for index, row in dfForms.iterrows():
-            icol=1
-            for data in row:
-                if(not MyConnection.addResult(index+1000,icol,data)): #Se establece el id de solicitud al indice+1000 (no son solicitudes reales)
-                        sms='failed'
-                        break
-                icol+=1
-            if sms=='failed':
-                break
-            print('formulario',index+1,'ok')
-        '''
+        print('Archivo "datosFormularioNumericCsv.csv" generado con exito')
         return sms
 
+
+    #NO SE OCUPA
+    '''
     @staticmethod
     def parseAttribs(MyConnection):
         # Este metodo rescata las puntuaciones maximas de popularidad por atributo (considerando numero de preguntas y respuestas relacionadas a ellos)
@@ -166,7 +167,8 @@ class DataExportManager:
             print('attrib ',index,' ok')
         dfAttributes.to_csv(file_attributes_path, encoding="utf-8", index=False)
         return "completado!"
-        
+    '''
+    
     @staticmethod
     def updateAuto(idAuto,overview,MyConnection):
         base_path = Path(__file__).parent

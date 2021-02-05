@@ -63,8 +63,9 @@ class home(Resource):
         #Analyzer.AnalizeOpinautos()
         #Csvcleaner.generateScoreSheet()
         #print('generateScoreSheet ok')
-        msg=DataExportManager.exportScoresheet(MyConnection)
-        print('exportScoresheet ok')
+        #msg=DataExportManager.exportScoresheet(MyConnection)
+        #print('exportScoresheet ok')
+
         return jsonify({"message": "Bienvenido a recommendautos"})
 
 # Bienvenida a usuario
@@ -231,18 +232,18 @@ class getCarDetails(Resource):
 class exportData(Resource):
     def get(self):
         msg='failed'
-        msg=DataExportManager.exportAttributes(MyConnection)
-        print('exportAttributes ok')
-        msg=ContentBased.generateOverview() #genera overview
-        print('generateOverview ok')
-        msg=DataExportManager.exportAutos(MyConnection)
-        print('exportAutos ok')
-        msg=DataExportManager.exportAutosAttributes(MyConnection)
-        print('exportAutosAttributes ok')
-        msg=DataExportManager.exportTags(MyConnection)
-        print('exportTags ok')
-        msg=DataExportManager.exportTagsAttributes(MyConnection)
-        print('exportTagsAttributes ok')
+        #msg=DataExportManager.exportAttributes(MyConnection)
+        #print('exportAttributes ok')
+        #msg=ContentBased.generateOverview() #genera overview
+        #print('generateOverview ok')
+        #msg=DataExportManager.exportAutos(MyConnection)
+        #print('exportAutos ok')
+        #msg=DataExportManager.exportAutosAttributes(MyConnection)
+        #print('exportAutosAttributes ok')
+        #msg=DataExportManager.exportTags(MyConnection)
+        #print('exportTags ok')
+        #msg=DataExportManager.exportTagsAttributes(MyConnection)
+        #print('exportTagsAttributes ok')
         msg=DataExportManager.exportResponsesAttributes(MyConnection)
         print('exportResponsesAttributes ok')
         Csvcleaner.generateScoreSheet()
@@ -251,12 +252,11 @@ class exportData(Resource):
         print('exportScoresheet ok')
         msg=DataExportManager.exportForms(MyConnection)#solo pasa a numeric, no a bd--
         print('exportForms ok')
-        Csvcleaner.generateScoreSheet()
+        msg=Csvcleaner.generateScoreSheet()
         print('generateScoreSheet ok')
         msg=DataExportManager.exportScoresheet(MyConnection)
         print('exportScoresheet ok')
-        #msg=DataExportManager.parseAttribs(MyConnection)
-        #print('parseAttribs ok')
+        print('Datos exportados con exito!! ')
         return jsonify('status: '+msg)
 
 # Entrenar modelo

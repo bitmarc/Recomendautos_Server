@@ -312,7 +312,9 @@ class Csvcleaner:
                 dfAutos.iloc[index,17]=sum(cn)/len(cn)
 
         dfAutos['nombre']=dfAutos['marca']+' '+dfAutos['modelo']+' '+dfAutos['versión']
-        dfAutos.to_csv(file_autos_path_out, encoding="utf-8", index=False) 
+        dfAutos.to_csv(file_autos_path_out, encoding="utf-8", index=False)
+        print('Hoja de puntuaciones generada correctamente')
+        return 'ok'
 
     @staticmethod
     def getVersionIndex(dfScores,verson,puntGral):
