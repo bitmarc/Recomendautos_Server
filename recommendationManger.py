@@ -22,20 +22,20 @@ class RecommendationManager:
         if(idRecom):#4.genero recomendacion %% requiere generate OVERVIEW
             print('::OK::Formulario recibido: ',array[0])
             
-            '''
-            autos1=ContentBased.getBestRatedAutos(False,cluster,idModel,MyConnection,40)# En caso de tener restricciones de autos, agregarlo como primer parametro, en caso contraario se introduce False
+            #'''
+            autos1=ContentBased.getBestRatedAutos(False,cluster,idModel,MyConnection,55)# En caso de tener restricciones de autos, agregarlo como primer parametro, en caso contraario se introduce False
             print('Autos después del filtrado de perfil: ',autos1)
             autos1=ContentBased.getSimilarAutos(MyConnection,array[0],8,autos1) ## En caso de tener una resticccioon sobre ciertos automoviles, agregarlo como tercer parametro
             print('filtro basado en contenido ok: ',autos1)
             '''  
-            autos1=ContentBased.getSimilarAutos(MyConnection,array[0],30) ## En caso de tener una resticccioon sobre ciertos automoviles, agregarlo como segundo parametro
-            print('Autos después del filtrado de caracteristicas: ',autos1)
-            autos1=ContentBased.getBestRatedAutos(autos1,cluster,idModel,MyConnection,8)# En caso de tener restricciones de autos, agregarlo como primer parametro, en caso contraario se introduce False
-            print('Autos después del filtrado de perfil: ',autos1)
+            autos1=ContentBased.getSimilarAutos(MyConnection,array[0],20) ## En caso de tener una resticccioon sobre ciertos automoviles, agregarlo como segundo parametro
+            #print('Autos después del filtrado de caracteristicas: ',autos1)
+            autos1=ContentBased.getBestRatedAutos(autos1,cluster,idModel,MyConnection,7)# En caso de tener restricciones de autos, agregarlo como primer parametro, en caso contraario se introduce False
+            print('Puntuaciones de autos: ',autos1)
             #'''
 
-            autos1=ContentBased.getRestrictedAutos(MyConnection,autos1,Nresults=5,MaxMarca=2,Maxmodel=1)# Restricciones de marca y modelo por recomendación
-            print('Autos despues de las restricciones : ',autos1)
+            autos1=ContentBased.getRestrictedAutos(MyConnection,autos1,Nresults=5,MaxMarca=3,Maxmodel=1)# Restricciones de marca y modelo por recomendación
+            print('Resultados del usuario : ',autos1)
             j=1 # Se guardan los autos resultado de recomendación en base de datos
             for auto in autos1:
                 if not MyConnection.addResultRecom(idRecom,j,auto+1):

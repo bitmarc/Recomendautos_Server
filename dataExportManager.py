@@ -30,7 +30,7 @@ class DataExportManager:
         dfAutos = pd.read_csv(file_path,encoding='utf-8')
         dfAutos.fillna(0)
         for index, row in dfAutos.iterrows():
-            if(not MyConnection.addAuto(row[0],row[1],row[2],row[3],row[-2],row[-1])):
+            if(not MyConnection.addAuto(row[0],row[1],row[2],row[3],row[-3],row[-1])):
                 print('Error')
                 break
             print('auto: ',index,' ok')
@@ -148,7 +148,7 @@ class DataExportManager:
 
 
     #NO SE OCUPA
-    '''
+    #'''
     @staticmethod
     def parseAttribs(MyConnection):
         # Este metodo rescata las puntuaciones maximas de popularidad por atributo (considerando numero de preguntas y respuestas relacionadas a ellos)
@@ -167,7 +167,7 @@ class DataExportManager:
             print('attrib ',index,' ok')
         dfAttributes.to_csv(file_attributes_path, encoding="utf-8", index=False)
         return "completado!"
-    '''
+    #'''
     
     @staticmethod
     def updateAuto(idAuto,overview,MyConnection):

@@ -280,6 +280,16 @@ class Querys:
             print("Error al agregar nuevo automovil a la base de datos: " + str(e))
             return False
     
+    def updateUrlAuto(self, idA, url):
+        try:
+            cur = self.__mysql.connection.cursor()
+            cur.execute('CALL sp_actualizarUrl(%s,%s)',(idA, url))
+            self.__mysql.connection.commit()
+            return True
+        except Exception as e:
+            print("Error al actualizar url de automovil en la base de datos: " + str(e))
+            return False
+    
     def updateOverview(self, id, overview):
         try:
             cur = self.__mysql.connection.cursor()

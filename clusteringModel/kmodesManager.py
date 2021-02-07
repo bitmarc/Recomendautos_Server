@@ -17,6 +17,7 @@ class KmodesManager:
         se anexarán los datos de formularios almacenados en base de datos. Al finalizar genera un archivo
         con extención ".pkl"
         '''
+        '''
         base_path = Path(__file__).parent
         file_path_numericForms = (base_path / "../data_csv/datosFormularioNumericCsv.csv").resolve()
         dfNumericForms = pd.read_csv(file_path_numericForms, encoding='utf-8')
@@ -49,7 +50,10 @@ class KmodesManager:
         file_out_path_model = (base_path / route).resolve()
         pickle.dump(model,open(file_out_path_model,"wb"))
         # 2. guardo modelo en base de datos
-        MyConnection.addModel(filename,fecha)
+        '''
+        fecha=datetime.now()
+        MyConnection.addModel('model_2021-02-4_170639',fecha)
+        #MyConnection.addModel(filename,fecha)
         print('modelo ok')
         return 'modelo generado correctamente!'
 

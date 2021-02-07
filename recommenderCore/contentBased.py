@@ -85,6 +85,7 @@ class ContentBased:
         for tag in tags:
             tagList.append(tag[0])
             ratingList.append(tag[1])
+        
         print(tagList,ratingList)
         pg=ContentBased.getPgeneral(dfScores,tagList,ratingList)
         dfScores['Pgeneral']=pg
@@ -159,7 +160,6 @@ class ContentBased:
                     pg=pg+(dfAutos.loc[index][tag])*(rating[tg])
                 tg+=1
             pg=pg+((dfAutos.loc[index]['general'])+ContentBased.getComentsScore(dfAutos.loc[index]['cP'],dfAutos.loc[index]['cN']))
-            print(pg)
             pgList.append(pg)
         return pgList
 

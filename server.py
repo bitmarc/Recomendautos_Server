@@ -58,14 +58,6 @@ class home(Resource):
         #lis=MyConnection.getCursorParams()
         #db_connection_str = 'mysql+pymysql://'+lis[1]+':'+lis[2]+'@'+lis[0]+'/'+lis[3]
         #db_connection = create_engine(db_connection_str)
-        #return jsonify(dfAutos.to_dict())
-
-        #Analyzer.AnalizeOpinautos()
-        #Csvcleaner.generateScoreSheet()
-        #print('generateScoreSheet ok')
-        #msg=DataExportManager.exportScoresheet(MyConnection)
-        #print('exportScoresheet ok')
-
         return jsonify({"message": "Bienvenido a recommendautos"})
 
 # Bienvenida a usuario
@@ -228,22 +220,22 @@ class getCarDetails(Resource):
             return jsonify(datasheet.getDataSheet())
         return jsonify({'message':'error'})
 
-# exportarAtributos
+# exportarDatos
 class exportData(Resource):
     def get(self):
         msg='failed'
-        #msg=DataExportManager.exportAttributes(MyConnection)
-        #print('exportAttributes ok')
-        #msg=ContentBased.generateOverview() #genera overview
-        #print('generateOverview ok')
-        #msg=DataExportManager.exportAutos(MyConnection)
-        #print('exportAutos ok')
-        #msg=DataExportManager.exportAutosAttributes(MyConnection)
-        #print('exportAutosAttributes ok')
-        #msg=DataExportManager.exportTags(MyConnection)
-        #print('exportTags ok')
-        #msg=DataExportManager.exportTagsAttributes(MyConnection)
-        #print('exportTagsAttributes ok')
+        msg=DataExportManager.exportAttributes(MyConnection)
+        print('exportAttributes ok')
+        msg=ContentBased.generateOverview() #genera overview
+        print('generateOverview ok')
+        msg=DataExportManager.exportAutos(MyConnection)
+        print('exportAutos ok')
+        msg=DataExportManager.exportAutosAttributes(MyConnection)
+        print('exportAutosAttributes ok')
+        msg=DataExportManager.exportTags(MyConnection)
+        print('exportTags ok')
+        msg=DataExportManager.exportTagsAttributes(MyConnection)
+        print('exportTagsAttributes ok')
         msg=DataExportManager.exportResponsesAttributes(MyConnection)
         print('exportResponsesAttributes ok')
         Csvcleaner.generateScoreSheet()
@@ -263,8 +255,8 @@ class exportData(Resource):
 class trainModel(Resource):
     def get(self):
         msg='ok'
-        k=7
-        msg=KmodesManager.generateModel(k,MyConnection,'Cao')
+        k=6
+        #msg=KmodesManager.generateModel(k,MyConnection,'Cao')
         msg=KmodesManager.defineProfiles(MyConnection,k)##===aun no se ejecuta
         #ContentBased.generateOverview() #solo cuando hay cambios en los datos de coches
         return msg
