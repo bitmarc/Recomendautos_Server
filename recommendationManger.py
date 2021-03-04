@@ -22,13 +22,13 @@ class RecommendationManager:
         if(idRecom):#4.genero recomendacion %% requiere generate OVERVIEW
             print('::OK::Formulario recibido: ',array[0])
             
-            #'''
+            '''
             autos1=ContentBased.getBestRatedAutos(False,cluster,idModel,MyConnection,55)# En caso de tener restricciones de autos, agregarlo como primer parametro, en caso contraario se introduce False
             print('Autos después del filtrado de perfil: ',autos1)
-            autos1=ContentBased.getSimilarAutos(MyConnection,array[0],8,autos1) ## En caso de tener una resticccioon sobre ciertos automoviles, agregarlo como tercer parametro
+            autos1=ContentBased.getSimilarAutos(MyConnection,array[0],7,autos1) ## En caso de tener una resticccioon sobre ciertos automoviles, agregarlo como tercer parametro
             print('filtro basado en contenido ok: ',autos1)
             '''  
-            autos1=ContentBased.getSimilarAutos(MyConnection,array[0],20) ## En caso de tener una resticccioon sobre ciertos automoviles, agregarlo como segundo parametro
+            autos1=ContentBased.getSimilarAutos(MyConnection,array[0],25) ## En caso de tener una resticccioon sobre ciertos automoviles, agregarlo como segundo parametro
             #print('Autos después del filtrado de caracteristicas: ',autos1)
             autos1=ContentBased.getBestRatedAutos(autos1,cluster,idModel,MyConnection,7)# En caso de tener restricciones de autos, agregarlo como primer parametro, en caso contraario se introduce False
             print('Puntuaciones de autos: ',autos1)
